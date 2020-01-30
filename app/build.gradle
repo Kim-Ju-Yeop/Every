@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.every"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -47,4 +47,8 @@ dependencies {
     // Retrofit2
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+
+    // SpinKit
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
 }

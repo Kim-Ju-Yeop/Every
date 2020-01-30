@@ -7,13 +7,13 @@
 
     <data>
         <variable
-            name="mainViewModel"
+            name="viewModel"
             type="com.example.every.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.SplashActivity"/>
+        tools:context=".activity.splash.SplashActivity"/>
 
 </layout>

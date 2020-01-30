@@ -114,7 +114,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/nanum_bold"
                     android:text="비밀번호를 잊으셨나요?"
-                    android:textColor="#984DCC" />
+                    android:textColor="#984DCC"
+                    android:onClick="@{viewModel.lostPw()}"/>
             </LinearLayout>
 
             <androidx.cardview.widget.CardView

@@ -10,6 +10,8 @@ class SignInViewModel : ViewModel() {
     val pw = MutableLiveData<Unit>()
 
     val onSignUpEvent = SingleLiveEvent<Unit>()
+    val onLostPwEvent = SingleLiveEvent<Unit>()
 
     fun signUp() = onSignUpEvent.call()
+    fun lostPw() = onLostPwEvent.call()
 }

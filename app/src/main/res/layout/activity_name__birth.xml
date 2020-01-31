@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.signup.signup.data.Email_PasswordViewModel" />
+            type="com.example.every.viewmodel.signup.signup.data.Name_BirthViewModel" />
     </data>
 
     <LinearLayout
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="이메일과 비밀번호"
+                android:text="이름과 태어난 년도"
                 android:textColor="#000000"
                 android:textSize="30sp" />
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="입력하신 이메일은 아이디로 사용됩니다."
+                android:text="생년월일이 아닌 태어난 년도를 입력해주세요!"
                 android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -90,13 +90,12 @@
                         android:layout_weight="0.1"
                         android:background="@android:color/transparent"
                         android:ems="10"
-                        android:hint="이메일"
+                        android:hint="이름"
                         android:inputType="textPersonName"
                         android:paddingLeft="15dp"
                         android:paddingTop="10dp"
                         android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:text="@={viewModel.email}" />
+                        android:paddingBottom="10dp" />
 
                     <ImageView
                         android:id="@+id/email_answer"
@@ -110,23 +109,6 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/email_check"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@={viewModel.email_check}"
-                    android:textColor="#FF6B6B"
-                    android:fontFamily="@font/nanum_bold"/>
-            </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -150,13 +132,12 @@
                         android:layout_weight="0.1"
                         android:background="@android:color/transparent"
                         android:ems="10"
-                        android:hint="비밀번호 (8자 ~ 20자)"
+                        android:hint="태어난 년도 4자리"
                         android:inputType="textPassword"
                         android:paddingLeft="15dp"
                         android:paddingTop="10dp"
                         android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:text="@={viewModel.pw}" />
+                        android:paddingBottom="10dp" />
 
                     <ImageView
                         android:id="@+id/pw_answer"
@@ -183,7 +164,6 @@
                     android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={viewModel.pw_check}"
                     android:textColor="#FF6B6B"
                     android:fontFamily="@font/nanum_bold"/>
             </LinearLayout>
@@ -205,8 +185,7 @@
                     android:text="다음"
                     android:textSize="18sp"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:textColor="#FFFFFF"
-                    android:onClick="@{() -> viewModel.next()}"/>
+                    android:textColor="#FFFFFF" />
 
             </androidx.cardview.widget.CardView>
 

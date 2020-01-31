@@ -1,3 +1,11 @@
 package com.example.every.network.request.model.signup
 
-class SignUpDataWorker (val email : String, val pw : String, val name : String, val phone : String, val birth_year : Int, val work_place : String, val work_category : Int)
+class SignUpDataWorker (){
+    var email : String? = null
+    var pw : String? = null
+    var name : String? = null
+    var phone : String? = null
+    var birth_year : Int? = null
+    var work_place : String? = null
+    var work_category : Int? = null
+}

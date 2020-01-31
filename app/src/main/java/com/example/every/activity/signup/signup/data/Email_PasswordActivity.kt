@@ -1,5 +1,7 @@
 package com.example.every.activity.signup.signup.data
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -84,8 +86,16 @@ class Email_PasswordActivity : AppCompatActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@Email_PasswordActivity, Observer {
-                // 그 다음 페이지 이동
-                Toast.makeText(applicationContext, "띵똥 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                val checkIdentity = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
+
+                if(checkIdentity.getInt("identityData", 99) == 0){
+                    viewModel.signUpActivity.signUpDataStudent.email = viewModel.email.value.toString()
+                    viewModel.signUpActivity.signUpDataStudent.pw = viewModel.pw.value.toString()
+                } else if(checkIdentity.getInt("identityData", 99) == 1) {
+                    viewModel.signUpActivity.signUpDataWorker.email = viewModel.email.value.toString()
+                    viewModel.signUpActivity.signUpDataWorker.pw = viewModel.pw.value.toString()
+                }
+                startActivity(Intent(this@Email_PasswordActivity, Name_BirthActivity::class.java))
             })
             onFailEvent.observe(this@Email_PasswordActivity, Observer {
                 binding.emailAnswer.visibility = View.GONE

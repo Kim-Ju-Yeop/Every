@@ -18,8 +18,6 @@ class SignInActivity : AppCompatActivity() {
     lateinit var binding : ActivitySignInBinding
     lateinit var viewModel : SignInViewModel
 
-    var one : Int = 1
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
@@ -56,10 +54,10 @@ class SignInActivity : AppCompatActivity() {
                 loginData_editor.commit()
 
                 // Token Setting
-                val token = applicationContext.getSharedPreferences("token", Context.MODE_PRIVATE)
+                val token = applicationContext.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
                 val token_editor = token.edit()
 
-                token_editor.putString("token", viewModel.token.value)
+                token_editor.putString("tokenData", viewModel.token.value)
                 token_editor.commit()
 
                 // 메인 화면으로 이동 코드 작성

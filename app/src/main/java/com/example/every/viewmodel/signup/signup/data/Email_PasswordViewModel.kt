@@ -2,6 +2,8 @@ package com.example.every.viewmodel.signup.signup.data
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.every.activity.signup.SignUpActivity
+import com.example.every.activity.signup.signup.data.Email_PasswordActivity
 import com.example.every.widget.SingleLiveEvent
 import java.util.regex.Pattern
 
@@ -14,6 +16,8 @@ class Email_PasswordViewModel : ViewModel(){
 
     val onSuccessEvent = SingleLiveEvent<Unit>()
     val onFailEvent = SingleLiveEvent<Unit>()
+
+    val signUpActivity = SignUpActivity()
 
     fun next(){
         if(checkEmpty(email.value.toString(), 0) && checkEmpty(pw.value.toString(), 1) && checkType(email.value.toString(), 0) && checkType(pw.value.toString(), 1)){

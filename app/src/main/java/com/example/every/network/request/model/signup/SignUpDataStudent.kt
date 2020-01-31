@@ -1,3 +1,10 @@
 package com.example.every.network.request.model.signup
 
-class SignUpDataStudent(val email : String, val pw : String, val name : String, val phone : String, val birth_year : Int, val school_id : String)
+class SignUpDataStudent(){
+    var email : String? = null
+    var pw : String? = null
+    var name : String? = null
+    var phone : String? = null
+    var birth_year : Int? = null
+    var school_id : String? = null
+}

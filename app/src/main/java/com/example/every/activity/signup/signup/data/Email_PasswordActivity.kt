@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
+import com.example.every.activity.signup.SignUpData
 import com.example.every.databinding.ActivityEmailPasswordBinding
 import com.example.every.databinding.ActivitySignUpBinding
 import com.example.every.viewmodel.signup.SignUpViewModel
@@ -89,11 +90,11 @@ class Email_PasswordActivity : AppCompatActivity() {
                 val checkIdentity = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
 
                 if(checkIdentity.getInt("identityData", 99) == 0){
-                    viewModel.signUpActivity.signUpDataStudent.email = viewModel.email.value.toString()
-                    viewModel.signUpActivity.signUpDataStudent.pw = viewModel.pw.value.toString()
+                    SignUpData.signUpDataStudent.email = viewModel.email.value.toString()
+                    SignUpData.signUpDataStudent.pw = viewModel.pw.value.toString()
                 } else if(checkIdentity.getInt("identityData", 99) == 1) {
-                    viewModel.signUpActivity.signUpDataWorker.email = viewModel.email.value.toString()
-                    viewModel.signUpActivity.signUpDataWorker.pw = viewModel.pw.value.toString()
+                    SignUpData.signUpDataWorker.email = viewModel.email.value.toString()
+                    SignUpData.signUpDataWorker.pw = viewModel.pw.value.toString()
                 }
                 startActivity(Intent(this@Email_PasswordActivity, Name_BirthActivity::class.java))
             })

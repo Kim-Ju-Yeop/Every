@@ -17,13 +17,15 @@ import com.example.every.network.request.model.signup.SignUpDataWorker
 import com.example.every.viewmodel.signin.SignInViewModel
 import com.example.every.viewmodel.signup.SignUpViewModel
 
+object SignUpData{
+    val signUpDataStudent = SignUpDataStudent()
+    val signUpDataWorker = SignUpDataWorker()
+}
+
 class SignUpActivity : AppCompatActivity() {
 
     lateinit var binding : ActivitySignUpBinding
     lateinit var viewModel : SignUpViewModel
-
-    val signUpDataStudent = SignUpDataStudent()
-    val signUpDataWorker = SignUpDataWorker()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -48,7 +48,7 @@ class SignInActivity : AppCompatActivity() {
 
                 Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
 
-                // LoginData Setting
+                // SignInData Setting
                 val loginData = applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
                 val loginData_editor = loginData.edit()
 

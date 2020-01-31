@@ -14,7 +14,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
         android:orientation="vertical"
         tools:context=".activity.signup.SignUpActivity">
 
@@ -76,9 +75,10 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:background="?attr/selectableItemBackground">
+                        android:orientation="vertical"
+                        android:onClick="@{() -> viewModel.clickEvent(0)}">
 
                         <TextView
                             android:id="@+id/textView5"
@@ -125,9 +125,10 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:background="?attr/selectableItemBackground">
+                        android:orientation="vertical"
+                        android:onClick="@{() -> viewModel.clickEvent(1)}">
 
                         <TextView
                             android:id="@+id/textView51"

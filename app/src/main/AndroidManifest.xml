@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.every">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.signup.SignUpActivity"></activity>
+        <activity android:name=".activity.signup.signup.data.Email_PasswordActivity"></activity>
+        <activity android:name=".activity.signup.SignUpActivity" />
         <activity android:name=".activity.signin.SignInActivity" />
         <activity android:name=".activity.splash.SplashActivity">
             <intent-filter>

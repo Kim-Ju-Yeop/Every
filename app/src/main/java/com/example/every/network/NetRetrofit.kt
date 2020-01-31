@@ -1,6 +1,7 @@
 package com.example.every.network
 
 import com.example.every.network.retrofit.interfaces.SignIn
+import com.example.every.network.retrofit.interfaces.SignUp
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,6 +12,7 @@ class NetRetrofit{
         .build()
 
     val signIn : SignIn = retrofit.create(SignIn::class.java)
+    val signUp : SignUp = retrofit.create(SignUp::class.java)
 
     companion object{
         val instance = NetRetrofit()

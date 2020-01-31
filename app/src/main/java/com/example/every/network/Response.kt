@@ -1,4 +1,4 @@
-package com.example.every.network.response
+package com.example.every.network
 
 class Response<Data> {
     var message : String? = null

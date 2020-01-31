@@ -1,5 +1,6 @@
 package com.example.every.activity.signin
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,8 @@ class SignInActivity : AppCompatActivity() {
 
     lateinit var binding : ActivitySignInBinding
     lateinit var viewModel : SignInViewModel
+
+    var one : Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,38 @@ class SignInActivity : AppCompatActivity() {
             })
             onLostPwEvent.observe(this@SignInActivity, Observer {
                 Toast.makeText(applicationContext, "아직 비밀번호 찾기 기능은 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
+            })
+            onEmptyEvent.observe(this@SignInActivity, Observer {
+                Toast.makeText(applicationContext, "이메일 또는 비밀번호를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show()
+            })
+            onSuccessEvent.observe(this@SignInActivity, Observer {
+
+                Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+
+                // LoginData Setting
+                val loginData = applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
+                val loginData_editor = loginData.edit()
+
+                loginData_editor.putBoolean("loginData", true)
+                loginData_editor.commit()
+
+                // Token Setting
+                val token = applicationContext.getSharedPreferences("token", Context.MODE_PRIVATE)
+                val token_editor = token.edit()
+
+                token_editor.putString("token", viewModel.token.value)
+                token_editor.commit()
+
+                // 메인 화면으로 이동 코드 작성
+            })
+            onErrorEvent.observe(this@SignInActivity, Observer {
+                Toast.makeText(applicationContext, "이메일 또는 비밀번호에 형식 오류가 있습니다.", Toast.LENGTH_SHORT).show()
+            })
+            onFailEvent.observe(this@SignInActivity, Observer {
+                Toast.makeText(applicationContext, "이메일 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
+            })
+            onConnectErrorEvent.observe(this@SignInActivity, Observer {
+                Toast.makeText(applicationContext, "서버와 통신을 할 수 없습니다.", Toast.LENGTH_SHORT).show()
             })
         }
     }

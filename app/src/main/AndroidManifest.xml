@@ -16,20 +16,19 @@
         <activity android:name=".activity.signup.signup.data.SchoolListActivity"
             android:theme="@style/Dialog"></activity>
         <activity android:name=".activity.signup.signup.data.SchoolActivity"/>
-        <activity android:name=".activity.signup.signup.data.PhoneActivity" />
+        <activity android:name=".activity.signup.signup.data.PhoneActivity"/>
         <activity android:name=".activity.signup.signup.data.Name_BirthActivity" />
-        <activity android:name=".activity.signup.signup.data.Email_PasswordActivity" />
+        <activity android:name=".activity.signup.signup.data.Email_PasswordActivity"/>
         <activity android:name=".activity.signup.SignUpActivity" />
         <activity android:name=".activity.signin.SignInActivity" />
-        <activity android:name=".activity.splash.SplashActivity"/>
-
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.MainActivity"/>
     </application>
 
 </manifest>

@@ -43,8 +43,7 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "이메일 또는 비밀번호를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show()
             })
             onSuccessEvent.observe(this@SignInActivity, Observer {
-
-                Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
 
                 // SignInData Setting
                 val loginData = applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
@@ -67,9 +66,6 @@ class SignInActivity : AppCompatActivity() {
             })
             onFailEvent.observe(this@SignInActivity, Observer {
                 Toast.makeText(applicationContext, "이메일 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
-            })
-            onConnectErrorEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "서버와 통신을 할 수 없습니다.", Toast.LENGTH_SHORT).show()
             })
         }
     }

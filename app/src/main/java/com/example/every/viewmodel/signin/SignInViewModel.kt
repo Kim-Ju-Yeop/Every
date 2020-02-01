@@ -1,5 +1,6 @@
 package com.example.every.viewmodel.signin
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.every.network.Data
@@ -22,7 +23,6 @@ class SignInViewModel : ViewModel() {
     val onSuccessEvent = SingleLiveEvent<Unit>()
     val onErrorEvent = SingleLiveEvent<Unit>()
     val onFailEvent = SingleLiveEvent<Unit>()
-    val onConnectErrorEvent = SingleLiveEvent<Unit>()
 
     val token = MutableLiveData<String>()
 
@@ -46,7 +46,7 @@ class SignInViewModel : ViewModel() {
                     }
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-                    onConnectErrorEvent.call()
+                    Log.e("SignInViewModel[Error]", "서버와 통신을 실패하였습니다.")
                 }
             })
         }else onEmptyEvent.call()

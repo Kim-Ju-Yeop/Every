@@ -35,6 +35,7 @@ class PhoneActivity : AppCompatActivity() {
         binding.phoneEditText.addTextChangedListener(PhoneNumberFormattingTextWatcher())
 
         toolbarInit()
+        FocusEditText()
         observerViewModel()
     }
     fun toolbarInit(){
@@ -48,6 +49,18 @@ class PhoneActivity : AppCompatActivity() {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+    fun FocusEditText() {
+        binding.phoneEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener {
+            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+                if (!hasFocus) {
+                    if (viewModel.checkEmpty(binding.phoneEditText.text.toString())) {
+                        if (viewModel.checkType(binding.phoneEditText.text.toString())) {
+                        }
+                    }
+                }
+            }
+        })
     }
     fun observerViewModel(){
         with(viewModel){

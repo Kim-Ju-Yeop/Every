@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.signup.signup.data.Name_BirthViewModel" />
+            type="com.example.every.viewmodel.signup.signup.data.PhoneViewModel" />
     </data>
 
     <LinearLayout
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="이름과 태어난 년도"
+                android:text="전화번호"
                 android:textColor="#000000"
                 android:textSize="30sp" />
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="태어난 년도 4자리를 입력해주세요!"
+                android:text="사람들과 소통의 수단으로 사용을 합니다!"
                 android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -84,109 +84,22 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/name_editText"
+                        android:id="@+id/phone_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.1"
                         android:background="@android:color/transparent"
                         android:ems="10"
-                        android:hint="이름"
-                        android:text="@={viewModel.name}"
-                        android:inputType="textPersonName"
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp" />
-
-                    <ImageView
-                        android:id="@+id/name_answer"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:paddingRight="15dp"
-                        android:src="@drawable/ic_check_black_24dp"
-                        android:tint="#21bf73"
-                        android:visibility="gone" />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/name_check"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FF6B6B"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="@={viewModel.name_check}"/>
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:background="#f3f3f3"
-                app:cardCornerRadius="150dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/birth_editText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:background="@android:color/transparent"
-                        android:ems="10"
-                        android:hint="태어난 년도 4자리"
-                        android:inputType="number"
+                        android:hint="전화번호"
+                        android:inputType="phone"
                         android:paddingLeft="15dp"
                         android:paddingTop="10dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="10dp"
-                        android:text="@={viewModel.birth}"/>
-
-                    <ImageView
-                        android:id="@+id/birth_answer"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:paddingRight="15dp"
-                        android:src="@drawable/ic_check_black_24dp"
-                        android:tint="#21bf73"
-                        android:visibility="gone" />
+                        android:text="@={viewModel.phone}"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/birth_check"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FF6B6B"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="@={viewModel.birth_check}"/>
-            </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

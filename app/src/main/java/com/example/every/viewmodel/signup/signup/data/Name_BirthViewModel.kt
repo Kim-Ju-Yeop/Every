@@ -16,8 +16,6 @@ class Name_BirthViewModel : ViewModel() {
     val onSuccessEvent = SingleLiveEvent<Unit>()
     val onFailEvent = SingleLiveEvent<Unit>()
 
-    val signUpActivity = SignUpActivity()
-
     fun next(){
         if(checkEmpty(name.value.toString(), 0) && checkEmpty(name.value.toString(), 1) && checkType(birth.value.toString())){
             onSuccessEvent.call()

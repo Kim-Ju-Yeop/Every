@@ -1,8 +1,10 @@
 package com.example.every.activity.signup.signup.data
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -28,10 +30,22 @@ class Name_BirthActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@Name_BirthActivity
 
+        toolbarInit()
         FocusEditText()
         observerViewModel()
     }
-
+    fun toolbarInit(){
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
+    }
     fun FocusEditText(){
         binding.nameEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener{
             override fun onFocusChange(v: View?, hasFocus: Boolean) {
@@ -60,7 +74,6 @@ class Name_BirthActivity : AppCompatActivity() {
             }
         })
     }
-
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@Name_BirthActivity, Observer {
@@ -73,8 +86,7 @@ class Name_BirthActivity : AppCompatActivity() {
                     SignUpData.signUpDataWorker.name = viewModel.name.value.toString()
                     SignUpData.signUpDataWorker.birth_year = Integer.parseInt(viewModel.birth.value.toString())
                 }
-//                startActivity(Intent(this@Name_BirthActivity, Name_BirthActivity::class.java))
-                Toast.makeText(applicationContext, "띵동 성공하였습니다!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@Name_BirthActivity, PhoneActivity::class.java))
             })
             onFailEvent.observe(this@Name_BirthActivity, Observer {
                 binding.nameAnswer.visibility = View.GONE

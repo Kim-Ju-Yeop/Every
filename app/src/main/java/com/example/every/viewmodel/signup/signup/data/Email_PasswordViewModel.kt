@@ -17,8 +17,6 @@ class Email_PasswordViewModel : ViewModel(){
     val onSuccessEvent = SingleLiveEvent<Unit>()
     val onFailEvent = SingleLiveEvent<Unit>()
 
-    val signUpActivity = SignUpActivity()
-
     fun next(){
         if(checkEmpty(email.value.toString(), 0) && checkEmpty(pw.value.toString(), 1) && checkType(email.value.toString(), 0) && checkType(pw.value.toString(), 1)){
             onSuccessEvent.call()

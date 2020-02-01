@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class Data {
 
-    var schoolList : List<SchoolDataList>? = null
+    var schools : List<SchoolDataList>? = null
 
     @SerializedName("x-access-token")
     lateinit var token : String

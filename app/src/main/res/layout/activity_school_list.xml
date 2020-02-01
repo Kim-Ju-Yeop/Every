@@ -11,10 +11,11 @@
     </data>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="350dp"
+        android:layout_height="550dp"
         android:orientation="vertical"
-        tools:context=".activity.signup.signup.data.SchoolListActivity">
+        tools:context=".activity.signup.signup.data.SchoolListActivity"
+        android:background="@android:color/transparent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,9 +25,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                app:cardCornerRadius="150dp"
+                app:cardCornerRadius="30dp"
                 app:cardElevation="10dp">
 
                 <LinearLayout
@@ -41,17 +40,17 @@
                         <FrameLayout
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
-                            android:onClick="@{() -> viewModel.onSearch()}"
-                            android:background="@drawable/background_corners_gradient">
+                            android:background="@drawable/background_corners_gradient2"
+                            android:onClick="@{() -> viewModel.onSearch()}">
 
                             <ImageView
                                 android:id="@+id/imageView5"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:onClick="@{() -> viewModel.onSearch()}"
                                 android:padding="10dp"
                                 android:tint="#FFFFFF"
-                                app:srcCompat="@drawable/search"
-                                android:onClick="@{() -> viewModel.onSearch()}"/>
+                                app:srcCompat="@drawable/search" />
                         </FrameLayout>
 
                         <FrameLayout
@@ -65,13 +64,13 @@
                                 android:layout_height="match_parent"
                                 android:background="@android:color/transparent"
                                 android:fontFamily="@font/nanum_bold"
+                                android:hint="학교를 검색해보세요!"
                                 android:paddingLeft="25dp"
                                 android:paddingTop="15dp"
                                 android:paddingRight="10dp"
                                 android:paddingBottom="10dp"
-                                android:hint="학교를 검색해보세요!"
                                 android:text="@={viewModel.schoolName}"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </FrameLayout>
 
@@ -83,8 +82,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView

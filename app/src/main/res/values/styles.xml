@@ -15,8 +15,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="Dialog" parent="Theme.AppCompat.Dialog">
+    <style name="Dialog" parent="Theme.AppCompat.Light.Dialog">
 
+        <item name="android:windowBackground">@drawable/dialog_background</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

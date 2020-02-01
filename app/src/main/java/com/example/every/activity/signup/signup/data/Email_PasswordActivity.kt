@@ -56,13 +56,8 @@ class Email_PasswordActivity : AppCompatActivity() {
         binding.emailEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener{
             override fun onFocusChange(v: View?, hasFocus: Boolean) {
                 if(!hasFocus){
-                    if(!viewModel.checkEmpty(binding.emailEditText.text.toString(), 0)){
-                        binding.emailAnswer.visibility = View.GONE
-                    }else{
-                        if(!viewModel.checkType(binding.emailEditText.text.toString(), 0)){
-                            binding.emailAnswer.visibility = View.GONE
-                        } else{
-                            binding.emailAnswer.visibility = View.VISIBLE
+                    if(viewModel.checkEmpty(binding.emailEditText.text.toString(), 0)) {
+                        if (viewModel.checkType(binding.emailEditText.text.toString(), 0) && viewModel.overlapEmail(binding.emailEditText.text.toString())) {
                         }
                     }
                 }
@@ -71,13 +66,8 @@ class Email_PasswordActivity : AppCompatActivity() {
         binding.pwEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener{
             override fun onFocusChange(v: View?, hasFocus: Boolean) {
                 if(!hasFocus){
-                    if(!viewModel.checkEmpty(binding.pwEditText.text.toString(), 1)){
-                        binding.pwAnswer.visibility = View.GONE
-                    }else{
-                        if(!viewModel.checkType(binding.pwEditText.text.toString(), 1)){
-                            binding.pwAnswer.visibility = View.GONE
-                        } else{
-                            binding.pwAnswer.visibility = View.VISIBLE
+                    if(viewModel.checkEmpty(binding.pwEditText.text.toString(), 1)){
+                        if(viewModel.checkType(binding.pwEditText.text.toString(), 1)){
                         }
                     }
                 }
@@ -99,8 +89,6 @@ class Email_PasswordActivity : AppCompatActivity() {
                 startActivity(Intent(this@Email_PasswordActivity, Name_BirthActivity::class.java))
             })
             onFailEvent.observe(this@Email_PasswordActivity, Observer {
-                binding.emailAnswer.visibility = View.GONE
-                binding.pwAnswer.visibility = View.GONE
                 Toast.makeText(applicationContext, "이메일과 비밀번호를 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show()
             })
         }

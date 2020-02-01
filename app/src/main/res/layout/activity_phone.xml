@@ -130,9 +130,10 @@
                 app:cardElevation="10dp">
 
                 <Button
+                    android:id="@+id/next_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_gradient"
+                    android:background="@color/gray"
                     android:text="다음"
                     android:textSize="18sp"
                     android:fontFamily="@font/nanum_extrabold"

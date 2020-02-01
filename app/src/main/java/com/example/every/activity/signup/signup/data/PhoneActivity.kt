@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -12,12 +14,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
+import com.example.every.activity.base.BaseActivity
 import com.example.every.activity.signup.SignUpData
 import com.example.every.databinding.ActivityPhoneBinding
 import com.example.every.viewmodel.signup.signup.data.PhoneViewModel
 import kotlinx.android.synthetic.main.activity_phone.*
 
-class PhoneActivity : AppCompatActivity() {
+class PhoneActivity : BaseActivity() {
 
     lateinit var binding : ActivityPhoneBinding
     lateinit var viewModel : PhoneViewModel
@@ -32,32 +35,21 @@ class PhoneActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@PhoneActivity
 
-        binding.phoneEditText.addTextChangedListener(PhoneNumberFormattingTextWatcher())
-
-        toolbarInit()
-        FocusEditText()
+        toolbarInit(binding.toolbar)
+        phoneCheck()
         observerViewModel()
     }
-    fun toolbarInit(){
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> onBackPressed()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-    fun FocusEditText() {
-        binding.phoneEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener {
-            override fun onFocusChange(v: View?, hasFocus: Boolean) {
-                if (!hasFocus) {
-                    if (viewModel.checkEmpty(binding.phoneEditText.text.toString())) {
-                        if (viewModel.checkType(binding.phoneEditText.text.toString())) {
-                        }
-                    }
+    fun phoneCheck(){
+        binding.phoneEditText.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+        binding.phoneEditText.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(viewModel.checkType(binding.phoneEditText.text.toString())){
+                    viewModel.overlapPhone(binding.phoneEditText.text.toString())
+                }else{
+                    binding.nextButton.setBackgroundResource(R.color.gray)
+                    binding.nextButton.isEnabled = false
                 }
             }
         })
@@ -66,16 +58,26 @@ class PhoneActivity : AppCompatActivity() {
         with(viewModel){
             onSuccessEvent.observe(this@PhoneActivity, Observer {
                 val checkIdentity = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
+                val identityData = checkIdentity.getInt("identityData", 99)
 
-                if(checkIdentity.getInt("identityData", 99) == 0){
+                if(identityData == 0){
                     SignUpData.signUpDataStudent.phone = viewModel.phone.value.toString()
-                } else if(checkIdentity.getInt("identityData", 99) == 1) {
+                } else if(identityData == 1) {
                     SignUpData.signUpDataWorker.phone = viewModel.phone.value.toString()
                 }
                 startActivity(Intent(this@PhoneActivity, SchoolActivity::class.java))
             })
-            onFailEvent.observe(this@PhoneActivity, Observer {
-                Toast.makeText(applicationContext, "전화번호를 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show()
+            on200Event.observe(this@PhoneActivity, Observer {
+                if(viewModel.phone_check.value == null){
+                    binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
+                    binding.nextButton.isEnabled = true
+                }
+            })
+            on409Event.observe(this@PhoneActivity, Observer {
+                if(viewModel.phone_check.value != null){
+                    binding.nextButton.setBackgroundResource(R.color.gray)
+                    binding.nextButton.isEnabled = false
+                }
             })
         }
     }

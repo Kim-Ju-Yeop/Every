@@ -101,23 +101,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/name_check"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FF6B6B"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="@={viewModel.name_check}"/>
-            </LinearLayout>
-
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -179,17 +162,17 @@
                 app:cardElevation="10dp">
 
                 <Button
+                    android:id="@+id/next_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_gradient"
+                    android:background="@color/gray"
                     android:text="다음"
+                    android:enabled="false"
                     android:textSize="18sp"
                     android:fontFamily="@font/nanum_extrabold"
                     android:textColor="#FFFFFF"
                     android:onClick="@{() -> viewModel.next()}"/>
-
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
     </LinearLayout>
 </layout>

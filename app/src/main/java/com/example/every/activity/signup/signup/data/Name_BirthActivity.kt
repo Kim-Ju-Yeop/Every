@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -11,11 +13,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
+import com.example.every.activity.base.BaseActivity
 import com.example.every.activity.signup.SignUpData
 import com.example.every.databinding.ActivityNameBirthBinding
 import com.example.every.viewmodel.signup.signup.data.Name_BirthViewModel
 
-class Name_BirthActivity : AppCompatActivity() {
+class Name_BirthActivity : BaseActivity() {
 
     lateinit var binding : ActivityNameBirthBinding
     lateinit var viewModel : Name_BirthViewModel
@@ -30,38 +33,26 @@ class Name_BirthActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@Name_BirthActivity
 
-        toolbarInit()
-        FocusEditText()
+        toolbarInit(binding.toolbar)
+        birthCheck()
         observerViewModel()
     }
-    fun toolbarInit(){
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> onBackPressed()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-    fun FocusEditText(){
-        binding.nameEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener{
-            override fun onFocusChange(v: View?, hasFocus: Boolean) {
-                if(!hasFocus){
-                    if(viewModel.checkEmpty(binding.nameEditText.text.toString(), 0)){
+    fun birthCheck(){
+        binding.birthEditText.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(viewModel.checkType(binding.birthEditText.text.toString())){
+                    if(viewModel.birth_check.value == null){
+                        binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
+                        binding.nextButton.isEnabled = true
+                    } else{
+                        binding.nextButton.setBackgroundResource(R.color.gray)
+                        binding.nextButton.isEnabled = false
                     }
-                }
-            }
-        })
-        binding.birthEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener{
-            override fun onFocusChange(v: View?, hasFocus: Boolean) {
-                if(!hasFocus){
-                   if(viewModel.checkEmpty(binding.birthEditText.text.toString(), 1)){
-                       if(viewModel.checkType(binding.birthEditText.text.toString())){
-                       }
-                   }
+                }else{
+                    binding.nextButton.setBackgroundResource(R.color.gray)
+                    binding.nextButton.isEnabled = false
                 }
             }
         })
@@ -70,18 +61,16 @@ class Name_BirthActivity : AppCompatActivity() {
         with(viewModel){
             onSuccessEvent.observe(this@Name_BirthActivity, Observer {
                 val checkIdentity = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
+                val identityData = checkIdentity.getInt("identityData", 99)
 
-                if(checkIdentity.getInt("identityData", 99) == 0){
+                if(identityData == 0){
                     SignUpData.signUpDataStudent.name = viewModel.name.value.toString()
                     SignUpData.signUpDataStudent.birth_year = Integer.parseInt(viewModel.birth.value.toString())
-                } else if(checkIdentity.getInt("identityData", 99) == 1) {
+                } else if(identityData == 1) {
                     SignUpData.signUpDataWorker.name = viewModel.name.value.toString()
                     SignUpData.signUpDataWorker.birth_year = Integer.parseInt(viewModel.birth.value.toString())
                 }
                 startActivity(Intent(this@Name_BirthActivity, PhoneActivity::class.java))
-            })
-            onFailEvent.observe(this@Name_BirthActivity, Observer {
-                Toast.makeText(applicationContext, "이름과 태어난 년도를 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show()
             })
         }
     }

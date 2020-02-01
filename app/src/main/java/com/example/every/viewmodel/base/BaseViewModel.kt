@@ -13,6 +13,7 @@ open class BaseViewModel : ViewModel(){
 
     // Validity : 유효성
     val password_validity = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{8,20}$")
+    val birth_validity = Pattern.compile("^[0-9]{4,4}\$")
 
     // NetRetrofit
     val netRetrofit = NetRetrofit()

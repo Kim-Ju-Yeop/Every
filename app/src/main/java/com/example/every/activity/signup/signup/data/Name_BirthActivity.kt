@@ -50,10 +50,7 @@ class Name_BirthActivity : AppCompatActivity() {
         binding.nameEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener{
             override fun onFocusChange(v: View?, hasFocus: Boolean) {
                 if(!hasFocus){
-                    if(!viewModel.checkEmpty(binding.nameEditText.text.toString(), 0)){
-                        binding.nameAnswer.visibility = View.GONE
-                    } else{
-                        binding.nameAnswer.visibility = View.VISIBLE
+                    if(viewModel.checkEmpty(binding.nameEditText.text.toString(), 0)){
                     }
                 }
             }
@@ -61,15 +58,10 @@ class Name_BirthActivity : AppCompatActivity() {
         binding.birthEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener{
             override fun onFocusChange(v: View?, hasFocus: Boolean) {
                 if(!hasFocus){
-                    if(!viewModel.checkEmpty(binding.birthEditText.text.toString(), 1)){
-                        binding.birthAnswer.visibility = View.GONE
-                    }else{
-                        if(!viewModel.checkType(binding.birthEditText.text.toString())){
-                            binding.birthAnswer.visibility = View.GONE
-                        } else{
-                            binding.birthAnswer.visibility = View.VISIBLE
-                        }
-                    }
+                   if(viewModel.checkEmpty(binding.birthEditText.text.toString(), 1)){
+                       if(viewModel.checkType(binding.birthEditText.text.toString())){
+                       }
+                   }
                 }
             }
         })
@@ -89,8 +81,6 @@ class Name_BirthActivity : AppCompatActivity() {
                 startActivity(Intent(this@Name_BirthActivity, PhoneActivity::class.java))
             })
             onFailEvent.observe(this@Name_BirthActivity, Observer {
-                binding.nameAnswer.visibility = View.GONE
-                binding.birthAnswer.visibility = View.GONE
                 Toast.makeText(applicationContext, "이름과 태어난 년도를 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show()
             })
         }

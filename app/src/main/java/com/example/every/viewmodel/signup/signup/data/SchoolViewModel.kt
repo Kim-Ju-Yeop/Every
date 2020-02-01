@@ -5,7 +5,7 @@ import com.example.every.widget.SingleLiveEvent
 
 class SchoolViewModel : ViewModel(){
 
-    val onSearchechEvent = SingleLiveEvent<Unit>()
+    val onSearchEvent = SingleLiveEvent<Unit>()
 
-    fun searchSchool() = onSearchechEvent.call()
+    fun searchSchool() = onSearchEvent.call()
 }

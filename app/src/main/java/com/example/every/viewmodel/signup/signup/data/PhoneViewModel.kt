@@ -48,7 +48,7 @@ class PhoneViewModel : BaseViewModel(){
                 }
             }
             override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-                Log.e("overlapEmail[Error]", "전화번호 중복확인 과정에서 서버와 통신이 되지 않습니다.")
+                Log.e("overlapPhone[Error]", "전화번호 중복확인 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
     }

@@ -10,6 +10,7 @@ open class BaseViewModel : ViewModel(){
 
     // SingleLiveEvent
     val onSuccessEvent = SingleLiveEvent<Unit>()
+    val onFailEvent = SingleLiveEvent<Unit>()
 
     // Validity : 유효성
     val password_validity = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{8,20}$")

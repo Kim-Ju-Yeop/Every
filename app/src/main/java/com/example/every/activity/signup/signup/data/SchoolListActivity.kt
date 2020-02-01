@@ -8,10 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
+import com.example.every.activity.base.BaseActivity
 import com.example.every.databinding.ActivitySchoolListBinding
 import com.example.every.viewmodel.signup.signup.data.SchoolListViewModel
 
-class SchoolListActivity : AppCompatActivity() {
+class SchoolListActivity : BaseActivity() {
 
     lateinit var binding : ActivitySchoolListBinding
     lateinit var viewModel : SchoolListViewModel
@@ -33,20 +34,8 @@ class SchoolListActivity : AppCompatActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@SchoolListActivity, Observer {
-                // 성공
-                Log.e("test", "성공")
-            })
-            onNotFoundEvent.observe(this@SchoolListActivity, Observer {
-                // 학교 없음
-                Log.e("test", "학교 없음")
-            })
-            onErrorEvent.observe(this@SchoolListActivity, Observer {
-                // 서버 오류
-                Log.e("test", "서버 오류")
-            })
-            onServerConnectErrorEvent.observe(this@SchoolListActivity, Observer {
-                // 서버 통신 오류
-                Log.e("test", "서버 통신 오류")
+                val adapter = SchoolAdapter(this@SchoolListActivity, viewModel.schoolDataList)
+                binding.recyclerView.adapter = adapter
             })
         }
     }

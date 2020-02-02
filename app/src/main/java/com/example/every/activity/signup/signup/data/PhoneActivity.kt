@@ -62,10 +62,11 @@ class PhoneActivity : BaseActivity() {
 
                 if(identityData == 0){
                     SignUpData.signUpDataStudent.phone = viewModel.phone.value.toString()
+                    startActivity(Intent(this@PhoneActivity, SchoolActivity::class.java))
                 } else if(identityData == 1) {
                     SignUpData.signUpDataWorker.phone = viewModel.phone.value.toString()
+                    startActivity(Intent(this@PhoneActivity, WorkerActivity::class.java))
                 }
-                startActivity(Intent(this@PhoneActivity, SchoolActivity::class.java))
             })
             on200Event.observe(this@PhoneActivity, Observer {
                 if(viewModel.phone_check.value == null){

@@ -108,14 +108,14 @@
                             android:layout_marginLeft="40dp">
 
                             <TextView
-                                android:id="@+id/textView9"
+                                android:id="@+id/school_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:paddingLeft="25dp"
                                 android:paddingTop="15dp"
                                 android:paddingRight="10dp"
                                 android:paddingBottom="10dp"
-                                android:text="왼쪽의 버튼을 클릭하여 검색하세요!"
+                                android:text="@={viewModel.schoolName}"
                                 android:textSize="18sp"
                                 android:fontFamily="@font/nanum_bold" />
 
@@ -143,8 +143,10 @@
                     android:background="@color/gray"
                     android:text="다음"
                     android:textSize="18sp"
+                    android:enabled="false"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:onClick="@{() -> viewModel.next()}"/>
 
             </androidx.cardview.widget.CardView>
 

@@ -20,7 +20,7 @@ class SchoolListViewModel : BaseViewModel(){
     var schoolDataList = ArrayList<SchoolDataList>()
 
     fun onSearch(){
-        val res : Call<Response<Data>> = netRetrofit.signUp.searchSchool(schoolName.value.toString())
+        val res : Call<Response<Data>> = netRetrofit.signUp.searchSchool(schoolName.value.toString().trim())
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 when(response.code()){

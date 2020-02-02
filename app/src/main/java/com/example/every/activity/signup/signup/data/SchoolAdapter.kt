@@ -2,6 +2,7 @@ package com.example.every.activity.signup.signup.data
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.SchoolDataList
 import com.example.every.R
+import com.example.every.widget.SingleLiveEvent
 import kotlinx.android.synthetic.main.school_item.view.*
 
 class SchoolAdapter(val mContext : Context, val items : ArrayList<SchoolDataList>) : RecyclerView.Adapter<SchoolAdapter.ViewHolder>() {
@@ -52,12 +54,21 @@ class SchoolAdapter(val mContext : Context, val items : ArrayList<SchoolDataList
 
         fun bind(listener: View.OnClickListener, item: SchoolDataList){
             itemView.schoolName.text = item.school_name
-            itemView.schoolLocate.text = item.school_location
+
+            if(item.school_location == null){
+                itemView.schoolLocate.text = "위치 정보를 불러올 수 없습니다."
+            } else{
+                itemView.schoolLocate.text = item.school_location
+            }
             view.setOnClickListener(listener)
 
             itemView.schoolName.setSingleLine(true)
             itemView.schoolName.ellipsize = TextUtils.TruncateAt.MARQUEE
             itemView.schoolName.isSelected = true
+
+            itemView.schoolLocate.setSingleLine(true)
+            itemView.schoolLocate.ellipsize = TextUtils.TruncateAt.MARQUEE
+            itemView.schoolLocate.isSelected = true
         }
     }
 }

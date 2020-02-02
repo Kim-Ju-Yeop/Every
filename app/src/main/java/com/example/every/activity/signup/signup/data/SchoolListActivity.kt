@@ -3,7 +3,9 @@ package com.example.every.activity.signup.signup.data
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.Window
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -34,8 +36,18 @@ class SchoolListActivity : BaseActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@SchoolListActivity, Observer {
+
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.questionLayout.visibility = View.GONE
+
                 val adapter = SchoolAdapter(this@SchoolListActivity, viewModel.schoolDataList)
                 binding.recyclerView.adapter = adapter
+            })
+            onFailEvent.observe(this@SchoolListActivity, Observer {
+                binding.recyclerView.visibility = View.GONE
+                binding.questionLayout.visibility = View.VISIBLE
+
+                binding.answerTextView.text = "입력하신 학교는 존재하지 않습니다."
             })
         }
     }

@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_extrabold"
                     android:gravity="center"
-                    android:text="회원가입 완료"
+                    android:text="@={viewModel.firstText}"
                     android:textColor="#000000"
                     android:textSize="30sp" />
 
@@ -62,9 +62,9 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/nanum_extrabold"
                     android:gravity="center"
-                    android:text="이제 마음 껏 Every를 즐겨보세요!"
+                    android:text="@={viewModel.secondText}"
                     android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -88,13 +88,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/background_corners_gradient"
-                        android:enabled="false"
                         android:fontFamily="@font/nanum_extrabold"
-                        android:onClick="@{() -> viewModel.next()}"
                         android:text="Every 사용하기"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
-                        android:textAllCaps="false"/>
+                        android:textAllCaps="false"
+                        android:onClick="@{() -> viewModel.next()}"/>
 
                 </androidx.cardview.widget.CardView>
 

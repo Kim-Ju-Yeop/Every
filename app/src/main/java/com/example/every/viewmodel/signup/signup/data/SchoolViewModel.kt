@@ -23,7 +23,7 @@ class SchoolViewModel : BaseViewModel(){
             schoolId.value = schoolData.getString("school_id", "Error")
         } else{
             onEnableFalseEvent.call()
-            schoolName.value = "왼쪽 버튼을 눌러 학교를 검색해보세요!"
+            schoolName.value = "왼쪽 버튼을 눌러 검색을 해보세요!"
             schoolId.value = null
         }
     }

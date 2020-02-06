@@ -1,2 +1,2 @@
-# Every
-It's a useful project for both students and office workers.
+# Every_Android
+This is the Android platform development space for Every project. @김주엽

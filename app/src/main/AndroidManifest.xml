@@ -22,7 +22,7 @@
         <activity android:name=".activity.signup.signup.data.PhoneSignUpActivity" />
         <activity android:name=".activity.signup.signup.data.Name_BirthSignUpActivity" />
         <activity android:name=".activity.signup.signup.data.Email_PasswordSignUpActivity" />
-        <activity android:name=".activity.signup.SignUpSignUpActivity" />
+        <activity android:name=".activity.signup.SignUpActivity"/>
         <activity android:name=".activity.signin.SignInActivity" />
         <activity android:name=".activity.splash.SplashActivity">
             <intent-filter>

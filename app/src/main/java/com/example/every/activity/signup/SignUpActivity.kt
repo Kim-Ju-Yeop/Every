@@ -19,7 +19,7 @@ object SignUpData{
     val signUpDataWorker = SignUpDataWorker()
 }
 
-class SignUpSignUpActivity : BaseSignUpActivity() {
+class SignUpActivity : BaseSignUpActivity() {
 
     lateinit var binding : ActivitySignUpBinding
     lateinit var viewModel : SignUpSignUpViewModel
@@ -28,24 +28,24 @@ class SignUpSignUpActivity : BaseSignUpActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        binding = DataBindingUtil.setContentView(this@SignUpSignUpActivity, R.layout.activity_sign_up)
-        viewModel = ViewModelProviders.of(this@SignUpSignUpActivity).get(SignUpSignUpViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this@SignUpActivity, R.layout.activity_sign_up)
+        viewModel = ViewModelProviders.of(this@SignUpActivity).get(SignUpSignUpViewModel::class.java)
 
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this@SignUpSignUpActivity
+        binding.lifecycleOwner = this@SignUpActivity
 
         toolbarInit(binding.toolbar)
         observerViewModel()
     }
     fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@SignUpSignUpActivity, Observer {
+            onSuccessEvent.observe(this@SignUpActivity, Observer {
                 val identity = applicationContext.getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
                 val editor = identity.edit()
 
                 editor.putInt("identityData", viewModel.checkInfo.value!!)
                 editor.commit()
-                startActivity(Intent(this@SignUpSignUpActivity, Email_PasswordSignUpActivity::class.java))
+                startActivity(Intent(this@SignUpActivity, Email_PasswordSignUpActivity::class.java))
             })
         }
     }

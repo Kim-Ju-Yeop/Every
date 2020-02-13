@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.signin.SignInActivity
-import com.example.every.activity.signup.SignUpSignUpActivity
+import com.example.every.activity.signup.SignUpActivity
 import com.example.every.databinding.ActivitySignUpFinishBinding
 import com.example.every.viewmodel.signup.signup.data.SignUpFinishSignUpViewModel
 
@@ -54,7 +54,7 @@ class SignUpFinishActivity : AppCompatActivity() {
                     startActivity(Intent(this@SignUpFinishActivity, SignInActivity::class.java))
                     finish()
                 } else{
-                    startActivity(Intent(this@SignUpFinishActivity, SignUpSignUpActivity::class.java))
+                    startActivity(Intent(this@SignUpFinishActivity, SignUpActivity::class.java))
                     finish()
                 }
             })

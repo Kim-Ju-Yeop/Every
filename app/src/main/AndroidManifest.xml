@@ -13,16 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.signup.signup.data.WorkerActivity"/>
+        <activity android:name=".activity.signup.signup.data.WorkerSignUpActivity"/>
         <activity android:name=".activity.signup.signup.data.SignUpFinishActivity" />
         <activity
-            android:name=".activity.signup.signup.data.SchoolListActivity"
+            android:name=".activity.signup.signup.data.SchoolListSignUpActivity"
             android:theme="@style/Dialog" />
-        <activity android:name=".activity.signup.signup.data.SchoolActivity"/>
-        <activity android:name=".activity.signup.signup.data.PhoneActivity" />
-        <activity android:name=".activity.signup.signup.data.Name_BirthActivity" />
-        <activity android:name=".activity.signup.signup.data.Email_PasswordActivity" />
-        <activity android:name=".activity.signup.SignUpActivity" />
+        <activity android:name=".activity.signup.signup.data.SchoolSignUpActivity"/>
+        <activity android:name=".activity.signup.signup.data.PhoneSignUpActivity" />
+        <activity android:name=".activity.signup.signup.data.Name_BirthSignUpActivity" />
+        <activity android:name=".activity.signup.signup.data.Email_PasswordSignUpActivity" />
+        <activity android:name=".activity.signup.SignUpSignUpActivity" />
         <activity android:name=".activity.signin.SignInActivity" />
         <activity android:name=".activity.splash.SplashActivity">
             <intent-filter>

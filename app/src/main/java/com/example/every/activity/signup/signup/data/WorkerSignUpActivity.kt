@@ -1,38 +1,33 @@
 package com.example.every.activity.signup.signup.data
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.activity.base.BaseActivity
+import com.example.every.activity.base.BaseSignUpActivity
 import com.example.every.activity.signup.SignUpData
 import com.example.every.databinding.ActivityWorkerBinding
-import com.example.every.viewmodel.signup.signup.data.WorkerViewModel
+import com.example.every.viewmodel.signup.signup.data.WorkerSignUpViewModel
 
-class WorkerActivity : BaseActivity() {
+class WorkerSignUpActivity : BaseSignUpActivity() {
 
     lateinit var binding : ActivityWorkerBinding
-    lateinit var viewModel : WorkerViewModel
+    lateinit var viewModel : WorkerSignUpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_worker)
 
-        binding = DataBindingUtil.setContentView(this@WorkerActivity, R.layout.activity_worker)
-        viewModel = ViewModelProviders.of(this@WorkerActivity).get(WorkerViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this@WorkerSignUpActivity, R.layout.activity_worker)
+        viewModel = ViewModelProviders.of(this@WorkerSignUpActivity).get(WorkerSignUpViewModel::class.java)
 
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this@WorkerActivity
+        binding.lifecycleOwner = this@WorkerSignUpActivity
 
         toolbarInit(binding.toolbar)
         workerNameCheck()
@@ -58,16 +53,16 @@ class WorkerActivity : BaseActivity() {
 
     fun setSpinner(){
         val items = resources.getStringArray(R.array.workerData)
-        val adapter = ArrayAdapter(this@WorkerActivity, android.R.layout.simple_spinner_dropdown_item, items)
+        val adapter = ArrayAdapter(this@WorkerSignUpActivity, android.R.layout.simple_spinner_dropdown_item, items)
         binding.spinner.adapter = adapter
     }
 
     fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@WorkerActivity, Observer {
+            onSuccessEvent.observe(this@WorkerSignUpActivity, Observer {
                 SignUpData.signUpDataWorker.work_place = viewModel.workerName.value.toString()
                 SignUpData.signUpDataWorker.work_category = binding.spinner.selectedItemPosition.plus(1)
-                startActivity(Intent(this@WorkerActivity, SignUpFinishActivity::class.java))
+                startActivity(Intent(this@WorkerSignUpActivity, SignUpFinishActivity::class.java))
             })
         }
     }

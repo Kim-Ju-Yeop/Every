@@ -1,49 +1,46 @@
 package com.example.every.activity.signup.signup.data
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.Window
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.activity.base.BaseActivity
+import com.example.every.activity.base.BaseSignUpActivity
 import com.example.every.databinding.ActivitySchoolListBinding
-import com.example.every.viewmodel.signup.signup.data.SchoolListViewModel
+import com.example.every.viewmodel.signup.signup.data.SchoolListSignUpViewModel
 
-class SchoolListActivity : BaseActivity() {
+class SchoolListSignUpActivity : BaseSignUpActivity() {
 
     lateinit var binding : ActivitySchoolListBinding
-    lateinit var viewModel : SchoolListViewModel
+    lateinit var viewModel : SchoolListSignUpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_school_list)
 
-        binding = DataBindingUtil.setContentView(this@SchoolListActivity, R.layout.activity_school_list)
-        viewModel = ViewModelProviders.of(this@SchoolListActivity).get(SchoolListViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this@SchoolListSignUpActivity, R.layout.activity_school_list)
+        viewModel = ViewModelProviders.of(this@SchoolListSignUpActivity).get(SchoolListSignUpViewModel::class.java)
 
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this@SchoolListActivity
+        binding.lifecycleOwner = this@SchoolListSignUpActivity
 
         observerViewModel()
     }
 
     fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@SchoolListActivity, Observer {
+            onSuccessEvent.observe(this@SchoolListSignUpActivity, Observer {
 
                 binding.recyclerView.visibility = View.VISIBLE
                 binding.questionLayout.visibility = View.GONE
 
-                val adapter = SchoolAdapter(this@SchoolListActivity, viewModel.schoolDataList)
+                val adapter = SchoolAdapter(this@SchoolListSignUpActivity, viewModel.schoolDataList)
                 binding.recyclerView.adapter = adapter
             })
-            onFailEvent.observe(this@SchoolListActivity, Observer {
+            onFailEvent.observe(this@SchoolListSignUpActivity, Observer {
                 binding.recyclerView.visibility = View.GONE
                 binding.questionLayout.visibility = View.VISIBLE
 

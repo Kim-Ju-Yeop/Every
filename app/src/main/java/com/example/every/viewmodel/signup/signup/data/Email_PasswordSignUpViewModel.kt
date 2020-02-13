@@ -2,19 +2,13 @@ package com.example.every.viewmodel.signup.signup.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.every.activity.signup.SignUpActivity
-import com.example.every.activity.signup.signup.data.Email_PasswordActivity
 import com.example.every.network.Data
-import com.example.every.network.NetRetrofit
 import com.example.every.network.Response
-import com.example.every.viewmodel.base.BaseViewModel
-import com.example.every.widget.SingleLiveEvent
+import com.example.every.viewmodel.base.BaseSignUpViewModel
 import retrofit2.Call
 import retrofit2.Callback
-import java.util.regex.Pattern
 
-class Email_PasswordViewModel : BaseViewModel(){
+class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
 
     val email = MutableLiveData<String>()
     val email_check = MutableLiveData<String>()

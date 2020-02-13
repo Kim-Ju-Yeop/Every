@@ -7,14 +7,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.signup.signup.data.SchoolListViewModel" />
+            type="com.example.every.viewmodel.signup.signup.data.SchoolListSignUpViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="550dp"
         android:orientation="vertical"
-        tools:context=".activity.signup.signup.data.SchoolListActivity"
+        tools:context=".activity.signup.signup.data.SchoolListSignUpActivity"
         android:background="@android:color/transparent">
 
         <LinearLayout

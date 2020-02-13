@@ -1,13 +1,9 @@
 package com.example.every.viewmodel.signup.signup.data
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.every.activity.signup.SignUpActivity
-import com.example.every.viewmodel.base.BaseViewModel
-import com.example.every.widget.SingleLiveEvent
-import java.util.regex.Pattern
+import com.example.every.viewmodel.base.BaseSignUpViewModel
 
-class Name_BirthViewModel : BaseViewModel() {
+class Name_BirthSignUpViewModel : BaseSignUpViewModel() {
 
     val name = MutableLiveData<String>()
     val birth = MutableLiveData<String>()

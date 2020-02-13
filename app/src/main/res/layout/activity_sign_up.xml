@@ -8,14 +8,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.signup.SignUpViewModel" />
+            type="com.example.every.viewmodel.signup.SignUpSignUpViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".activity.signup.SignUpActivity"
+        tools:context=".activity.signup.SignUpSignUpActivity"
         android:background="#FFFFFF">
 
         <androidx.appcompat.widget.Toolbar

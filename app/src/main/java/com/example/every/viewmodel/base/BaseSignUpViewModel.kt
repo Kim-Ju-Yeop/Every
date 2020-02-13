@@ -6,7 +6,7 @@ import com.example.every.network.NetRetrofit
 import com.example.every.widget.SingleLiveEvent
 import java.util.regex.Pattern
 
-open class BaseViewModel : ViewModel(){
+open class BaseSignUpViewModel : ViewModel(){
 
     // SingleLiveEvent
     val onSuccessEvent = SingleLiveEvent<Unit>()

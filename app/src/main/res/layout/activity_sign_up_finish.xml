@@ -5,101 +5,91 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.signup.signup.data.SignUpFinishViewModel" />
+            type="com.example.every.viewmodel.signup.signup.data.SignUpFinishSignUpViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme">
+
+        </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/every_logo" />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/firstText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="@={viewModel.firstText}"
+                android:textColor="#000000"
+                android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:gravity="center"
-                    android:text="@={viewModel.firstText}"
-                    android:textColor="#000000"
-                    android:textSize="30sp" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:gravity="center"
-                    android:text="@={viewModel.secondText}"
-                    android:textColor="#000000"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/secondText"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginRight="20dp"
-                    android:background="#f3f3f3"
-                    app:cardCornerRadius="150dp"
-                    app:cardElevation="10dp">
-
-                    <Button
-                        android:id="@+id/next_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_corners_gradient"
-                        android:fontFamily="@font/nanum_extrabold"
-                        android:text="Every 사용하기"
-                        android:textColor="#FFFFFF"
-                        android:textSize="18sp"
-                        android:textAllCaps="false"
-                        android:onClick="@{() -> viewModel.next()}"/>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="@={viewModel.secondText}"
+                android:textColor="#000000"
+                android:textSize="20sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                app:srcCompat="@drawable/every_logo" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="20dp"
+                android:background="#f3f3f3"
+                app:cardCornerRadius="150dp"
+                app:cardElevation="10dp">
+
+                <Button
+                    android:id="@+id/next_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_corners_gradient"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:text="로그인 하기"
+                    android:onClick="@{() -> viewModel.next()}"/>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
     </LinearLayout>
 </layout>

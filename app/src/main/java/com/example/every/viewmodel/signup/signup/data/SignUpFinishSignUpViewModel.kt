@@ -2,19 +2,18 @@ package com.example.every.viewmodel.signup.signup.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.every.activity.signup.SignUpData
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.viewmodel.base.BaseViewModel
+import com.example.every.viewmodel.base.BaseSignUpViewModel
 import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
-class SignUpFinishViewModel : BaseViewModel(){
+class SignUpFinishSignUpViewModel : BaseSignUpViewModel(){
 
     val firstText = MutableLiveData<String>()
-    val SecondText = MutableLiveData<String>()
+    val secondText = MutableLiveData<String>()
 
     val onButtonClickEvent = SingleLiveEvent<Unit>()
 
@@ -25,13 +24,13 @@ class SignUpFinishViewModel : BaseViewModel(){
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                     when(response.code()){
                         201 ->{
-                            firstText.value = "회원가입 성공"
-                            SecondText.value = "이제 마음 껏 Every를 즐겨보세요!"
+                            firstText.value = "회원가입 완료"
+                            secondText.value = "정상적으로 회원가입이 완료되었습니다!"
                             onSuccessEvent.call()
                         }
                         400 ->{
                             firstText.value = "회원가입 실패"
-                            SecondText.value = "다시 회원가입을 진행해주세요!"
+                            secondText.value = "회원가입을 수행하지 못하였습니다!"
                             onFailEvent.call()
                         }
                     }
@@ -46,13 +45,13 @@ class SignUpFinishViewModel : BaseViewModel(){
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                     when(response.code()){
                         201 ->{
-                            firstText.value = "회원가입 성공"
-                            SecondText.value = "이제 마음 껏 Every를 즐겨보세요!"
+                            firstText.value = "회원가입 완료"
+                            secondText.value = "정상적으로 회원가입이 완료되었습니다!"
                             onSuccessEvent.call()
                         }
                         400 ->{
                             firstText.value = "회원가입 실패"
-                            SecondText.value = "다시 회원가입을 진행해주세요!"
+                            secondText.value = "회원가입을 수행하지 못하였습니다!"
                             onFailEvent.call()
                         }
                     }

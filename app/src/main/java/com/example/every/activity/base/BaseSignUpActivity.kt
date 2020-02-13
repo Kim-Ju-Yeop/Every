@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.every.R
 
-open class BaseActivity : AppCompatActivity() {
+open class BaseSignUpActivity : AppCompatActivity() {
 
     // Toolbar Setting
     fun toolbarInit(toolbar : Toolbar){

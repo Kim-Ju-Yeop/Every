@@ -39,8 +39,11 @@ class SignInActivity : AppCompatActivity() {
             onLostPwEvent.observe(this@SignInActivity, Observer {
                 Toast.makeText(applicationContext, "아직 비밀번호 찾기 기능은 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
             })
-            onEmptyEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "이메일 또는 비밀번호를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show()
+            onErrorEvent.observe(this@SignInActivity, Observer {
+                Toast.makeText(applicationContext, "이메일 또는 비밀번호에 형식 오류가 있습니다.", Toast.LENGTH_SHORT).show()
+            })
+            onFailEvent.observe(this@SignInActivity, Observer {
+                Toast.makeText(applicationContext, "이메일 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
             })
             onSuccessEvent.observe(this@SignInActivity, Observer {
                 Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
@@ -60,12 +63,6 @@ class SignInActivity : AppCompatActivity() {
                 token_editor.commit()
 
                 // 메인 화면으로 이동 코드 작성
-            })
-            onErrorEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "이메일 또는 비밀번호에 형식 오류가 있습니다.", Toast.LENGTH_SHORT).show()
-            })
-            onFailEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "이메일 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
             })
         }
     }

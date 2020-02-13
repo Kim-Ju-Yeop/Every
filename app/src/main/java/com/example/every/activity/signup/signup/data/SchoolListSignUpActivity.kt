@@ -1,8 +1,11 @@
 package com.example.every.activity.signup.signup.data
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.view.Window
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -33,7 +36,6 @@ class SchoolListSignUpActivity : BaseSignUpActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@SchoolListSignUpActivity, Observer {
-
                 binding.recyclerView.visibility = View.VISIBLE
                 binding.questionLayout.visibility = View.GONE
 

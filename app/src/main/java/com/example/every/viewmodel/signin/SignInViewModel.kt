@@ -19,7 +19,6 @@ class SignInViewModel : ViewModel() {
 
     val onSignUpEvent = SingleLiveEvent<Unit>()
     val onLostPwEvent = SingleLiveEvent<Unit>()
-    val onEmptyEvent = SingleLiveEvent<Unit>()
     val onSuccessEvent = SingleLiveEvent<Unit>()
     val onErrorEvent = SingleLiveEvent<Unit>()
     val onFailEvent = SingleLiveEvent<Unit>()
@@ -29,11 +28,7 @@ class SignInViewModel : ViewModel() {
     fun signUp() = onSignUpEvent.call()
     fun lostPw() = onLostPwEvent.call()
     fun login(){
-        if(checkEmpty(email, pw)){
-            val signInData = SignInData(
-                email.value.toString().trim(),
-                pw.value.toString().trim()
-            )
+            val signInData = SignInData(email.value.toString().trim(), pw.value.toString().trim())
             val res : Call<Response<Data>> = neRetrofit.signIn.postSignIn(signInData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
@@ -49,9 +44,5 @@ class SignInViewModel : ViewModel() {
                     Log.e("SignInViewModel[Error]", "서버와 통신을 실패하였습니다.")
                 }
             })
-        }else onEmptyEvent.call()
-    }
-    fun checkEmpty(email : MutableLiveData<String>, pw : MutableLiveData<String>) : Boolean{
-        return if(email.value.isNullOrEmpty() || pw.value.isNullOrEmpty()) false else true
     }
 }

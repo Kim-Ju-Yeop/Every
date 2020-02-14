@@ -15,13 +15,4 @@
         android:layout_height="150dp"
         android:src="@drawable/every_logo" />
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/spin_kit"
-        style="@style/SpinKitView.ThreeBounce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:SpinKit_Color="#B266FF"
-        android:visibility="gone"/>
 </LinearLayout>

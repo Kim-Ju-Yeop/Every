@@ -16,7 +16,7 @@ class MainActivity: AppCompatActivity() {
         checkLogin()
     }
 
-    fun checkLogin(){
+    private fun checkLogin(){
         val checkLogin : SharedPreferences = getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
         if(checkLogin.getBoolean("loginData", false)){
             // 메인 화면 이동

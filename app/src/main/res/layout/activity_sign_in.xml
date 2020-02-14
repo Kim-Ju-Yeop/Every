@@ -28,19 +28,19 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/welcome_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="환영합니다!"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="@string/welcome_textView"
                 android:textColor="#000000"
-                android:textSize="38sp"
-                android:fontFamily="@font/nanum_extrabold"/>
+                android:textSize="38sp" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/introduce_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="로그인 하시고 Every를 통해 다양한 편리함을 느껴보세요!"
+                android:text="@string/introduce_textView"
                 android:textColor="#000000"
                 android:fontFamily="@font/nanum_bold"
                 android:layout_marginTop="5dp"/>
@@ -115,11 +115,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/lostPassWord_textView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/nanum_bold"
-                    android:text="비밀번호를 잊으셨나요?"
+                    android:text="@string/lostPassWord_textView"
                     android:textColor="#984DCC"
                     android:onClick="@{() -> viewModel.lostPw()}"/>
             </LinearLayout>
@@ -154,11 +154,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/signUp_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="회원가입"
+                    android:text="@string/signUp_textView"
                     android:textColor="#984DCC"
                     android:textSize="18sp"
                     android:onClick="@{() -> viewModel.signUp()}"/>

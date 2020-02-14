@@ -82,7 +82,7 @@
                     android:id="@+id/next_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_corners_gradient"
+                    android:background="@drawable/signup_finish_background"
                     android:fontFamily="@font/nanum_extrabold"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"

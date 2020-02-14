@@ -17,8 +17,5 @@ class WorkerSignUpViewModel : BaseSignUpViewModel(){
             return true
         }
     }
-
-    fun next(){
-        onSuccessEvent.call()
-    }
+    fun next() = onSuccessEvent.call()
 }

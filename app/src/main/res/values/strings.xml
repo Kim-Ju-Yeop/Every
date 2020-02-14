@@ -31,4 +31,12 @@
     <string name="phone_textView">전화번호</string>
     <string name="communityPeople_textView">사람들과 소통의 수단으로 사용합니다!</string>
 
+    <!--SchoolSignUpActivity-->
+    <string name="schoolInfo_textView">학교 정보</string>
+    <string name="nowSchool_textView">현재 재학중이신 학교를 선택해주세요!</string>
+
+    <!--WorkerSignUpActivity-->
+    <string name="workerName_textView">근무 직장과 근무 직종</string>
+    <string name="universityStudent_textView">대학생일 경우 대학교의 이름과 재학중인\n학과를 대신해 적어주세요!</string>
+
 </resources>

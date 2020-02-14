@@ -25,9 +25,10 @@
             android:theme="?attr/actionBarTheme">
 
             <TextView
+                android:id="@+id/userInfo_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원 정보"
+                android:text="@string/userInfo_textView"
                 android:fontFamily="@font/nanum_extrabold"
                 android:textSize="20sp"
                 android:textColor="#000000"
@@ -44,21 +45,21 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/beforeSignUp_textView"
+                android:id="@+id/schoolInfo_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="학교 정보"
+                android:text="@string/schoolInfo_textView"
                 android:textColor="#000000"
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/usesEmail_textView"
+                android:id="@+id/nowSchool_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="현재 재학중이신 학교를 선택해주세요!"
+                android:text="@string/nowSchool_textView"
                 android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>

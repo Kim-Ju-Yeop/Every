@@ -26,7 +26,5 @@ class SchoolSignUpViewModel : BaseSignUpViewModel(){
             schoolId.value = null
         }
     }
-    fun next(){
-        onSuccessEvent.call()
-    }
+    fun next() = onSuccessEvent.call()
 }

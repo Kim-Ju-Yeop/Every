@@ -15,10 +15,6 @@ class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
     val pw = MutableLiveData<String>()
     val pw_check = MutableLiveData<String>()
 
-    fun next(){
-        onSuccessEvent.call()
-    }
-
     fun checkType(text : String, id : Int) : Boolean{
         if(id == 0 && !android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches()){
             email_check.value = "이메일 형식이 올바르지 않습니다."
@@ -47,4 +43,5 @@ class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
             }
         })
     }
+    fun next() = onSuccessEvent.call()
 }

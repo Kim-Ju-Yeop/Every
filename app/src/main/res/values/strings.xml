@@ -2,13 +2,26 @@
     <!--Every Name-->
     <string name="app_name">Every</string>
 
-    <!--SignIn 로그인 부분-->
+    <!--SignInActivity-->
     <string name="welcome_textView">환영합니다!</string>
     <string name="introduce_textView">로그인하시고 Every를 통해 다양한 편리함을 느껴보세요!</string>
     <string name="lostPassWord_textView">비밀번호를 잊으셨나요?</string>
     <string name="signUp_textView">회원가입</string>
 
+    <!--SignUpActivity-->
+    <string name="beforeSignUp_textView">회원가입 하기에 앞서</string>
+    <string name="chooseIdentity_textView">당신의 신분을 선택해주세요!</string>
+    <string name="student_textView">학생</string>
+    <string name="studentAge_textView">만 7세 ~ 18세</string>
+    <string name="worker_textView">대학생 및 직장인</string>
+    <string name="workerAge_textView">만 19세 이상</string>
 
+    <!--SignUpDataActivity-->
+    <string name="userInfo_textView">회원 정보</string>
+
+    <!--Email_PasswordSignUpActivity-->
+    <string name="emailPassword_textView">이메일과 비밀번호</string>
+    <string name="usesEmail_textView">입력하신 이메일은 아이디로 사용됩니다!</string>
 
 
 </resources>

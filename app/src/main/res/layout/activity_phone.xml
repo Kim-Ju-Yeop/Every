@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원 정보"
+                android:text="@string/userInfo_textView"
                 android:fontFamily="@font/nanum_extrabold"
                 android:textSize="20sp"
                 android:textColor="#000000"
@@ -44,21 +44,21 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/beforeSignUp_textView"
+                android:id="@+id/phone_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="전화번호"
+                android:text="@string/phone_textView"
                 android:textColor="#000000"
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/usesEmail_textView"
+                android:id="@+id/communityPeople_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="사람들과 소통의 수단으로 사용을 합니다!"
+                android:text="@string/communityPeople_textView"
                 android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>

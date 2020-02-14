@@ -23,5 +23,12 @@
     <string name="emailPassword_textView">이메일과 비밀번호</string>
     <string name="usesEmail_textView">입력하신 이메일은 아이디로 사용됩니다!</string>
 
+    <!--Name_BirthSignUpActivity-->
+    <string name="nameBirth_textView">이름과 태어난 년도</string>
+    <string name="birthFour_textView">태어난 년도 4자리를 입력해주세요!</string>
+
+    <!--PhoneSignUpActivity-->
+    <string name="phone_textView">전화번호</string>
+    <string name="communityPeople_textView">사람들과 소통의 수단으로 사용합니다!</string>
 
 </resources>

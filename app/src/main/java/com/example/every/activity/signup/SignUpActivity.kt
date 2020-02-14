@@ -12,7 +12,7 @@ import com.example.every.activity.signup.signup.data.Email_PasswordSignUpActivit
 import com.example.every.databinding.ActivitySignUpBinding
 import com.example.every.network.request.model.signup.SignUpDataStudent
 import com.example.every.network.request.model.signup.SignUpDataWorker
-import com.example.every.viewmodel.signup.SignUpSignUpViewModel
+import com.example.every.viewmodel.signup.SignUpViewModel
 
 object SignUpData{
     val signUpDataStudent = SignUpDataStudent()
@@ -22,14 +22,14 @@ object SignUpData{
 class SignUpActivity : BaseSignUpActivity() {
 
     lateinit var binding : ActivitySignUpBinding
-    lateinit var viewModel : SignUpSignUpViewModel
+    lateinit var viewModel : SignUpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
         binding = DataBindingUtil.setContentView(this@SignUpActivity, R.layout.activity_sign_up)
-        viewModel = ViewModelProviders.of(this@SignUpActivity).get(SignUpSignUpViewModel::class.java)
+        viewModel = ViewModelProviders.of(this@SignUpActivity).get(SignUpViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@SignUpActivity

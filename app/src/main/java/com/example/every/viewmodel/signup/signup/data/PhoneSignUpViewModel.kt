@@ -17,9 +17,6 @@ class PhoneSignUpViewModel : BaseSignUpViewModel(){
     val on200Event = SingleLiveEvent<Unit>()
     val on409Event = SingleLiveEvent<Unit>()
 
-    fun next(){
-        onSuccessEvent.call()
-    }
     fun checkType(text : String) : Boolean{
         if(!phone_validity.matcher(text).matches()){
             phone_check.value = "전화번호의 형식이 올바르지 않습니다."
@@ -49,4 +46,5 @@ class PhoneSignUpViewModel : BaseSignUpViewModel(){
             }
         })
     }
+    fun next() = onSuccessEvent.call()
 }

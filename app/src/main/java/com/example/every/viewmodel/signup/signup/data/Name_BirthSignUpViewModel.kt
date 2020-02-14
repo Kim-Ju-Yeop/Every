@@ -5,13 +5,8 @@ import com.example.every.viewmodel.base.BaseSignUpViewModel
 
 class Name_BirthSignUpViewModel : BaseSignUpViewModel() {
 
-    val name = MutableLiveData<String>()
     val birth = MutableLiveData<String>()
     val birth_check = MutableLiveData<String>()
-
-    fun next(){
-        onSuccessEvent.call()
-    }
 
     fun checkType(text : String) : Boolean{
         if(!birth_validity.matcher(text).matches()){
@@ -22,4 +17,5 @@ class Name_BirthSignUpViewModel : BaseSignUpViewModel() {
             return true
         }
     }
+    fun next() = onSuccessEvent.call()
 }

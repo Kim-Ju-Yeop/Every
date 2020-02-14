@@ -36,7 +36,7 @@ class Name_BirthSignUpActivity : BaseSignUpActivity() {
     fun birthCheck(){
         binding.birthEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun    beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(viewModel.checkType(binding.birthEditText.text.toString())){
                     if(viewModel.birth_check.value == null){
@@ -60,10 +60,10 @@ class Name_BirthSignUpActivity : BaseSignUpActivity() {
                 val identityData = checkIdentity.getInt("identityData", 99)
 
                 if(identityData == 0){
-                    SignUpData.signUpDataStudent.name = viewModel.name.value.toString()
+                    SignUpData.signUpDataStudent.name = binding.nameEditText.text.toString()
                     SignUpData.signUpDataStudent.birth_year = Integer.parseInt(viewModel.birth.value.toString())
                 } else if(identityData == 1) {
-                    SignUpData.signUpDataWorker.name = viewModel.name.value.toString()
+                    SignUpData.signUpDataWorker.name = binding.nameEditText.text.toString()
                     SignUpData.signUpDataWorker.birth_year = Integer.parseInt(viewModel.birth.value.toString())
                 }
                 startActivity(Intent(this@Name_BirthSignUpActivity, PhoneSignUpActivity::class.java))

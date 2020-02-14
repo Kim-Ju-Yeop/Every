@@ -25,9 +25,10 @@
             android:theme="?attr/actionBarTheme">
 
             <TextView
+                android:id="@+id/userInfo_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원 정보"
+                android:text="@string/userInfo_textView"
                 android:fontFamily="@font/nanum_extrabold"
                 android:textSize="20sp"
                 android:textColor="#000000"
@@ -44,21 +45,21 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/beforeSignUp_textView"
+                android:id="@+id/nameBirth_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="이름과 태어난 년도"
+                android:text="@string/nameBirth_textView"
                 android:textColor="#000000"
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/usesEmail_textView"
+                android:id="@+id/birthFour_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="태어난 년도 4자리를 입력해주세요!"
+                android:text="@string/birthFour_textView"
                 android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -91,7 +92,6 @@
                         android:background="@android:color/transparent"
                         android:ems="10"
                         android:hint="이름"
-                        android:text="@={viewModel.name}"
                         android:inputType="textPersonName"
                         android:paddingLeft="15dp"
                         android:paddingTop="10dp"

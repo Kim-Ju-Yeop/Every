@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.signup.SignUpActivity
+import com.example.every.activity.student.StudentMainActivity
 import com.example.every.databinding.ActivitySignInBinding
 import com.example.every.viewmodel.signin.SignInViewModel
 
@@ -62,7 +63,8 @@ class SignInActivity : AppCompatActivity() {
                 token_editor.putString("tokenData", viewModel.token.value)
                 token_editor.commit()
 
-                // 메인 화면으로 이동 코드 작성
+                startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))
+                finish()
             })
         }
     }

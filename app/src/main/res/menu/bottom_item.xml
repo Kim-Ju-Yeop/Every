@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home_black_24dp"/>
+
+    <item
+        android:id="@+id/bamboo"
+        android:title="BamBoo"
+        android:icon="@drawable/ic_message_black_24dp"/>
+
+    <item
+        android:id="@+id/schedule"
+        android:title="Schedule"
+        android:icon="@drawable/ic_event_note_black_24dp"/>
+
+    <item
+        android:id="@+id/more"
+        android:title="More"
+        android:icon="@drawable/ic_more_horiz_black_24dp"/>
+
+</menu>

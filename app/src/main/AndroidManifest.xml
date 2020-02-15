@@ -13,16 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.signup.signup.data.WorkerSignUpActivity"/>
+        <activity android:name=".fragment.student.StudentMoreFragment"></activity>
+        <activity android:name=".fragment.student.StudentScheduleFragment" />
+        <activity android:name=".fragment.student.StudentBamBooFragment" />
+        <activity android:name=".fragment.student.StudentMainFragment" />
+        <activity android:name=".activity.student.StudentMainActivity" />
+        <activity android:name=".activity.signup.signup.data.WorkerSignUpActivity" />
         <activity android:name=".activity.signup.signup.data.SignUpFinishActivity" />
         <activity
             android:name=".activity.signup.signup.data.SchoolListSignUpActivity"
             android:theme="@style/Dialog" />
-        <activity android:name=".activity.signup.signup.data.SchoolSignUpActivity"/>
+        <activity android:name=".activity.signup.signup.data.SchoolSignUpActivity" />
         <activity android:name=".activity.signup.signup.data.PhoneSignUpActivity" />
         <activity android:name=".activity.signup.signup.data.Name_BirthSignUpActivity" />
         <activity android:name=".activity.signup.signup.data.Email_PasswordSignUpActivity" />
-        <activity android:name=".activity.signup.SignUpActivity"/>
+        <activity android:name=".activity.signup.SignUpActivity" />
         <activity android:name=".activity.signin.SignInActivity" />
         <activity android:name=".activity.splash.SplashActivity">
             <intent-filter>
@@ -33,4 +38,5 @@
         </activity>
         <activity android:name=".activity.MainActivity" />
     </application>
+
 </manifest>

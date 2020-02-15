@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.every.R
 import com.example.every.activity.signin.SignInActivity
+import com.example.every.activity.student.StudentMainActivity
 
 class MainActivity: AppCompatActivity() {
 
@@ -19,7 +20,8 @@ class MainActivity: AppCompatActivity() {
     private fun checkLogin(){
         val checkLogin : SharedPreferences = getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
         if(checkLogin.getBoolean("loginData", false)){
-            // 메인 화면 이동
+            startActivity(Intent(this@MainActivity, StudentMainActivity::class.java))
+            finish()
         } else {
             startActivity(Intent(this@MainActivity, SignInActivity::class.java))
             finish()

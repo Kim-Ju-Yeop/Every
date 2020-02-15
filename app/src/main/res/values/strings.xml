@@ -39,4 +39,7 @@
     <string name="workerName_textView">근무 직장과 근무 직종</string>
     <string name="universityStudent_textView">대학생일 경우 대학교의 이름과 재학중인\n학과를 대신해 적어주세요!</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

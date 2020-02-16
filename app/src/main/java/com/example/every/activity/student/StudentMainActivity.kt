@@ -3,13 +3,11 @@ package com.example.every.activity.student
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.databinding.ActivityStudentMainActivitiyBinding
-import com.example.every.fragment.student.StudentBamBooFragment
+import com.example.every.fragment.student.StudentBambooFragment
 import com.example.every.fragment.student.StudentMainFragment
 import com.example.every.fragment.student.StudentMoreFragment
 import com.example.every.fragment.student.StudentScheduleFragment
@@ -22,7 +20,7 @@ class StudentMainActivity : AppCompatActivity() {
     lateinit var viewModel : StudentMainViewModel
 
     val studentMainFragment = StudentMainFragment()
-    val studentBamBooFragment = StudentBamBooFragment()
+    val studentBambooFragment = StudentBambooFragment()
     val studentScheduleFragment = StudentScheduleFragment()
     val studentMoreFragment = StudentMoreFragment()
 
@@ -40,12 +38,12 @@ class StudentMainActivity : AppCompatActivity() {
         selectedEvent()
     }
 
-    fun init(){
+    private fun init(){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frameLayout, studentMainFragment).commitAllowingStateLoss()
     }
 
-    fun selectedEvent(){
+    private fun selectedEvent(){
         binding.bottomNavigationView.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener{
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
@@ -55,7 +53,7 @@ class StudentMainActivity : AppCompatActivity() {
                         return true
                     }
                     R.id.bamboo -> {
-                        fragmentTransaction.replace(R.id.frameLayout, studentBamBooFragment).commitAllowingStateLoss()
+                        fragmentTransaction.replace(R.id.frameLayout, studentBambooFragment).commitAllowingStateLoss()
                         return true
                     }
                     R.id.schedule -> {

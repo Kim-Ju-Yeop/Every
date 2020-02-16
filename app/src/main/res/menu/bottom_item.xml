@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/bamboo"
-        android:title="BamBoo"
+        android:title="Bamboo"
         android:icon="@drawable/ic_message_black_24dp"/>
 
     <item

@@ -1,13 +1,11 @@
 package com.example.every.fragment.student
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
 import com.example.every.R
-
 
 class StudentBambooFragment : Fragment() {
 

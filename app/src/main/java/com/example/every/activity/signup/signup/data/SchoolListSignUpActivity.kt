@@ -1,16 +1,13 @@
 package com.example.every.activity.signup.signup.data
 
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.View
 import android.view.Window
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.activity.base.BaseSignUpActivity
+import com.example.every.activity.base.signup.BaseSignUpActivity
 import com.example.every.databinding.ActivitySchoolListBinding
 import com.example.every.viewmodel.signup.signup.data.SchoolListSignUpViewModel
 

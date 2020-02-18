@@ -1,4 +1,4 @@
-package com.example.every.viewmodel.base
+package com.example.every.viewmodel.base.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

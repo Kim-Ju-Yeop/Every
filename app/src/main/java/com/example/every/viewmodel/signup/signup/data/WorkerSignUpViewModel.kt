@@ -1,7 +1,7 @@
 package com.example.every.viewmodel.signup.signup.data
 
 import androidx.lifecycle.MutableLiveData
-import com.example.every.viewmodel.base.BaseSignUpViewModel
+import com.example.every.viewmodel.base.signup.BaseSignUpViewModel
 
 class WorkerSignUpViewModel : BaseSignUpViewModel(){
 

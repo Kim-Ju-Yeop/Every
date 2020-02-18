@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.viewmodel.base.BaseSignUpViewModel
+import com.example.every.viewmodel.base.signup.BaseSignUpViewModel
 import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback

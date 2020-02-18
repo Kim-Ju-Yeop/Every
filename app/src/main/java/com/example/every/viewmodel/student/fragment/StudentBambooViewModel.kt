@@ -1,7 +1,7 @@
 package com.example.every.viewmodel.student.fragment
 
-import androidx.lifecycle.ViewModel
+import com.example.every.viewmodel.base.student.BaseStudentFragmentViewModel
 
-class StudentBambooViewModel : ViewModel(){
+class StudentBambooViewModel : BaseStudentFragmentViewModel(){
 
 }

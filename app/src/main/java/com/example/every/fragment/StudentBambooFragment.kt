@@ -1,4 +1,4 @@
-package com.example.every.fragment.student
+package com.example.every.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

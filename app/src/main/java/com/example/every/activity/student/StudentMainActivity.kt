@@ -7,10 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.databinding.ActivityStudentMainActivitiyBinding
-import com.example.every.fragment.student.StudentBambooFragment
-import com.example.every.fragment.student.StudentMainFragment
-import com.example.every.fragment.student.StudentMoreFragment
-import com.example.every.fragment.student.StudentScheduleFragment
+import com.example.every.fragment.StudentBambooFragment
+import com.example.every.fragment.StudentMainFragment
+import com.example.every.fragment.StudentMoreFragment
+import com.example.every.fragment.StudentScheduleFragment
 import com.example.every.viewmodel.student.StudentMainViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

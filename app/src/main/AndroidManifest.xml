@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".fragment.student.StudentMoreFragment"></activity>
-        <activity android:name=".fragment.student.StudentScheduleFragment" />
-        <activity android:name=".fragment.student.StudentBambooFragment" />
-        <activity android:name=".fragment.student.StudentMainFragment" />
+        <activity android:name=".fragment.StudentMoreFragment"></activity>
+        <activity android:name=".fragment.StudentScheduleFragment" />
+        <activity android:name=".fragment.StudentBambooFragment" />
+        <activity android:name=".fragment.StudentMainFragment" />
         <activity android:name=".activity.student.StudentMainActivity" />
         <activity android:name=".activity.signup.signup.data.WorkerSignUpActivity" />
         <activity android:name=".activity.signup.signup.data.SignUpFinishActivity" />

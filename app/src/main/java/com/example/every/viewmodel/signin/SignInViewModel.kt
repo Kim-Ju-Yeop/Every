@@ -18,6 +18,7 @@ class SignInViewModel : ViewModel() {
     val token = MutableLiveData<String>()
     val email = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
+    val identity = MutableLiveData<String>()
 
     val onSignUpEvent = SingleLiveEvent<Unit>()
     val onLostPwEvent = SingleLiveEvent<Unit>()
@@ -35,6 +36,10 @@ class SignInViewModel : ViewModel() {
                     when(response.code()){
                         200 -> {
                             token.value = response.body()!!.data!!.token
+
+                            if(response.body()!!.data!!.worker) identity.value = "worker"
+                            else if(response.body()!!.data!!.student) identity.value = "student"
+
                             onSuccessEvent.call()
                         } 400 -> onErrorEvent.call() // 검증 오류
                           401 -> onFailEvent.call() // 인증 실패

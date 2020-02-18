@@ -9,4 +9,10 @@ class Data {
 
     @SerializedName("x-access-token")
     lateinit var token : String
+
+    @SerializedName("is_worker")
+    var worker : Boolean = false
+
+    @SerializedName("is_student")
+    var student : Boolean = false
 }

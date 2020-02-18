@@ -63,8 +63,12 @@ class SignInActivity : AppCompatActivity() {
                 token_editor.putString("tokenData", viewModel.token.value)
                 token_editor.commit()
 
-                startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))
-                finish()
+                if(viewModel.identity.value.equals("worker")){
+                    // 직장인 페이지 이동
+                }else if(viewModel.identity.value.equals("student")){
+                    startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))
+                    finish()
+                }
             })
         }
     }

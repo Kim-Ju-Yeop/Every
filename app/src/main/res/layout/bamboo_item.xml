@@ -56,7 +56,7 @@
                     android:textSize="9sp" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/timer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"

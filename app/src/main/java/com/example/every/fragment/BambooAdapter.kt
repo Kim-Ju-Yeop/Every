@@ -1,15 +1,13 @@
 package com.example.every.fragment
 
-import android.app.Activity
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.every.DTO.signup.SchoolDataList
 import com.example.every.DTO.student.BambooPostList
 import com.example.every.R
-import com.example.every.activity.signup.signup.data.SchoolAdapter
 import kotlinx.android.synthetic.main.bamboo_item.view.*
 
 class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList>) : RecyclerView.Adapter<BambooAdapter.ViewHolder>(){

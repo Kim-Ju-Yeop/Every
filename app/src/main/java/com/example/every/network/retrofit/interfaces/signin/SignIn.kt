@@ -1,4 +1,4 @@
-package com.example.every.network.retrofit.interfaces
+package com.example.every.network.retrofit.interfaces.signin
 
 import com.example.every.network.Data
 import com.example.every.network.request.model.signin.SignInData

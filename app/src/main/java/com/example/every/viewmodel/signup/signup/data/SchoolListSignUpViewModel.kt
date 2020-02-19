@@ -2,7 +2,7 @@ package com.example.every.viewmodel.signup.signup.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.every.DTO.SchoolDataList
+import com.example.every.DTO.signup.SchoolDataList
 import com.example.every.network.Data
 import com.example.every.network.Response
 import com.example.every.viewmodel.base.signup.BaseSignUpViewModel
@@ -27,7 +27,14 @@ class SchoolListSignUpViewModel : BaseSignUpViewModel(){
                             schoolServerData = response.body()?.data?.schools as ArrayList<SchoolDataList>
 
                             for(A in 0 until schoolServerData.size){
-                                schoolDataList.add(SchoolDataList(schoolServerData.get(A).school_id, schoolServerData.get(A).office_id, schoolServerData.get(A).school_name, schoolServerData.get(A).school_location))
+                                schoolDataList.add(
+                                    SchoolDataList(
+                                        schoolServerData.get(A).school_id,
+                                        schoolServerData.get(A).office_id,
+                                        schoolServerData.get(A).school_name,
+                                        schoolServerData.get(A).school_location
+                                    )
+                                )
                                 onSuccessEvent.call()
                             }
                         } else{

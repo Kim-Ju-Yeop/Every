@@ -27,7 +27,6 @@ class StudentBambooFragmentViewModel : BaseStudentFragmentViewModel(){
                                 bambooPostDataList.add(
                                     BambooPostList(
                                         bambooPostServerData.get(A).idx,
-                                        bambooPostServerData.get(A).title,
                                         bambooPostServerData.get(A).content,
                                         bambooPostServerData.get(A).created_at
                                     )

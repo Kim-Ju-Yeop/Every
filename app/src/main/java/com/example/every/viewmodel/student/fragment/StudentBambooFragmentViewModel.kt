@@ -33,10 +33,9 @@ class StudentBambooFragmentViewModel : BaseStudentFragmentViewModel(){
                                 )
                                 onSuccessEvent.call()
                             }
-                        } else{
-                            onFailEvent.call()
-                        }
+                        } else onFailEvent.call()
                     }
+                    410 -> onTokenEvent.call()
                 }
             }
            override fun onFailure(call: Call<Response<Data>>, t: Throwable) {

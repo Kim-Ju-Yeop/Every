@@ -10,4 +10,5 @@ open class BaseStudentFragmentViewModel : ViewModel(){
 
     val onSuccessEvent = SingleLiveEvent<Unit>()
     val onFailEvent = SingleLiveEvent<Unit>()
+    val onTokenEvent = SingleLiveEvent<Unit>()
 }

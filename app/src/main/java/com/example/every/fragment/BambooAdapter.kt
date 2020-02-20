@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.BambooPostList
 import com.example.every.R
+import com.example.every.activity.base.student.tokenData
 import kotlinx.android.synthetic.main.bamboo_item.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 import java.text.SimpleDateFormat
-
-
 
 class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList>) : RecyclerView.Adapter<BambooAdapter.ViewHolder>(){
 
@@ -62,67 +61,9 @@ class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList
             val format2 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             val date2 = format2.parse(item.created_at)
             itemView.timer.text = formatTimeString(date2)
+
+            // comment TextView
+            replyNumber(tokenData.token.value.toString(), item.idx, itemView.comment)
         }
     }
-}
-
-object TIME_MAXIMUM{
-    var SEC = 60
-    var MIN = 60
-    var HOUR = 24
-    var DAY = 30
-    var MONTH = 12
-}
-
-fun formatTimeString(tempDate : Date) : String{
-    val curTime : Long = System.currentTimeMillis()
-    val regTime : Long = tempDate.time
-    var diffTime : Long = (curTime - regTime) / 1000
-
-    var msg : String? = null
-
-    if(diffTime < TIME_MAXIMUM.SEC){
-        msg = "방금 전"
-        return msg!!
-    }
-    if((diffTime / TIME_MAXIMUM.SEC) < TIME_MAXIMUM.MIN){
-        diffTime /= TIME_MAXIMUM.SEC
-        msg = "${diffTime}분 전"
-        return msg!!
-    } else diffTime /= TIME_MAXIMUM.SEC
-    if ((diffTime / TIME_MAXIMUM.MIN) < TIME_MAXIMUM.HOUR){
-        diffTime /= TIME_MAXIMUM.MIN
-        msg = "${diffTime}시간 전"
-        return msg!!
-    } else diffTime /= TIME_MAXIMUM.MIN
-    if((diffTime / TIME_MAXIMUM.HOUR) < TIME_MAXIMUM.DAY){
-        diffTime /= TIME_MAXIMUM.HOUR
-        msg = "${diffTime}일 전"
-        return msg!!
-    } else diffTime /= TIME_MAXIMUM.HOUR
-    if((diffTime / TIME_MAXIMUM.DAY) < TIME_MAXIMUM.MONTH){
-        diffTime /= TIME_MAXIMUM.DAY
-        msg = "${diffTime}달 전"
-        return msg!!
-    }
-    else {
-        diffTime /= TIME_MAXIMUM.DAY
-        msg = "${diffTime}년 전"
-        return msg!!
-    }
-}
-
-fun getWeek(dayNum : Int) : String{
-    var day : String? = null
-
-    when (dayNum) {
-        1 -> day = "일요일"
-        2 -> day = "월요일"
-        3 -> day = "화요일"
-        4 -> day = "수요일"
-        5 -> day = "목요일"
-        6 -> day = "금요일"
-        7 -> day = "토요일"
-    }
-    return day.toString()
 }

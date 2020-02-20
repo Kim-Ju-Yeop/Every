@@ -1,4 +1,4 @@
-package com.example.every.viewmodel.student.fragment.bamboo
+package com.example.every.viewmodel.student.bamboo
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

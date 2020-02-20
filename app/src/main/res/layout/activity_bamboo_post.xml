@@ -7,14 +7,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.fragment.bamboo.BambooPostViewModel" />
+            type="com.example.every.viewmodel.student.bamboo.BambooPostViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".activity.student.BambooPostActivity">
+        tools:context=".activity.student.bamboo.BambooPostActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"

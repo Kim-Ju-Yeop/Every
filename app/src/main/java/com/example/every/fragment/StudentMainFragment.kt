@@ -3,8 +3,6 @@ package com.example.every.fragment
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +13,7 @@ import com.example.every.R
 import com.example.every.activity.base.student.BaseStudentFragment
 import com.example.every.activity.base.student.tokenData
 import com.example.every.databinding.FragmentStudentMainBinding
-import com.example.every.viewmodel.student.fragment.StudentMainFragmentViewModel
+import com.example.every.viewmodel.student.StudentMainFragmentViewModel
 
 class StudentMainFragment : BaseStudentFragment() {
 

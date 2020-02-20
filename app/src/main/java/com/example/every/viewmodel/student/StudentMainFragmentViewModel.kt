@@ -1,4 +1,4 @@
-package com.example.every.viewmodel.student.fragment
+package com.example.every.viewmodel.student
 
 import com.example.every.viewmodel.base.student.BaseStudentFragmentViewModel
 

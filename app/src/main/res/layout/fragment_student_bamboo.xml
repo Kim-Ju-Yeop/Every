@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.fragment.bamboo.StudentBambooFragmentViewModel" />
+            type="com.example.every.viewmodel.student.bamboo.StudentBambooFragmentViewModel" />
     </data>
 
     <LinearLayout

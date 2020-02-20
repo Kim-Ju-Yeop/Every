@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.fragment.StudentMainFragmentViewModel" />
+            type="com.example.every.viewmodel.student.StudentMainFragmentViewModel" />
     </data>
     
     <FrameLayout 

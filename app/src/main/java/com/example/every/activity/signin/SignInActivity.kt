@@ -47,7 +47,6 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "이메일 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
             })
             onSuccessEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
 
                 // SignInData Setting
                 val loginData = applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)

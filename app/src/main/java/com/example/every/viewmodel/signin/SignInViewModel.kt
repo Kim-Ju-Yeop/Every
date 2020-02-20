@@ -13,7 +13,14 @@ import retrofit2.Callback
 
 class SignInViewModel : ViewModel() {
 
-    private val netRetrofit = NetRetrofit()
+    /**
+     * SignIn 로그인 API Response
+     * status[200] -> 로그인 성공 : onSuccessEvent
+     * status[400] -> 검증 오류 : onErrorEvent
+     * status[401] -> 로그인 실 : onFailEvent
+     */
+
+    val netRetrofit = NetRetrofit()
 
     val token = MutableLiveData<String>()
     val email = MutableLiveData<String>()
@@ -41,8 +48,8 @@ class SignInViewModel : ViewModel() {
                             else if(response.body()!!.data!!.student) identity.value = "student"
 
                             onSuccessEvent.call()
-                        } 400 -> onErrorEvent.call() // 검증 오류
-                          401 -> onFailEvent.call() // 인증 실패
+                        } 400 -> onErrorEvent.call()
+                          401 -> onFailEvent.call()
                     }
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {

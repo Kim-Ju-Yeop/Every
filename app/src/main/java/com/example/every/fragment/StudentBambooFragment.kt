@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,13 +13,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.every.R
-import com.example.every.activity.MainActivity
 import com.example.every.activity.base.student.BaseStudentFragment
 import com.example.every.activity.base.student.tokenData
 import com.example.every.activity.signin.SignInActivity
+import com.example.every.activity.student.BambooPostActivity
 import com.example.every.databinding.FragmentStudentBambooBinding
-import com.example.every.network.retrofit.interfaces.student.Bamboo
-import com.example.every.viewmodel.student.fragment.StudentBambooFragmentViewModel
+import com.example.every.viewmodel.student.fragment.bamboo.StudentBambooFragmentViewModel
 
 class StudentBambooFragment : BaseStudentFragment() {
 
@@ -29,7 +27,8 @@ class StudentBambooFragment : BaseStudentFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_student_bamboo, container, false)
-        viewModel = ViewModelProviders.of(this@StudentBambooFragment).get(StudentBambooFragmentViewModel::class.java)
+        viewModel = ViewModelProviders.of(this@StudentBambooFragment).get(
+            StudentBambooFragmentViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentBambooFragment
@@ -61,6 +60,9 @@ class StudentBambooFragment : BaseStudentFragment() {
                 Toast.makeText(context!!.applicationContext, "토큰이 만료되었습니다. 로그인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
                 activity!!.finish()
+            })
+            onPostEvent.observe(this@StudentBambooFragment, Observer {
+               startActivity(Intent(binding.root.context, BambooPostActivity::class.java))
             })
         }
     }

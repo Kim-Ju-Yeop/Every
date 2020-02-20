@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".fragment.StudentMoreFragment"></activity>
+        <activity android:name=".activity.student.BambooPostActivity"></activity>
+        <activity android:name=".fragment.StudentMoreFragment" />
         <activity android:name=".fragment.StudentScheduleFragment" />
         <activity android:name=".fragment.StudentBambooFragment" />
         <activity android:name=".fragment.StudentMainFragment" />

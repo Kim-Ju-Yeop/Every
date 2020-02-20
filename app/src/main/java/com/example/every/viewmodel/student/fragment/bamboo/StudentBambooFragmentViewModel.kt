@@ -1,14 +1,17 @@
-package com.example.every.viewmodel.student.fragment
+package com.example.every.viewmodel.student.fragment.bamboo
 
 import android.util.Log
 import com.example.every.DTO.student.BambooPostList
 import com.example.every.network.Data
 import com.example.every.network.Response
 import com.example.every.viewmodel.base.student.BaseStudentFragmentViewModel
+import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
 class StudentBambooFragmentViewModel : BaseStudentFragmentViewModel(){
+
+    val onPostEvent = SingleLiveEvent<Unit>()
 
     var bambooPostServerData = ArrayList<BambooPostList>()
     var bambooPostDataList = ArrayList<BambooPostList>()
@@ -43,4 +46,5 @@ class StudentBambooFragmentViewModel : BaseStudentFragmentViewModel(){
             }
         })
     }
+    fun newPost() = onPostEvent.call()
 }

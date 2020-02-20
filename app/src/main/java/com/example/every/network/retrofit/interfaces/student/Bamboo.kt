@@ -2,10 +2,9 @@ package com.example.every.network.retrofit.interfaces.student
 
 import com.example.every.network.Data
 import com.example.every.network.Response
+import com.example.every.network.request.model.student.BambooPostData
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface Bamboo {
 
@@ -14,4 +13,7 @@ interface Bamboo {
 
     @GET("bamboo/reply")
     fun getCommentList(@Header("token") token : String, @Query("post") post : Int) : Call<Response<Data>>
+
+    @POST("bamboo/post")
+    fun postBamboo(@Header("token") token : String, @Body bambooPostData: BambooPostData) : Call<Response<Data>>
 }

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.fragment.StudentBambooFragmentViewModel" />
+            type="com.example.every.viewmodel.student.fragment.bamboo.StudentBambooFragmentViewModel" />
     </data>
 
     <LinearLayout
@@ -73,7 +73,8 @@
                 android:layout_marginRight="20dp"
                 android:clickable="true"
                 android:src="@drawable/add"
-                app:backgroundTint="#7E40FF"/>
+                app:backgroundTint="#7E40FF"
+                android:onClick="@{() -> viewModel.newPost()}"/>
         </FrameLayout>
     </LinearLayout>
 </layout>

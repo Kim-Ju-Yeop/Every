@@ -63,9 +63,18 @@ class SignInActivity : AppCompatActivity() {
                 token_editor.putString("tokenData", viewModel.token.value)
                 token_editor.commit()
 
+                val identity = applicationContext.getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
+                val identity_editor = identity.edit()
+
                 if(viewModel.identity.value.equals("worker")){
+                    identity_editor.putString("identityData", viewModel.identity.value)
+                    identity_editor.commit()
+
                     // 직장인 페이지 이동
                 }else if(viewModel.identity.value.equals("student")){
+                    identity_editor.putString("identityData", viewModel.identity.value)
+                    identity_editor.commit()
+
                     startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))
                     finish()
                 }

@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.every.R
 
+object IdentityData{
+    var identityData : Int? = null
+}
+
 open class BaseSignUpActivity : AppCompatActivity() {
 
     // Toolbar Setting

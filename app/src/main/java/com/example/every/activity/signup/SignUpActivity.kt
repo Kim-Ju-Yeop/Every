@@ -1,6 +1,5 @@
 package com.example.every.activity.signup
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -8,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.base.signup.BaseSignUpActivity
+import com.example.every.activity.base.signup.IdentityData
 import com.example.every.activity.signup.signup.data.Email_PasswordSignUpActivity
 import com.example.every.databinding.ActivitySignUpBinding
 import com.example.every.network.request.model.signup.SignUpDataStudent
@@ -40,11 +40,7 @@ class SignUpActivity : BaseSignUpActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@SignUpActivity, Observer {
-                val identity = applicationContext.getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
-                val editor = identity.edit()
-
-                editor.putInt("identityData", viewModel.checkInfo.value!!)
-                editor.commit()
+                IdentityData.identityData = viewModel.checkInfo.value!!
                 startActivity(Intent(this@SignUpActivity, Email_PasswordSignUpActivity::class.java))
             })
         }

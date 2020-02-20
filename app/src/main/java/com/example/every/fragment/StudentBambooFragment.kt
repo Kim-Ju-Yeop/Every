@@ -3,6 +3,7 @@ package com.example.every.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.every.R
+import com.example.every.activity.MainActivity
 import com.example.every.activity.base.student.BaseStudentFragment
 import com.example.every.activity.base.student.tokenData
 import com.example.every.activity.signin.SignInActivity
@@ -33,6 +36,7 @@ class StudentBambooFragment : BaseStudentFragment() {
 
         viewModel.bambooPostList(tokenData.token.value.toString())
         observerViewModel()
+        refreshLayout()
         return binding.root
     }
 
@@ -59,5 +63,14 @@ class StudentBambooFragment : BaseStudentFragment() {
                 activity!!.finish()
             })
         }
+    }
+
+    fun refreshLayout(){
+        binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
+            override fun onRefresh() {
+                viewModel.bambooPostList(tokenData.token.value.toString())
+                Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
+            }
+        })
     }
 }

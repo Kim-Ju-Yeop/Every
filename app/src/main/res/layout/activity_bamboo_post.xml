@@ -43,7 +43,7 @@
                 android:fontFamily="@font/nanum_bold"
                 android:textColor="#7E40FF"
                 android:layout_marginRight="20dp"
-                android:onClick="@{() -> viewModel.addPost()}"/>
+                android:onClick="@{() -> viewModel.postBamboo()}"/>
 
         </androidx.appcompat.widget.Toolbar>
 

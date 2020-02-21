@@ -1,4 +1,4 @@
-package com.example.every.activity.base.student
+package com.example.every.fragment.base
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData

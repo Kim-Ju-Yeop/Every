@@ -6,7 +6,7 @@ import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.example.every.R
 import com.example.every.databinding.ActivityStudentMainActivitiyBinding
-import com.example.every.fragment.StudentBambooFragment
+import com.example.every.fragment.bamboo.StudentBambooFragment
 import com.example.every.fragment.StudentMainFragment
 import com.example.every.fragment.StudentMoreFragment
 import com.example.every.fragment.StudentScheduleFragment

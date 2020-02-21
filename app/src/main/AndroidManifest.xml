@@ -16,7 +16,7 @@
         <activity android:name=".activity.student.bamboo.BambooPostActivity"></activity>
         <activity android:name=".fragment.StudentMoreFragment" />
         <activity android:name=".fragment.StudentScheduleFragment" />
-        <activity android:name=".fragment.StudentBambooFragment" />
+        <activity android:name=".fragment.bamboo.StudentBambooFragment" />
         <activity android:name=".fragment.StudentMainFragment" />
         <activity android:name=".activity.student.StudentMainActivity" />
         <activity android:name=".activity.signup.signup.data.WorkerSignUpActivity" />

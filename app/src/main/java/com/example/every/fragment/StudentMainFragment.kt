@@ -10,8 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 
 import com.example.every.R
-import com.example.every.activity.base.student.BaseStudentFragment
-import com.example.every.activity.base.student.tokenData
+import com.example.every.fragment.base.BaseStudentFragment
+import com.example.every.fragment.base.tokenData
 import com.example.every.databinding.FragmentStudentMainBinding
 import com.example.every.viewmodel.student.StudentMainFragmentViewModel
 
@@ -28,7 +28,7 @@ class StudentMainFragment : BaseStudentFragment() {
         binding.lifecycleOwner = this@StudentMainFragment
 
         val checkToken : SharedPreferences = context!!.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
-        tokenData.token.value = checkToken.getString("tokenData", "hello")
+        tokenData.token.value = checkToken.getString("tokenData", null)
         return binding.root
     }
 }

@@ -1,4 +1,4 @@
-package com.example.every.fragment
+package com.example.every.fragment.bamboo
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.BambooPostList
 import com.example.every.R
-import com.example.every.activity.base.student.tokenData
+import com.example.every.fragment.base.tokenData
 import kotlinx.android.synthetic.main.bamboo_item.view.*
 import java.util.*
 import kotlin.collections.ArrayList

@@ -1,4 +1,4 @@
-package com.example.every.fragment
+package com.example.every.fragment.bamboo
 
 import android.content.Context
 import android.content.Intent
@@ -13,8 +13,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.every.R
-import com.example.every.activity.base.student.BaseStudentFragment
-import com.example.every.activity.base.student.tokenData
+import com.example.every.fragment.base.BaseStudentFragment
+import com.example.every.fragment.base.tokenData
 import com.example.every.activity.signin.SignInActivity
 import com.example.every.activity.student.bamboo.BambooPostActivity
 import com.example.every.databinding.FragmentStudentBambooBinding

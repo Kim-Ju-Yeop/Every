@@ -53,11 +53,9 @@ class SchoolAdapter(val mContext : Context, val items : ArrayList<SchoolDataList
         fun bind(listener: View.OnClickListener, item: SchoolDataList){
             itemView.schoolName.text = item.school_name
 
-            if(item.school_location == null){
-                itemView.schoolLocate.text = "위치 정보를 불러올 수 없습니다."
-            } else{
-                itemView.schoolLocate.text = item.school_location
-            }
+            if(item.school_location == null) itemView.schoolLocate.text = "위치 정보를 불러올 수 없습니다."
+            else itemView.schoolLocate.text = item.school_location
+
             view.setOnClickListener(listener)
 
             itemView.schoolName.setSingleLine(true)

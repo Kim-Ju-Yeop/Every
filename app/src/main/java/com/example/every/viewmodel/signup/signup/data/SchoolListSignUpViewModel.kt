@@ -11,6 +11,13 @@ import retrofit2.Callback
 
 class SchoolListSignUpViewModel : BaseSignUpViewModel(){
 
+    /**
+     *  SearchSchool 학교 검색 API Response
+     *  status[200] 데이터 존재
+     *  status[200] 데이터 없음
+     *  status[400] 검증 오류
+     */
+
     val schoolName = MutableLiveData<String>()
 
     var schoolServerData = ArrayList<SchoolDataList>()

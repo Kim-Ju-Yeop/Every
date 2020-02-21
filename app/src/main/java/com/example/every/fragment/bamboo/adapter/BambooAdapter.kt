@@ -1,14 +1,17 @@
 package com.example.every.fragment.bamboo.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.BambooPostList
 import com.example.every.R
+import com.example.every.activity.student.bamboo.BambooCommentActivity
 import com.example.every.fragment.base.tokenData
 import kotlinx.android.synthetic.main.bamboo_item.view.*
+import java.lang.reflect.Modifier
 import java.util.*
 import kotlin.collections.ArrayList
 import java.text.SimpleDateFormat
@@ -27,6 +30,9 @@ class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList
         var item : BambooPostList = items.get(position)
         val listener = View.OnClickListener {
 
+            val intent = Intent(mContext, BambooCommentActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            mContext.startActivity(intent)
         }
 
         holder.apply {
@@ -67,6 +73,7 @@ class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList
 
             // comment TextView
             getBambooComment(tokenData.token.value.toString(), item.idx, itemView.comment)
+            view.setOnClickListener(listener)
         }
     }
 }

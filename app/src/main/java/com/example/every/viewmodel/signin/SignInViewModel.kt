@@ -17,7 +17,7 @@ class SignInViewModel : ViewModel() {
      * SignIn 로그인 API Response
      * status[200] -> 로그인 성공 : onSuccessEvent
      * status[400] -> 검증 오류 : onErrorEvent
-     * status[401] -> 로그인 실 : onFailEvent
+     * status[401] -> 로그인 실패 : onFailEvent
      */
 
     val netRetrofit = NetRetrofit()

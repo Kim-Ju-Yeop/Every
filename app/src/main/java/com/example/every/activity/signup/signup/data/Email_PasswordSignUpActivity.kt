@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.base.signup.BaseSignUpActivity
+import com.example.every.activity.base.signup.IdentityData
 import com.example.every.activity.signup.SignUpData
 import com.example.every.databinding.ActivityEmailPasswordBinding
 import com.example.every.viewmodel.signup.signup.data.Email_PasswordSignUpViewModel
@@ -68,13 +69,10 @@ class Email_PasswordSignUpActivity : BaseSignUpActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@Email_PasswordSignUpActivity, Observer {
-                val checkIdentity = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
-                val identityData = checkIdentity.getInt("identityData", 99)
-
-                if(identityData == 0){
+                if(IdentityData.identityData == 0){
                     SignUpData.signUpDataStudent.email = viewModel.email.value.toString()
                     SignUpData.signUpDataStudent.pw = viewModel.pw.value.toString()
-                } else if(identityData == 1) {
+                } else if(IdentityData.identityData == 1) {
                     SignUpData.signUpDataWorker.email = viewModel.email.value.toString()
                     SignUpData.signUpDataWorker.pw = viewModel.pw.value.toString()
                 }

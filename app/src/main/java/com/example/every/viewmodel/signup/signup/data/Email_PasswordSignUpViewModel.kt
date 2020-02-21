@@ -10,6 +10,13 @@ import retrofit2.Callback
 
 class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
 
+    /**
+     * EmailOverlap 이메일 중복확인 API Response
+     * status[200] -> 이메일 중복 없음
+     * status[400] -> 이메일 검증 오류
+     * status[409] -> 이메일 중복 확인
+     */
+
     val email = MutableLiveData<String>()
     val email_check = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
@@ -30,11 +37,12 @@ class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
         }
     }
     fun overlapEmail(text : String){
-        val res : Call<Response<Data>> = netRetrofit.signUp.getEmailOverlap(text)
+        val res : Call<Response<Data>> = netRetrofit.signUp.getOverlapEmail(text)
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 when(response.code()){
                     200 -> email_check.value = null
+                    400 -> email_check.value = "이메일 형식이 올바르지 않습니다."
                     409 -> email_check.value = "중복된 이메일이 이미 존재합니다."
                 }
             }

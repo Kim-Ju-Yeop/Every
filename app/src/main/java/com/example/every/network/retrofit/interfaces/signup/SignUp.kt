@@ -18,7 +18,7 @@ interface SignUp {
     fun postSignUpWorker(@Body signUpDataWorker : SignUpDataWorker) : Call<Response<Data>>
 
     @GET("auth/check/email")
-    fun getEmailOverlap(@Query("email") email : String) : Call<Response<Data>>
+    fun getOverlapEmail(@Query("email") email : String) : Call<Response<Data>>
 
     @GET("auth/check/phone")
     fun getPhoneOverlap(@Query("phone") phone : String) : Call<Response<Data>>

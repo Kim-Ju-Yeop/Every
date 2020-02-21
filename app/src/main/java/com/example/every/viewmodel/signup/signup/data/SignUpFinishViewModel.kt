@@ -10,12 +10,16 @@ import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
-class SignUpFinishSignUpViewModel : BaseSignUpViewModel(){
+class SignUpFinishViewModel : BaseSignUpViewModel(){
+
+    /**
+     * SignUp 회원가입 API Response (학생, 직장인)
+     * status[201] 회원 가입 성공
+     * status[400] 검증 오류
+     */
 
     val firstText = MutableLiveData<String>()
     val secondText = MutableLiveData<String>()
-
-    val onButtonClickEvent = SingleLiveEvent<Unit>()
 
     fun signUp(identity : Int){
         if(identity == 0){
@@ -62,5 +66,5 @@ class SignUpFinishSignUpViewModel : BaseSignUpViewModel(){
             })
         }
     }
-    fun next() = onButtonClickEvent.call()
+    fun next() = onNextEvent.call()
 }

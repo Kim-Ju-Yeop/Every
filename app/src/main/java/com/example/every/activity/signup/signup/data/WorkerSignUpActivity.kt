@@ -59,7 +59,7 @@ class WorkerSignUpActivity : BaseSignUpActivity() {
 
     fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@WorkerSignUpActivity, Observer {
+            onNextEvent.observe(this@WorkerSignUpActivity, Observer {
                 SignUpData.signUpDataWorker.work_place = viewModel.workerName.value.toString()
                 SignUpData.signUpDataWorker.work_category = binding.spinner.selectedItemPosition.plus(1)
                 startActivity(Intent(this@WorkerSignUpActivity, SignUpFinishActivity::class.java))

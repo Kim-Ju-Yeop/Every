@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NetRetrofit{
     val retrofit : Retrofit = Retrofit.Builder()
-        .baseUrl("http://54.180.109.187:8080/")
+        .baseUrl("http://49.50.160.97:8080/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

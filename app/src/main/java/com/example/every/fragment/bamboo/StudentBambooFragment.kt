@@ -32,10 +32,15 @@ class StudentBambooFragment : BaseStudentFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentBambooFragment
 
-        viewModel.bambooPostList(tokenData.token.value.toString())
         observerViewModel()
         refreshLayout()
         return binding.root
+    }
+
+    // Activity 새로 보이는 생명 주기
+    override fun onResume() {
+        super.onResume()
+        viewModel.bambooPostList(tokenData.token.value.toString())
     }
 
     fun observerViewModel(){

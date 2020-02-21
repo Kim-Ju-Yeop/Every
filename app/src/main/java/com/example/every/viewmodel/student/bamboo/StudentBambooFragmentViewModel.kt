@@ -11,6 +11,15 @@ import retrofit2.Callback
 
 class StudentBambooFragmentViewModel : BaseStudentFragmentViewModel(){
 
+    /**
+     * bambooPostList 대나무숲 게시글 조회 API Response
+     * status[200] 게시글 조회 성공
+     * status[200] 게시글 존재하지 않음
+     * status[400] 토큰 존재하지 않음
+     * status[401] 위조된 토큰
+     * status[410] 토큰 기한 만료
+     */
+
     val onPostEvent = SingleLiveEvent<Unit>()
 
     var bambooPostServerData = ArrayList<BambooPostList>()

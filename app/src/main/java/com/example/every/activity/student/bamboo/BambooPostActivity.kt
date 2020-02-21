@@ -50,7 +50,7 @@ class BambooPostActivity : AppCompatActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooPostActivity, Observer {
-                startActivity(Intent(applicationContext, StudentMainActivity::class.java))
+                Toast.makeText(applicationContext, "정상적으로 글 작성을 수행하였습니다.", Toast.LENGTH_SHORT).show()
                 finish()
             })
             onFailEvent.observe(this@BambooPostActivity, Observer {

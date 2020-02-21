@@ -2,32 +2,42 @@ package com.example.every.viewmodel.student.bamboo
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.every.fragment.base.tokenData
 import com.example.every.network.Data
+import com.example.every.network.NetRetrofit
 import com.example.every.network.Response
 import com.example.every.network.request.model.student.BambooPostData
 import com.example.every.viewmodel.base.student.BaseStudentFragmentViewModel
+import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
-class BambooPostViewModel : BaseStudentFragmentViewModel(){
+class BambooPostViewModel : ViewModel(){
+
+    /**
+     * PostBamboo 대나무숲 게시글 작성 API Response
+     * status[200] 게시글 작성 성공
+     */
+
+    val netRetrofit = NetRetrofit()
+    val onSuccessEvent = SingleLiveEvent<Unit>()
+    val onFailEvent = SingleLiveEvent<Unit>()
 
     val content_EditText = MutableLiveData<String>()
 
     fun postBamboo(){
-        if(!content_EditText.value.toString().isNullOrEmpty()){
+        if(!content_EditText.value.equals(null)){
             val bambooPostData = BambooPostData(content_EditText.value.toString())
             val res : Call<Response<Data>> = netRetrofit.bamboo.postBamboo(tokenData.token.value.toString(), bambooPostData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-
+                    if(response.code() == 200) onSuccessEvent.call()
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-                    println("서버 통신 X")
+                    Log.e("postBamboo[Error]", "대나무숲 게시글 작성부분에서 서버와 통신이 되지 않습니다.")
                 }
             })
-        }else{
-            println("데이터 입력하지 앟")
-        }
+        }else onFailEvent.call()
     }
 }

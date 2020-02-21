@@ -64,7 +64,7 @@ class SchoolSignUpActivity : BaseSignUpActivity() {
                 binding.nextButton.isEnabled = false
                 binding.nextButton.setBackgroundResource(R.color.gray)
             })
-            onSuccessEvent.observe(this@SchoolSignUpActivity, Observer {
+            onNextEvent.observe(this@SchoolSignUpActivity, Observer {
                 SignUpData.signUpDataStudent.school_id = viewModel.schoolId.value.toString()
                 startActivity(Intent(applicationContext, SignUpFinishActivity::class.java))
             })

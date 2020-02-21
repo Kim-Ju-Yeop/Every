@@ -3,6 +3,8 @@ package com.example.every.activity.signup.signup.data
 import android.os.Bundle
 import android.view.View
 import android.view.Window
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -28,6 +30,7 @@ class SchoolListSignUpActivity : BaseSignUpActivity() {
         binding.lifecycleOwner = this@SchoolListSignUpActivity
 
         observerViewModel()
+        editTextListener()
     }
 
     fun observerViewModel(){
@@ -46,5 +49,15 @@ class SchoolListSignUpActivity : BaseSignUpActivity() {
                 binding.answerTextView.text = "입력하신 학교는 존재하지 않습니다."
             })
         }
+    }
+
+    fun editTextListener(){
+        binding.schoolName.imeOptions = EditorInfo.IME_ACTION_SEARCH
+        binding.schoolName.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+            when(actionId){
+                EditorInfo.IME_ACTION_SEARCH -> viewModel.searchSchool()
+            }
+            true
+        })
     }
 }

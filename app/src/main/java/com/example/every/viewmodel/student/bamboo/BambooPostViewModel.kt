@@ -21,8 +21,10 @@ class BambooPostViewModel : ViewModel(){
      */
 
     val netRetrofit = NetRetrofit()
+
     val onSuccessEvent = SingleLiveEvent<Unit>()
     val onFailEvent = SingleLiveEvent<Unit>()
+    val onImageEvent = SingleLiveEvent<Unit>()
 
     val content_EditText = MutableLiveData<String>()
 
@@ -40,4 +42,6 @@ class BambooPostViewModel : ViewModel(){
             })
         }else onFailEvent.call()
     }
+
+    fun addImage() = onImageEvent.call()
 }

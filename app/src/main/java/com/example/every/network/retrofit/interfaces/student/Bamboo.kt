@@ -12,7 +12,7 @@ interface Bamboo {
     fun getBambooPost(@Header("token") token : String) : Call<Response<Data>>
 
     @GET("bamboo/reply")
-    fun getCommentList(@Header("token") token : String, @Query("post") post : Int) : Call<Response<Data>>
+    fun getBambooComment(@Header("token") token : String, @Query("post") post : Int) : Call<Response<Data>>
 
     @POST("bamboo/post")
     fun postBamboo(@Header("token") token : String, @Body bambooPostData: BambooPostData) : Call<Response<Data>>

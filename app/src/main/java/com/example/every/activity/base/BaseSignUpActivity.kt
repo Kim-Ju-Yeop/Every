@@ -1,4 +1,4 @@
-package com.example.every.activity.base.signup
+package com.example.every.activity.base
 
 import android.content.Context
 import android.view.MenuItem

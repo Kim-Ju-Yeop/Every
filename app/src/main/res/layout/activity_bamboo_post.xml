@@ -109,7 +109,8 @@
                 android:layout_height="15dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="14dp"
-                app:srcCompat="@drawable/photo" />
+                app:srcCompat="@drawable/photo"
+                android:onClick="@{() -> viewModel.addImage()}"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -119,7 +120,8 @@
                 android:layout_marginLeft="7dp"
                 android:text="사진/동영상 추가"
                 android:fontFamily="@font/nanum_bold"
-                android:textSize="11sp"/>
+                android:textSize="11sp"
+                android:onClick="@{() -> viewModel.addImage()}"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

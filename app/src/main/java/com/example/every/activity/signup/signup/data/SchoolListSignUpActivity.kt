@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.activity.base.signup.BaseSignUpActivity
+import com.example.every.activity.base.BaseSignUpActivity
 import com.example.every.databinding.ActivitySchoolListBinding
 import com.example.every.viewmodel.signup.signup.data.SchoolListSignUpViewModel
 

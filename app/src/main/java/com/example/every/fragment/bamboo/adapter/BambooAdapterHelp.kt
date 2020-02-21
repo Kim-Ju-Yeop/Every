@@ -1,4 +1,4 @@
-package com.example.every.fragment.bamboo
+package com.example.every.fragment.bamboo.adapter
 
 import android.util.Log
 import android.widget.TextView
@@ -22,7 +22,7 @@ fun formatTimeString(tempDate : Date) : String{
     val regTime : Long = tempDate.time
     var diffTime : Long = (curTime - regTime) / 1000
 
-    var msg : String? = null
+    var msg : String?
 
     if(diffTime < TIME_MAXIMUM.SEC){
         msg = "방금 전"
@@ -70,16 +70,20 @@ fun getWeek(dayNum : Int) : String{
     return day.toString()
 }
 
-fun replyNumber(token : String, idx : Int, comment : TextView){
+fun getBambooComment(token : String, idx : Int, comment : TextView){
+
+    /**
+     * getBambooComment 댓글 조회 API Response
+     * status[200] 댓글 조회 성공
+     * status[200] 댓글 존재하지 않
+     */
 
     val netRetrofit = NetRetrofit()
 
-    val res : Call<Response<Data>> = netRetrofit.bamboo.getCommentList(token, idx)
+    val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooComment(token, idx)
     res.enqueue(object : Callback<Response<Data>>{
         override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-            when(response.code()){
-                200 -> comment.text = "댓글 ${response.body()!!.data!!.replies!!.size}개"
-            }
+            if(response.code() == 200) comment.text = "댓글 ${response.body()!!.data!!.replies!!.size}개"
         }
         override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
             Log.e("replyNumber[Error]", "대나무숲 게시물의 댓글 갯수를 찾는 과정에서 서버와 통신이 되지 않습니다.")

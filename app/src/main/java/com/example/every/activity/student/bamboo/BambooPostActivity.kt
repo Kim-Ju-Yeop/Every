@@ -56,6 +56,9 @@ class BambooPostActivity : AppCompatActivity() {
             onFailEvent.observe(this@BambooPostActivity, Observer {
                 Toast.makeText(applicationContext, "먼저 글을 작성해주시기 바랍니다.", Toast.LENGTH_SHORT).show()
             })
+            onImageEvent.observe(this@BambooPostActivity, Observer {
+                Toast.makeText(applicationContext, "아직 사진과 비디오 추가 기능을 제공하지 않습니다.", Toast.LENGTH_SHORT).show()
+            })
         }
     }
 }

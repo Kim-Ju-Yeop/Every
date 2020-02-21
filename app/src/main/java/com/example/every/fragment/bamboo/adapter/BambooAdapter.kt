@@ -1,4 +1,4 @@
-package com.example.every.fragment.bamboo
+package com.example.every.fragment.bamboo.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -55,7 +55,10 @@ class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList
             calendar.time = date
 
             val intDayNum = calendar.get(Calendar.DAY_OF_WEEK)
-            itemView.created_at.text = "${calendar.get(Calendar.YEAR)}년 ${calendar.get(Calendar.MONTH) + 1}월 ${calendar.get(Calendar.DAY_OF_MONTH)}일 ${getWeek(intDayNum)}"
+            itemView.created_at.text = "${calendar.get(Calendar.YEAR)}년 " +
+                                       "${calendar.get(Calendar.MONTH) + 1}월 " +
+                                       "${calendar.get(Calendar.DAY_OF_MONTH)}일 " +
+                                       "${getWeek(intDayNum)}"
 
             // timer TextView
             val format2 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -63,7 +66,7 @@ class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList
             itemView.timer.text = formatTimeString(date2)
 
             // comment TextView
-            replyNumber(tokenData.token.value.toString(), item.idx, itemView.comment)
+            getBambooComment(tokenData.token.value.toString(), item.idx, itemView.comment)
         }
     }
 }

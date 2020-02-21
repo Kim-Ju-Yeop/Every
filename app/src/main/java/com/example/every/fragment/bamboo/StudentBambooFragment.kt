@@ -18,6 +18,7 @@ import com.example.every.fragment.base.tokenData
 import com.example.every.activity.signin.SignInActivity
 import com.example.every.activity.student.bamboo.BambooPostActivity
 import com.example.every.databinding.FragmentStudentBambooBinding
+import com.example.every.fragment.bamboo.adapter.BambooAdapter
 import com.example.every.viewmodel.student.bamboo.StudentBambooFragmentViewModel
 
 class StudentBambooFragment : BaseStudentFragment() {
@@ -46,7 +47,10 @@ class StudentBambooFragment : BaseStudentFragment() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@StudentBambooFragment, Observer {
-                val adapter = BambooAdapter(context!!.applicationContext, viewModel.bambooPostDataList)
+                val adapter = BambooAdapter(
+                    context!!.applicationContext,
+                    viewModel.bambooPostDataList
+                )
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@StudentBambooFragment, Observer {

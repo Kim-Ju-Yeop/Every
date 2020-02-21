@@ -39,7 +39,7 @@ class SignUpActivity : BaseSignUpActivity() {
     }
     fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@SignUpActivity, Observer {
+            onNextEvent.observe(this@SignUpActivity, Observer {
                 IdentityData.identityData = viewModel.checkInfo.value!!
                 startActivity(Intent(this@SignUpActivity, Email_PasswordSignUpActivity::class.java))
             })

@@ -11,11 +11,15 @@ import retrofit2.Callback
 
 class PhoneSignUpViewModel : BaseSignUpViewModel(){
 
+    /**
+     * PhoneOverlap 전화번호 중복확인 API Response
+     * status[200] -> 전화번호 중복 없음
+     * status[400] -> 전화번호 검증 오류
+     * status[409] -> 전화번호 중복 확인
+     */
+
     val phone = MutableLiveData<String>()
     val phone_check = MutableLiveData<String>()
-
-    val on200Event = SingleLiveEvent<Unit>()
-    val on409Event = SingleLiveEvent<Unit>()
 
     fun checkType(text : String) : Boolean{
         if(!phone_validity.matcher(text).matches()){
@@ -27,17 +31,18 @@ class PhoneSignUpViewModel : BaseSignUpViewModel(){
         }
     }
     fun overlapPhone(text :String){
-        val res : Call<Response<Data>> = netRetrofit.signUp.getPhoneOverlap(text)
+        val res : Call<Response<Data>> = netRetrofit.signUp.getOverlapPhone(text)
         res.enqueue(object : Callback<Response<Data>> {
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 when(response.code()){
                     200 -> {
                         phone_check.value = null
-                        on200Event.call()
+                        onSuccessEvent.call()
                     }
+                    400 -> phone_check.value = "전화번호의 형식이 올바르지 않습니다."
                     409 -> {
                         phone_check.value = "중복된 전화번호가 이미 존재합니다."
-                        on409Event.call()
+                        onFailEvent.call()
                     }
                 }
             }
@@ -46,5 +51,5 @@ class PhoneSignUpViewModel : BaseSignUpViewModel(){
             }
         })
     }
-    fun next() = onSuccessEvent.call()
+    fun next() = onNextEvent.call()
 }

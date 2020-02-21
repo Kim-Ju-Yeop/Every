@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.base.signup.BaseSignUpActivity
+import com.example.every.activity.base.signup.IdentityData
 import com.example.every.activity.signup.SignUpData
 import com.example.every.databinding.ActivityNameBirthBinding
 import com.example.every.viewmodel.signup.signup.data.Name_BirthSignUpViewModel
@@ -36,7 +37,7 @@ class Name_BirthSignUpActivity : BaseSignUpActivity() {
     fun birthCheck(){
         binding.birthEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
-            override fun    beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(viewModel.checkType(binding.birthEditText.text.toString())){
                     if(viewModel.birth_check.value == null){
@@ -55,14 +56,11 @@ class Name_BirthSignUpActivity : BaseSignUpActivity() {
     }
     fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@Name_BirthSignUpActivity, Observer {
-                val checkIdentity = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
-                val identityData = checkIdentity.getInt("identityData", 99)
-
-                if(identityData == 0){
+            onNextEvent.observe(this@Name_BirthSignUpActivity, Observer {
+                if(IdentityData.identityData == 0){
                     SignUpData.signUpDataStudent.name = binding.nameEditText.text.toString()
                     SignUpData.signUpDataStudent.birth_year = Integer.parseInt(viewModel.birth.value.toString())
-                } else if(identityData == 1) {
+                } else if(IdentityData.identityData == 1) {
                     SignUpData.signUpDataWorker.name = binding.nameEditText.text.toString()
                     SignUpData.signUpDataWorker.birth_year = Integer.parseInt(viewModel.birth.value.toString())
                 }

@@ -68,7 +68,7 @@ class Email_PasswordSignUpActivity : BaseSignUpActivity() {
     }
     fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@Email_PasswordSignUpActivity, Observer {
+            onNextEvent.observe(this@Email_PasswordSignUpActivity, Observer {
                 if(IdentityData.identityData == 0){
                     SignUpData.signUpDataStudent.email = viewModel.email.value.toString()
                     SignUpData.signUpDataStudent.pw = viewModel.pw.value.toString()

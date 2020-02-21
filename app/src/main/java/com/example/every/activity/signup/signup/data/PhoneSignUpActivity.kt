@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.base.signup.BaseSignUpActivity
+import com.example.every.activity.base.signup.IdentityData
 import com.example.every.activity.signup.SignUpData
 import com.example.every.databinding.ActivityPhoneBinding
 import com.example.every.viewmodel.signup.signup.data.PhoneSignUpViewModel
@@ -51,26 +52,23 @@ class PhoneSignUpActivity : BaseSignUpActivity() {
     }
     fun observerViewModel(){
         with(viewModel){
-            on200Event.observe(this@PhoneSignUpActivity, Observer {
+            onSuccessEvent.observe(this@PhoneSignUpActivity, Observer {
                 if(viewModel.phone_check.value == null){
                     binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
                     binding.nextButton.isEnabled = true
                 }
             })
-            on409Event.observe(this@PhoneSignUpActivity, Observer {
+            onFailEvent.observe(this@PhoneSignUpActivity, Observer {
                 if(viewModel.phone_check.value != null){
                     binding.nextButton.setBackgroundResource(R.color.gray)
                     binding.nextButton.isEnabled = false
                 }
             })
-            onSuccessEvent.observe(this@PhoneSignUpActivity, Observer {
-                val checkIdentity = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
-                val identityData = checkIdentity.getInt("identityData", 99)
-
-                if(identityData == 0){
+            onNextEvent.observe(this@PhoneSignUpActivity, Observer {
+                if(IdentityData.identityData == 0){
                     SignUpData.signUpDataStudent.phone = viewModel.phone.value.toString()
                     startActivity(Intent(this@PhoneSignUpActivity, SchoolSignUpActivity::class.java))
-                } else if(identityData == 1) {
+                } else if(IdentityData.identityData == 1) {
                     SignUpData.signUpDataWorker.phone = viewModel.phone.value.toString()
                     startActivity(Intent(this@PhoneSignUpActivity, WorkerSignUpActivity::class.java))
                 }

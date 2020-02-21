@@ -21,7 +21,7 @@ interface SignUp {
     fun getOverlapEmail(@Query("email") email : String) : Call<Response<Data>>
 
     @GET("auth/check/phone")
-    fun getPhoneOverlap(@Query("phone") phone : String) : Call<Response<Data>>
+    fun getOverlapPhone(@Query("phone") phone : String) : Call<Response<Data>>
 
     @GET("school")
     fun searchSchool(@Query("query") schoolName : String) : Call<Response<Data>>

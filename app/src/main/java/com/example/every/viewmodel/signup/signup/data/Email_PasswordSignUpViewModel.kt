@@ -51,5 +51,5 @@ class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
             }
         })
     }
-    fun next() = onSuccessEvent.call()
+    fun next() = onNextEvent.call()
 }

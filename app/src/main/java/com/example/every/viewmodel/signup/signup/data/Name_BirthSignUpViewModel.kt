@@ -17,5 +17,5 @@ class Name_BirthSignUpViewModel : BaseSignUpViewModel() {
             return true
         }
     }
-    fun next() = onSuccessEvent.call()
+    fun next() = onNextEvent.call()
 }

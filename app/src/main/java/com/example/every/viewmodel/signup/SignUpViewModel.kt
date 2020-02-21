@@ -10,6 +10,6 @@ class SignUpViewModel : BaseSignUpViewModel(){
 
     fun clickEvent(info : Int){
         checkInfo.value = info
-        onSuccessEvent.call()
+        onNextEvent.call()
     }
 }

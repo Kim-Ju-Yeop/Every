@@ -3,6 +3,7 @@ package com.example.every.activity.student.bamboo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.databinding.ActivityBambooCommentBinding
@@ -24,6 +25,8 @@ class BambooCommentActivity : AppCompatActivity() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@BambooCommentActivity
+
+        observerViewModel()
     }
 
     // Activity 새로 보이는 생명 주기
@@ -39,5 +42,17 @@ class BambooCommentActivity : AppCompatActivity() {
 
         postIdx = intent.extras!!.getInt("idx")
         viewModel.getBambooComment(postIdx)
+    }
+
+    fun observerViewModel(){
+        with(viewModel){
+            onSuccessEvent.observe(this@BambooCommentActivity, Observer {
+                val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentList)
+                binding.recyclerView.adapter = adapter
+            })
+            onFailEvent.observe(this@BambooCommentActivity, Observer {
+
+            })
+        }
     }
 }

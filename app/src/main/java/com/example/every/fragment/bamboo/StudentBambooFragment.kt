@@ -47,10 +47,7 @@ class StudentBambooFragment : BaseStudentFragment() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@StudentBambooFragment, Observer {
-                val adapter = BambooAdapter(
-                    context!!.applicationContext,
-                    viewModel.bambooPostDataList
-                )
+                val adapter = BambooAdapter(context!!.applicationContext, viewModel.bambooPostDataList)
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@StudentBambooFragment, Observer {

@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
+import com.example.every.activity.student.bamboo.adapter.BambooCommentAdapter
 import com.example.every.databinding.ActivityBambooCommentBinding
 import com.example.every.viewmodel.student.bamboo.activity.BambooCommentViewModel
 
@@ -47,7 +48,11 @@ class BambooCommentActivity : AppCompatActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooCommentActivity, Observer {
-                val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentList)
+                val adapter =
+                    BambooCommentAdapter(
+                        applicationContext,
+                        viewModel.bambooCommentList
+                    )
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@BambooCommentActivity, Observer {

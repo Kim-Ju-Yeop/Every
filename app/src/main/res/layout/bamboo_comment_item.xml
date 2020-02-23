@@ -32,7 +32,7 @@
             android:paddingBottom="3dp">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/comment_studentName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_bold"
@@ -41,7 +41,7 @@
 
             <TextView
                 android:layout_marginTop="3dp"
-                android:id="@+id/content"
+                android:id="@+id/comment_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_regular"
@@ -58,7 +58,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/comment_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanum_bold"

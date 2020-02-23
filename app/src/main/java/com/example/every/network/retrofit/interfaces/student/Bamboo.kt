@@ -16,4 +16,7 @@ interface Bamboo {
 
     @POST("bamboo/post")
     fun postBamboo(@Header("token") token : String, @Body bambooPostData: BambooPostData) : Call<Response<Data>>
+
+    @GET("member/student/{studentIdx}")
+    fun getStudentInfo(@Header("token") token : String, @Path("studentIdx") studentIdx : Int) : Call<Response<Data>>
 }

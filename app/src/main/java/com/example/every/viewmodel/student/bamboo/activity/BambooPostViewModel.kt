@@ -28,7 +28,7 @@ class BambooPostViewModel : ViewModel(){
     val content_EditText = MutableLiveData<String>()
 
     fun postBamboo(){
-        if(!content_EditText.value.equals(null)){
+        if(!content_EditText.value.isNullOrEmpty()){
             val bambooPostData = BambooPostData(content_EditText.value.toString())
             val res : Call<Response<Data>> = netRetrofit.bamboo.postBamboo(tokenData.token.value.toString(), bambooPostData)
             res.enqueue(object : Callback<Response<Data>>{

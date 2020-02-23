@@ -107,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_bold"
-                    android:text="댓글 1개"
+                    android:text="@={viewModel.commentCountEditText}"
                     android:textSize="9dp" />
 
                 <View
@@ -174,9 +174,11 @@
                     android:paddingLeft="15dp"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:text="@={viewModel.replyEditText}"/>
 
                 <TextView
+                    android:onClick="@{() -> viewModel.postEvent()}"
                     android:layout_marginRight="25dp"
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"

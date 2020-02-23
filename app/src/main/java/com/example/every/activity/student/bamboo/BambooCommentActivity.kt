@@ -2,6 +2,7 @@ package com.example.every.activity.student.bamboo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -57,6 +58,15 @@ class BambooCommentActivity : AppCompatActivity() {
             })
             onFailEvent.observe(this@BambooCommentActivity, Observer {
 
+            })
+            onPostEvent.observe(this@BambooCommentActivity, Observer {
+                viewModel.postBambooReply(postIdx)
+            })
+            onSuccessEvent2.observe(this@BambooCommentActivity, Observer {
+                viewModel.getBambooComment(postIdx)
+            })
+            onFailEvent2.observe(this@BambooCommentActivity, Observer {
+                Toast.makeText(applicationContext, "내용을 입력해주세요!", Toast.LENGTH_SHORT).show()
             })
         }
     }

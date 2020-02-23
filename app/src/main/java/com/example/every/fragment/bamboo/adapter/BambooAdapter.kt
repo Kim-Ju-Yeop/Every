@@ -29,9 +29,15 @@ class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList
 
         var item : BambooPostList = items.get(position)
         val listener = View.OnClickListener {
-
             val intent = Intent(mContext, BambooCommentActivity::class.java)
+
+            intent.putExtra("idx", item.idx)
+            intent.putExtra("content", holder.itemView.content.text.toString())
+            intent.putExtra("created_at", holder.itemView.created_at.text.toString())
+            intent.putExtra("timer", holder.itemView.timer.text.toString())
+            intent.putExtra("comment", holder.itemView.comment.text.toString())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
             mContext.startActivity(intent)
         }
 

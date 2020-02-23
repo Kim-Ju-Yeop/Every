@@ -1,4 +1,4 @@
-package com.example.every.viewmodel.student.bamboo
+package com.example.every.viewmodel.student.bamboo.activity
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,6 @@ import com.example.every.network.Data
 import com.example.every.network.NetRetrofit
 import com.example.every.network.Response
 import com.example.every.network.request.model.student.BambooPostData
-import com.example.every.viewmodel.base.student.BaseStudentFragmentViewModel
 import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback

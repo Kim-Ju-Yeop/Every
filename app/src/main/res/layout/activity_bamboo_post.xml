@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.bamboo.BambooPostViewModel" />
+            type="com.example.every.viewmodel.student.bamboo.activity.BambooPostViewModel" />
     </data>
 
     <LinearLayout

@@ -1,6 +1,5 @@
 package com.example.every.activity.student.bamboo
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -10,9 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.activity.student.StudentMainActivity
 import com.example.every.databinding.ActivityBambooPostBinding
-import com.example.every.viewmodel.student.bamboo.BambooPostViewModel
+import com.example.every.viewmodel.student.bamboo.activity.BambooPostViewModel
 
 class BambooPostActivity : AppCompatActivity() {
 

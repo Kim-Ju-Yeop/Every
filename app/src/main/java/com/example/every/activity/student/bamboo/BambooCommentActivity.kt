@@ -2,12 +2,42 @@ package com.example.every.activity.student.bamboo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
+import com.example.every.databinding.ActivityBambooCommentBinding
+import com.example.every.viewmodel.student.bamboo.activity.BambooCommentViewModel
 
 class BambooCommentActivity : AppCompatActivity() {
+
+    lateinit var binding : ActivityBambooCommentBinding
+    lateinit var viewModel : BambooCommentViewModel
+
+    var postIdx : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bamboo_comment)
+
+        binding = DataBindingUtil.setContentView(this@BambooCommentActivity, R.layout.activity_bamboo_comment)
+        viewModel = ViewModelProviders.of(this@BambooCommentActivity).get(BambooCommentViewModel::class.java)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this@BambooCommentActivity
+    }
+
+    // Activity 새로 보이는 생명 주기
+    override fun onResume() {
+        super.onResume()
+        val intent = intent
+
+        binding.idx.text = "#${intent.extras!!.getInt("idx")}번째 이야기"
+        binding.createdAt.text = intent.extras!!.getString("created_at")
+        binding.timer.text = intent.extras!!.getString("timer")
+        binding.content.text = intent.extras!!.getString("content")
+        binding.comment.text = intent.extras!!.getString("comment")
+
+        postIdx = intent.extras!!.getInt("idx")
+        viewModel.getBambooComment(postIdx)
     }
 }

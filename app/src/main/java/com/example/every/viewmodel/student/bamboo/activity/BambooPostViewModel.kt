@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.every.base.view.student.tokenData
+import com.example.every.base.viewmodel.student.BaseStudentViewModel
 import com.example.every.network.Data
 import com.example.every.network.NetRetrofit
 import com.example.every.network.Response
@@ -12,7 +13,7 @@ import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
-class BambooPostViewModel : ViewModel(){
+class BambooPostViewModel : BaseStudentViewModel(){
 
     /**
      * PostBamboo 대나무숲 게시글 작성 API Response
@@ -20,13 +21,8 @@ class BambooPostViewModel : ViewModel(){
      * status[400] 검증 오류
      */
 
-    val netRetrofit = NetRetrofit()
-
-    val onSuccessEvent = SingleLiveEvent<Unit>()
-    val onFailEvent = SingleLiveEvent<Unit>()
-    val onImageEvent = SingleLiveEvent<Unit>()
-
     val content_EditText = MutableLiveData<String>()
+    val onImageEvent = SingleLiveEvent<Unit>()
 
     fun postBamboo(){
         if(!content_EditText.value.isNullOrEmpty()){
@@ -42,6 +38,5 @@ class BambooPostViewModel : ViewModel(){
             })
         }else onFailEvent.call()
     }
-
     fun addImage() = onImageEvent.call()
 }

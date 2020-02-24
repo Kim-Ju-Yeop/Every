@@ -161,7 +161,7 @@
                 android:background="@drawable/comment_background">
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/comment_editText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="15dp"
@@ -178,7 +178,7 @@
                     android:text="@={viewModel.replyEditText}"/>
 
                 <TextView
-                    android:onClick="@{() -> viewModel.postEvent()}"
+                    android:onClick="@{() -> viewModel.postBambooReply()}"
                     android:layout_marginRight="25dp"
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"

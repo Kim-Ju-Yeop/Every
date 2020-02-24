@@ -8,6 +8,10 @@ object tokenData{
     val token = MutableLiveData<String>()
 }
 
+object idxData{
+    val idx = MutableLiveData<Int>()
+}
+
 open class BaseStudentFragment : Fragment(){
 
 }

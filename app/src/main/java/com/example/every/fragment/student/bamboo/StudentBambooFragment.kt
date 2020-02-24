@@ -48,6 +48,7 @@ class StudentBambooFragment : BaseStudentFragment() {
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@StudentBambooFragment, Observer {
+                Toast.makeText(binding.root.context, "현재 게시물이 아무것도 존재하지 않습니다. 가장 먼저 글을 작성해보세요!", Toast.LENGTH_SHORT).show()
             })
             onTokenEvent.observe(this@StudentBambooFragment, Observer {
                 val loginData = context!!.applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)

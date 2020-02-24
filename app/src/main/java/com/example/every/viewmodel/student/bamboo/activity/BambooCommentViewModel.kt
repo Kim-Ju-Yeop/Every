@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.every.DTO.student.BambooReplyList
+import com.example.every.base.view.student.idxData
 import com.example.every.base.view.student.tokenData
+import com.example.every.base.viewmodel.student.BaseStudentViewModel
 import com.example.every.network.Data
 import com.example.every.network.NetRetrofit
 import com.example.every.network.Response
@@ -13,40 +15,45 @@ import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
-class BambooCommentViewModel : ViewModel(){
+class BambooCommentViewModel : BaseStudentViewModel(){
 
-    val netRetrofit = NetRetrofit()
+    /**
+     * getBambooComment 댓글 목록 조회 API Response
+     * status[200] 댓글 조회 성공
+     */
 
     val replyEditText = MutableLiveData<String>()
     val commentCountEditText = MutableLiveData<String>()
 
     var bambooCommentServerData = ArrayList<BambooReplyList>()
-    var bambooCommentList = ArrayList<BambooReplyList>()
+    var bambooCommentDataList = ArrayList<BambooReplyList>()
 
-    val onSuccessEvent = SingleLiveEvent<Unit>()
-    val onFailEvent = SingleLiveEvent<Unit>()
-    val onPostEvent = SingleLiveEvent<Unit>()
+    val onReplyEvent = SingleLiveEvent<Unit>()
+    val onReplyEmptyEvent = SingleLiveEvent<Unit>()
 
-    val onSuccessEvent2 = SingleLiveEvent<Unit>()
-    val onFailEvent2 = SingleLiveEvent<Unit>()
-
-    fun getBambooComment(idx : Int){
-        val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooComment(tokenData.token.value.toString(), idx)
-        res.enqueue(object : Callback<Response<Data>>{
-            override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-                when(response.code()){
+    fun getBambooComment() {
+        val res: Call<Response<Data>> =
+            netRetrofit.bamboo.getBambooComment(tokenData.token.value.toString(), idxData.idx.value!!)
+        res.enqueue(object : Callback<Response<Data>> {
+            override fun onResponse(
+                call: Call<Response<Data>>,
+                response: retrofit2.Response<Response<Data>>
+            ) {
+                when (response.code()) {
                     200 -> {
-                        if(!response.body()!!.data!!.replies.isNullOrEmpty()){
-                            bambooCommentList.clear()
-                            bambooCommentServerData = response!!.body()!!.data!!.replies as ArrayList<BambooReplyList>
+                        if (!response.body()!!.data!!.replies.isNullOrEmpty()) {
+                            bambooCommentDataList.clear()
+                            bambooCommentServerData =
+                                response!!.body()!!.data!!.replies as ArrayList<BambooReplyList>
 
-                            for(A in 0 until bambooCommentServerData.size){
-                                bambooCommentList.add(
+                            for (A in 0 until bambooCommentServerData.size) {
+                                bambooCommentDataList.add(
                                     BambooReplyList(
-                                                 bambooCommentServerData.get(A).idx,
-                                                 bambooCommentServerData.get(A).content,
-                                                 bambooCommentServerData.get(A).created_at,
-                                                 bambooCommentServerData.get(A).student_idx)
+                                        bambooCommentServerData.get(A).idx,
+                                        bambooCommentServerData.get(A).content,
+                                        bambooCommentServerData.get(A).created_at,
+                                        bambooCommentServerData.get(A).student_idx
+                                    )
                                 )
                                 onSuccessEvent.call()
                             }
@@ -56,30 +63,30 @@ class BambooCommentViewModel : ViewModel(){
                     }
                 }
             }
+
             override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
                 Log.e("getBambooComment[Error]", "대나무숲 게시물 댓글 검색 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
     }
-    fun postEvent() = onPostEvent.call()
 
-    fun postBambooReply(idx : Int){
+    /**
+     * postBambooReply 댓글 목록 조회 API Response
+     * status[200] 댓글 작 성공
+     */
+
+    fun postBambooReply(){
         if(!replyEditText.value.isNullOrEmpty()){
-            val bambooReplyData = BambooReplyData(replyEditText.value.toString(), idx)
+            val bambooReplyData = BambooReplyData(replyEditText.value.toString(), idxData.idx.value!!)
             val res : Call<Response<Data>> = netRetrofit.bamboo.postBambooReply(tokenData.token.value.toString(), bambooReplyData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-                    when(response.code()){
-                        200 -> {
-                            replyEditText.value = null
-                            onSuccessEvent2.call()
-                        }
-                    }
+                    if(response.code() == 200) onReplyEvent.call()
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-
+                    Log.e("postBambooReply[Error]", "대나무숲 게시물 댓글 작성 과정에서 서버와 통신이 되지 않습니다.")
                 }
             })
-         }else onFailEvent2.call()
+         }else onReplyEmptyEvent.call()
     }
 }

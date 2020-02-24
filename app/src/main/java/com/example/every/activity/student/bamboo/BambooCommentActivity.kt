@@ -8,15 +8,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.student.bamboo.adapter.BambooCommentAdapter
+import com.example.every.base.view.student.BaseStudentActivity
+import com.example.every.base.view.student.idxData
 import com.example.every.databinding.ActivityBambooCommentBinding
 import com.example.every.viewmodel.student.bamboo.activity.BambooCommentViewModel
 
-class BambooCommentActivity : AppCompatActivity() {
+class BambooCommentActivity : BaseStudentActivity() {
 
     lateinit var binding : ActivityBambooCommentBinding
     lateinit var viewModel : BambooCommentViewModel
-
-    var postIdx : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,30 +42,24 @@ class BambooCommentActivity : AppCompatActivity() {
         binding.content.text = intent.extras!!.getString("content")
         binding.comment.text = intent.extras!!.getString("comment")
 
-        postIdx = intent.extras!!.getInt("idx")
-        viewModel.getBambooComment(postIdx)
+        idxData.idx.value = intent.extras!!.getInt("idx")
+        viewModel.getBambooComment()
     }
 
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooCommentActivity, Observer {
-                val adapter =
-                    BambooCommentAdapter(
-                        applicationContext,
-                        viewModel.bambooCommentList
-                    )
+                val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentDataList)
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@BambooCommentActivity, Observer {
-
+                // 댓글 존재하지 않음
             })
-            onPostEvent.observe(this@BambooCommentActivity, Observer {
-                viewModel.postBambooReply(postIdx)
+            onReplyEvent.observe(this@BambooCommentActivity, Observer {
+                binding.commentEditText.text = null
+                viewModel.getBambooComment()
             })
-            onSuccessEvent2.observe(this@BambooCommentActivity, Observer {
-                viewModel.getBambooComment(postIdx)
-            })
-            onFailEvent2.observe(this@BambooCommentActivity, Observer {
+            onReplyEmptyEvent.observe(this@BambooCommentActivity, Observer {
                 Toast.makeText(applicationContext, "내용을 입력해주세요!", Toast.LENGTH_SHORT).show()
             })
         }

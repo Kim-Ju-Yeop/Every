@@ -41,7 +41,6 @@ class BambooCommentAdapter(val mContext : Context, val items : ArrayList<BambooR
         return items.size
     }
 
-
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         var view : View = itemView

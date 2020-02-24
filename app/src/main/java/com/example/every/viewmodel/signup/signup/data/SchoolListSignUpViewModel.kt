@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.every.DTO.signup.SchoolDataList
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.viewmodel.base.signup.BaseSignUpViewModel
+import com.example.every.base.viewmodel.signup.BaseSignUpViewModel
 import retrofit2.Call
 import retrofit2.Callback
 

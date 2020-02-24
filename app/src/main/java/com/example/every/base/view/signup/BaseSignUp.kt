@@ -1,6 +1,5 @@
-package com.example.every.activity.base
+package com.example.every.base.view.signup
 
-import android.content.Context
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar

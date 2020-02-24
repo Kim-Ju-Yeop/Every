@@ -1,6 +1,5 @@
-package com.example.every.viewmodel.base.signup
+package com.example.every.base.viewmodel.signup
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.every.network.NetRetrofit
 import com.example.every.widget.SingleLiveEvent

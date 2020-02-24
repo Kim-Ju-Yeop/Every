@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.activity.base.BaseSignUpActivity
-import com.example.every.activity.base.IdentityData
+import com.example.every.base.view.signup.BaseSignUpActivity
+import com.example.every.base.view.signup.IdentityData
 import com.example.every.activity.signup.SignUpData
 import com.example.every.databinding.ActivityNameBirthBinding
 import com.example.every.viewmodel.signup.signup.data.Name_BirthSignUpViewModel

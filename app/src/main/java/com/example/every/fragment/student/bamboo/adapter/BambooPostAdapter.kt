@@ -1,4 +1,4 @@
-package com.example.every.fragment.bamboo.adapter
+package com.example.every.fragment.student.bamboo.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,14 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.BambooPostList
 import com.example.every.R
 import com.example.every.activity.student.bamboo.BambooCommentActivity
-import com.example.every.fragment.base.tokenData
+import com.example.every.base.view.student.tokenData
 import kotlinx.android.synthetic.main.bamboo_item.view.*
-import java.lang.reflect.Modifier
 import java.util.*
 import kotlin.collections.ArrayList
 import java.text.SimpleDateFormat
 
-class BambooAdapter(val mContext : Context, val items : ArrayList<BambooPostList>) : RecyclerView.Adapter<BambooAdapter.ViewHolder>(){
+class BambooPostAdapter(val mContext : Context, val items : ArrayList<BambooPostList>) : RecyclerView.Adapter<BambooPostAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var inflater : LayoutInflater = LayoutInflater.from(parent.context)

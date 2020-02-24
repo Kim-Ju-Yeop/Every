@@ -1,8 +1,8 @@
 package com.example.every.activity.student.bamboo.adapter
 
 import android.widget.TextView
-import com.example.every.fragment.bamboo.adapter.TIME_MAXIMUM
-import com.example.every.fragment.base.tokenData
+import com.example.every.fragment.student.bamboo.adapter.TIME_MAXIMUM
+import com.example.every.base.view.student.tokenData
 import com.example.every.network.Data
 import com.example.every.network.NetRetrofit
 import com.example.every.network.Response

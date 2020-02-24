@@ -1,4 +1,4 @@
-package com.example.every.fragment.bamboo
+package com.example.every.fragment.student.bamboo
 
 import android.content.Context
 import android.content.Intent
@@ -13,12 +13,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.every.R
-import com.example.every.fragment.base.BaseStudentFragment
-import com.example.every.fragment.base.tokenData
+import com.example.every.base.view.student.tokenData
 import com.example.every.activity.signin.SignInActivity
 import com.example.every.activity.student.bamboo.BambooPostActivity
+import com.example.every.base.view.student.BaseStudentFragment
 import com.example.every.databinding.FragmentStudentBambooBinding
-import com.example.every.fragment.bamboo.adapter.BambooAdapter
+import com.example.every.fragment.student.bamboo.adapter.BambooPostAdapter
 import com.example.every.viewmodel.student.bamboo.StudentBambooFragmentViewModel
 
 class StudentBambooFragment : BaseStudentFragment() {
@@ -37,25 +37,19 @@ class StudentBambooFragment : BaseStudentFragment() {
         refreshLayout()
         return binding.root
     }
-
-    // Activity 새로 보이는 생명 주기
     override fun onResume() {
         super.onResume()
-        viewModel.bambooPostList(tokenData.token.value.toString())
+        viewModel.getBambooPost(tokenData.token.value.toString())
     }
-
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@StudentBambooFragment, Observer {
-                val adapter = BambooAdapter(context!!.applicationContext, viewModel.bambooPostDataList)
+                val adapter = BambooPostAdapter(context!!.applicationContext, viewModel.bambooPostDataList)
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@StudentBambooFragment, Observer {
-                // 게시글 데이터 존재하지 않음
             })
             onTokenEvent.observe(this@StudentBambooFragment, Observer {
-
-                // SignInData Setting
                 val loginData = context!!.applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
                 val loginData_editor = loginData.edit()
 
@@ -71,11 +65,10 @@ class StudentBambooFragment : BaseStudentFragment() {
             })
         }
     }
-
     fun refreshLayout(){
         binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
             override fun onRefresh() {
-                viewModel.bambooPostList(tokenData.token.value.toString())
+                viewModel.getBambooPost(tokenData.token.value.toString())
                 Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
             }
         })

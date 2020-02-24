@@ -1,6 +1,5 @@
 package com.example.every.activity.student.bamboo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -9,10 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
+import com.example.every.base.view.student.BaseStudentActivity
 import com.example.every.databinding.ActivityBambooPostBinding
 import com.example.every.viewmodel.student.bamboo.activity.BambooPostViewModel
 
-class BambooPostActivity : AppCompatActivity() {
+class BambooPostActivity : BaseStudentActivity() {
 
     lateinit var binding : ActivityBambooPostBinding
     lateinit var viewModel : BambooPostViewModel
@@ -39,9 +39,7 @@ class BambooPostActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> onBackPressed()
-        }
+        when(item.itemId) { android.R.id.home -> onBackPressed() }
         return super.onOptionsItemSelected(item)
     }
 

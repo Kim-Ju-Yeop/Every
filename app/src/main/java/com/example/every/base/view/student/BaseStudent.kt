@@ -1,5 +1,6 @@
-package com.example.every.fragment.base
+package com.example.every.base.view.student
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 
@@ -8,5 +9,9 @@ object tokenData{
 }
 
 open class BaseStudentFragment : Fragment(){
+
+}
+
+open class BaseStudentActivity : AppCompatActivity(){
 
 }

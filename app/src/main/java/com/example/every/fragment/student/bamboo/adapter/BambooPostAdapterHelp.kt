@@ -1,4 +1,4 @@
-package com.example.every.fragment.bamboo.adapter
+package com.example.every.fragment.student.bamboo.adapter
 
 import android.util.Log
 import android.widget.TextView

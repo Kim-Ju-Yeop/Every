@@ -1,4 +1,4 @@
-package com.example.every.fragment
+package com.example.every.fragment.student
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -10,8 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 
 import com.example.every.R
-import com.example.every.fragment.base.BaseStudentFragment
-import com.example.every.fragment.base.tokenData
+import com.example.every.base.view.student.BaseStudentFragment
+import com.example.every.base.view.student.tokenData
 import com.example.every.databinding.FragmentStudentMainBinding
 import com.example.every.viewmodel.student.StudentMainFragmentViewModel
 

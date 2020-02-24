@@ -1,4 +1,4 @@
-package com.example.every.fragment
+package com.example.every.fragment.student
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.every.R
-import com.example.every.fragment.base.BaseStudentFragment
+import com.example.every.base.view.student.BaseStudentFragment
 
 class StudentMoreFragment : BaseStudentFragment() {
 

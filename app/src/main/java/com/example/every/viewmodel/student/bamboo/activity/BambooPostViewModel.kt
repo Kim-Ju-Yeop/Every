@@ -3,7 +3,7 @@ package com.example.every.viewmodel.student.bamboo.activity
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.every.fragment.base.tokenData
+import com.example.every.base.view.student.tokenData
 import com.example.every.network.Data
 import com.example.every.network.NetRetrofit
 import com.example.every.network.Response
@@ -17,6 +17,7 @@ class BambooPostViewModel : ViewModel(){
     /**
      * PostBamboo 대나무숲 게시글 작성 API Response
      * status[200] 게시글 작성 성공
+     * status[400] 검증 오류
      */
 
     val netRetrofit = NetRetrofit()

@@ -6,8 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.activity.base.BaseSignUpActivity
-import com.example.every.activity.base.IdentityData
+import com.example.every.base.view.signup.BaseSignUpActivity
+import com.example.every.base.view.signup.IdentityData
 import com.example.every.activity.signin.SignInActivity
 import com.example.every.activity.signup.SignUpActivity
 import com.example.every.databinding.ActivitySignUpFinishBinding

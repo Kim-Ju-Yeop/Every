@@ -93,7 +93,7 @@
                     android:inputType="textMultiLine"
                     android:textSize="15sp"
                     android:text="@={viewModel.content_EditText}"
-                    android:maxLength="8"/>
+                    android:maxLength="500"/>
             </LinearLayout>
         </LinearLayout>
 

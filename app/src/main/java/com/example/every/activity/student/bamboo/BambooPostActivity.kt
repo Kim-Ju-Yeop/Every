@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.base.view.student.BaseStudentActivity
+import com.example.every.base.view.student.toastMessage
 import com.example.every.databinding.ActivityBambooPostBinding
 import com.example.every.viewmodel.student.bamboo.activity.BambooPostViewModel
 
@@ -54,6 +55,9 @@ class BambooPostActivity : BaseStudentActivity() {
             })
             onImageEvent.observe(this@BambooPostActivity, Observer {
                 Toast.makeText(applicationContext, "아직 사진과 비디오 추가 기능을 제공하지 않습니다.", Toast.LENGTH_SHORT).show()
+            })
+            content_EditText.observe(this@BambooPostActivity, Observer {
+                if(content_EditText.value!!.length >= 500) toastMessage(applicationContext, "500글자 내외로 작성할 수 있습니다.")
             })
         }
     }

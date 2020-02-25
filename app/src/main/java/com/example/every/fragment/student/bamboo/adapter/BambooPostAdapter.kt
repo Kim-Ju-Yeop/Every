@@ -2,9 +2,11 @@ package com.example.every.fragment.student.bamboo.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.BambooPostList
 import com.example.every.R
@@ -57,6 +59,7 @@ class BambooPostAdapter(val mContext : Context, val items : ArrayList<BambooPost
         fun bind(listener : View.OnClickListener, item : BambooPostList){
             itemView.idx.text = "#${item.idx}번째 이야기"
             itemView.content.text = item.content
+            view.setOnClickListener(listener)
 
             // created_at TextView
             val format = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
@@ -78,7 +81,6 @@ class BambooPostAdapter(val mContext : Context, val items : ArrayList<BambooPost
 
             // comment TextView
             getBambooComment(tokenData.token.value.toString(), item.idx, itemView.comment)
-            view.setOnClickListener(listener)
         }
     }
 }

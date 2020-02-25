@@ -17,6 +17,7 @@ import com.example.every.base.view.student.tokenData
 import com.example.every.activity.signin.SignInActivity
 import com.example.every.activity.student.bamboo.BambooPostActivity
 import com.example.every.base.view.student.BaseStudentFragment
+import com.example.every.base.view.student.toastMessage
 import com.example.every.databinding.FragmentStudentBambooBinding
 import com.example.every.fragment.student.bamboo.adapter.BambooPostAdapter
 import com.example.every.viewmodel.student.bamboo.StudentBambooFragmentViewModel
@@ -48,7 +49,7 @@ class StudentBambooFragment : BaseStudentFragment() {
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@StudentBambooFragment, Observer {
-                Toast.makeText(binding.root.context, "현재 게시물이 아무것도 존재하지 않습니다. 가장 먼저 글을 작성해보세요!", Toast.LENGTH_SHORT).show()
+                toastMessage(binding.root.context, "현재 게시물이 아무것도 존재하지 않습니다. 가장 먼저 글을 작성해보세요!")
             })
             onTokenEvent.observe(this@StudentBambooFragment, Observer {
                 val loginData = context!!.applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
@@ -57,7 +58,7 @@ class StudentBambooFragment : BaseStudentFragment() {
                 loginData_editor.putBoolean("loginData", false)
                 loginData_editor.commit()
 
-                Toast.makeText(context!!.applicationContext, "토큰이 만료되었습니다. 로그인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show()
+                toastMessage(binding.root.context, "토큰이 만료되었습니다. 로그인 화면으로 이동합니다.")
                 startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
                 activity!!.finish()
             })

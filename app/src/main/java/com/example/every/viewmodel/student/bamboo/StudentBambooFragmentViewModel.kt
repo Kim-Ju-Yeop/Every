@@ -2,6 +2,7 @@ package com.example.every.viewmodel.student.bamboo
 
 import android.util.Log
 import com.example.every.DTO.student.BambooPostList
+import com.example.every.base.view.student.tokenData
 import com.example.every.network.Data
 import com.example.every.network.Response
 import com.example.every.base.viewmodel.student.BaseStudentViewModel
@@ -25,8 +26,8 @@ class StudentBambooFragmentViewModel : BaseStudentViewModel(){
     var bambooPostServerData = ArrayList<BambooPostList>()
     var bambooPostDataList = ArrayList<BambooPostList>()
 
-    fun getBambooPost(token : String){
-        val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPost(token)
+    fun getBambooPost(){
+        val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPost(tokenData.token.value.toString())
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 when(response.code()){

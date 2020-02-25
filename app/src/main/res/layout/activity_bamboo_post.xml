@@ -92,7 +92,8 @@
                     android:hint="글을 작성해주세요!"
                     android:inputType="textMultiLine"
                     android:textSize="15sp"
-                    android:text="@={viewModel.content_EditText}"/>
+                    android:text="@={viewModel.content_EditText}"
+                    android:maxLength="8"/>
             </LinearLayout>
         </LinearLayout>
 

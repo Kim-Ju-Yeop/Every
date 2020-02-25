@@ -58,8 +58,7 @@ class BambooCommentViewModel : BaseStudentViewModel(){
                                 onSuccessEvent.call()
                             }
                             commentCountEditText.value = "댓글 ${bambooCommentServerData.size}개"
-                        }
-                        onFailEvent.call()
+                        } else onFailEvent.call()
                     }
                 }
             }

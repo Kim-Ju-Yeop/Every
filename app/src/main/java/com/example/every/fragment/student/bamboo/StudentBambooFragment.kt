@@ -39,7 +39,7 @@ class StudentBambooFragment : BaseStudentFragment() {
     }
     override fun onResume() {
         super.onResume()
-        viewModel.getBambooPost(tokenData.token.value.toString())
+        viewModel.getBambooPost()
     }
     fun observerViewModel(){
         with(viewModel){
@@ -69,7 +69,7 @@ class StudentBambooFragment : BaseStudentFragment() {
     fun refreshLayout(){
         binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
             override fun onRefresh() {
-                viewModel.getBambooPost(tokenData.token.value.toString())
+                viewModel.getBambooPost()
                 Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
             }
         })

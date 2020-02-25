@@ -2,6 +2,7 @@ package com.example.every.activity.student.bamboo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -49,11 +50,15 @@ class BambooCommentActivity : BaseStudentActivity() {
     fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooCommentActivity, Observer {
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.questionLayout.visibility = View.GONE
+
                 val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentDataList)
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@BambooCommentActivity, Observer {
-                // 댓글 존재하지 않음
+                binding.recyclerView.visibility = View.GONE
+                binding.questionLayout.visibility = View.VISIBLE
             })
             onReplyEvent.observe(this@BambooCommentActivity, Observer {
                 binding.commentEditText.text = null

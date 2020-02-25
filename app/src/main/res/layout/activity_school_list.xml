@@ -97,7 +97,7 @@
                     android:visibility="visible">
 
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/answer_imageView"
                         android:layout_width="115dp"
                         android:layout_height="115dp"
                         android:layout_gravity="center"

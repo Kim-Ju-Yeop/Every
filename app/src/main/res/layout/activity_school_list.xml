@@ -14,7 +14,7 @@
         android:layout_width="350dp"
         android:layout_height="550dp"
         android:orientation="vertical"
-        tools:context=".activity.signup.signup.data.SchoolListSignUpActivity"
+        tools:context=".view.activity.signup.signup.data.SchoolListSignUpActivity"
         android:background="@android:color/transparent">
 
         <LinearLayout

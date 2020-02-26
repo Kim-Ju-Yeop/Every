@@ -125,44 +125,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/question_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="300dp"
-                        android:layout_height="300dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/nocomment" />
-
-                    <TextView
-                        android:id="@+id/answer_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:gravity="center"
-                        android:text="댓글이 존재하지 않습니다."
-                        android:textSize="15dp"
-                        android:fontFamily="@font/nanum_extrabold"/>
-
-                    <TextView
-                        android:id="@+id/answer_textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:gravity="center"
-                        android:text="여러분이 가장 먼저 댓글을 남겨보세요!"
-                        android:textSize="15dp"
-                        android:fontFamily="@font/nanum_extrabold"/>
-
-                </LinearLayout>
-
                 <androidx.recyclerview.widget.RecyclerView
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:id="@+id/recyclerView"

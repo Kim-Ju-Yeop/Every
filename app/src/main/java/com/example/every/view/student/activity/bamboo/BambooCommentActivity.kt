@@ -31,7 +31,6 @@ class BambooCommentActivity : BaseActivity() {
         observerViewModel()
     }
 
-    // Activity 새로 보이는 생명 주기
     override fun onResume() {
         super.onResume()
         val intent = intent
@@ -49,15 +48,11 @@ class BambooCommentActivity : BaseActivity() {
     override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooCommentActivity, Observer {
-                binding.recyclerView.visibility = View.VISIBLE
-                binding.questionLayout.visibility = View.GONE
-
                 val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentDataList)
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@BambooCommentActivity, Observer {
-                binding.recyclerView.visibility = View.GONE
-                binding.questionLayout.visibility = View.VISIBLE
+                Toast.makeText(applicationContext, "댓글이 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
             })
             onReplyEvent.observe(this@BambooCommentActivity, Observer {
                 binding.commentEditText.text = null

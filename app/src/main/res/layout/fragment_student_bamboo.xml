@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.fragment.student.bamboo.StudentBambooFragment">
+    tools:context=".view.student.fragment.bamboo.StudentBambooFragment">
     
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.bamboo.StudentBambooFragmentViewModel" />
+            type="com.example.every.viewmodel.student.fragment.StudentBambooFragmentViewModel" />
     </data>
 
     <LinearLayout

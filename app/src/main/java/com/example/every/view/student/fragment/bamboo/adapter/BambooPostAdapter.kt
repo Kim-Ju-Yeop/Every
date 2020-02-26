@@ -25,7 +25,6 @@ class BambooPostAdapter(val mContext : Context, val items : ArrayList<BambooPost
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         var item : BambooPostList = items.get(position)
         val listener = View.OnClickListener {
             val intent = Intent(mContext, BambooCommentActivity::class.java)
@@ -57,7 +56,7 @@ class BambooPostAdapter(val mContext : Context, val items : ArrayList<BambooPost
         fun bind(listener : View.OnClickListener, item : BambooPostList){
             itemView.idx.text = "#${item.idx}번째 이야기"
             itemView.content.text = item.content
-            view.setOnClickListener(listener)
+            itemView.content.isSelected = true
 
             // created_at TextView
             val format = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
@@ -79,6 +78,7 @@ class BambooPostAdapter(val mContext : Context, val items : ArrayList<BambooPost
 
             // comment TextView
             getBambooComment(StudentData.token.value.toString(), item.idx, itemView.comment)
+            view.setOnClickListener(listener)
         }
     }
 }

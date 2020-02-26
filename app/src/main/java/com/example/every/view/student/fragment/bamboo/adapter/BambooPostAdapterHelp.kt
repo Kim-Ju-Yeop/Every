@@ -75,7 +75,7 @@ fun getBambooComment(token : String, idx : Int, comment : TextView){
     /**
      * getBambooComment 댓글 조회 API Response
      * status[200] 댓글 조회 성공
-     * status[200] 댓글 존재하지 않
+     * status[200] 댓글 존재하지 않음
      */
 
     val netRetrofit = NetRetrofit()

@@ -66,6 +66,7 @@ class StudentBambooFragment : BaseFragment() {
             })
         }
     }
+
     fun refreshLayout(){
         binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
             override fun onRefresh() {

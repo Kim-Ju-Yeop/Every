@@ -21,9 +21,6 @@ class SchoolAdapter(val mContext : Context, val items : ArrayList<SchoolDataList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        items.get(position).school_name
-
         var item : SchoolDataList = items.get(position)
         val listener = View.OnClickListener {
             val sharedPreferences = mContext.getSharedPreferences("checkSchool", Context.MODE_PRIVATE)

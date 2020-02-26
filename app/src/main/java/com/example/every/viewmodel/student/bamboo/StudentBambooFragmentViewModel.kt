@@ -2,15 +2,15 @@ package com.example.every.viewmodel.student.bamboo
 
 import android.util.Log
 import com.example.every.DTO.student.BambooPostList
-import com.example.every.base.view.student.tokenData
+import com.example.every.base.BaseViewModel
+import com.example.every.base.StudentData
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.base.viewmodel.student.BaseStudentViewModel
 import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
-class StudentBambooFragmentViewModel : BaseStudentViewModel(){
+class StudentBambooFragmentViewModel : BaseViewModel(){
 
     /**
      * bambooPostList 대나무숲 게시글 조회 API Response
@@ -21,13 +21,13 @@ class StudentBambooFragmentViewModel : BaseStudentViewModel(){
      * status[410] 토큰 기한 만료
      */
 
-    val onPostEvent = SingleLiveEvent<Unit>()
+    val onTokenEvent = SingleLiveEvent<Unit>()
 
     var bambooPostServerData = ArrayList<BambooPostList>()
     var bambooPostDataList = ArrayList<BambooPostList>()
 
     fun getBambooPost(){
-        val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPost(tokenData.token.value.toString())
+        val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPost(StudentData.token.value.toString())
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 when(response.code()){
@@ -56,5 +56,5 @@ class StudentBambooFragmentViewModel : BaseStudentViewModel(){
             }
         })
     }
-    fun newPost() = onPostEvent.call()
+    fun newPost() = onNextEvent.call()
 }

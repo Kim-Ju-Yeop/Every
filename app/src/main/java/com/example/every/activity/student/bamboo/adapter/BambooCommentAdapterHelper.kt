@@ -1,8 +1,8 @@
 package com.example.every.activity.student.bamboo.adapter
 
 import android.widget.TextView
+import com.example.every.base.StudentData
 import com.example.every.fragment.student.bamboo.adapter.TIME_MAXIMUM
-import com.example.every.base.view.student.tokenData
 import com.example.every.network.Data
 import com.example.every.network.NetRetrofit
 import com.example.every.network.Response
@@ -12,7 +12,7 @@ import java.util.*
 
 fun getStudentInfo(studentIdx : Int, studentName : TextView){
     val neRetrofit = NetRetrofit()
-    val res : Call<Response<Data>> = neRetrofit.bamboo.getStudentInfo(tokenData.token.value.toString(), studentIdx)
+    val res : Call<Response<Data>> = neRetrofit.bamboo.getStudentInfo(StudentData.token.value.toString(), studentIdx)
     res.enqueue(object : Callback<Response<Data>>{
         override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
             when(response.code()){

@@ -7,22 +7,19 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.every.R
-import com.example.every.base.view.student.tokenData
 import com.example.every.activity.signin.SignInActivity
 import com.example.every.activity.student.bamboo.BambooPostActivity
-import com.example.every.base.view.student.BaseStudentFragment
-import com.example.every.base.view.student.toastMessage
+import com.example.every.base.BaseFragment
 import com.example.every.databinding.FragmentStudentBambooBinding
 import com.example.every.fragment.student.bamboo.adapter.BambooPostAdapter
 import com.example.every.viewmodel.student.bamboo.StudentBambooFragmentViewModel
 
-class StudentBambooFragment : BaseStudentFragment() {
+class StudentBambooFragment : BaseFragment() {
 
     lateinit var binding : FragmentStudentBambooBinding
     lateinit var viewModel : StudentBambooFragmentViewModel
@@ -38,11 +35,13 @@ class StudentBambooFragment : BaseStudentFragment() {
         refreshLayout()
         return binding.root
     }
+
     override fun onResume() {
         super.onResume()
         viewModel.getBambooPost()
     }
-    fun observerViewModel(){
+
+    override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@StudentBambooFragment, Observer {
                 val adapter = BambooPostAdapter(context!!.applicationContext, viewModel.bambooPostDataList)
@@ -62,7 +61,7 @@ class StudentBambooFragment : BaseStudentFragment() {
                 startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
                 activity!!.finish()
             })
-            onPostEvent.observe(this@StudentBambooFragment, Observer {
+            onNextEvent.observe(this@StudentBambooFragment, Observer {
                startActivity(Intent(binding.root.context, BambooPostActivity::class.java))
             })
         }

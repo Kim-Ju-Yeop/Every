@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.example.every.R
-import com.example.every.databinding.ActivityStudentMainActivitiyBinding
+import com.example.every.databinding.ActivityStudentMainBinding
 import com.example.every.fragment.student.bamboo.StudentBambooFragment
 import com.example.every.fragment.student.StudentMainFragment
 import com.example.every.fragment.student.StudentMoreFragment
@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class StudentMainActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityStudentMainActivitiyBinding
+    lateinit var binding : ActivityStudentMainBinding
 
     val studentMainFragment = StudentMainFragment()
     val studentBambooFragment = StudentBambooFragment()
@@ -23,9 +23,9 @@ class StudentMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_student_main_activitiy)
+        setContentView(R.layout.activity_student_main)
 
-        binding = DataBindingUtil.setContentView(this@StudentMainActivity, R.layout.activity_student_main_activitiy)
+        binding = DataBindingUtil.setContentView(this@StudentMainActivity, R.layout.activity_student_main)
         binding.lifecycleOwner = this@StudentMainActivity
 
         init()

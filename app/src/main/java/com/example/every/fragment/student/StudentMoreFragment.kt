@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 
 import com.example.every.R
-import com.example.every.base.view.student.BaseStudentFragment
+import com.example.every.base.BaseFragment
 
-class StudentMoreFragment : BaseStudentFragment() {
+class StudentMoreFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

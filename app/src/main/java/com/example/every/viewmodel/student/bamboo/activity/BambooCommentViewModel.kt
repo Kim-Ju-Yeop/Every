@@ -2,20 +2,17 @@ package com.example.every.viewmodel.student.bamboo.activity
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.every.DTO.student.BambooReplyList
-import com.example.every.base.view.student.idxData
-import com.example.every.base.view.student.tokenData
-import com.example.every.base.viewmodel.student.BaseStudentViewModel
+import com.example.every.base.BaseViewModel
+import com.example.every.base.StudentData
 import com.example.every.network.Data
-import com.example.every.network.NetRetrofit
 import com.example.every.network.Response
 import com.example.every.network.request.model.student.BambooReplyData
 import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
-class BambooCommentViewModel : BaseStudentViewModel(){
+class BambooCommentViewModel : BaseViewModel(){
 
     /**
      * getBambooComment 댓글 목록 조회 API Response
@@ -32,13 +29,9 @@ class BambooCommentViewModel : BaseStudentViewModel(){
     val onReplyEmptyEvent = SingleLiveEvent<Unit>()
 
     fun getBambooComment() {
-        val res: Call<Response<Data>> =
-            netRetrofit.bamboo.getBambooComment(tokenData.token.value.toString(), idxData.idx.value!!)
+        val res: Call<Response<Data>> = netRetrofit.bamboo.getBambooComment(StudentData.token.value.toString(), StudentData.postIdx.value!!)
         res.enqueue(object : Callback<Response<Data>> {
-            override fun onResponse(
-                call: Call<Response<Data>>,
-                response: retrofit2.Response<Response<Data>>
-            ) {
+            override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 when (response.code()) {
                     200 -> {
                         if (!response.body()!!.data!!.replies.isNullOrEmpty()) {
@@ -71,13 +64,13 @@ class BambooCommentViewModel : BaseStudentViewModel(){
 
     /**
      * postBambooReply 댓글 목록 조회 API Response
-     * status[200] 댓글 작 성공
+     * status[200] 댓글 작성 성공
      */
 
     fun postBambooReply(){
         if(!replyEditText.value.isNullOrEmpty()){
-            val bambooReplyData = BambooReplyData(replyEditText.value.toString(), idxData.idx.value!!)
-            val res : Call<Response<Data>> = netRetrofit.bamboo.postBambooReply(tokenData.token.value.toString(), bambooReplyData)
+            val bambooReplyData = BambooReplyData(replyEditText.value.toString(), StudentData.postIdx.value!!)
+            val res : Call<Response<Data>> = netRetrofit.bamboo.postBambooReply(StudentData.token.value.toString(), bambooReplyData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                     if(response.code() == 200) onReplyEvent.call()

@@ -8,12 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.base.view.student.BaseStudentActivity
-import com.example.every.base.view.student.toastMessage
+import com.example.every.base.BaseActivity
 import com.example.every.databinding.ActivityBambooPostBinding
 import com.example.every.viewmodel.student.bamboo.activity.BambooPostViewModel
 
-class BambooPostActivity : BaseStudentActivity() {
+class BambooPostActivity : BaseActivity() {
 
     lateinit var binding : ActivityBambooPostBinding
     lateinit var viewModel : BambooPostViewModel
@@ -32,19 +31,7 @@ class BambooPostActivity : BaseStudentActivity() {
         observerViewModel()
     }
 
-    // Toolbar Setting
-    fun toolbarInit(toolbar : Toolbar){
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) { android.R.id.home -> onBackPressed() }
-        return super.onOptionsItemSelected(item)
-    }
-
-    fun observerViewModel(){
+    override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooPostActivity, Observer {
                 Toast.makeText(applicationContext, "정상적으로 글 작성을 수행하였습니다.", Toast.LENGTH_SHORT).show()

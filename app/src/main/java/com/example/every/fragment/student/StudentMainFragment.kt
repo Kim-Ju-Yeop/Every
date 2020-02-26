@@ -7,15 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-
 import com.example.every.R
-import com.example.every.base.view.student.BaseStudentFragment
-import com.example.every.base.view.student.tokenData
+import com.example.every.base.BaseFragment
+import com.example.every.base.StudentData
 import com.example.every.databinding.FragmentStudentMainBinding
 import com.example.every.viewmodel.student.StudentMainFragmentViewModel
 
-class StudentMainFragment : BaseStudentFragment() {
+class StudentMainFragment : Fragment() {
 
     lateinit var binding : FragmentStudentMainBinding
     lateinit var viewModel : StudentMainFragmentViewModel
@@ -27,8 +27,12 @@ class StudentMainFragment : BaseStudentFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentMainFragment
 
-        val checkToken : SharedPreferences = context!!.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
-        tokenData.token.value = checkToken.getString("tokenData", null)
+        init()
         return binding.root
+    }
+
+    fun init(){
+        val checkToken : SharedPreferences = context!!.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
+        StudentData.token.value = checkToken.getString("tokenData", null)
     }
 }

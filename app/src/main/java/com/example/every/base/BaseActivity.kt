@@ -1,6 +1,8 @@
 package com.example.every.base
 
+import android.content.Context
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.every.R
@@ -30,5 +32,9 @@ abstract class BaseActivity : AppCompatActivity() {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun toastMessage(context : Context, message : String){
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

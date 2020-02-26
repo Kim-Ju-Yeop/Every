@@ -2,16 +2,14 @@ package com.example.every.fragment.student.bamboo.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.BambooPostList
 import com.example.every.R
 import com.example.every.activity.student.bamboo.BambooCommentActivity
-import com.example.every.base.view.student.tokenData
+import com.example.every.base.StudentData
 import kotlinx.android.synthetic.main.bamboo_item.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -80,7 +78,7 @@ class BambooPostAdapter(val mContext : Context, val items : ArrayList<BambooPost
             itemView.timer.text = formatTimeString(date2)
 
             // comment TextView
-            getBambooComment(tokenData.token.value.toString(), item.idx, itemView.comment)
+            getBambooComment(StudentData.token.value.toString(), item.idx, itemView.comment)
         }
     }
 }

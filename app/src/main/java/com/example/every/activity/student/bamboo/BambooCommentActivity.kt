@@ -1,6 +1,5 @@
 package com.example.every.activity.student.bamboo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,12 +8,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.student.bamboo.adapter.BambooCommentAdapter
-import com.example.every.base.view.student.BaseStudentActivity
-import com.example.every.base.view.student.idxData
+import com.example.every.base.BaseActivity
+import com.example.every.base.StudentData
 import com.example.every.databinding.ActivityBambooCommentBinding
 import com.example.every.viewmodel.student.bamboo.activity.BambooCommentViewModel
 
-class BambooCommentActivity : BaseStudentActivity() {
+class BambooCommentActivity : BaseActivity() {
 
     lateinit var binding : ActivityBambooCommentBinding
     lateinit var viewModel : BambooCommentViewModel
@@ -43,11 +42,11 @@ class BambooCommentActivity : BaseStudentActivity() {
         binding.content.text = intent.extras!!.getString("content")
         binding.comment.text = intent.extras!!.getString("comment")
 
-        idxData.idx.value = intent.extras!!.getInt("idx")
+        StudentData.postIdx.value = intent.extras!!.getInt("idx")
         viewModel.getBambooComment()
     }
 
-    fun observerViewModel(){
+    override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooCommentActivity, Observer {
                 binding.recyclerView.visibility = View.VISIBLE

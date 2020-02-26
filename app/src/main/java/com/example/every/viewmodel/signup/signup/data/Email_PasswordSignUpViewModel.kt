@@ -2,13 +2,14 @@ package com.example.every.viewmodel.signup.signup.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.every.base.BaseViewModel
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.base.viewmodel.signup.BaseSignUpViewModel
 import retrofit2.Call
 import retrofit2.Callback
+import java.util.regex.Pattern
 
-class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
+class Email_PasswordSignUpViewModel : BaseViewModel(){
 
     /**
      * EmailOverlap 이메일 중복확인 API Response
@@ -26,7 +27,7 @@ class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
         if(id == 0 && !android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches()){
             email_check.value = "이메일 형식이 올바르지 않습니다."
             return false
-        } else if(id == 1 && !password_validity.matcher(text).matches()){
+        } else if(id == 1 && !Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{8,20}$").matcher(text).matches()){
             pw_check.value = "비밀번호 형식이 올바르지 않습니다."
             return false
         }
@@ -36,6 +37,7 @@ class Email_PasswordSignUpViewModel : BaseSignUpViewModel(){
             return true
         }
     }
+
     fun overlapEmail(text : String){
         val res : Call<Response<Data>> = netRetrofit.signUp.getOverlapEmail(text)
         res.enqueue(object : Callback<Response<Data>>{

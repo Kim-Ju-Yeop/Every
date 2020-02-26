@@ -6,41 +6,41 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.base.view.signup.BaseSignUpActivity
-import com.example.every.base.view.signup.IdentityData
 import com.example.every.activity.signin.SignInActivity
 import com.example.every.activity.signup.SignUpActivity
+import com.example.every.base.BaseActivity
+import com.example.every.base.SignUpData
 import com.example.every.databinding.ActivitySignUpFinishBinding
 import com.example.every.viewmodel.signup.signup.data.SignUpFinishViewModel
 
-class SignUpFinishActivity : BaseSignUpActivity() {
+class SignUpFinishActivity : BaseActivity() {
 
     lateinit var binding : ActivitySignUpFinishBinding
-    lateinit var finishViewModel :SignUpFinishViewModel
+    lateinit var viewModel :SignUpFinishViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_finish)
 
         binding = DataBindingUtil.setContentView(this@SignUpFinishActivity, R.layout.activity_sign_up_finish)
-        finishViewModel = ViewModelProviders.of(this@SignUpFinishActivity).get(SignUpFinishViewModel::class.java)
+        viewModel = ViewModelProviders.of(this@SignUpFinishActivity).get(SignUpFinishViewModel::class.java)
 
-        binding.viewModel = finishViewModel
+        binding.viewModel = viewModel
         binding.lifecycleOwner = this@SignUpFinishActivity
 
-        observerViewModel()
         register()
+        observerViewModel()
     }
 
     fun register(){
-        finishViewModel.firstText.value = "회원가입 완료"
-        finishViewModel.secondText.value = "정상적으로 회원가입이 완료되었습니다!"
+        viewModel.firstText.value = "회원가입 완료"
+        viewModel.secondText.value = "정상적으로 회원가입이 완료되었습니다!"
 
-        finishViewModel.signUp(IdentityData.identityData!!)
+        viewModel.signUp(SignUpData.identityData!!)
     }
 
-    fun observerViewModel(){
-        with(finishViewModel){
+    override fun observerViewModel(){
+        with(viewModel){
             onSuccessEvent.observe(this@SignUpFinishActivity, Observer {
                 binding.nextButton.text = "로그인 하기"
             })

@@ -3,6 +3,7 @@ package com.example.every.viewmodel.signin
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.every.base.BaseViewModel
 import com.example.every.network.Data
 import com.example.every.network.NetRetrofit
 import com.example.every.network.request.model.signin.SignInData
@@ -11,7 +12,7 @@ import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
-class SignInViewModel : ViewModel() {
+class SignInViewModel : BaseViewModel() {
 
     /**
      * SignIn 로그인 API Response
@@ -20,8 +21,6 @@ class SignInViewModel : ViewModel() {
      * status[401] -> 로그인 실패 : onFailEvent
      */
 
-    val netRetrofit = NetRetrofit()
-
     val token = MutableLiveData<String>()
     val email = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
@@ -29,9 +28,6 @@ class SignInViewModel : ViewModel() {
 
     val onSignUpEvent = SingleLiveEvent<Unit>()
     val onLostPwEvent = SingleLiveEvent<Unit>()
-    val onSuccessEvent = SingleLiveEvent<Unit>()
-    val onErrorEvent = SingleLiveEvent<Unit>()
-    val onFailEvent = SingleLiveEvent<Unit>()
 
     fun signUp() = onSignUpEvent.call()
     fun lostPw() = onLostPwEvent.call()

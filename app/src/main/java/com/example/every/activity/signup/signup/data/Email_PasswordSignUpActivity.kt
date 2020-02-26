@@ -8,13 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.base.view.signup.BaseSignUpActivity
-import com.example.every.base.view.signup.IdentityData
-import com.example.every.activity.signup.SignUpData
+import com.example.every.base.BaseActivity
+import com.example.every.base.SignUpData
 import com.example.every.databinding.ActivityEmailPasswordBinding
 import com.example.every.viewmodel.signup.signup.data.Email_PasswordSignUpViewModel
 
-class Email_PasswordSignUpActivity : BaseSignUpActivity() {
+class Email_PasswordSignUpActivity : BaseActivity() {
 
     lateinit var binding : ActivityEmailPasswordBinding
     lateinit var viewModel : Email_PasswordSignUpViewModel
@@ -34,6 +33,7 @@ class Email_PasswordSignUpActivity : BaseSignUpActivity() {
         pwCheck()
         observerViewModel()
     }
+
     fun emailCheck(){
         binding.emailEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?){}
@@ -45,6 +45,7 @@ class Email_PasswordSignUpActivity : BaseSignUpActivity() {
             }
         })
     }
+
     fun pwCheck(){
         binding.pwEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?){}
@@ -65,13 +66,14 @@ class Email_PasswordSignUpActivity : BaseSignUpActivity() {
             }
         })
     }
-    fun observerViewModel(){
+
+    override fun observerViewModel(){
         with(viewModel){
             onNextEvent.observe(this@Email_PasswordSignUpActivity, Observer {
-                if(IdentityData.identityData == 0){
+                if(SignUpData.identityData == 0){
                     SignUpData.signUpDataStudent.email = viewModel.email.value.toString()
                     SignUpData.signUpDataStudent.pw = viewModel.pw.value.toString()
-                } else if(IdentityData.identityData == 1) {
+                } else if(SignUpData.identityData == 1) {
                     SignUpData.signUpDataWorker.email = viewModel.email.value.toString()
                     SignUpData.signUpDataWorker.pw = viewModel.pw.value.toString()
                 }

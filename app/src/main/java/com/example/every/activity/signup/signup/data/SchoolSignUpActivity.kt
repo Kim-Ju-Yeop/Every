@@ -8,12 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.base.view.signup.BaseSignUpActivity
-import com.example.every.activity.signup.SignUpData
+import com.example.every.base.BaseActivity
+import com.example.every.base.SignUpData
 import com.example.every.databinding.ActivitySchoolBinding
 import com.example.every.viewmodel.signup.signup.data.SchoolSignUpViewModel
 
-class SchoolSignUpActivity : BaseSignUpActivity() {
+class SchoolSignUpActivity : BaseActivity() {
 
     lateinit var binding : ActivitySchoolBinding
     lateinit var viewModel : SchoolSignUpViewModel
@@ -43,7 +43,7 @@ class SchoolSignUpActivity : BaseSignUpActivity() {
         viewModel.schoolNameSetting(checkSchool)
     }
 
-    fun observerViewModel(){
+    override fun observerViewModel(){
         with(viewModel){
             onSearchEvent.observe(this@SchoolSignUpActivity, Observer {
                 startActivity(Intent(this@SchoolSignUpActivity, SchoolListSignUpActivity::class.java))

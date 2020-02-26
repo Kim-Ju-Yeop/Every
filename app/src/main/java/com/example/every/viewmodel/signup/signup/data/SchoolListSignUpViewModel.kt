@@ -3,13 +3,13 @@ package com.example.every.viewmodel.signup.signup.data
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.every.DTO.signup.SchoolDataList
+import com.example.every.base.BaseViewModel
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.base.viewmodel.signup.BaseSignUpViewModel
 import retrofit2.Call
 import retrofit2.Callback
 
-class SchoolListSignUpViewModel : BaseSignUpViewModel(){
+class SchoolListSignUpViewModel : BaseViewModel(){
 
     /**
      *  SearchSchool 학교 검색 API Response

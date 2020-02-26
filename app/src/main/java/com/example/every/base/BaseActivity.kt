@@ -1,15 +1,22 @@
-package com.example.every.base.view.signup
+package com.example.every.base
 
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.every.R
+import com.example.every.network.request.model.signup.SignUpDataStudent
+import com.example.every.network.request.model.signup.SignUpDataWorker
 
-object IdentityData{
+object SignUpData{
+    val signUpDataStudent = SignUpDataStudent()
+    val signUpDataWorker = SignUpDataWorker()
+
     var identityData : Int? = null
 }
 
-open class BaseSignUpActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
+
+    abstract fun observerViewModel()
 
     // Toolbar Setting
     fun toolbarInit(toolbar : Toolbar){

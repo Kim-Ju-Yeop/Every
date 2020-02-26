@@ -9,13 +9,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.base.view.signup.BaseSignUpActivity
-import com.example.every.base.view.signup.IdentityData
-import com.example.every.activity.signup.SignUpData
+import com.example.every.base.BaseActivity
+import com.example.every.base.SignUpData
 import com.example.every.databinding.ActivityPhoneBinding
 import com.example.every.viewmodel.signup.signup.data.PhoneSignUpViewModel
 
-class PhoneSignUpActivity : BaseSignUpActivity() {
+class PhoneSignUpActivity : BaseActivity(){
 
     lateinit var binding : ActivityPhoneBinding
     lateinit var viewModel : PhoneSignUpViewModel
@@ -34,6 +33,7 @@ class PhoneSignUpActivity : BaseSignUpActivity() {
         phoneCheck()
         observerViewModel()
     }
+
     fun phoneCheck(){
         binding.phoneEditText.addTextChangedListener(PhoneNumberFormattingTextWatcher())
         binding.phoneEditText.addTextChangedListener(object : TextWatcher{
@@ -49,7 +49,8 @@ class PhoneSignUpActivity : BaseSignUpActivity() {
             }
         })
     }
-    fun observerViewModel(){
+
+    override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@PhoneSignUpActivity, Observer {
                 if(viewModel.phone_check.value == null){
@@ -64,10 +65,10 @@ class PhoneSignUpActivity : BaseSignUpActivity() {
                 }
             })
             onNextEvent.observe(this@PhoneSignUpActivity, Observer {
-                if(IdentityData.identityData == 0){
+                if(SignUpData.identityData == 0){
                     SignUpData.signUpDataStudent.phone = viewModel.phone.value.toString()
                     startActivity(Intent(this@PhoneSignUpActivity, SchoolSignUpActivity::class.java))
-                } else if(IdentityData.identityData == 1) {
+                } else if(SignUpData.identityData == 1) {
                     SignUpData.signUpDataWorker.phone = viewModel.phone.value.toString()
                     startActivity(Intent(this@PhoneSignUpActivity, WorkerSignUpActivity::class.java))
                 }

@@ -9,12 +9,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.base.view.signup.BaseSignUpActivity
-import com.example.every.activity.signup.SignUpData
+import com.example.every.base.BaseActivity
+import com.example.every.base.SignUpData
 import com.example.every.databinding.ActivityWorkerBinding
 import com.example.every.viewmodel.signup.signup.data.WorkerSignUpViewModel
 
-class WorkerSignUpActivity : BaseSignUpActivity() {
+class WorkerSignUpActivity : BaseActivity() {
 
     lateinit var binding : ActivityWorkerBinding
     lateinit var viewModel : WorkerSignUpViewModel
@@ -57,7 +57,7 @@ class WorkerSignUpActivity : BaseSignUpActivity() {
         binding.spinner.adapter = adapter
     }
 
-    fun observerViewModel(){
+    override fun observerViewModel(){
         with(viewModel){
             onNextEvent.observe(this@WorkerSignUpActivity, Observer {
                 SignUpData.signUpDataWorker.work_place = viewModel.workerName.value.toString()

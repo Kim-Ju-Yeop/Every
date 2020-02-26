@@ -2,10 +2,10 @@ package com.example.every.viewmodel.signup.signup.data
 
 import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
-import com.example.every.base.viewmodel.signup.BaseSignUpViewModel
+import com.example.every.base.BaseViewModel
 import com.example.every.widget.SingleLiveEvent
 
-class SchoolSignUpViewModel : BaseSignUpViewModel(){
+class SchoolSignUpViewModel : BaseViewModel(){
 
     val schoolName = MutableLiveData<String>()
     val schoolId = MutableLiveData<String>()

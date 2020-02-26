@@ -6,20 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.base.view.signup.BaseSignUpActivity
-import com.example.every.base.view.signup.IdentityData
 import com.example.every.activity.signup.signup.data.Email_PasswordSignUpActivity
+import com.example.every.base.BaseActivity
+import com.example.every.base.SignUpData
 import com.example.every.databinding.ActivitySignUpBinding
-import com.example.every.network.request.model.signup.SignUpDataStudent
-import com.example.every.network.request.model.signup.SignUpDataWorker
 import com.example.every.viewmodel.signup.SignUpViewModel
 
-object SignUpData{
-    val signUpDataStudent = SignUpDataStudent()
-    val signUpDataWorker = SignUpDataWorker()
-}
-
-class SignUpActivity : BaseSignUpActivity() {
+class SignUpActivity : BaseActivity() {
 
     lateinit var binding : ActivitySignUpBinding
     lateinit var viewModel : SignUpViewModel
@@ -37,10 +30,10 @@ class SignUpActivity : BaseSignUpActivity() {
         toolbarInit(binding.toolbar)
         observerViewModel()
     }
-    fun observerViewModel(){
+    override fun observerViewModel(){
         with(viewModel){
             onNextEvent.observe(this@SignUpActivity, Observer {
-                IdentityData.identityData = viewModel.checkInfo.value!!
+                SignUpData.identityData = viewModel.checkInfo.value!!
                 startActivity(Intent(this@SignUpActivity, Email_PasswordSignUpActivity::class.java))
             })
         }

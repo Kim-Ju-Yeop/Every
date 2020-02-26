@@ -1,9 +1,9 @@
 package com.example.every.viewmodel.signup.signup.data
 
 import androidx.lifecycle.MutableLiveData
-import com.example.every.base.viewmodel.signup.BaseSignUpViewModel
+import com.example.every.base.BaseViewModel
 
-class WorkerSignUpViewModel : BaseSignUpViewModel(){
+class WorkerSignUpViewModel : BaseViewModel(){
 
     val workerName = MutableLiveData<String>()
     val workerName_check = MutableLiveData<String>()

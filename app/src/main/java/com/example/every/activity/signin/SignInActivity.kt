@@ -11,10 +11,11 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.activity.signup.SignUpActivity
 import com.example.every.activity.student.StudentMainActivity
+import com.example.every.base.BaseActivity
 import com.example.every.databinding.ActivitySignInBinding
 import com.example.every.viewmodel.signin.SignInViewModel
 
-class SignInActivity : AppCompatActivity() {
+class SignInActivity : BaseActivity() {
 
     lateinit var binding : ActivitySignInBinding
     lateinit var viewModel : SignInViewModel
@@ -32,7 +33,7 @@ class SignInActivity : AppCompatActivity() {
         observerViewModel()
     }
 
-    fun observerViewModel(){
+    override fun observerViewModel(){
         with(viewModel){
             onSignUpEvent.observe(this@SignInActivity, Observer {
                 startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
@@ -66,12 +67,12 @@ class SignInActivity : AppCompatActivity() {
                 val identity_editor = identity.edit()
 
                 if(viewModel.identity.value.equals("worker")){
-                    identity_editor.putString("identityData", viewModel.identity.value)
+                    identity_editor.putString("identityData", "worker")
                     identity_editor.commit()
 
                     // 직장인 페이지 이동
                 }else if(viewModel.identity.value.equals("student")){
-                    identity_editor.putString("identityData", viewModel.identity.value)
+                    identity_editor.putString("identityData", "student")
                     identity_editor.commit()
 
                     startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))

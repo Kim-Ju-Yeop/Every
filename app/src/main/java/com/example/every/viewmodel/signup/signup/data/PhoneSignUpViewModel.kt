@@ -2,13 +2,14 @@ package com.example.every.viewmodel.signup.signup.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.every.base.BaseViewModel
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.base.viewmodel.signup.BaseSignUpViewModel
 import retrofit2.Call
 import retrofit2.Callback
+import java.util.regex.Pattern
 
-class PhoneSignUpViewModel : BaseSignUpViewModel(){
+class PhoneSignUpViewModel : BaseViewModel(){
 
     /**
      * PhoneOverlap 전화번호 중복확인 API Response
@@ -21,7 +22,7 @@ class PhoneSignUpViewModel : BaseSignUpViewModel(){
     val phone_check = MutableLiveData<String>()
 
     fun checkType(text : String) : Boolean{
-        if(!phone_validity.matcher(text).matches()){
+        if(!Pattern.compile("^01(?:0|1|[6-9])[-]?(?:\\d{4})[-]?\\d{4}$").matcher(text).matches()){
             phone_check.value = "전화번호의 형식이 올바르지 않습니다."
             return false
         }else {
@@ -29,6 +30,7 @@ class PhoneSignUpViewModel : BaseSignUpViewModel(){
             return true
         }
     }
+
     fun overlapPhone(text :String){
         val res : Call<Response<Data>> = netRetrofit.signUp.getOverlapPhone(text)
         res.enqueue(object : Callback<Response<Data>> {

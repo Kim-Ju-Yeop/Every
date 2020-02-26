@@ -9,11 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.base.view.signup.BaseSignUpActivity
+import com.example.every.base.BaseActivity
 import com.example.every.databinding.ActivitySchoolListBinding
 import com.example.every.viewmodel.signup.signup.data.SchoolListSignUpViewModel
 
-class SchoolListSignUpActivity : BaseSignUpActivity() {
+class SchoolListSignUpActivity : BaseActivity() {
 
     lateinit var binding : ActivitySchoolListBinding
     lateinit var viewModel : SchoolListSignUpViewModel
@@ -29,11 +29,11 @@ class SchoolListSignUpActivity : BaseSignUpActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@SchoolListSignUpActivity
 
-        observerViewModel()
         editTextListener()
+        observerViewModel()
     }
 
-    fun observerViewModel(){
+    override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@SchoolListSignUpActivity, Observer {
                 binding.recyclerView.visibility = View.VISIBLE

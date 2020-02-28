@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.every">
+    package="com.example.every" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,9 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".view.student.activity.bamboo.BambooMoreActivity"
-            android:theme="@style/BambooMoreDialog"/>
+        android:usesCleartextTraffic="true" >
+        <activity android:name=".view.student.activity.bamboo.BambooCommentEditActivity" >
+        </activity>
+        <activity
+            android:name=".view.student.activity.bamboo.BambooMoreActivity"
+            android:theme="@style/BambooMoreDialog" />
         <activity android:name=".view.student.activity.bamboo.BambooCommentActivity" />
         <activity android:name=".view.student.activity.bamboo.BambooPostActivity" />
         <activity android:name=".view.student.fragment.StudentMoreFragment" />
@@ -33,7 +36,7 @@
         <activity android:name=".view.signup.signup.data.Email_PasswordSignUpActivity" />
         <activity android:name=".view.signup.SignUpActivity" />
         <activity android:name=".view.signin.SignInActivity" />
-        <activity android:name=".view.splash.SplashActivity">
+        <activity android:name=".view.splash.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

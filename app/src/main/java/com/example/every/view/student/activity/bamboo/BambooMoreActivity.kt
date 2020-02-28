@@ -1,5 +1,6 @@
 package com.example.every.view.student.activity.bamboo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -43,7 +44,12 @@ class BambooMoreActivity : BaseActivity() {
     override fun observerViewModel() {
         with(viewModel){
             onNextEvent.observe(this@BambooMoreActivity, Observer {
-                // 댓글 수정 액티비티 이동
+                val intent = Intent(this@BambooMoreActivity, BambooCommentEditActivity::class.java)
+                intent.putExtra("idx", viewModel.idx.value)
+                intent.putExtra("content", viewModel.content.value)
+
+                startActivity(intent)
+                finish()
             })
             onSuccessEvent.observe(this@BambooMoreActivity, Observer {
                 Toast.makeText(applicationContext, "댓글이 정상적으로 삭제되었습니다.", Toast.LENGTH_SHORT).show()

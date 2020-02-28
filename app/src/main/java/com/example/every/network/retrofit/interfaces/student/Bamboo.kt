@@ -4,6 +4,7 @@ import com.example.every.network.Data
 import com.example.every.network.Response
 import com.example.every.network.request.model.student.BambooPostData
 import com.example.every.network.request.model.student.BambooReplyData
+import com.example.every.network.request.model.student.BambooReplyEditData
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -26,4 +27,7 @@ interface Bamboo {
 
     @DELETE("bamboo/reply/{replyIdx}")
     fun deleteBambooReply(@Header("token") token : String, @Path("replyIdx") replyIdx : Int) : Call<Response<Data>>
+
+    @PUT("bamboo/reply/{replyIdx}")
+    fun editBambooReply(@Header("token") token : String, @Body bambooReplyEditData : BambooReplyEditData, @Path("replyIdx") replyIdx : Int) : Call<Response<Data>>
 }

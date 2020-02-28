@@ -15,12 +15,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="Dialog" parent="Theme.AppCompat.Light.Dialog">
+    <style name="SchoolDialog" parent="Theme.AppCompat.Light.Dialog">
 
         <item name="android:windowBackground">@drawable/dialog_background</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="BambooMoreDialog" parent="Theme.AppCompat.Light.Dialog">
+
+        <item name="android:windowBackground">@drawable/bamboo_comment_fix_delete</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:layout_gravity">bottom</item>
     </style>
 
 </resources>

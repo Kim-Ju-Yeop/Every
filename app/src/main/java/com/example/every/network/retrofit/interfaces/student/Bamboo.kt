@@ -23,4 +23,7 @@ interface Bamboo {
 
     @POST("bamboo/reply")
     fun postBambooReply(@Header("token") token : String, @Body bambooReplyData : BambooReplyData) : Call<Response<Data>>
+
+    @DELETE("bamboo/reply/{replyIdx}")
+    fun deleteBambooReply(@Header("token") token : String, @Path("replyIdx") replyIdx : Int) : Call<Response<Data>>
 }

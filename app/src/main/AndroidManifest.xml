@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.student.activity.bamboo.BambooMoreActivity"></activity>
+        <activity android:name=".view.student.activity.bamboo.BambooMoreActivity"
+            android:theme="@style/BambooMoreDialog"/>
         <activity android:name=".view.student.activity.bamboo.BambooCommentActivity" />
         <activity android:name=".view.student.activity.bamboo.BambooPostActivity" />
         <activity android:name=".view.student.fragment.StudentMoreFragment" />
@@ -25,7 +26,7 @@
         <activity android:name=".view.signup.signup.data.SignUpFinishActivity" />
         <activity
             android:name=".view.signup.signup.data.SchoolListSignUpActivity"
-            android:theme="@style/Dialog" />
+            android:theme="@style/SchoolDialog" />
         <activity android:name=".view.signup.signup.data.SchoolSignUpActivity" />
         <activity android:name=".view.signup.signup.data.PhoneSignUpActivity" />
         <activity android:name=".view.signup.signup.data.Name_BirthSignUpActivity" />

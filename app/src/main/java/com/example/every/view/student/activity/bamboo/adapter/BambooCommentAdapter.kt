@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.BambooReplyList
 import com.example.every.R
+import com.example.every.base.StudentData
 import com.example.every.view.student.activity.bamboo.BambooMoreActivity
 import kotlinx.android.synthetic.main.bamboo_comment_item.view.*
 import java.text.SimpleDateFormat
@@ -49,8 +50,14 @@ class BambooCommentAdapter(val mContext : Context, val items : ArrayList<BambooR
             val date = format.parse(item.created_at)
             itemView.comment_timer.text = formatTimeString(date)
 
+            // more
+            if(StudentData.studentIdx.value == item.student_idx) itemView.more.visibility = View.VISIBLE
+            else itemView.more.visibility = View.GONE
+
             itemView.more.setOnClickListener(View.OnClickListener {
                 val intent = Intent(context, BambooMoreActivity::class.java)
+                intent.putExtra("idx", item.idx)
+                intent.putExtra("content", item.content)
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(intent)
             })

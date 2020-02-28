@@ -33,5 +33,8 @@ class StudentMainFragment : Fragment() {
     fun init(){
         val checkToken : SharedPreferences = context!!.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
         StudentData.token.value = checkToken.getString("tokenData", null)
+
+        val checkIdentity : SharedPreferences = context!!.getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
+        StudentData.studentIdx.value = checkIdentity.getInt("identityIdx_Student", -1)
     }
 }

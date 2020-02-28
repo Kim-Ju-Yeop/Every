@@ -27,6 +27,7 @@ class BambooCommentViewModel : BaseViewModel(){
 
     val onReplyEvent = SingleLiveEvent<Unit>()
     val onReplyEmptyEvent = SingleLiveEvent<Unit>()
+    val onImageEvent = SingleLiveEvent<Unit>()
 
     fun getBambooComment() {
         val res: Call<Response<Data>> = netRetrofit.bamboo.getBambooComment(StudentData.token.value.toString(), StudentData.postIdx.value!!)
@@ -80,5 +81,5 @@ class BambooCommentViewModel : BaseViewModel(){
                 }
             })
          }else onReplyEmptyEvent.call()
-    }
+    } fun addImage() = onImageEvent.call()
 }

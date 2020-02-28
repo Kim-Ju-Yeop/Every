@@ -11,8 +11,11 @@ import com.example.every.R
 import com.example.every.view.signup.SignUpActivity
 import com.example.every.view.student.activity.StudentMainActivity
 import com.example.every.base.BaseActivity
+import com.example.every.base.BaseFragment
+import com.example.every.base.StudentData
 import com.example.every.databinding.ActivitySignInBinding
 import com.example.every.viewmodel.signin.SignInViewModel
+import kotlinx.android.synthetic.main.bamboo_item.*
 
 class SignInActivity : BaseActivity() {
 
@@ -65,13 +68,15 @@ class SignInActivity : BaseActivity() {
                 val identity = applicationContext.getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
                 val identity_editor = identity.edit()
 
-                if(viewModel.identity.value.equals("worker")){
+                if(viewModel.worker_idx.value != null){
                     identity_editor.putString("identityData", "worker")
+                    identity_editor.putInt("identityIdx_Worker", viewModel.worker_idx.value!!)
                     identity_editor.commit()
 
-                    // 직장인 페이지 이동
-                }else if(viewModel.identity.value.equals("student")){
+                   // 직장인 페이지 이동
+                }else if(viewModel.student_idx.value != null){
                     identity_editor.putString("identityData", "student")
+                    identity_editor.putInt("identityIdx_Student", viewModel.student_idx.value!!)
                     identity_editor.commit()
 
                     startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))

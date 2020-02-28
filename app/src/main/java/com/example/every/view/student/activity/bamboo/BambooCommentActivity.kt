@@ -1,7 +1,8 @@
 package com.example.every.view.student.activity.bamboo
 
+import android.content.Context
 import android.os.Bundle
-import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -55,11 +56,17 @@ class BambooCommentActivity : BaseActivity() {
                 Toast.makeText(applicationContext, "댓글이 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
             })
             onReplyEvent.observe(this@BambooCommentActivity, Observer {
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.commentEditText.windowToken, 0);
+
                 binding.commentEditText.text = null
                 viewModel.getBambooComment()
             })
             onReplyEmptyEvent.observe(this@BambooCommentActivity, Observer {
                 Toast.makeText(applicationContext, "내용을 입력해주세요!", Toast.LENGTH_SHORT).show()
+            })
+            onImageEvent.observe(this@BambooCommentActivity, Observer {
+                Toast.makeText(applicationContext, "아직 이미지, 동영상 업로드 기능은 추가되지 않았습니다.", Toast.LENGTH_SHORT).show()
             })
         }
     }

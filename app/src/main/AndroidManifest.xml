@@ -13,32 +13,33 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.every.view.student.activity.bamboo.BambooCommentActivity"></activity>
-        <activity android:name="com.example.every.view.student.activity.bamboo.BambooPostActivity" />
-        <activity android:name="com.example.every.view.student.fragment.StudentMoreFragment" />
-        <activity android:name="com.example.every.view.student.fragment.StudentScheduleFragment" />
-        <activity android:name="com.example.every.view.student.fragment.bamboo.StudentBambooFragment" />
-        <activity android:name="com.example.every.view.student.fragment.StudentMainFragment" />
-        <activity android:name="com.example.every.view.student.activity.StudentMainActivity" />
-        <activity android:name="com.example.every.view.signup.signup.data.WorkerSignUpActivity" />
-        <activity android:name="com.example.every.view.signup.signup.data.SignUpFinishActivity" />
+        <activity android:name=".view.student.activity.bamboo.BambooMoreActivity"></activity>
+        <activity android:name=".view.student.activity.bamboo.BambooCommentActivity" />
+        <activity android:name=".view.student.activity.bamboo.BambooPostActivity" />
+        <activity android:name=".view.student.fragment.StudentMoreFragment" />
+        <activity android:name=".view.student.fragment.StudentScheduleFragment" />
+        <activity android:name=".view.student.fragment.bamboo.StudentBambooFragment" />
+        <activity android:name=".view.student.fragment.StudentMainFragment" />
+        <activity android:name=".view.student.activity.StudentMainActivity" />
+        <activity android:name=".view.signup.signup.data.WorkerSignUpActivity" />
+        <activity android:name=".view.signup.signup.data.SignUpFinishActivity" />
         <activity
-            android:name="com.example.every.view.signup.signup.data.SchoolListSignUpActivity"
+            android:name=".view.signup.signup.data.SchoolListSignUpActivity"
             android:theme="@style/Dialog" />
-        <activity android:name="com.example.every.view.signup.signup.data.SchoolSignUpActivity" />
-        <activity android:name="com.example.every.view.signup.signup.data.PhoneSignUpActivity" />
-        <activity android:name="com.example.every.view.signup.signup.data.Name_BirthSignUpActivity" />
-        <activity android:name="com.example.every.view.signup.signup.data.Email_PasswordSignUpActivity" />
-        <activity android:name="com.example.every.view.signup.SignUpActivity" />
-        <activity android:name="com.example.every.view.signin.SignInActivity" />
-        <activity android:name="com.example.every.view.splash.SplashActivity">
+        <activity android:name=".view.signup.signup.data.SchoolSignUpActivity" />
+        <activity android:name=".view.signup.signup.data.PhoneSignUpActivity" />
+        <activity android:name=".view.signup.signup.data.Name_BirthSignUpActivity" />
+        <activity android:name=".view.signup.signup.data.Email_PasswordSignUpActivity" />
+        <activity android:name=".view.signup.SignUpActivity" />
+        <activity android:name=".view.signin.SignInActivity" />
+        <activity android:name=".view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.every.view.MainActivity" />
+        <activity android:name=".view.MainActivity" />
     </application>
 
 </manifest>

@@ -24,7 +24,9 @@ class SignInViewModel : BaseViewModel() {
     val token = MutableLiveData<String>()
     val email = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
-    val identity = MutableLiveData<String>()
+
+    val worker_idx = MutableLiveData<Int>()
+    val student_idx = MutableLiveData<Int>()
 
     val onSignUpEvent = SingleLiveEvent<Unit>()
     val onLostPwEvent = SingleLiveEvent<Unit>()
@@ -40,8 +42,8 @@ class SignInViewModel : BaseViewModel() {
                         200 -> {
                             token.value = response.body()!!.data!!.token
 
-                            if(response.body()!!.data!!.worker) identity.value = "worker"
-                            else if(response.body()!!.data!!.student) identity.value = "student"
+                            if(response.body()!!.data!!.worker_idx != null) worker_idx.value = response.body()!!.data!!.worker_idx
+                            else if(response.body()!!.data!!.student_idx != null) student_idx.value = response.body()!!.data!!.student_idx
 
                             onSuccessEvent.call()
                         } 400 -> onErrorEvent.call()

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 object StudentData{
     val token = MutableLiveData<String>()
     val postIdx = MutableLiveData<Int>()
+    val studentIdx = MutableLiveData<Int>()
 }
 
 abstract class BaseFragment : Fragment(){

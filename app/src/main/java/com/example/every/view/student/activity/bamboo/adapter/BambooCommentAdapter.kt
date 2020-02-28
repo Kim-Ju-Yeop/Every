@@ -1,12 +1,15 @@
 package com.example.every.view.student.activity.bamboo.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.BambooReplyList
 import com.example.every.R
+import com.example.every.view.student.activity.bamboo.BambooMoreActivity
 import kotlinx.android.synthetic.main.bamboo_comment_item.view.*
 import java.text.SimpleDateFormat
 
@@ -23,27 +26,20 @@ class BambooCommentAdapter(val mContext : Context, val items : ArrayList<BambooR
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item : BambooReplyList = items.get(position)
-        val listenr = View.OnClickListener {
-
-        }
 
         holder.apply {
-            bind(listenr, item)
+            bind(mContext, item)
             itemView.tag = item
         }
     }
-
 
     override fun getItemCount(): Int {
         return items.size
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-
-        var view : View = itemView
-        fun bind(listener : View.OnClickListener, item : BambooReplyList){
+        fun bind(context : Context, item : BambooReplyList){
             itemView.comment_content.text = item.content
-            view.setOnClickListener(listener)
 
             // studentName
             getStudentInfo(item.student_idx, itemView.comment_studentName)
@@ -52,6 +48,12 @@ class BambooCommentAdapter(val mContext : Context, val items : ArrayList<BambooR
             val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             val date = format.parse(item.created_at)
             itemView.comment_timer.text = formatTimeString(date)
+
+            itemView.more.setOnClickListener(View.OnClickListener {
+                val intent = Intent(context, BambooMoreActivity::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
+            })
         }
     }
 }

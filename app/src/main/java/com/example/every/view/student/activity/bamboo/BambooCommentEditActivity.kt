@@ -27,6 +27,7 @@ class BambooCommentEditActivity : BaseActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@BambooCommentEditActivity
 
+        toolbarInit(binding.toolbar)
         observerViewModel()
     }
 

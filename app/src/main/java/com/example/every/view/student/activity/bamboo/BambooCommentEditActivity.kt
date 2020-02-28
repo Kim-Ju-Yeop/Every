@@ -42,7 +42,7 @@ class BambooCommentEditActivity : BaseActivity() {
         with(viewModel){
             onSuccessEvent.observe(this@BambooCommentEditActivity, Observer {
                 Toast.makeText(applicationContext, "댓글을 수정하였습니다.", Toast.LENGTH_SHORT).show()
-                finish()
+                onBackPressed()
             })
             onImageEvent.observe(this@BambooCommentEditActivity, Observer {
                 Toast.makeText(applicationContext, "아직 사진과 비디오 추가 기능을 제공하지 않습니다.", Toast.LENGTH_SHORT).show()

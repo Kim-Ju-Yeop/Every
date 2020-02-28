@@ -65,7 +65,7 @@ class BambooCommentActivity : BaseActivity() {
             })
             onReplyEvent.observe(this@BambooCommentActivity, Observer {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.commentEditText.windowToken, 0);
+                imm.hideSoftInputFromWindow(binding.commentEditText.windowToken, 0)
 
                 binding.commentEditText.text = null
                 viewModel.getBambooComment()
@@ -78,6 +78,9 @@ class BambooCommentActivity : BaseActivity() {
             })
             onNextEvent.observe(this@BambooCommentActivity, Observer {
                 onBackPressed()
+            })
+            replyEditText.observe(this@BambooCommentActivity, Observer {
+                if(replyEditText.value!!.length >= 250) toastMessage(applicationContext, "250글자 내외로 작성할 수 있습니다.")
             })
         }
     }

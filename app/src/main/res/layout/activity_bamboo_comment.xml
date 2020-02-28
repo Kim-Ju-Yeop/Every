@@ -122,6 +122,7 @@
             </LinearLayout>
 
             <FrameLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -212,7 +213,8 @@
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
                     android:textSize="12sp"
-                    android:text="@={viewModel.replyEditText}"/>
+                    android:text="@={viewModel.replyEditText}"
+                    android:maxLength="250"/>
 
                 <TextView
                     android:onClick="@{() -> viewModel.postBambooReply()}"

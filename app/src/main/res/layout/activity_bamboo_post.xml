@@ -25,19 +25,20 @@
             android:background="#EEEEEE">
 
             <TextView
-                android:id="@+id/userInfo_textView"
+                android:id="@+id/postArticle_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="글 작성하기"
+                android:text="@string/postArticle_textView"
                 android:fontFamily="@font/nanum_bold"
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/share_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="공유"
+                android:text="@string/share_textView"
                 android:layout_gravity="right"
                 android:textSize="15sp"
                 android:fontFamily="@font/nanum_bold"
@@ -66,13 +67,13 @@
                     app:srcCompat="@drawable/profile" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/anonymous_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="7dp"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="익명"
+                    android:text="@string/anonymous_textView"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -114,12 +115,12 @@
                 android:onClick="@{() -> viewModel.addImage()}"/>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/image_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
-                android:text="사진/동영상 추가"
+                android:text="@string/image_textView"
                 android:fontFamily="@font/nanum_bold"
                 android:textSize="11sp"
                 android:onClick="@{() -> viewModel.addImage()}"/>

@@ -1,5 +1,6 @@
 package com.example.every.view.student.activity.bamboo.adapter
 
+import android.util.Log
 import android.widget.TextView
 import com.example.every.base.StudentData
 import com.example.every.view.student.fragment.bamboo.adapter.TIME_MAXIMUM
@@ -10,6 +11,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import java.util.*
 
+/**
+ * getStudentInfo 학생 정보 조회 API Response
+ * status[200] 학생 정보 존재 O
+ * status[404] 학생 정보 존재 X
+ */
+
 fun getStudentInfo(studentIdx : Int, studentName : TextView){
     val neRetrofit = NetRetrofit()
     val res : Call<Response<Data>> = neRetrofit.bamboo.getStudentInfo(StudentData.token.value.toString(), studentIdx)
@@ -17,11 +24,11 @@ fun getStudentInfo(studentIdx : Int, studentName : TextView){
         override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
             when(response.code()){
                 200 -> studentName.text = response.body()!!.data!!.member!!.name
-                // 400 처리 해야함
+                404 -> studentName.text = "알수없음"
             }
         }
         override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-
+            Log.e("getStudentInfo[Error]", "학생 정보를 찾는 과정 속에서 서버와 통신이 되지 않습니다.")
         }
     })
 }

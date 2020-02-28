@@ -16,7 +16,6 @@ class BambooPostViewModel : BaseViewModel(){
     /**
      * PostBamboo 대나무숲 게시글 작성 API Response
      * status[200] 게시글 작성 성공
-     * status[400] 검증 오류
      */
 
     val content_EditText = MutableLiveData<String>()

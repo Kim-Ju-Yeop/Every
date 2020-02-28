@@ -34,7 +34,8 @@
                     android:layout_width="25dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+                    app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+                    android:onClick="@{() -> viewModel.backSpace()}"/>
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -120,10 +121,41 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/question_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/answer_imageView"
+                        android:layout_width="115dp"
+                        android:layout_height="115dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/question" />
+
+                    <TextView
+                        android:id="@+id/answer_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:text="게시물의 댓글을 가장 먼저 작성해보세요!"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/nanum_regular"/>
+                </LinearLayout>
+
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/swipeRefreshLayout">
 
                 <androidx.recyclerview.widget.RecyclerView
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -131,8 +163,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="15dp"
-                    tools:listitem="@layout/bamboo_comment_item" />
-            </LinearLayout>
+                    tools:listitem="@layout/bamboo_comment_item"
+                    android:visibility="gone"/>
+
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </FrameLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -144,12 +180,12 @@
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="23dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="14dp"
                 app:srcCompat="@drawable/photo"
-                />
+                android:onClick="@{() -> viewModel.addImage()}"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

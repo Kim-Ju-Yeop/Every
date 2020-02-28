@@ -2,11 +2,14 @@ package com.example.every.view.student.activity.bamboo
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.every.R
 import com.example.every.view.student.activity.bamboo.adapter.BambooCommentAdapter
 import com.example.every.base.BaseActivity
@@ -29,6 +32,7 @@ class BambooCommentActivity : BaseActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@BambooCommentActivity
 
+        refreshLayout()
         observerViewModel()
     }
 
@@ -49,11 +53,15 @@ class BambooCommentActivity : BaseActivity() {
     override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooCommentActivity, Observer {
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.questionLayout.visibility = View.GONE
+
                 val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentDataList)
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@BambooCommentActivity, Observer {
-                Toast.makeText(applicationContext, "댓글이 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
+                binding.recyclerView.visibility = View.GONE
+                binding.questionLayout.visibility = View.VISIBLE
             })
             onReplyEvent.observe(this@BambooCommentActivity, Observer {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -68,6 +76,18 @@ class BambooCommentActivity : BaseActivity() {
             onImageEvent.observe(this@BambooCommentActivity, Observer {
                 Toast.makeText(applicationContext, "아직 이미지, 동영상 업로드 기능은 추가되지 않았습니다.", Toast.LENGTH_SHORT).show()
             })
+            onNextEvent.observe(this@BambooCommentActivity, Observer {
+                onBackPressed()
+            })
         }
+    }
+
+    fun refreshLayout(){
+        binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
+            override fun onRefresh() {
+                viewModel.getBambooComment()
+                Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
+            }
+        })
     }
 }

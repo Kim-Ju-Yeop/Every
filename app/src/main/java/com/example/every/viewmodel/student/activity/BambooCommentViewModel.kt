@@ -82,4 +82,5 @@ class BambooCommentViewModel : BaseViewModel(){
             })
          }else onReplyEmptyEvent.call()
     } fun addImage() = onImageEvent.call()
+    fun backSpace() = onNextEvent.call()
 }

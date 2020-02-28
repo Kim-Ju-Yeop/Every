@@ -33,11 +33,9 @@ class BambooCommentEditActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-
         val intent = intent
-
         viewModel.idx.value = intent.extras!!.getInt("idx")
-        viewModel.content_EditText.value = intent.extras!!.getString("content")
+        viewModel.comment_EditText.value = intent.extras!!.getString("content")
     }
 
     override fun observerViewModel() {
@@ -48,6 +46,9 @@ class BambooCommentEditActivity : BaseActivity() {
             })
             onImageEvent.observe(this@BambooCommentEditActivity, Observer {
                 Toast.makeText(applicationContext, "아직 사진과 비디오 추가 기능을 제공하지 않습니다.", Toast.LENGTH_SHORT).show()
+            })
+            comment_EditText.observe(this@BambooCommentEditActivity, Observer {
+                if(comment_EditText.value!!.length >= 250) toastMessage(applicationContext, "250글자 내외로 작성할 수 있습니다.")
             })
         }
     }

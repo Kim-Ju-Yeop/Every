@@ -14,6 +14,11 @@ class BambooMoreViewModel : BaseViewModel(){
     val idx = MutableLiveData<Int>()
     val content = MutableLiveData<String>()
 
+    /**
+     * deleteReply 대나무숲 게시글 댓글 삭제 API Response
+     * status[200] 댓글 삭제 성공
+     */
+
     fun deleteReply(){
         val res : Call<Response<Data>> = netRetrofit.bamboo.deleteBambooReply(StudentData.token.value.toString(), idx.value!!)
         res.enqueue(object : Callback<Response<Data>>{
@@ -24,9 +29,5 @@ class BambooMoreViewModel : BaseViewModel(){
                 Log.e("deleteReply[Error]", "대나무숲 게시물 댓글 삭제 과정에서 서버와 통신이 되지 않습니다.")
            }
         })
-    }
-
-    fun editContent() {
-        onNextEvent.call()
-    }
+    } fun editContent() = onNextEvent.call()
 }

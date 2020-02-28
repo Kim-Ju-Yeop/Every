@@ -16,13 +16,10 @@ class StudentMainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityStudentMainBinding
 
-    val studentMainFragment =
-        StudentMainFragment()
+    val studentMainFragment = StudentMainFragment()
     val studentBambooFragment = StudentBambooFragment()
-    val studentScheduleFragment =
-        StudentScheduleFragment()
-    val studentMoreFragment =
-        StudentMoreFragment()
+    val studentScheduleFragment = StudentScheduleFragment()
+    val studentMoreFragment = StudentMoreFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

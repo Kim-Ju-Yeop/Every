@@ -70,8 +70,8 @@
                     android:hint="글을 작성해주세요!"
                     android:inputType="textMultiLine"
                     android:textSize="15sp"
-                    android:text="@={viewModel.content_EditText}"
-                    android:maxLength="500"/>
+                    android:text="@={viewModel.comment_EditText}"
+                    android:maxLength="250"/>
             </LinearLayout>
         </LinearLayout>
 

@@ -32,14 +32,14 @@ class BambooPostActivity : BaseActivity() {
     override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooPostActivity, Observer {
-                Toast.makeText(applicationContext, "정상적으로 글 작성을 수행하였습니다.", Toast.LENGTH_SHORT).show()
+                toastMessage(applicationContext, "정상적으로 글 작성을 수행하였습니다.")
                 finish()
             })
             onFailEvent.observe(this@BambooPostActivity, Observer {
-                Toast.makeText(applicationContext, "먼저 글을 작성해주시기 바랍니다.", Toast.LENGTH_SHORT).show()
+                toastMessage(applicationContext, "먼저 글을 작성해주시기 바랍니다.")
             })
             onImageEvent.observe(this@BambooPostActivity, Observer {
-                Toast.makeText(applicationContext, "아직 사진과 비디오 추가 기능을 제공하지 않습니다.", Toast.LENGTH_SHORT).show()
+                toastMessage(applicationContext, "아직 사진과 비디오 추가 기능을 제공하지 않습니다.")
             })
             content_EditText.observe(this@BambooPostActivity, Observer {
                 if(content_EditText.value!!.length >= 500) toastMessage(applicationContext, "500글자 내외로 작성할 수 있습니다.")

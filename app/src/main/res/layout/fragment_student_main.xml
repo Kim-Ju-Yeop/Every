@@ -76,11 +76,12 @@
                         android:src="@drawable/bell"
                         android:tint="#000000" />
                 </LinearLayout>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginRight="20dp"
                     app:cardCornerRadius="22dp"
                     app:cardElevation="10dp">
@@ -138,11 +139,11 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="22dp"
-                    app:cardElevation="10dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="20dp">
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -170,19 +171,19 @@
                                 android:id="@+id/textView11"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
                                 android:fontFamily="@font/nanum_extrabold"
                                 android:text="확인하세요!"
                                 android:textColor="#FFFFFF"
-                                android:textSize="18sp"
-                                android:layout_marginTop="3dp"/>
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                         <ImageView
-                            android:layout_marginLeft="3dp"
                             android:id="@+id/imageView16"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="3dp"
                             android:src="@drawable/next"
                             android:tint="#FFFFFF" />
 
@@ -193,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="280dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     app:cardCornerRadius="22dp"

@@ -23,7 +23,7 @@
         <activity android:name=".view.student.fragment.StudentMoreFragment" />
         <activity android:name=".view.student.fragment.StudentScheduleFragment" />
         <activity android:name=".view.student.fragment.bamboo.StudentBambooFragment" />
-        <activity android:name=".view.student.fragment.StudentMainFragment" />
+        <activity android:name=".view.student.fragment.home.StudentHomeFragment" />
         <activity android:name=".view.student.activity.StudentMainActivity" />
         <activity android:name=".view.signup.signup.data.WorkerSignUpActivity" />
         <activity android:name=".view.signup.signup.data.SignUpFinishActivity" />

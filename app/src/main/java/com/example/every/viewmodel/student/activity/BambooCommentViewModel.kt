@@ -2,7 +2,7 @@ package com.example.every.viewmodel.student.activity
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.every.DTO.student.BambooReplyList
+import com.example.every.DTO.student.bamboo.BambooReplyList
 import com.example.every.base.BaseViewModel
 import com.example.every.base.StudentData
 import com.example.every.network.Data

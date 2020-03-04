@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.every.R
 import com.example.every.databinding.ActivityStudentMainBinding
 import com.example.every.view.student.fragment.bamboo.StudentBambooFragment
-import com.example.every.view.student.fragment.StudentMainFragment
+import com.example.every.view.student.fragment.home.StudentHomeFragment
 import com.example.every.view.student.fragment.StudentMoreFragment
 import com.example.every.view.student.fragment.StudentScheduleFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -16,7 +16,8 @@ class StudentMainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityStudentMainBinding
 
-    val studentMainFragment = StudentMainFragment()
+    val studentMainFragment =
+        StudentHomeFragment()
     val studentBambooFragment = StudentBambooFragment()
     val studentScheduleFragment = StudentScheduleFragment()
     val studentMoreFragment = StudentMoreFragment()

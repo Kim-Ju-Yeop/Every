@@ -1,7 +1,7 @@
 package com.example.every.viewmodel.student.fragment
 
 import android.util.Log
-import com.example.every.DTO.student.BambooPostList
+import com.example.every.DTO.student.bamboo.BambooPostList
 import com.example.every.base.BaseViewModel
 import com.example.every.base.StudentData
 import com.example.every.network.Data
@@ -20,8 +20,6 @@ class StudentBambooFragmentViewModel : BaseViewModel(){
      * status[401] 위조된 토큰
      * status[410] 토큰 기한 만료
      */
-
-    val onTokenEvent = SingleLiveEvent<Unit>()
 
     var bambooPostServerData = ArrayList<BambooPostList>()
     var bambooPostDataList = ArrayList<BambooPostList>()
@@ -48,7 +46,6 @@ class StudentBambooFragmentViewModel : BaseViewModel(){
                             }
                         } else onFailEvent.call()
                     }
-                    410 -> onTokenEvent.call()
                 }
             }
            override fun onFailure(call: Call<Response<Data>>, t: Throwable) {

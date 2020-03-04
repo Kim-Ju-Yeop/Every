@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.every.DTO.student.BambooPostList
+import com.example.every.DTO.student.bamboo.BambooPostList
 import com.example.every.R
 import com.example.every.view.student.activity.bamboo.BambooCommentActivity
 import com.example.every.base.StudentData

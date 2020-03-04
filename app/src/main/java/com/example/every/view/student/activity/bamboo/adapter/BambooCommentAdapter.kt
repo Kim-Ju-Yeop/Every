@@ -2,12 +2,11 @@ package com.example.every.view.student.activity.bamboo.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.every.DTO.student.BambooReplyList
+import com.example.every.DTO.student.bamboo.BambooReplyList
 import com.example.every.R
 import com.example.every.base.StudentData
 import com.example.every.view.student.activity.bamboo.BambooMoreActivity

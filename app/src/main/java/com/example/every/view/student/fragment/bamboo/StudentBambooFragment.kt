@@ -50,17 +50,6 @@ class StudentBambooFragment : BaseFragment() {
             onFailEvent.observe(this@StudentBambooFragment, Observer {
                 toastMessage(binding.root.context, "현재 게시물이 아무것도 존재하지 않습니다. 가장 먼저 글을 작성해보세요!")
             })
-            onTokenEvent.observe(this@StudentBambooFragment, Observer {
-                val loginData = context!!.applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
-                val loginData_editor = loginData.edit()
-
-                loginData_editor.putBoolean("loginData", false)
-                loginData_editor.commit()
-
-                toastMessage(binding.root.context, "토큰이 만료되었습니다. 로그인 화면으로 이동합니다.")
-                startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
-                activity!!.finish()
-            })
             onNextEvent.observe(this@StudentBambooFragment, Observer {
                startActivity(Intent(binding.root.context, BambooPostActivity::class.java))
             })

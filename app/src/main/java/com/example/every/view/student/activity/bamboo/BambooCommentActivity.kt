@@ -1,11 +1,13 @@
 package com.example.every.view.student.activity.bamboo
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -41,10 +43,16 @@ class BambooCommentActivity : BaseActivity() {
         val intent = intent
 
         binding.idx.text = "#${intent.extras!!.getInt("idx")}번째 이야기"
-        binding.createdAt.text = intent.extras!!.getString("created_at")
         binding.timer.text = intent.extras!!.getString("timer")
         binding.content.text = intent.extras!!.getString("content")
         binding.comment.text = intent.extras!!.getString("comment")
+
+        if(intent.extras!!.getString("created_at").equals("★ 오늘의 인기 게시글")){
+            binding.createdAt.text = intent.extras!!.getString("created_at")
+            binding.createdAt.setTextColor(Color.parseColor("#FFC400"))
+            binding.createdAt.setBackgroundResource(R.drawable.create_at_background)
+            binding.createdAt.setPadding(12)
+        }else binding.createdAt.text = intent.extras!!.getString("created_at")
 
         StudentData.postIdx.value = intent.extras!!.getInt("idx")
         viewModel.getBambooComment()

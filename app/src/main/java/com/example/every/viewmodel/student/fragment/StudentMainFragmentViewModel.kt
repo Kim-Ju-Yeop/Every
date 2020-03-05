@@ -1,12 +1,16 @@
 package com.example.every.viewmodel.student.fragment
 
+import android.annotation.SuppressLint
 import android.util.Log
+import android.widget.TextView
+import com.example.every.DTO.student.bamboo.BambooPostList
 import com.example.every.DTO.student.home.MealsList
 import com.example.every.base.BaseViewModel
 import com.example.every.base.StudentData
 import com.example.every.network.Data
 import com.example.every.network.Response
 import com.example.every.widget.SingleLiveEvent
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 
@@ -46,7 +50,7 @@ class StudentMainFragmentViewModel : BaseViewModel(){
                                 3 -> dinnerList = mealsData.get(A).meal_name.split("<br/>") as ArrayList<String>
                             }
                         }
-                        onLunchEvent.call()
+                        onBreakfastEvent.call()
                     }
                     404 -> onFailEvent.call()
                     410 -> onTokenEvent.call()
@@ -54,6 +58,46 @@ class StudentMainFragmentViewModel : BaseViewModel(){
             }
             override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
                 Log.e("getMeals[Error]", "급식 조회 과정에서 서버와 통신이 되지 않습니다.")
+            }
+        })
+    }
+
+    /**
+     * getStudentInfo 멤버 조회 API Response
+     * status[200] 멤버 조회 성공
+     */
+
+    fun getStudentInfo(student_name : TextView){
+        val res : Call<Response<Data>> = netRetrofit.bamboo.getStudentInfo(StudentData.token.value.toString(), StudentData.studentIdx.value!!)
+        res.enqueue(object : Callback<Response<Data>>{
+            override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
+                if(response.code() == 200) student_name.text = response.body()!!.data!!.member!!.name
+            }
+            override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
+                Log.e("getStudentInfo[Error]", "멤버 조회 과정에서 서버와 통신이 되지 않습니다.")
+            }
+        })
+    }
+
+    /**
+     * getBambooPostOrder 인기 대나무숲 게시글 조회 API Response
+     * status[200] 게시글 조회 성공
+     */
+
+    var bambooOrderList = ArrayList<BambooPostList>()
+
+    fun getBambooPostOrder(){
+        val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPostOrder(StudentData.token.value.toString(), "hit")
+        res.enqueue(object : Callback<Response<Data>>{
+            override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
+                if(response.code() == 200) {
+                    bambooOrderList = response.body()!!.data!!.posts!! as ArrayList<BambooPostList>
+                    onSuccessEvent.call()
+                }
+            }
+            @SuppressLint("LongLogTag")
+            override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
+                Log.e("getBambooPostOrder[Error]", "대나무숲 인기 게시글 조회 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
     }

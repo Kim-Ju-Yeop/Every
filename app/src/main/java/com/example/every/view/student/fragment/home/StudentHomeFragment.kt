@@ -17,6 +17,7 @@ import com.example.every.base.BaseFragment
 import com.example.every.base.StudentData
 import com.example.every.databinding.FragmentStudentHomeBinding
 import com.example.every.view.signin.SignInActivity
+import com.example.every.view.student.activity.bamboo.BambooCommentActivity
 import com.example.every.viewmodel.student.fragment.StudentMainFragmentViewModel
 
 class StudentHomeFragment : BaseFragment() {
@@ -33,6 +34,7 @@ class StudentHomeFragment : BaseFragment() {
 
         checkInit()
         viewModel.getMeals()
+        viewModel.getStudentInfo(binding.studentName)
         observerViewModel()
         return binding.root
     }
@@ -96,6 +98,13 @@ class StudentHomeFragment : BaseFragment() {
                 toastMessage(binding.root.context, "토큰이 만료되었습니다. 로그인 화면으로 이동합니다.")
                 startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
                 activity!!.finish()
+            })
+            onSuccessEvent.observe(this@StudentHomeFragment, Observer {
+                val intent = Intent(binding.root.context, BambooCommentActivity::class.java)
+                intent.putExtra("idx", viewModel.bambooOrderList.get(0).idx)
+                intent.putExtra("created_at", "★ 오늘의 인기 게시글")
+                intent.putExtra("content", viewModel.bambooOrderList.get(0).content)
+                startActivity(intent)
             })
         }
     }

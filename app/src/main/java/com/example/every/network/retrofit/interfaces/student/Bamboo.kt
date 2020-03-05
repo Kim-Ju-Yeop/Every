@@ -30,4 +30,7 @@ interface Bamboo {
 
     @PUT("bamboo/reply/{replyIdx}")
     fun editBambooReply(@Header("token") token : String, @Body bambooReplyEditData : BambooReplyEditData, @Path("replyIdx") replyIdx : Int) : Call<Response<Data>>
+
+    @GET("bamboo/post")
+    fun getBambooPostOrder(@Header("token") token : String, @Query("order") order : String) : Call<Response<Data>>
 }

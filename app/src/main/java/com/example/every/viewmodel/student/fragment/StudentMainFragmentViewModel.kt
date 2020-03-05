@@ -1,5 +1,6 @@
 package com.example.every.viewmodel.student.fragment
 
+import android.util.Log
 import com.example.every.DTO.student.home.MealsList
 import com.example.every.base.BaseViewModel
 import com.example.every.base.StudentData
@@ -20,7 +21,7 @@ class StudentMainFragmentViewModel : BaseViewModel(){
 
     var checkCount = 0
 
-    val mealsData = ArrayList<String>()
+    var mealsData = ArrayList<MealsList>()
     var breakfastList = ArrayList<String>()
     var lunchList = ArrayList<String>()
     var dinnerList = ArrayList<String>()
@@ -36,28 +37,23 @@ class StudentMainFragmentViewModel : BaseViewModel(){
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 when(response.code()){
                     200 -> {
-                        for(A in 0..response.body()!!.data!!.meals!!.size){
-                            if(response.body()!!.data!!.meals == null) mealsData.add("null")
-                            else mealsData.add(response.body()!!.data!!.meals!!.get(A).meals_name)
-                        }
-                        for(A in 0..mealsData.size){
-                            if(mealsData.get(A) == null) continue
-                            else{
-                                when(A){
-                                    0 -> breakfastList = mealsData.get(A).split("</br>") as ArrayList<String>
-                                    1 -> lunchList = mealsData.get(A).split("</br>") as ArrayList<String>
-                                    2 -> dinnerList = mealsData.get(A).split("</br>") as ArrayList<String>
-                                }
+                        mealsData = response.body()!!.data!!.meals as ArrayList<MealsList>
+
+                        for(A in 0 until mealsData.size){
+                            when(mealsData.get(A).meal_code){
+                                1 -> breakfastList = mealsData.get(A).meal_name.split("<br/>") as ArrayList<String>
+                                2 -> lunchList = mealsData.get(A).meal_name.split("<br/>") as ArrayList<String>
+                                3 -> dinnerList = mealsData.get(A).meal_name.split("<br/>") as ArrayList<String>
                             }
                         }
-                        onBreakfastEvent.call()
+                        onLunchEvent.call()
                     }
                     404 -> onFailEvent.call()
                     410 -> onTokenEvent.call()
                 }
             }
             override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-                println()
+                Log.e("getMeals[Error]", "급식 조회 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
     }

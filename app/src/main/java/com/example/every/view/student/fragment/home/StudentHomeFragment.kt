@@ -47,6 +47,45 @@ class StudentHomeFragment : BaseFragment() {
 
     override fun observerViewModel() {
         with(viewModel){
+            onBreakfastEvent.observe(this@StudentHomeFragment, Observer {
+                val adapter = MealsAdapter(viewModel.breakfastList)
+                binding.recyclerView.adapter = adapter
+
+                if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)
+                else setVisible(binding.questionLayout, binding.recyclerView, 1)
+
+                binding.mealsTitle.text = "아침"
+                binding.mealsImage.setImageResource(R.drawable.sunrise_breakfast)
+                binding.mealsBackground.setBackgroundResource(R.drawable.background_breakfast)
+                viewModel.checkCount = 1
+            })
+            onLunchEvent.observe(this@StudentHomeFragment, Observer {
+                val adapter = MealsAdapter(viewModel.lunchList)
+                binding.recyclerView.adapter = adapter
+
+                if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)
+                else setVisible(binding.questionLayout, binding.recyclerView, 1)
+
+                binding.mealsTitle.text = "점심"
+                binding.mealsImage.setImageResource(R.drawable.sun_lunch)
+                binding.mealsBackground.setBackgroundResource(R.drawable.background_lunch)
+                viewModel.checkCount = 2
+            })
+            onDinnerEvent.observe(this@StudentHomeFragment, Observer {
+                val adapter = MealsAdapter(viewModel.dinnerList)
+                binding.recyclerView.adapter = adapter
+
+                if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)
+                else setVisible(binding.questionLayout, binding.recyclerView, 1)
+
+                binding.mealsTitle.text = "저녁"
+                binding.mealsImage.setImageResource(R.drawable.moon_dinner)
+                binding.mealsBackground.setBackgroundResource(R.drawable.background_dinner)
+                viewModel.checkCount = 3
+            })
+            onFailEvent.observe(this@StudentHomeFragment, Observer {
+                setVisible(binding.questionLayout, binding.recyclerView, 0)
+            })
             onTokenEvent.observe(this@StudentHomeFragment, Observer {
                 val loginData = context!!.applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
                 val loginData_editor = loginData.edit()
@@ -57,30 +96,6 @@ class StudentHomeFragment : BaseFragment() {
                 toastMessage(binding.root.context, "토큰이 만료되었습니다. 로그인 화면으로 이동합니다.")
                 startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
                 activity!!.finish()
-            })
-            onBreakfastEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter = MealsAdapter(viewModel.breakfastList)
-                binding.recyclerView.adapter = adapter
-
-                binding.mealsTitle.text = "아침"
-                viewModel.checkCount = 1
-            })
-            onLunchEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter = MealsAdapter(viewModel.lunchList)
-                binding.recyclerView.adapter = adapter
-
-                binding.mealsTitle.text = "점심"
-                viewModel.checkCount = 2
-            })
-            onDinnerEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter = MealsAdapter(viewModel.lunchList)
-                binding.recyclerView.adapter = adapter
-
-                binding.mealsTitle.text = "저녁"
-                viewModel.checkCount = 3
-            })
-            onFailEvent.observe(this@StudentHomeFragment, Observer {
-                toastMessage(binding.root.context, "급식이 존재하지 않습니다.")
             })
         }
     }

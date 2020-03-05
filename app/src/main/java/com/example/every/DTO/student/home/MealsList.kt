@@ -1,3 +1,3 @@
 package com.example.every.DTO.student.home
 
-class MealsList (val meals_code : Int, val meals_date : String, val meals_name : String)
+class MealsList (val meal_code : Int, val meal_date : String, val meal_name : String)

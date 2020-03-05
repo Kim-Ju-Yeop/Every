@@ -14,7 +14,7 @@ import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 
-class StudentMainFragmentViewModel : BaseViewModel(){
+class StudentHomeFragmentViewModel : BaseViewModel(){
 
     /**
      * GetMeals 급식 조회 API Response
@@ -29,6 +29,8 @@ class StudentMainFragmentViewModel : BaseViewModel(){
     var breakfastList = ArrayList<String>()
     var lunchList = ArrayList<String>()
     var dinnerList = ArrayList<String>()
+
+    var bambooOrderList = ArrayList<BambooPostList>()
 
     val onTokenEvent = SingleLiveEvent<Unit>()
     val onBreakfastEvent = SingleLiveEvent<Unit>()
@@ -83,8 +85,6 @@ class StudentMainFragmentViewModel : BaseViewModel(){
      * getBambooPostOrder 인기 대나무숲 게시글 조회 API Response
      * status[200] 게시글 조회 성공
      */
-
-    var bambooOrderList = ArrayList<BambooPostList>()
 
     fun getBambooPostOrder(){
         val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPostOrder(StudentData.token.value.toString(), "hit")

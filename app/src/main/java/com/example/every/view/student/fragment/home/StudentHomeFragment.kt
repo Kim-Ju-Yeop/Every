@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
@@ -18,16 +16,16 @@ import com.example.every.base.StudentData
 import com.example.every.databinding.FragmentStudentHomeBinding
 import com.example.every.view.signin.SignInActivity
 import com.example.every.view.student.activity.bamboo.BambooCommentActivity
-import com.example.every.viewmodel.student.fragment.StudentMainFragmentViewModel
+import com.example.every.viewmodel.student.fragment.StudentHomeFragmentViewModel
 
 class StudentHomeFragment : BaseFragment() {
 
     lateinit var binding : FragmentStudentHomeBinding
-    lateinit var viewModel : StudentMainFragmentViewModel
+    lateinit var viewModel : StudentHomeFragmentViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_student_home, container, false)
-        viewModel = ViewModelProviders.of(this@StudentHomeFragment).get(StudentMainFragmentViewModel::class.java)
+        viewModel = ViewModelProviders.of(this@StudentHomeFragment).get(StudentHomeFragmentViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentHomeFragment

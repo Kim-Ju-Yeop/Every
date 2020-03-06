@@ -45,9 +45,7 @@ class BambooPostAdapter(val mContext : Context, val items : ArrayList<BambooPost
         }
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 

@@ -12,7 +12,7 @@ import com.example.every.base.BaseFragment
 import com.example.every.databinding.FragmentStudentScheduleBinding
 import com.example.every.viewmodel.student.fragment.StudentScheduleFragmentViewModel
 
-class StudentScheduleFragment : BaseFragment() {
+class StudentScheduleFragment : Fragment() {
 
     lateinit var binding : FragmentStudentScheduleBinding
     lateinit var viewModel : StudentScheduleFragmentViewModel
@@ -26,9 +26,5 @@ class StudentScheduleFragment : BaseFragment() {
         binding.lifecycleOwner = this@StudentScheduleFragment
 
         return binding.root
-    }
-
-    override fun observerViewModel() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

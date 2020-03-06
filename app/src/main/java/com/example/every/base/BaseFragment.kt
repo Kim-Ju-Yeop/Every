@@ -15,13 +15,14 @@ object StudentData{
 }
 
 abstract class BaseFragment : Fragment(){
-
     abstract fun observerViewModel()
 
+    // ToastMessage
     fun toastMessage(context : Context, message : String){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
+    // Visible
     fun setVisible(questionLayout : LinearLayout, recyclerView: RecyclerView, who : Int){
         if(who == 0){
             questionLayout.visibility = View.VISIBLE
@@ -30,5 +31,10 @@ abstract class BaseFragment : Fragment(){
             questionLayout.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        observerViewModel()
     }
 }

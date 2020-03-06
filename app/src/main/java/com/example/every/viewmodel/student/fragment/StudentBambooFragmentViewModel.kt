@@ -52,6 +52,5 @@ class StudentBambooFragmentViewModel : BaseViewModel(){
                Log.e("bambooPostList[Error]", "대나무숲 게시물 검색 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
-    }
-    fun newPost() = onNextEvent.call()
+    } fun newPost() = onNextEvent.call()
 }

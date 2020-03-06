@@ -33,7 +33,6 @@ class StudentHomeFragment : BaseFragment() {
         checkInit()
         viewModel.getMeals()
         viewModel.getStudentInfo(binding.studentName)
-        observerViewModel()
         return binding.root
     }
 

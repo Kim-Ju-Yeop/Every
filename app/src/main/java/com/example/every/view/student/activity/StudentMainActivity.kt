@@ -23,18 +23,14 @@ class StudentMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_student_main)
 
         binding = DataBindingUtil.setContentView(this@StudentMainActivity, R.layout.activity_student_main)
         binding.lifecycleOwner = this@StudentMainActivity
 
-        init()
-        selectedEvent()
-    }
-
-    private fun init(){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frameLayout, studentMainFragment).commitAllowingStateLoss()
+
+        selectedEvent()
     }
 
     private fun selectedEvent(){

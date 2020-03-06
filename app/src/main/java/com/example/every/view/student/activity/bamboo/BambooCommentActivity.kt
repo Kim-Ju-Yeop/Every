@@ -28,7 +28,6 @@ class BambooCommentActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bamboo_comment)
 
         binding = DataBindingUtil.setContentView(this@BambooCommentActivity, R.layout.activity_bamboo_comment)
         viewModel = ViewModelProviders.of(this@BambooCommentActivity).get(BambooCommentViewModel::class.java)
@@ -37,7 +36,6 @@ class BambooCommentActivity : BaseActivity() {
         binding.lifecycleOwner = this@BambooCommentActivity
 
         refreshLayout()
-        observerViewModel()
     }
 
     override fun onResume() {
@@ -60,6 +58,15 @@ class BambooCommentActivity : BaseActivity() {
         viewModel.getBambooComment()
     }
 
+    fun refreshLayout(){
+        binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
+            override fun onRefresh() {
+                viewModel.getBambooComment()
+                Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
+            }
+        })
+    }
+
     @SuppressLint("LongLogTag")
     override fun observerViewModel(){
         with(viewModel){
@@ -78,23 +85,14 @@ class BambooCommentActivity : BaseActivity() {
                 viewModel.getBambooComment()
             })
             onReplyEmptyEvent.observe(this@BambooCommentActivity, Observer {
-                Toast.makeText(applicationContext, "내용을 입력해주세요!", Toast.LENGTH_SHORT).show()
+                toastMessage(applicationContext, "댓글의 내용을 입력해주세요.")
             })
             onNextEvent.observe(this@BambooCommentActivity, Observer {
-                onBackPressed()
+                finish()
             })
             replyEditText.observe(this@BambooCommentActivity, Observer {
                 if(replyEditText.value!!.length >= 250) toastMessage(applicationContext, "250글자 내외로 작성할 수 있습니다.")
             })
         }
-    }
-
-    fun refreshLayout(){
-        binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
-            override fun onRefresh() {
-                viewModel.getBambooComment()
-                Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
-            }
-        })
     }
 }

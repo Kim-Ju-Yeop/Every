@@ -1,9 +1,11 @@
 package com.example.every.view.student.fragment.bamboo
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,13 +33,22 @@ class StudentBambooFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentBambooFragment
 
-        observerViewModel()
         refreshLayout()
+        viewModel.getBambooPost()
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
+    fun refreshLayout(){
+        binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
+            override fun onRefresh() {
+                viewModel.getBambooPost()
+                Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
+            }
+        })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         viewModel.getBambooPost()
     }
 
@@ -51,17 +62,9 @@ class StudentBambooFragment : BaseFragment() {
                 toastMessage(binding.root.context, "현재 게시물이 아무것도 존재하지 않습니다. 가장 먼저 글을 작성해보세요!")
             })
             onNextEvent.observe(this@StudentBambooFragment, Observer {
-               startActivity(Intent(binding.root.context, BambooPostActivity::class.java))
+                val intent = Intent(binding.root.context, BambooPostActivity::class.java)
+                startActivityForResult(intent, 1)
             })
         }
-    }
-
-    fun refreshLayout(){
-        binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
-            override fun onRefresh() {
-                viewModel.getBambooPost()
-                Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
-            }
-        })
     }
 }

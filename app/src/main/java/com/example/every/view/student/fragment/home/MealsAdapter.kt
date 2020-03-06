@@ -23,14 +23,12 @@ class MealsAdapter(val meals : ArrayList<String>) : RecyclerView.Adapter<MealsAd
         return ViewHolder(inflater)
     }
 
-    override fun getItemCount(): Int {
-        return meals.size
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val viewHolder = holder
         viewHolder.meals_textView.text = meals.get(position)
     }
+
+    override fun getItemCount(): Int = meals.size
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var meals_textView : TextView = itemView.findViewById(R.id.meals_textView)

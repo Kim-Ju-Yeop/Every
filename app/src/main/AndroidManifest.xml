@@ -44,26 +44,28 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".view.signup.signup.data.SignUpFinishActivity"
                   android:screenOrientation="portrait"/>
-
-
-
-
-        <activity android:name=".view.student.activity.bamboo.BambooCommentEditActivity"
-                  android:windowSoftInputMode="adjustResize">
-        </activity>
-        <activity
-            android:name=".view.student.activity.bamboo.BambooMoreActivity"
-            android:theme="@style/BambooMoreDialog" />
-        <activity android:name=".view.student.activity.bamboo.BambooCommentActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".view.student.activity.StudentMainActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".view.student.fragment.home.StudentHomeFragment"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".view.student.fragment.bamboo.StudentBambooFragment"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".view.student.activity.bamboo.BambooPostActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".view.student.activity.bamboo.BambooCommentActivity"
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".view.student.activity.bamboo.BambooMoreActivity"
+                  android:theme="@style/BambooMoreDialog"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".view.student.activity.bamboo.BambooCommentEditActivity"
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
+
+        <!--아직 미사용 -->
         <activity android:name=".view.student.fragment.StudentMoreFragment" />
         <activity android:name=".view.student.fragment.StudentScheduleFragment" />
-        <activity android:name=".view.student.fragment.bamboo.StudentBambooFragment" />
-        <activity android:name=".view.student.fragment.home.StudentHomeFragment" />
-        <activity android:name=".view.student.activity.StudentMainActivity" />
 
     </application>
-
 </manifest>

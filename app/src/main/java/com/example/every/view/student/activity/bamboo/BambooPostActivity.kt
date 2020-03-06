@@ -1,5 +1,6 @@
 package com.example.every.view.student.activity.bamboo
 
+import android.app.Activity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -17,7 +18,6 @@ class BambooPostActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bamboo_post)
 
         binding = DataBindingUtil.setContentView(this@BambooPostActivity, R.layout.activity_bamboo_post)
         viewModel = ViewModelProviders.of(this@BambooPostActivity).get(BambooPostViewModel::class.java)
@@ -26,13 +26,13 @@ class BambooPostActivity : BaseActivity() {
         binding.lifecycleOwner = this@BambooPostActivity
 
         toolbarInit(binding.toolbar)
-        observerViewModel()
     }
 
     override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooPostActivity, Observer {
                 toastMessage(applicationContext, "정상적으로 글 작성을 수행하였습니다.")
+                setResult(Activity.RESULT_OK)
                 finish()
             })
             onFailEvent.observe(this@BambooPostActivity, Observer {

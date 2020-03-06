@@ -21,7 +21,6 @@ class SchoolListSignUpActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.activity_school_list)
 
         binding = DataBindingUtil.setContentView(this@SchoolListSignUpActivity, R.layout.activity_school_list)
         viewModel = ViewModelProviders.of(this@SchoolListSignUpActivity).get(SchoolListSignUpViewModel::class.java)
@@ -30,25 +29,6 @@ class SchoolListSignUpActivity : BaseActivity() {
         binding.lifecycleOwner = this@SchoolListSignUpActivity
 
         editTextListener()
-        observerViewModel()
-    }
-
-    override fun observerViewModel(){
-        with(viewModel){
-            onSuccessEvent.observe(this@SchoolListSignUpActivity, Observer {
-                binding.recyclerView.visibility = View.VISIBLE
-                binding.questionLayout.visibility = View.GONE
-
-                val adapter = SchoolAdapter(this@SchoolListSignUpActivity, viewModel.schoolDataList)
-                binding.recyclerView.adapter = adapter
-            })
-            onFailEvent.observe(this@SchoolListSignUpActivity, Observer {
-                binding.recyclerView.visibility = View.GONE
-                binding.questionLayout.visibility = View.VISIBLE
-
-                binding.answerTextView.text = "입력하신 학교는 존재하지 않습니다."
-            })
-        }
     }
 
     fun editTextListener(){
@@ -59,5 +39,19 @@ class SchoolListSignUpActivity : BaseActivity() {
             }
             true
         })
+    }
+
+    override fun observerViewModel(){
+        with(viewModel){
+            onSuccessEvent.observe(this@SchoolListSignUpActivity, Observer {
+                setVisible(binding.questionLayout, binding.recyclerView, 1)
+                val adapter = SchoolAdapter(this@SchoolListSignUpActivity, viewModel.schoolDataList)
+                binding.recyclerView.adapter = adapter
+            })
+            onFailEvent.observe(this@SchoolListSignUpActivity, Observer {
+                setVisible(binding.questionLayout, binding.recyclerView, 0)
+                binding.answerTextView.text = "입력하신 학교는 존재하지 않습니다."
+            })
+        }
     }
 }

@@ -52,6 +52,5 @@ class Email_PasswordSignUpViewModel : BaseViewModel(){
                 Log.e("overlapEmail[Error]", "이메일 중복확인 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
-    }
-    fun next() = onNextEvent.call()
+    } fun next() = onNextEvent.call()
 }

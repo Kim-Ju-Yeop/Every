@@ -64,6 +64,5 @@ class SignUpFinishViewModel : BaseViewModel() {
                 }
             })
         }
-    }
-    fun next() = onNextEvent.call()
+    } fun next() = onNextEvent.call()
 }

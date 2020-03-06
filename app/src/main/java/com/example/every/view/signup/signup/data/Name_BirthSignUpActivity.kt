@@ -20,7 +20,6 @@ class Name_BirthSignUpActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_name__birth)
 
         binding = DataBindingUtil.setContentView(this@Name_BirthSignUpActivity, R.layout.activity_name__birth)
         viewModel = ViewModelProviders.of(this@Name_BirthSignUpActivity).get(Name_BirthSignUpViewModel::class.java)
@@ -28,10 +27,10 @@ class Name_BirthSignUpActivity : BaseActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@Name_BirthSignUpActivity
 
-        toolbarInit(binding.toolbar)
         birthCheck()
-        observerViewModel()
+        toolbarInit(binding.toolbar)
     }
+
     fun birthCheck(){
         binding.birthEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
@@ -52,6 +51,7 @@ class Name_BirthSignUpActivity : BaseActivity() {
             }
         })
     }
+
     override fun observerViewModel(){
         with(viewModel){
             onNextEvent.observe(this@Name_BirthSignUpActivity, Observer {

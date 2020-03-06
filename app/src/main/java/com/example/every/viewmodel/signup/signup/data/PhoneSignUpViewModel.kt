@@ -51,6 +51,5 @@ class PhoneSignUpViewModel : BaseViewModel(){
                 Log.e("overlapPhone[Error]", "전화번호 중복확인 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
-    }
-    fun next() = onNextEvent.call()
+    } fun next() = onNextEvent.call()
 }

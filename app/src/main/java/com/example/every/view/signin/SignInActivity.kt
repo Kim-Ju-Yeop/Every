@@ -24,15 +24,12 @@ class SignInActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
 
         binding = DataBindingUtil.setContentView(this@SignInActivity, R.layout.activity_sign_in)
         viewModel = ViewModelProviders.of(this@SignInActivity).get(SignInViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@SignInActivity
-
-        observerViewModel()
     }
 
     override fun observerViewModel(){
@@ -51,20 +48,21 @@ class SignInActivity : BaseActivity() {
             })
             onSuccessEvent.observe(this@SignInActivity, Observer {
 
-                // SignInData Setting
+                // LoginData Setting
                 val loginData = applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
                 val loginData_editor = loginData.edit()
 
                 loginData_editor.putBoolean("loginData", true)
                 loginData_editor.commit()
 
-                // Token Setting
+                // TokenData Setting
                 val token = applicationContext.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
                 val token_editor = token.edit()
 
                 token_editor.putString("tokenData", viewModel.token.value)
                 token_editor.commit()
 
+                // IdentityData Setting
                 val identity = applicationContext.getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
                 val identity_editor = identity.edit()
 

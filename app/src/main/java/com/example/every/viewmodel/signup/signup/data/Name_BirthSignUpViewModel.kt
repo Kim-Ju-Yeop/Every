@@ -17,6 +17,5 @@ class Name_BirthSignUpViewModel : BaseViewModel() {
             birth_check.value = null
             return true
         }
-    }
-    fun next() = onNextEvent.call()
+    } fun next() = onNextEvent.call()
 }

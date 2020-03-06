@@ -20,21 +20,12 @@ class SignUpFinishActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up_finish)
 
         binding = DataBindingUtil.setContentView(this@SignUpFinishActivity, R.layout.activity_sign_up_finish)
         viewModel = ViewModelProviders.of(this@SignUpFinishActivity).get(SignUpFinishViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@SignUpFinishActivity
-
-        register()
-        observerViewModel()
-    }
-
-    fun register(){
-        viewModel.firstText.value = "회원가입 완료"
-        viewModel.secondText.value = "정상적으로 회원가입이 완료되었습니다!"
 
         viewModel.signUp(SignUpData.identityData!!)
     }

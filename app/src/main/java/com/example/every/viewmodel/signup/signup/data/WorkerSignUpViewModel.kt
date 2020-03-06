@@ -16,6 +16,5 @@ class WorkerSignUpViewModel : BaseViewModel(){
             workerName_check.value = null
             return true
         }
-    }
-    fun next() = onNextEvent.call()
+    } fun next() = onNextEvent.call()
 }

@@ -20,7 +20,6 @@ class SchoolSignUpActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_school)
 
         binding = DataBindingUtil.setContentView(this@SchoolSignUpActivity, R.layout.activity_school)
         viewModel = ViewModelProviders.of(this@SchoolSignUpActivity).get(SchoolSignUpViewModel::class.java)
@@ -29,16 +28,10 @@ class SchoolSignUpActivity : BaseActivity() {
         binding.lifecycleOwner = this@SchoolSignUpActivity
 
         toolbarInit(binding.toolbar)
-        observerViewModel()
     }
 
-    // Activity 새로 보이는 생명 주기
     override fun onResume() {
         super.onResume()
-        checkSchoolData()
-    }
-
-    fun checkSchoolData(){
         val checkSchool = getSharedPreferences("checkSchool", Context.MODE_PRIVATE)
         viewModel.schoolNameSetting(checkSchool)
     }

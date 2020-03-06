@@ -20,7 +20,6 @@ class Email_PasswordSignUpActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_email__password)
 
         binding = DataBindingUtil.setContentView(this@Email_PasswordSignUpActivity, R.layout.activity_email__password)
         viewModel = ViewModelProviders.of(this@Email_PasswordSignUpActivity).get(Email_PasswordSignUpViewModel::class.java)
@@ -28,10 +27,9 @@ class Email_PasswordSignUpActivity : BaseActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@Email_PasswordSignUpActivity
 
-        toolbarInit(binding.toolbar)
-        emailCheck()
         pwCheck()
-        observerViewModel()
+        emailCheck()
+        toolbarInit(binding.toolbar)
     }
 
     fun emailCheck(){
@@ -39,9 +37,8 @@ class Email_PasswordSignUpActivity : BaseActivity() {
             override fun afterTextChanged(s: Editable?){}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int){}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(viewModel.checkType(binding.emailEditText.text.toString(), 0)){
+                if(viewModel.checkType(binding.emailEditText.text.toString(), 0))
                     viewModel.overlapEmail(binding.emailEditText.text.toString())
-                }
             }
         })
     }

@@ -19,7 +19,6 @@ class SignUpActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
 
         binding = DataBindingUtil.setContentView(this@SignUpActivity, R.layout.activity_sign_up)
         viewModel = ViewModelProviders.of(this@SignUpActivity).get(SignUpViewModel::class.java)
@@ -28,8 +27,8 @@ class SignUpActivity : BaseActivity() {
         binding.lifecycleOwner = this@SignUpActivity
 
         toolbarInit(binding.toolbar)
-        observerViewModel()
     }
+
     override fun observerViewModel(){
         with(viewModel){
             onNextEvent.observe(this@SignUpActivity, Observer {

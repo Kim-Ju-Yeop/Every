@@ -21,7 +21,6 @@ class WorkerSignUpActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_worker)
 
         binding = DataBindingUtil.setContentView(this@WorkerSignUpActivity, R.layout.activity_worker)
         viewModel = ViewModelProviders.of(this@WorkerSignUpActivity).get(WorkerSignUpViewModel::class.java)
@@ -29,10 +28,15 @@ class WorkerSignUpActivity : BaseActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@WorkerSignUpActivity
 
-        toolbarInit(binding.toolbar)
-        workerNameCheck()
         setSpinner()
-        observerViewModel()
+        workerNameCheck()
+        toolbarInit(binding.toolbar)
+    }
+
+    fun setSpinner(){
+        val items = resources.getStringArray(R.array.workerData)
+        val adapter = ArrayAdapter(this@WorkerSignUpActivity, android.R.layout.simple_spinner_dropdown_item, items)
+        binding.spinner.adapter = adapter
     }
 
     fun workerNameCheck(){
@@ -49,12 +53,6 @@ class WorkerSignUpActivity : BaseActivity() {
                 }
             }
         })
-    }
-
-    fun setSpinner(){
-        val items = resources.getStringArray(R.array.workerData)
-        val adapter = ArrayAdapter(this@WorkerSignUpActivity, android.R.layout.simple_spinner_dropdown_item, items)
-        binding.spinner.adapter = adapter
     }
 
     override fun observerViewModel(){

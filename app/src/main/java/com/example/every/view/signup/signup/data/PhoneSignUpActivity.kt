@@ -29,9 +29,8 @@ class PhoneSignUpActivity : BaseActivity(){
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@PhoneSignUpActivity
 
-        toolbarInit(binding.toolbar)
         phoneCheck()
-        observerViewModel()
+        toolbarInit(binding.toolbar)
     }
 
     fun phoneCheck(){
@@ -40,9 +39,9 @@ class PhoneSignUpActivity : BaseActivity(){
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(viewModel.checkType(binding.phoneEditText.text.toString())){
+                if(viewModel.checkType(binding.phoneEditText.text.toString()))
                     viewModel.overlapPhone(binding.phoneEditText.text.toString())
-                }else{
+                else{
                     binding.nextButton.setBackgroundResource(R.color.gray)
                     binding.nextButton.isEnabled = false
                 }

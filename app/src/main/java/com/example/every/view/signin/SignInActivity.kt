@@ -2,11 +2,13 @@ package com.example.every.view.signin
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.every.R
 import com.example.every.view.signup.SignUpActivity
 import com.example.every.view.student.activity.StudentMainActivity
@@ -41,45 +43,63 @@ class SignInActivity : BaseActivity() {
                 Toast.makeText(applicationContext, "아직 비밀번호 찾기 기능은 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
             })
             onErrorEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "이메일 또는 비밀번호에 형식 오류가 있습니다.", Toast.LENGTH_SHORT).show()
+                SweetAlertDialog(this@SignInActivity, SweetAlertDialog.ERROR_TYPE)
+                    .setContentText("이메일 또는 비밀번호 형식에 오류가 존재합니다.")
+                    .setTitleText("Error")
+                    .setConfirmText("확인")
+                    .setConfirmClickListener {
+                        it.cancel()
+                    }.show()
             })
             onFailEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "이메일 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
+                SweetAlertDialog(this@SignInActivity, SweetAlertDialog.WARNING_TYPE)
+                    .setContentText("이메일 또는 비밀번호가 올바르지 않습니다.")
+                    .setTitleText("Warning")
+                    .setConfirmText("확인")
+                    .setConfirmClickListener {
+                        it.cancel()
+                    }.show()
             })
             onSuccessEvent.observe(this@SignInActivity, Observer {
+                SweetAlertDialog(this@SignInActivity, SweetAlertDialog.SUCCESS_TYPE)
+                    .setContentText("로그인을 성공하였습니다.")
+                    .setTitleText("Success")
+                    .setConfirmText("확인")
+                    .setConfirmClickListener {
 
-                // LoginData Setting
-                val loginData = applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
-                val loginData_editor = loginData.edit()
+                        // LoginData Setting
+                        val loginData = applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
+                        val loginData_editor = loginData.edit()
 
-                loginData_editor.putBoolean("loginData", true)
-                loginData_editor.commit()
+                        loginData_editor.putBoolean("loginData", true)
+                        loginData_editor.commit()
 
-                // TokenData Setting
-                val token = applicationContext.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
-                val token_editor = token.edit()
+                        // TokenData Setting
+                        val token = applicationContext.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
+                        val token_editor = token.edit()
 
-                token_editor.putString("tokenData", viewModel.token.value)
-                token_editor.commit()
+                        token_editor.putString("tokenData", viewModel.token.value)
+                        token_editor.commit()
 
-                // IdentityData Setting
-                val identity = applicationContext.getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
-                val identity_editor = identity.edit()
+                        // IdentityData Setting
+                        val identity = applicationContext.getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
+                        val identity_editor = identity.edit()
 
-                if(viewModel.worker_idx.value != null){
-                    identity_editor.putString("identityData", "worker")
-                    identity_editor.putInt("identityIdx_Worker", viewModel.worker_idx.value!!)
-                    identity_editor.commit()
+                        if(viewModel.worker_idx.value != null){
+                            identity_editor.putString("identityData", "worker")
+                            identity_editor.putInt("identityIdx_Worker", viewModel.worker_idx.value!!)
+                            identity_editor.commit()
 
-                   // 직장인 페이지 이동
-                }else if(viewModel.student_idx.value != null){
-                    identity_editor.putString("identityData", "student")
-                    identity_editor.putInt("identityIdx_Student", viewModel.student_idx.value!!)
-                    identity_editor.commit()
+                            // 직장인 페이지 이동
+                        }else if(viewModel.student_idx.value != null){
+                            identity_editor.putString("identityData", "student")
+                            identity_editor.putInt("identityIdx_Student", viewModel.student_idx.value!!)
+                            identity_editor.commit()
 
-                    startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))
-                    finish()
-                }
+                            startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))
+                            finish()
+                        }
+                    }.show()
             })
         }
     }

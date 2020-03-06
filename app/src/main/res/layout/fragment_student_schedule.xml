@@ -15,11 +15,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
+        <CalendarView
+            android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="시간표" />
-
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </layout>

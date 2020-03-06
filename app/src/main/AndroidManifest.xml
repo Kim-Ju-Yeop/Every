@@ -13,13 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true" >
-        <activity android:name=".view.student.activity.bamboo.BambooCommentEditActivity" >
+        <activity android:name=".view.student.activity.bamboo.BambooCommentEditActivity"
+                  android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
             android:name=".view.student.activity.bamboo.BambooMoreActivity"
             android:theme="@style/BambooMoreDialog" />
-        <activity android:name=".view.student.activity.bamboo.BambooCommentActivity" />
-        <activity android:name=".view.student.activity.bamboo.BambooPostActivity" />
+        <activity android:name=".view.student.activity.bamboo.BambooCommentActivity"
+                  android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".view.student.activity.bamboo.BambooPostActivity"
+                  android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".view.student.fragment.StudentMoreFragment" />
         <activity android:name=".view.student.fragment.StudentScheduleFragment" />
         <activity android:name=".view.student.fragment.bamboo.StudentBambooFragment" />

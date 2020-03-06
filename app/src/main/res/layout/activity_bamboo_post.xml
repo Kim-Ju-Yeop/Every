@@ -99,20 +99,23 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
             android:layout_weight="0.0001"
-            android:background="#EEEEEE"
-            android:orientation="horizontal">
+            android:background="@drawable/image_video_background"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.addImage()}"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
 
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="14dp"
-                app:srcCompat="@drawable/photo"
-                android:onClick="@{() -> viewModel.addImage()}"/>
+                android:onClick="@{() -> viewModel.addImage()}"
+                app:srcCompat="@drawable/photo" />
 
             <TextView
                 android:id="@+id/image_textView"
@@ -120,10 +123,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
-                android:text="@string/image_textView"
                 android:fontFamily="@font/nanum_bold"
+                android:onClick="@{() -> viewModel.addImage()}"
+                android:text="@string/image_textView"
                 android:textSize="11sp"
-                android:onClick="@{() -> viewModel.addImage()}"/>
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

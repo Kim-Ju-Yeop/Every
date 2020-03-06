@@ -81,9 +81,6 @@ class BambooCommentActivity : BaseActivity() {
             onReplyEmptyEvent.observe(this@BambooCommentActivity, Observer {
                 Toast.makeText(applicationContext, "내용을 입력해주세요!", Toast.LENGTH_SHORT).show()
             })
-            onImageEvent.observe(this@BambooCommentActivity, Observer {
-                Toast.makeText(applicationContext, "아직 이미지, 동영상 업로드 기능은 추가되지 않았습니다.", Toast.LENGTH_SHORT).show()
-            })
             onNextEvent.observe(this@BambooCommentActivity, Observer {
                 onBackPressed()
             })

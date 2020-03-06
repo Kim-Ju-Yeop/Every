@@ -178,15 +178,6 @@
             android:background="#FFFFFF"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="20dp"
-                android:layout_height="23dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="14dp"
-                app:srcCompat="@drawable/photo"
-                android:onClick="@{() -> viewModel.addImage()}"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -195,6 +186,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_weight="1"
                 android:background="@drawable/comment_background">
 
                 <EditText
@@ -214,18 +206,22 @@
                     android:textSize="12sp"
                     android:text="@={viewModel.replyEditText}"
                     android:maxLength="250"/>
-
-                <TextView
-                    android:onClick="@{() -> viewModel.postBambooReply()}"
-                    android:layout_marginRight="25dp"
-                    android:id="@+id/post_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/post_textView"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:textSize="12sp"
-                    android:textColor="#7E40FF"/>
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/post_textView"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="25dp"
+                android:fontFamily="@font/nanum_extrabold"
+                android:onClick="@{() -> viewModel.postBambooReply()}"
+                android:src="@drawable/send"
+                android:text="@string/post_textView"
+                android:textColor="#7E40FF"
+                android:textSize="12sp" />
+
         </LinearLayout>
     </LinearLayout>
 </layout>

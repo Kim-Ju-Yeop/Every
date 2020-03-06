@@ -16,8 +16,7 @@ class StudentMainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityStudentMainBinding
 
-    val studentMainFragment =
-        StudentHomeFragment()
+    val studentMainFragment = StudentHomeFragment()
     val studentBambooFragment = StudentBambooFragment()
     val studentScheduleFragment = StudentScheduleFragment()
     val studentMoreFragment = StudentMoreFragment()

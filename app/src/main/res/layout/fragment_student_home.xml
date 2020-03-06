@@ -74,7 +74,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/bell"
-                        android:tint="#000000" />
+                        android:tint="#707070" />
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView

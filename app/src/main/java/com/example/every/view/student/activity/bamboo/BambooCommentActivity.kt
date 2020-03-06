@@ -1,9 +1,11 @@
 package com.example.every.view.student.activity.bamboo
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -58,18 +60,15 @@ class BambooCommentActivity : BaseActivity() {
         viewModel.getBambooComment()
     }
 
+    @SuppressLint("LongLogTag")
     override fun observerViewModel(){
         with(viewModel){
             onSuccessEvent.observe(this@BambooCommentActivity, Observer {
-                binding.recyclerView.visibility = View.VISIBLE
-                binding.questionLayout.visibility = View.GONE
-
                 val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentDataList)
                 binding.recyclerView.adapter = adapter
             })
             onFailEvent.observe(this@BambooCommentActivity, Observer {
-                binding.recyclerView.visibility = View.GONE
-                binding.questionLayout.visibility = View.VISIBLE
+                Log.e("BambooCommentActivity[Error]", "게시글의 댓글이 존재하지 않습니다.")
             })
             onReplyEvent.observe(this@BambooCommentActivity, Observer {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

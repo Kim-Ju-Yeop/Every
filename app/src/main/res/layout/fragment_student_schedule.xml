@@ -101,6 +101,7 @@
             android:elevation="10dp"
             android:src="@drawable/add2"
             app:maxImageSize="45dp"
-            app:backgroundTint="#FFFFFF" />
+            app:backgroundTint="#FFFFFF"
+            android:onClick="@{() -> viewModel.addSchedule()}"/>
     </FrameLayout>
 </layout>

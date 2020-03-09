@@ -14,6 +14,12 @@ import java.text.SimpleDateFormat
 
 class StudentScheduleFragmentViewModel : BaseViewModel(){
 
+    /**
+     * getSchedule 스케줄 조회 API Response
+     * status[200] 일정 조회 성공 : 데이터 존재
+     * status[200] 일정 조회 성공 : 데이터 없음
+     */
+
     val simpleDataFormat = SimpleDateFormat("yyyy-MM-dd")
     val dates = ArrayList<CalendarDay>()
 
@@ -29,11 +35,9 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 if(check == 0){
                     if(response.code() == 200){
-                        if(!response.body()!!.data!!.schedules.isNullOrEmpty()){
-                            for(A in response.body()!!.data!!.schedules!!.indices)
-                                dates.add(CalendarDay.from(simpleDataFormat.parse(response.body()!!.data!!.schedules!!.get(A).start_date)))
-                            onSuccessEvent.call()
-                        }else onFailEvent.call()
+                        for(A in response.body()!!.data!!.schedules!!.indices)
+                            dates.add(CalendarDay.from(simpleDataFormat.parse(response.body()!!.data!!.schedules!!.get(A).start_date)))
+                        onSuccessEvent.call()
                     }
                 }else{
                     if(response.code() == 200){
@@ -41,8 +45,9 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
                             scheduleDataList.clear()
                             scheduleData = response!!.body()!!.data!!.schedules as ArrayList<SchedulesList>
                             for(A in scheduleData.indices) if(scheduleData.get(A).start_date.equals(date)) scheduleDataList.add(scheduleData.get(A))
-                            onScheduleSuccessEvent.call()
-                        }else onScheduleFailEvent.call()
+                            if(!scheduleDataList.isNullOrEmpty()) onScheduleSuccessEvent.call()
+                            else onScheduleFailEvent.call()
+                        }
                     }
                 }
             }
@@ -50,5 +55,5 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
                 Log.e("geSchedule[Error]", "스케줄 일정 조회 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
-    }
+    } fun addSchedule() = onNextEvent.call()
 }

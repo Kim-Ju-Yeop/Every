@@ -1,11 +1,8 @@
-package com.example.every.view.student.fragment.schedule
+package com.example.every.view.student.fragment.schedule.decorator
 
 import android.content.Context
 import android.graphics.Color
-import android.text.style.ForegroundColorSpan
-import android.text.style.RelativeSizeSpan
 import android.util.Log
-import com.example.every.R
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade

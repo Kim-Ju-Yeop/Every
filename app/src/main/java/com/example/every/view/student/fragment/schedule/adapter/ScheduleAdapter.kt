@@ -1,4 +1,4 @@
-package com.example.every.view.student.fragment.schedule
+package com.example.every.view.student.fragment.schedule.adapter
 
 import android.content.Context
 import android.text.TextUtils
@@ -6,12 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.every.DTO.signup.SchoolDataList
 import com.example.every.DTO.student.schedule.SchedulesList
 import com.example.every.R
 import kotlinx.android.synthetic.main.schedule_item.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class ScheduleAdapter(val mContext : Context, val items : ArrayList<SchedulesList>) : RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
@@ -20,7 +17,9 @@ class ScheduleAdapter(val mContext : Context, val items : ArrayList<SchedulesLis
         var inflater : LayoutInflater = LayoutInflater.from(parent.context)
         var itemView = inflater.inflate(R.layout.schedule_item, parent, false)
 
-        return ViewHolder(itemView)
+        return ViewHolder(
+            itemView
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

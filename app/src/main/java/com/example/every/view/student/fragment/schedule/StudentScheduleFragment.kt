@@ -1,21 +1,23 @@
 package com.example.every.view.student.fragment.schedule
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.every.DTO.student.schedule.SchedulesList
 import com.example.every.R
 import com.example.every.base.BaseFragment
 import com.example.every.databinding.FragmentStudentScheduleBinding
+import com.example.every.view.student.fragment.schedule.adapter.NoScheduleAdapter
+import com.example.every.view.student.fragment.schedule.adapter.ScheduleAdapter
+import com.example.every.view.student.fragment.schedule.decorator.EventDecorator
 import com.example.every.viewmodel.student.fragment.StudentScheduleFragmentViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class StudentScheduleFragment : BaseFragment() {
 
@@ -30,9 +32,13 @@ class StudentScheduleFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentScheduleFragment
 
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
         materialCalendarViewEvent()
         viewModel.getSchedule(0)
-        return binding.root
     }
 
     private fun materialCalendarViewEvent(){
@@ -53,15 +59,16 @@ class StudentScheduleFragment : BaseFragment() {
             onSuccessEvent.observe(this@StudentScheduleFragment, Observer {
                 binding.materialCalendarView.addDecorator(EventDecorator(binding.root.context, viewModel.dates))
             })
-            onFailEvent.observe(this@StudentScheduleFragment, Observer {
-                // 일정이 아무것도 존재하지 않는 상황
-            })
             onScheduleSuccessEvent.observe(this@StudentScheduleFragment, Observer {
                 val adapter = ScheduleAdapter(binding.root.context, viewModel.scheduleDataList)
                 binding.recyclerView.adapter = adapter
             })
             onScheduleFailEvent.observe(this@StudentScheduleFragment, Observer {
-                // 스케줄이 아무것도 존재하지 않는 경우
+                val adapter = NoScheduleAdapter(binding.root.context)
+                binding.recyclerView.adapter = adapter
+            })
+            onNextEvent.observe(this@StudentScheduleFragment, Observer {
+
             })
         }
     }

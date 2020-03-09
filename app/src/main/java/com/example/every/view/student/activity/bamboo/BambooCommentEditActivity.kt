@@ -1,16 +1,13 @@
 package com.example.every.view.student.activity.bamboo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.base.BaseActivity
 import com.example.every.databinding.ActivityBambooCommentEditBinding
-import com.example.every.viewmodel.student.activity.BambooCommentEditViewModel
-import kotlinx.android.synthetic.main.bamboo_item.*
+import com.example.every.viewmodel.student.activity.bamboo.BambooCommentEditViewModel
 
 class BambooCommentEditActivity : BaseActivity() {
 
@@ -21,7 +18,8 @@ class BambooCommentEditActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this@BambooCommentEditActivity, R.layout.activity_bamboo_comment_edit)
-        viewModel = ViewModelProviders.of(this@BambooCommentEditActivity).get(BambooCommentEditViewModel::class.java)
+        viewModel = ViewModelProviders.of(this@BambooCommentEditActivity).get(
+            BambooCommentEditViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@BambooCommentEditActivity

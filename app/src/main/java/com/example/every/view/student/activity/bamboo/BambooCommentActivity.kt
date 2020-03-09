@@ -6,9 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -19,7 +17,7 @@ import com.example.every.view.student.activity.bamboo.adapter.BambooCommentAdapt
 import com.example.every.base.BaseActivity
 import com.example.every.base.StudentData
 import com.example.every.databinding.ActivityBambooCommentBinding
-import com.example.every.viewmodel.student.activity.BambooCommentViewModel
+import com.example.every.viewmodel.student.activity.bamboo.BambooCommentViewModel
 
 class BambooCommentActivity : BaseActivity() {
 

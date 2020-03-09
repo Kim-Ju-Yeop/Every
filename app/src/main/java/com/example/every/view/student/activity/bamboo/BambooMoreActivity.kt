@@ -1,7 +1,6 @@
 package com.example.every.view.student.activity.bamboo
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.Window
@@ -12,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.base.BaseActivity
 import com.example.every.databinding.ActivityBambooMoreBinding
-import com.example.every.viewmodel.student.activity.BambooMoreViewModel
+import com.example.every.viewmodel.student.activity.bamboo.BambooMoreViewModel
 
 class BambooMoreActivity : BaseActivity() {
 

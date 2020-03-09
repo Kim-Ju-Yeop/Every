@@ -2,14 +2,13 @@ package com.example.every.view.student.activity.bamboo
 
 import android.app.Activity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.base.BaseActivity
 import com.example.every.databinding.ActivityBambooPostBinding
-import com.example.every.viewmodel.student.activity.BambooPostViewModel
+import com.example.every.viewmodel.student.activity.bamboo.BambooPostViewModel
 
 class BambooPostActivity : BaseActivity() {
 

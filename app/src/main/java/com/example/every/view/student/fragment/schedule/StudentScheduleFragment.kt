@@ -1,5 +1,6 @@
 package com.example.every.view.student.fragment.schedule
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.every.DTO.student.schedule.SchedulesList
 import com.example.every.R
 import com.example.every.base.BaseFragment
 import com.example.every.databinding.FragmentStudentScheduleBinding
+import com.example.every.view.student.activity.schedule.SchedulePostActivity
 import com.example.every.view.student.fragment.schedule.adapter.NoScheduleAdapter
 import com.example.every.view.student.fragment.schedule.adapter.ScheduleAdapter
 import com.example.every.view.student.fragment.schedule.decorator.EventDecorator
@@ -68,7 +70,7 @@ class StudentScheduleFragment : BaseFragment() {
                 binding.recyclerView.adapter = adapter
             })
             onNextEvent.observe(this@StudentScheduleFragment, Observer {
-
+                startActivity(Intent(binding.root.context, SchedulePostActivity::class.java))
             })
         }
     }

@@ -41,13 +41,11 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
                     }
                 }else{
                     if(response.code() == 200){
-                        if(!response.body()!!.data!!.schedules.isNullOrEmpty()){
-                            scheduleDataList.clear()
-                            scheduleData = response!!.body()!!.data!!.schedules as ArrayList<SchedulesList>
-                            for(A in scheduleData.indices) if(scheduleData.get(A).start_date.equals(date)) scheduleDataList.add(scheduleData.get(A))
-                            if(!scheduleDataList.isNullOrEmpty()) onScheduleSuccessEvent.call()
-                            else onScheduleFailEvent.call()
-                        }
+                        scheduleDataList.clear()
+                        scheduleData = response!!.body()!!.data!!.schedules as ArrayList<SchedulesList>
+                        for(A in scheduleData.indices) if(scheduleData.get(A).start_date.equals(date)) scheduleDataList.add(scheduleData.get(A))
+                        if(!scheduleDataList.isNullOrEmpty()) onScheduleSuccessEvent.call()
+                        else onScheduleFailEvent.call()
                     }
                 }
             }

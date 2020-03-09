@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.activity.BambooCommentViewModel" />
+            type="com.example.every.viewmodel.student.activity.bamboo.BambooCommentViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

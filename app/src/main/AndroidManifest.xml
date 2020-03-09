@@ -65,7 +65,7 @@
 
         <!--아직 미사용 -->
         <activity android:name=".view.student.fragment.StudentMoreFragment" />
-        <activity android:name=".view.student.fragment.StudentScheduleFragment" />
+        <activity android:name=".view.student.fragment.schedule.StudentScheduleFragment" />
 
     </application>
 </manifest>

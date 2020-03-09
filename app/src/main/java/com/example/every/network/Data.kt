@@ -5,6 +5,7 @@ import com.example.every.DTO.signup.SchoolDataList
 import com.example.every.DTO.student.bamboo.BambooMember
 import com.example.every.DTO.student.bamboo.BambooReplyList
 import com.example.every.DTO.student.home.MealsList
+import com.example.every.DTO.student.schedule.SchedulesList
 import com.google.gson.annotations.SerializedName
 
 class Data {
@@ -19,6 +20,9 @@ class Data {
 
     // Home
     var meals : List<MealsList>? = null
+
+    // Schedule
+    var schedules : List<SchedulesList>? = null
 
     @SerializedName("x-access-token")
     lateinit var token : String

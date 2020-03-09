@@ -99,6 +99,7 @@ class SignInActivity : BaseActivity() {
                             startActivity(Intent(this@SignInActivity, StudentMainActivity::class.java))
                             finish()
                         }
+                        it.cancel()
                     }.show()
             })
         }

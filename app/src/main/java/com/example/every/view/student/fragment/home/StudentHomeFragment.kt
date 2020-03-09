@@ -16,6 +16,7 @@ import com.example.every.base.StudentData
 import com.example.every.databinding.FragmentStudentHomeBinding
 import com.example.every.view.signin.SignInActivity
 import com.example.every.view.student.activity.bamboo.BambooCommentActivity
+import com.example.every.view.student.fragment.home.adapter.MealsAdapter
 import com.example.every.viewmodel.student.fragment.StudentHomeFragmentViewModel
 
 class StudentHomeFragment : BaseFragment() {
@@ -47,7 +48,10 @@ class StudentHomeFragment : BaseFragment() {
     override fun observerViewModel() {
         with(viewModel){
             onBreakfastEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter = MealsAdapter(viewModel.breakfastList)
+                val adapter =
+                    MealsAdapter(
+                        viewModel.breakfastList
+                    )
                 binding.recyclerView.adapter = adapter
 
                 if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)
@@ -59,7 +63,10 @@ class StudentHomeFragment : BaseFragment() {
                 viewModel.checkCount = 1
             })
             onLunchEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter = MealsAdapter(viewModel.lunchList)
+                val adapter =
+                    MealsAdapter(
+                        viewModel.lunchList
+                    )
                 binding.recyclerView.adapter = adapter
 
                 if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)
@@ -71,7 +78,10 @@ class StudentHomeFragment : BaseFragment() {
                 viewModel.checkCount = 2
             })
             onDinnerEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter = MealsAdapter(viewModel.dinnerList)
+                val adapter =
+                    MealsAdapter(
+                        viewModel.dinnerList
+                    )
                 binding.recyclerView.adapter = adapter
 
                 if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)

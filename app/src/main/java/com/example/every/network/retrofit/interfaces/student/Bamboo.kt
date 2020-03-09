@@ -2,9 +2,9 @@ package com.example.every.network.retrofit.interfaces.student
 
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.network.request.model.student.BambooPostData
-import com.example.every.network.request.model.student.BambooReplyData
-import com.example.every.network.request.model.student.BambooReplyEditData
+import com.example.every.network.request.model.student.bamboo.BambooPostData
+import com.example.every.network.request.model.student.bamboo.BambooReplyData
+import com.example.every.network.request.model.student.bamboo.BambooReplyEditData
 import retrofit2.Call
 import retrofit2.http.*
 

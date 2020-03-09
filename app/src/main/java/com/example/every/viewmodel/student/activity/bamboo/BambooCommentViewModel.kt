@@ -7,7 +7,7 @@ import com.example.every.base.BaseViewModel
 import com.example.every.base.StudentData
 import com.example.every.network.Data
 import com.example.every.network.Response
-import com.example.every.network.request.model.student.BambooReplyData
+import com.example.every.network.request.model.student.bamboo.BambooReplyData
 import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
@@ -69,7 +69,11 @@ class BambooCommentViewModel : BaseViewModel(){
 
     fun postBambooReply(){
         if(!replyEditText.value.isNullOrEmpty()){
-            val bambooReplyData = BambooReplyData(replyEditText.value.toString(), StudentData.postIdx.value!!)
+            val bambooReplyData =
+                BambooReplyData(
+                    replyEditText.value.toString(),
+                    StudentData.postIdx.value!!
+                )
             val res : Call<Response<Data>> = netRetrofit.bamboo.postBambooReply(StudentData.token.value.toString(), bambooReplyData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {

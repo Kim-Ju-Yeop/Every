@@ -1,7 +1,11 @@
 package com.example.every.view.student.activity.schedule
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
@@ -27,7 +31,11 @@ class SchedulePostActivity : BaseActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@SchedulePostActivity
 
+        init()
         toolbarInit(binding.toolbar)
+    }
+
+    private fun init(){
         viewModel.end_date.value = "날짜 선택"
         viewModel.start_date.value = "날짜 선택"
     }
@@ -41,11 +49,26 @@ class SchedulePostActivity : BaseActivity() {
 
                     if(viewModel.check_date.value == 0) viewModel.start_date.value = formatDate
                     else viewModel.end_date.value = formatDate
+
+                    if(!viewModel.start_date.value.equals("날짜 선택") && !viewModel.end_date.value.equals("날짜 선택")) {
+                        binding.postButton.setBackgroundResource(R.drawable.background_schedule_add_button)
+                        binding.postButton.isEnabled = true
+                    } else {
+                        binding.postButton.setBackgroundColor(Color.GRAY)
+                        binding.postButton.isEnabled
+                    }
                 }
 
                 val today : CalendarDay = CalendarDay.today()
                 val dialog = DatePickerDialog(binding.root.context, callbackMethod, today.year, today.month, today.day)
                 dialog.show()
+            })
+            onSuccessEvent.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
+                toastMessage(applicationContext, "일정을 성공적으로 추가하였습니다.")
+                finish()
+            })
+            onErrorEvent.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
+                toastMessage(applicationContext, "입력하신 내용을 다시 한 번 확인하십시오.")
             })
         }
     }

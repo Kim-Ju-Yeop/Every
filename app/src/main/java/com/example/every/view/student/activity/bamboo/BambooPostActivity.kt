@@ -37,8 +37,8 @@ class BambooPostActivity : BaseActivity() {
             onFailEvent.observe(this@BambooPostActivity, Observer {
                 toastMessage(applicationContext, "먼저 글을 작성해주시기 바랍니다.")
             })
-            onImageEvent.observe(this@BambooPostActivity, Observer {
-                toastMessage(applicationContext, "아직 사진과 비디오 추가 기능을 제공하지 않습니다.")
+            onBambooPostImageEvent.observe(this@BambooPostActivity, Observer {
+                toastMessage(applicationContext, "현재 개발중인 기능입니다.")
             })
             content_EditText.observe(this@BambooPostActivity, Observer {
                 if(content_EditText.value!!.length >= 500) toastMessage(applicationContext, "500글자 내외로 작성할 수 있습니다.")

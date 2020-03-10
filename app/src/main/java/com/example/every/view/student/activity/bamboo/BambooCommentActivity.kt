@@ -56,7 +56,7 @@ class BambooCommentActivity : BaseActivity() {
         viewModel.getBambooComment()
     }
 
-    fun refreshLayout(){
+    private fun refreshLayout(){
         binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
             override fun onRefresh() {
                 viewModel.getBambooComment()
@@ -68,24 +68,24 @@ class BambooCommentActivity : BaseActivity() {
     @SuppressLint("LongLogTag")
     override fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@BambooCommentActivity, Observer {
+            onGetBambooCommentSuccessEvent.observe(this@BambooCommentActivity, Observer {
                 val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentDataList)
                 binding.recyclerView.adapter = adapter
             })
-            onFailEvent.observe(this@BambooCommentActivity, Observer {
+            onGetBambooCommentFailureEvent.observe(this@BambooCommentActivity, Observer {
                 Log.e("BambooCommentActivity[Error]", "게시글의 댓글이 존재하지 않습니다.")
             })
-            onReplyEvent.observe(this@BambooCommentActivity, Observer {
+            onBambooCommentReplyEvent.observe(this@BambooCommentActivity, Observer {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.commentEditText.windowToken, 0)
 
                 binding.commentEditText.text = null
                 viewModel.getBambooComment()
             })
-            onReplyEmptyEvent.observe(this@BambooCommentActivity, Observer {
+            onBambooCommentReplyEmptyEvent.observe(this@BambooCommentActivity, Observer {
                 toastMessage(applicationContext, "댓글의 내용을 입력해주세요.")
             })
-            onNextEvent.observe(this@BambooCommentActivity, Observer {
+            onBambooBackEvent.observe(this@BambooCommentActivity, Observer {
                 finish()
             })
             replyEditText.observe(this@BambooCommentActivity, Observer {

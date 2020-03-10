@@ -17,25 +17,27 @@ import retrofit2.Callback
 class StudentHomeFragmentViewModel : BaseViewModel(){
 
     /**
-     * GetMeals 급식 조회 API Response
-     * status[200] 급식 조회 성공
-     * status[404] 급식 정보 없음
-     * status[410] 토큰 만료
+     * getMeals 급식 조회 API Response
+     * status[200] 급식 조회 성공 : onBreakfastEvent / onLunchEvent / onDinnerEvent
+     * status[404] 급식 정보 없음 : onMealsFailureEvent
+     * status[410] 토큰 만료 : onTokenEvent
      */
 
+    // Member
     var checkCount = 0
 
+    // ArrayList
     var mealsData = ArrayList<MealsList>()
     var breakfastList = ArrayList<String>()
     var lunchList = ArrayList<String>()
     var dinnerList = ArrayList<String>()
 
-    var bambooOrderList = ArrayList<BambooPostList>()
-
-    val onTokenEvent = SingleLiveEvent<Unit>()
+    // SingleLiveEvent
     val onBreakfastEvent = SingleLiveEvent<Unit>()
     val onLunchEvent = SingleLiveEvent<Unit>()
     val onDinnerEvent = SingleLiveEvent<Unit>()
+    val onMealsFailureEvent = SingleLiveEvent<Unit>()
+    val onTokenEvent = SingleLiveEvent<Unit>()
 
     fun getMeals(){
         val res : Call<Response<Data>> = netRetrofit.home.getMeal(StudentData.token.value.toString())
@@ -54,7 +56,7 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
                         }
                         onBreakfastEvent.call()
                     }
-                    404 -> onFailEvent.call()
+                    404 -> onMealsFailureEvent.call()
                     410 -> onTokenEvent.call()
                 }
             }
@@ -62,6 +64,27 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
                 Log.e("getMeals[Error]", "급식 조회 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
+    }
+
+    fun nextMeals(){
+        if(checkCount != 3){
+            checkCount++
+            when(checkCount){
+                1 -> onBreakfastEvent.call()
+                2 -> onLunchEvent.call()
+                3 -> onDinnerEvent.call()
+            }
+        }
+    }
+    fun backMeals(){
+        if(checkCount != 1){
+            checkCount--
+            when(checkCount){
+                1 -> onBreakfastEvent.call()
+                2 -> onLunchEvent.call()
+                3 -> onDinnerEvent.call()
+            }
+        }
     }
 
     /**
@@ -86,13 +109,19 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
      * status[200] 게시글 조회 성공
      */
 
+    // ArrayList
+    var bambooOrderList = ArrayList<BambooPostList>()
+
+    // SingleLiveEvent
+    val onBambooDataEvent = SingleLiveEvent<Unit>()
+
     fun getBambooPostOrder(){
         val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPostOrder(StudentData.token.value.toString(), "hit")
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 if(response.code() == 200) {
                     bambooOrderList = response.body()!!.data!!.posts!! as ArrayList<BambooPostList>
-                    onSuccessEvent.call()
+                    onBambooDataEvent.call()
                 }
             }
             @SuppressLint("LongLogTag")
@@ -102,25 +131,35 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
         })
     }
 
-    // Next & Back
-    fun nextMeals(){
-        if(checkCount != 3){
-            checkCount++
-            when(checkCount){
-                1 -> onBreakfastEvent.call()
-                2 -> onLunchEvent.call()
-                3 -> onDinnerEvent.call()
+    /**
+     * getSchedule 스케줄 조회 API Response
+     * status[200] 일정 조회 성공 (데이터 존재)
+     * status[200] 일정 조회 성공 (데이터 없음)
+     */
+
+    // Member
+    var counter : Int = 0
+
+    // SingleLiveEvent
+    val onScheduleDataEvent = SingleLiveEvent<Unit>()
+
+    fun getSchedule(date : String){
+        val res : Call<Response<Data>> = netRetrofit.schedule.getSchedule(StudentData.token.value.toString())
+        res.enqueue(object : Callback<Response<Data>>{
+            override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
+                if(response.code() == 200){
+                    for(A in response.body()!!.data!!.schedules!!.indices)
+                        if(response.body()!!.data!!.schedules!!.get(A)!!.start_date.equals(date)) counter++
+                    onScheduleDataEvent.call()
+                }
             }
-        }
-    }
-    fun backMeals(){
-        if(checkCount != 1){
-            checkCount--
-            when(checkCount){
-                1 -> onBreakfastEvent.call()
-                2 -> onLunchEvent.call()
-                3 -> onDinnerEvent.call()
+            override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
+                Log.e("getSchedule[Error]", "스케줄 일정 조회 과정에서 서버와 통신 되지 않습니다.")
             }
-        }
+        })
     }
+
+    // SingleLiveEvent
+    val onHomeActivityEvent = SingleLiveEvent<Unit>()
+    fun activity() = onHomeActivityEvent.call()
 }

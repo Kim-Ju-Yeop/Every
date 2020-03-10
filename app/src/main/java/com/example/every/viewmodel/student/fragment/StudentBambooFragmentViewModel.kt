@@ -14,15 +14,18 @@ class StudentBambooFragmentViewModel : BaseViewModel(){
 
     /**
      * bambooPostList 대나무숲 게시글 조회 API Response
-     * status[200] 게시글 조회 성공
-     * status[200] 게시글 존재하지 않음
-     * status[400] 토큰 존재하지 않음
-     * status[401] 위조된 토큰
-     * status[410] 토큰 기한 만료
+     * status[200] 게시글 조회 성공 : onBambooSuccessEvent
+     * status[200] 게시글 존재하지 않음 : onBambooFailureEvent
      */
 
+    // ArrayList
     var bambooPostServerData = ArrayList<BambooPostList>()
     var bambooPostDataList = ArrayList<BambooPostList>()
+
+    // SingleLiveEvent
+    val onBambooSuccessEvent = SingleLiveEvent<Unit>()
+    val onBambooFailureEvent = SingleLiveEvent<Unit>()
+    val onBambooNextEvent = SingleLiveEvent<Unit>()
 
     fun getBambooPost(){
         val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPost(StudentData.token.value.toString())
@@ -42,9 +45,9 @@ class StudentBambooFragmentViewModel : BaseViewModel(){
                                         bambooPostServerData.get(A).created_at
                                     )
                                 )
-                                onSuccessEvent.call()
+                                onBambooSuccessEvent.call()
                             }
-                        } else onFailEvent.call()
+                        } else onBambooFailureEvent.call()
                     }
                 }
             }
@@ -52,5 +55,5 @@ class StudentBambooFragmentViewModel : BaseViewModel(){
                Log.e("bambooPostList[Error]", "대나무숲 게시물 검색 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
-    } fun newPost() = onNextEvent.call()
+    } fun newPost() = onBambooNextEvent.call()
 }

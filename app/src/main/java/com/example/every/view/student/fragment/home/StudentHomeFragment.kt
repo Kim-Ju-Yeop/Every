@@ -18,6 +18,9 @@ import com.example.every.view.signin.SignInActivity
 import com.example.every.view.student.activity.bamboo.BambooCommentActivity
 import com.example.every.view.student.fragment.home.adapter.MealsAdapter
 import com.example.every.viewmodel.student.fragment.StudentHomeFragmentViewModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import java.text.SimpleDateFormat
+import java.util.*
 
 class StudentHomeFragment : BaseFragment() {
 
@@ -31,13 +34,14 @@ class StudentHomeFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentHomeFragment
 
-        checkInit()
+        init()
+        todaySchedule()
         viewModel.getMeals()
         viewModel.getStudentInfo(binding.studentName)
         return binding.root
     }
 
-    private fun checkInit(){
+    private fun init(){
         val checkToken : SharedPreferences = context!!.getSharedPreferences("checkToken", Context.MODE_PRIVATE)
         StudentData.token.value = checkToken.getString("tokenData", null)
 
@@ -45,13 +49,19 @@ class StudentHomeFragment : BaseFragment() {
         StudentData.studentIdx.value = checkIdentity.getInt("identityIdx_Student", -1)
     }
 
+    private fun todaySchedule(){
+        val date: Date = SimpleDateFormat("yyyy-MM-dd").parse("${CalendarDay.today().year}-${CalendarDay.today().month+1}-${CalendarDay.today().day}")
+        val todayDate = SimpleDateFormat("yyyy-MM-dd").format(date)
+        val todayDate2 = SimpleDateFormat("yyyy년 MM월 dd일").format(date)
+
+        binding.todayTextView.text = todayDate2
+        viewModel.getSchedule(todayDate)
+    }
+
     override fun observerViewModel() {
         with(viewModel){
             onBreakfastEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter =
-                    MealsAdapter(
-                        viewModel.breakfastList
-                    )
+                val adapter = MealsAdapter(viewModel.breakfastList)
                 binding.recyclerView.adapter = adapter
 
                 if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)
@@ -63,10 +73,7 @@ class StudentHomeFragment : BaseFragment() {
                 viewModel.checkCount = 1
             })
             onLunchEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter =
-                    MealsAdapter(
-                        viewModel.lunchList
-                    )
+                val adapter = MealsAdapter(viewModel.lunchList)
                 binding.recyclerView.adapter = adapter
 
                 if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)
@@ -78,10 +85,7 @@ class StudentHomeFragment : BaseFragment() {
                 viewModel.checkCount = 2
             })
             onDinnerEvent.observe(this@StudentHomeFragment, Observer {
-                val adapter =
-                    MealsAdapter(
-                        viewModel.dinnerList
-                    )
+                val adapter = MealsAdapter(viewModel.dinnerList)
                 binding.recyclerView.adapter = adapter
 
                 if(adapter.itemCount == 0) setVisible(binding.questionLayout, binding.recyclerView, 0)
@@ -92,7 +96,7 @@ class StudentHomeFragment : BaseFragment() {
                 binding.mealsBackground.setBackgroundResource(R.drawable.background_dinner)
                 viewModel.checkCount = 3
             })
-            onFailEvent.observe(this@StudentHomeFragment, Observer {
+            onMealsFailureEvent.observe(this@StudentHomeFragment, Observer {
                 binding.mealsTitle.text = "아침"
                 binding.mealsImage.setImageResource(R.drawable.sunrise_breakfast)
                 binding.mealsBackground.setBackgroundResource(R.drawable.background_breakfast)
@@ -109,12 +113,19 @@ class StudentHomeFragment : BaseFragment() {
                 startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
                 activity!!.finish()
             })
-            onSuccessEvent.observe(this@StudentHomeFragment, Observer {
+            onBambooDataEvent.observe(this@StudentHomeFragment, Observer {
                 val intent = Intent(binding.root.context, BambooCommentActivity::class.java)
                 intent.putExtra("idx", viewModel.bambooOrderList.get(0).idx)
                 intent.putExtra("created_at", "★ 오늘의 인기 게시글")
                 intent.putExtra("content", viewModel.bambooOrderList.get(0).content)
                 startActivity(intent)
+            })
+            onScheduleDataEvent.observe(this@StudentHomeFragment, Observer {
+                if(viewModel.counter == 0) binding.counterTextView.text = "오늘은 일정이 존재하지 않습니다!"
+                else binding.counterTextView.text = "오늘은 일정이 ${viewModel.counter}개 존재합니다!"
+            })
+            onHomeActivityEvent.observe(this@StudentHomeFragment, Observer {
+                toastMessage(binding.root.context, "현재 개발 진행중인 기능입니다.")
             })
         }
     }

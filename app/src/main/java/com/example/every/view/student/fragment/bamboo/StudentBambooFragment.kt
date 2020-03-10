@@ -38,7 +38,7 @@ class StudentBambooFragment : BaseFragment() {
         return binding.root
     }
 
-    fun refreshLayout(){
+    private fun refreshLayout(){
         binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
             override fun onRefresh() {
                 viewModel.getBambooPost()
@@ -54,14 +54,14 @@ class StudentBambooFragment : BaseFragment() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@StudentBambooFragment, Observer {
+            onBambooSuccessEvent.observe(this@StudentBambooFragment, Observer {
                 val adapter = BambooPostAdapter(context!!.applicationContext, viewModel.bambooPostDataList)
                 binding.recyclerView.adapter = adapter
             })
-            onFailEvent.observe(this@StudentBambooFragment, Observer {
+            onBambooFailureEvent.observe(this@StudentBambooFragment, Observer {
                 toastMessage(binding.root.context, "현재 게시물이 아무것도 존재하지 않습니다. 가장 먼저 글을 작성해보세요!")
             })
-            onNextEvent.observe(this@StudentBambooFragment, Observer {
+            onBambooNextEvent.observe(this@StudentBambooFragment, Observer {
                 val intent = Intent(binding.root.context, BambooPostActivity::class.java)
                 startActivityForResult(intent, 1)
             })

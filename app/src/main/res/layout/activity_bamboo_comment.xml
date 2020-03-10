@@ -35,7 +35,7 @@
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/ic_arrow_back_black_24dp"
-                    android:onClick="@{() -> viewModel.backSpace()}"/>
+                    android:onClick="@{() -> viewModel.back()}"/>
 
                 <ImageView
                     android:id="@+id/imageView4"

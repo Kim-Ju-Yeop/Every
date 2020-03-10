@@ -100,7 +100,7 @@ class SignInActivity : BaseActivity() {
                 startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
             })
             onLostPwEvent.observe(this@SignInActivity, Observer {
-                toastMessage(applicationContext, "아직 비밀번호 찾기 기능은 존재하지 않습니다.")
+                toastMessage(binding.root.context, "현재 개발 진행중인 기능입니다.")
             })
         }
     }

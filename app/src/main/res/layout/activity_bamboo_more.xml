@@ -38,7 +38,8 @@
                     android:id="@+id/imageView2"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    app:srcCompat="@drawable/fix" />
+                    app:srcCompat="@drawable/fix"
+                    android:onClick="@{() -> viewModel.editContent()}"/>
 
                 <TextView
                     android:id="@+id/editComment_textView"
@@ -48,7 +49,8 @@
                     android:layout_marginLeft="8dp"
                     android:fontFamily="@font/nanum_bold"
                     android:text="@string/editComment_textView"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:onClick="@{() -> viewModel.editContent()}"/>
             </LinearLayout>
 
             <LinearLayout
@@ -72,12 +74,14 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:onClick="@{() -> viewModel.deleteReply()}"
                     android:id="@+id/imageView11"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     app:srcCompat="@drawable/delete" />
 
                 <TextView
+                    android:onClick="@{() -> viewModel.deleteReply()}"
                     android:id="@+id/deleteComment_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

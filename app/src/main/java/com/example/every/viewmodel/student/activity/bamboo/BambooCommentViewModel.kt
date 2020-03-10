@@ -16,17 +16,20 @@ class BambooCommentViewModel : BaseViewModel(){
 
     /**
      * getBambooComment 댓글 목록 조회 API Response
-     * status[200] 댓글 조회 성공
+     * status[200] 댓글 조회 성공 : onGetBambooCommentSuccessEvent
      */
 
+    // MutableLiveData
     val replyEditText = MutableLiveData<String>()
     val commentCountEditText = MutableLiveData<String>()
 
+    // ArrayList
     var bambooCommentServerData = ArrayList<BambooReplyList>()
     var bambooCommentDataList = ArrayList<BambooReplyList>()
 
-    val onReplyEvent = SingleLiveEvent<Unit>()
-    val onReplyEmptyEvent = SingleLiveEvent<Unit>()
+    // SingleLiveEvent
+    val onGetBambooCommentSuccessEvent = SingleLiveEvent<Unit>()
+    val onGetBambooCommentFailureEvent = SingleLiveEvent<Unit>()
 
     fun getBambooComment() {
         val res: Call<Response<Data>> = netRetrofit.bamboo.getBambooComment(StudentData.token.value.toString(), StudentData.postIdx.value!!)
@@ -36,8 +39,7 @@ class BambooCommentViewModel : BaseViewModel(){
                     200 -> {
                         if (!response.body()!!.data!!.replies.isNullOrEmpty()) {
                             bambooCommentDataList.clear()
-                            bambooCommentServerData =
-                                response!!.body()!!.data!!.replies as ArrayList<BambooReplyList>
+                            bambooCommentServerData = response!!.body()!!.data!!.replies as ArrayList<BambooReplyList>
 
                             for (A in 0 until bambooCommentServerData.size) {
                                 bambooCommentDataList.add(
@@ -48,10 +50,10 @@ class BambooCommentViewModel : BaseViewModel(){
                                         bambooCommentServerData.get(A).student_idx
                                     )
                                 )
-                                onSuccessEvent.call()
+                                onGetBambooCommentSuccessEvent.call()
                             }
                             commentCountEditText.value = "댓글 ${bambooCommentServerData.size}개"
-                        } else onFailEvent.call()
+                        } else onGetBambooCommentFailureEvent.call()
                     }
                 }
             }
@@ -64,25 +66,29 @@ class BambooCommentViewModel : BaseViewModel(){
 
     /**
      * postBambooReply 댓글 목록 조회 API Response
-     * status[200] 댓글 작성 성공
+     * status[200] 댓글 작성 성공 : onBambooCommentReplyEvent
      */
+
+    // SingleLiveEvent
+    val onBambooCommentReplyEvent = SingleLiveEvent<Unit>()
+    val onBambooCommentReplyEmptyEvent = SingleLiveEvent<Unit>()
 
     fun postBambooReply(){
         if(!replyEditText.value.isNullOrEmpty()){
-            val bambooReplyData =
-                BambooReplyData(
-                    replyEditText.value.toString(),
-                    StudentData.postIdx.value!!
-                )
+            val bambooReplyData = BambooReplyData(replyEditText.value.toString(), StudentData.postIdx.value!!)
             val res : Call<Response<Data>> = netRetrofit.bamboo.postBambooReply(StudentData.token.value.toString(), bambooReplyData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-                    if(response.code() == 200) onReplyEvent.call()
+                    if(response.code() == 200) onBambooCommentReplyEvent.call()
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
                     Log.e("postBambooReply[Error]", "대나무숲 게시물 댓글 작성 과정에서 서버와 통신이 되지 않습니다.")
                 }
             })
-         }else onReplyEmptyEvent.call()
-    } fun backSpace() = onNextEvent.call()
+         }else onBambooCommentReplyEmptyEvent.call()
+    }
+
+    //SingleLiveEvent
+    val onBambooBackEvent = SingleLiveEvent<Unit>()
+    fun back() = onBambooBackEvent.call()
 }

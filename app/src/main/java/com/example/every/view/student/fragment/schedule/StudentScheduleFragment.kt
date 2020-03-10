@@ -33,10 +33,13 @@ class StudentScheduleFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentScheduleFragment
 
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
         materialCalendarViewEvent()
         viewModel.getSchedule(0)
-
-        return binding.root
     }
 
     private fun materialCalendarViewEvent(){

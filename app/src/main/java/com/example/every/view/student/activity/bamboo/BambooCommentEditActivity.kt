@@ -18,8 +18,7 @@ class BambooCommentEditActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this@BambooCommentEditActivity, R.layout.activity_bamboo_comment_edit)
-        viewModel = ViewModelProviders.of(this@BambooCommentEditActivity).get(
-            BambooCommentEditViewModel::class.java)
+        viewModel = ViewModelProviders.of(this@BambooCommentEditActivity).get(BambooCommentEditViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@BambooCommentEditActivity
@@ -36,18 +35,18 @@ class BambooCommentEditActivity : BaseActivity() {
 
     override fun observerViewModel() {
         with(viewModel){
-            onSuccessEvent.observe(this@BambooCommentEditActivity, Observer {
+            onBambooCommentReplySuccessEvent.observe(this@BambooCommentEditActivity, Observer {
                 toastMessage(applicationContext, "댓글을 수정하였습니다.")
                 onBackPressed()
             })
-            onImageEvent.observe(this@BambooCommentEditActivity, Observer {
-                toastMessage(applicationContext, "아직 사진과 비디오 추가 기능을 제공하지 않습니다.")
+            onBambooCommentReplyEmptyEvent.observe(this@BambooCommentEditActivity, Observer {
+                toastMessage(applicationContext, "수정하는 댓글의 내용을 입력해주세요.")
+            })
+            onBambooCommentEditImageEvent.observe(this@BambooCommentEditActivity, Observer {
+                toastMessage(applicationContext, "현재 개발중인 기능입니다.")
             })
             comment_EditText.observe(this@BambooCommentEditActivity, Observer {
                 if(comment_EditText.value!!.length >= 250) toastMessage(applicationContext, "250글자 내외로 작성할 수 있습니다.")
-            })
-            onReplyEmptyEvent.observe(this@BambooCommentEditActivity, Observer {
-                toastMessage(applicationContext, "수정하는 댓글의 내용을 입력해주세요.")
             })
         }
     }

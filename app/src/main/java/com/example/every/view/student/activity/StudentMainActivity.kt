@@ -18,8 +18,7 @@ class StudentMainActivity : AppCompatActivity() {
 
     val studentMainFragment = StudentHomeFragment()
     val studentBambooFragment = StudentBambooFragment()
-    val studentScheduleFragment =
-        StudentScheduleFragment()
+    val studentScheduleFragment = StudentScheduleFragment()
     val studentMoreFragment = StudentMoreFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {

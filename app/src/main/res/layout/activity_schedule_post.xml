@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.activity.SchedulePostViewModel" />
+            type="com.example.every.viewmodel.student.activity.schedule.SchedulePostViewModel" />
     </data>
 
 <LinearLayout 

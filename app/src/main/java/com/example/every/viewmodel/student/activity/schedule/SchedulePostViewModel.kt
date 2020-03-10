@@ -1,6 +1,5 @@
-package com.example.every.viewmodel.student.activity
+package com.example.every.viewmodel.student.activity.schedule
 
-import android.app.DatePickerDialog
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.every.base.BaseViewModel
@@ -9,11 +8,8 @@ import com.example.every.network.Data
 import com.example.every.network.Response
 import com.example.every.network.request.model.student.schedule.SchedulePostData
 import com.example.every.widget.SingleLiveEvent
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import retrofit2.Call
 import retrofit2.Callback
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SchedulePostViewModel : BaseViewModel(){
 

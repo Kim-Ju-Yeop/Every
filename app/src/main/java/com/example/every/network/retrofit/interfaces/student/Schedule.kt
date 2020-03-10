@@ -4,10 +4,7 @@ import com.example.every.network.Data
 import com.example.every.network.Response
 import com.example.every.network.request.model.student.schedule.SchedulePostData
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface Schedule {
 
@@ -16,4 +13,7 @@ interface Schedule {
 
     @POST("schedule")
     fun postSchedule(@Header("token") token : String, @Body schedulePostData : SchedulePostData) : Call<Response<Data>>
+
+    @GET("schedule/{idx}")
+    fun getIdxSchedule(@Header("token") token : String, @Path("idx") idx : Int) : Call<Response<Data>>
 }

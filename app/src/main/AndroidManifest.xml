@@ -16,7 +16,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity"
         tools:replace="android:icon">
-        <activity android:name=".view.student.activity.schedule.SchedulePostActivity"></activity>
+        <activity android:name=".view.student.activity.schedule.ScheduleContentActivity"></activity>
+        <activity android:name=".view.student.activity.schedule.SchedulePostActivity" />
         <activity
             android:name=".view.splash.SplashActivity"
             android:screenOrientation="portrait">

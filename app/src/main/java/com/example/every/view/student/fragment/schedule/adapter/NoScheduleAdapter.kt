@@ -1,12 +1,14 @@
 package com.example.every.view.student.fragment.schedule.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.every.DTO.student.schedule.SchedulesList
 import com.example.every.R
+import com.example.every.view.student.activity.schedule.SchedulePostActivity
 
 class NoScheduleAdapter(val mContext : Context) : RecyclerView.Adapter<NoScheduleAdapter.ViewHolder>() {
 
@@ -19,7 +21,7 @@ class NoScheduleAdapter(val mContext : Context) : RecyclerView.Adapter<NoSchedul
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listener = View.OnClickListener {
-            // 일정 추가 이벤트 이동
+            mContext.startActivity(Intent(mContext, SchedulePostActivity::class.java))
         }
         holder.apply {
             bind(listener)

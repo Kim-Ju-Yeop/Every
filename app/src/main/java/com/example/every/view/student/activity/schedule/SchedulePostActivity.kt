@@ -3,16 +3,12 @@ package com.example.every.view.student.activity.schedule
 import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.base.BaseActivity
 import com.example.every.databinding.ActivitySchedulePostBinding
-import com.example.every.viewmodel.student.activity.SchedulePostViewModel
+import com.example.every.viewmodel.student.activity.schedule.SchedulePostViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import java.text.SimpleDateFormat
 import java.util.*

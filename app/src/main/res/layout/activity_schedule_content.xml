@@ -35,6 +35,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:onClick="@{() -> viewModel.next()}"
                         android:id="@+id/imageView20"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -50,6 +51,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:onClick="@{() -> viewModel.trash()}"
                         android:id="@+id/imageView17"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -136,7 +138,6 @@
                     android:elevation="5dp">
 
                     <Button
-                        android:enabled="false"
                         android:id="@+id/post_button"
                         android:background="@drawable/background_schedule_add_button"
                         android:layout_width="match_parent"
@@ -145,7 +146,8 @@
                         android:fontFamily="@font/nanum_extrabold"
                         android:textSize="20sp"
                         android:textColor="#FFFFFF"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:onClick="@{() -> viewModel.edit()}"/>
 
                 </androidx.cardview.widget.CardView>
 

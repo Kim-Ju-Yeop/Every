@@ -35,6 +35,7 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 if(check == 0){
                     if(response.code() == 200){
+                        dates.clear()
                         for(A in response.body()!!.data!!.schedules!!.indices)
                             dates.add(CalendarDay.from(simpleDataFormat.parse(response.body()!!.data!!.schedules!!.get(A).start_date)))
                         onSuccessEvent.call()

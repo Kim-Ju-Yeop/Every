@@ -27,27 +27,23 @@ class StudentScheduleFragment : BaseFragment() {
     lateinit var viewModel : StudentScheduleFragmentViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_student_schedule, container, false)
         viewModel = ViewModelProviders.of(this@StudentScheduleFragment).get(StudentScheduleFragmentViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@StudentScheduleFragment
 
+        materialCalendarViewEvent()
+        viewModel.getSchedule(0)
+
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        materialCalendarViewEvent()
-        viewModel.getSchedule(0)
-    }
-
     private fun materialCalendarViewEvent(){
-        binding.materialCalendarView.setSelectedDate(CalendarDay.today())
+        binding.materialCalendarView.selectedDate = CalendarDay.today()
         val date: Date = SimpleDateFormat("yyyy-MM-dd").parse("${CalendarDay.today().year}-${CalendarDay.today().month+1}-${CalendarDay.today().day}")
-        val start_date = SimpleDateFormat("yyyy-MM-dd").format(date)
-        viewModel.getSchedule(1, start_date)
+        val todayDate = SimpleDateFormat("yyyy-MM-dd").format(date)
+        viewModel.getSchedule(1, todayDate)
 
         binding.materialCalendarView.setOnDateChangedListener { widget, date, selected ->
             val date: Date = SimpleDateFormat("yyyy-MM-dd").parse("${date.year}-${date.month+1}-${date.day}")

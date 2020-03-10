@@ -32,17 +32,13 @@ class ScheduleContentActivity : BaseActivity() {
 
     private fun init(){
         val intent = intent
+        binding.titleTextView.isSelected = true
         viewModel.idx.value = intent.extras!!.getInt("idx")
-        binding.titleTextView.text = intent.extras!!.getString("title")
-        binding.contentTextView.text = intent.extras!!.getString("content")
-        binding.dateTextView.text = intent.extras!!.getString("date")
+        viewModel.getIdxSchedule()
     }
 
     override fun observerViewModel() {
         with(viewModel){
-            onNextEvent.observe(this@ScheduleContentActivity, Observer {
-                finish()
-            })
             onTrashEvent.observe(this@ScheduleContentActivity, Observer {
                 val builder = AlertDialog.Builder(this@ScheduleContentActivity)
                 builder.setTitle("삭제").setMessage("일정을 정말 삭제하실 것입니까?")
@@ -50,7 +46,7 @@ class ScheduleContentActivity : BaseActivity() {
                     viewModel.deleteSchedule()
                 })
                 builder.setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
-                    // 일정 삭제 취소 이벤트
+                    toastMessage(applicationContext, "일정 삭제를 취소하였습니다.")
                 })
                 val alertDialog = builder.create()
                 alertDialog.show()
@@ -58,15 +54,10 @@ class ScheduleContentActivity : BaseActivity() {
             onEditEvent.observe(this@ScheduleContentActivity, Observer {
                 val intent = Intent(this@ScheduleContentActivity, ScheduleEditActivity::class.java)
                 intent.putExtra("idx", viewModel.idx.value)
-                intent.putExtra("title", binding.titleTextView.text.toString())
-                intent.putExtra("content", binding.contentTextView.text.toString())
-                intent.putExtra("start_date", "${binding.dateTextView.text.substring(0, 4)}-" +
-                                                           "${binding.dateTextView.text.substring(6, 8)}-" +
-                                                           "${binding.dateTextView.text.substring(10, 12)}")
-                intent.putExtra("end_date", "${binding.dateTextView.text.substring(16, 20)}-" +
-                                                         "${binding.dateTextView.text.substring(22, 24)}-" +
-                                                         "${binding.dateTextView.text.substring(26, 28)}")
                 startActivity(intent)
+            })
+            onBackEvent.observe(this@ScheduleContentActivity, Observer {
+                finish()
             })
         }
     }

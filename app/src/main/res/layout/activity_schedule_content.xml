@@ -35,7 +35,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:onClick="@{() -> viewModel.next()}"
+                        android:onClick="@{() -> viewModel.backSpace()}"
                         android:id="@+id/imageView20"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -69,12 +69,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
                     android:id="@+id/title_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="이만희와 함께하는 우한 투어"
+                    android:text="@={viewModel.title}"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp" />
 
@@ -85,7 +87,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/nanum_regular"
-                    android:text="2020년 03월 10일 ~ 2020년 03월 24일"
+                    android:text="@={viewModel.date}"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
 
@@ -119,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/nanum_regular"
-                    android:text="중국을 가기 위해서는 약 1주일 전부터 준비를해야합니다."
+                    android:text="@={viewModel.content}"
                     android:textColor="#2D008A"
                     android:textSize="15sp" />
             </LinearLayout>

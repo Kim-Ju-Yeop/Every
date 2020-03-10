@@ -59,11 +59,11 @@ class SchedulePostActivity : BaseActivity() {
                 val dialog = DatePickerDialog(binding.root.context, callbackMethod, today.year, today.month, today.day)
                 dialog.show()
             })
-            onSuccessEvent.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
+            onSchedulePostSuccessEvent.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
                 toastMessage(applicationContext, "일정을 성공적으로 추가하였습니다.")
                 finish()
             })
-            onErrorEvent.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
+            onSchedulePostFailureEvent.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
                 toastMessage(applicationContext, "입력하신 내용을 다시 한 번 확인하십시오.")
             })
         }

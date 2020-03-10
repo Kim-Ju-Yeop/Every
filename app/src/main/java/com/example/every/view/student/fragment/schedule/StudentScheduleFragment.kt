@@ -57,18 +57,18 @@ class StudentScheduleFragment : BaseFragment() {
 
     override fun observerViewModel() {
         with(viewModel){
-            onSuccessEvent.observe(this@StudentScheduleFragment, Observer {
+            onDecoratorEvent.observe(this@StudentScheduleFragment, Observer {
                 binding.materialCalendarView.addDecorator(EventDecorator(binding.root.context, viewModel.dates))
             })
             onScheduleSuccessEvent.observe(this@StudentScheduleFragment, Observer {
                 val adapter = ScheduleAdapter(binding.root.context, viewModel.scheduleDataList)
                 binding.recyclerView.adapter = adapter
             })
-            onScheduleFailEvent.observe(this@StudentScheduleFragment, Observer {
+            onScheduleFailureEvent.observe(this@StudentScheduleFragment, Observer {
                 val adapter = NoScheduleAdapter(binding.root.context)
                 binding.recyclerView.adapter = adapter
             })
-            onNextEvent.observe(this@StudentScheduleFragment, Observer {
+            onScheduleNextEvent.observe(this@StudentScheduleFragment, Observer {
                 startActivity(Intent(binding.root.context, SchedulePostActivity::class.java))
             })
         }

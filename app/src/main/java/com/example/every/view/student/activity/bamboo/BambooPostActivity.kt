@@ -29,12 +29,12 @@ class BambooPostActivity : BaseActivity() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@BambooPostActivity, Observer {
+            onBambooPostSuccessEvent.observe(this@BambooPostActivity, Observer {
                 toastMessage(applicationContext, "정상적으로 글 작성을 수행하였습니다.")
                 setResult(Activity.RESULT_OK)
                 finish()
             })
-            onFailEvent.observe(this@BambooPostActivity, Observer {
+            onBambooPostFailureEvent.observe(this@BambooPostActivity, Observer {
                 toastMessage(applicationContext, "먼저 글을 작성해주시기 바랍니다.")
             })
             onBambooPostImageEvent.observe(this@BambooPostActivity, Observer {

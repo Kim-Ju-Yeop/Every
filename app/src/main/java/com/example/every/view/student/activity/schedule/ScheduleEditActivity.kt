@@ -32,15 +32,13 @@ class ScheduleEditActivity : BaseActivity() {
         binding.lifecycleOwner = this@ScheduleEditActivity
 
         init()
+        toolbarInit(binding.toolbar)
     }
 
     private fun init(){
         val intent = intent
         viewModel.idx.value = intent.extras!!.getInt("idx")
-        viewModel.title.value = intent.extras!!.getString("title")
-        viewModel.content.value = intent.extras!!.getString("content")
-        viewModel.start_date.value = intent.extras!!.getString("start_date")
-        viewModel.end_date.value = intent.extras!!.getString("end_date")
+        viewModel.getIdxSchedule()
     }
 
     override fun observerViewModel() {
@@ -58,12 +56,12 @@ class ScheduleEditActivity : BaseActivity() {
                 val dialog = DatePickerDialog(binding.root.context, callbackMethod, today.year, today.month, today.day)
                 dialog.show()
             })
-            onErrorEvent.observe(this@ScheduleEditActivity, androidx.lifecycle.Observer {
-                toastMessage(applicationContext, "입력하신 내용을 다시 한 번 확인하십시오.")
-            })
-            onSuccessEvent.observe(this@ScheduleEditActivity, androidx.lifecycle.Observer {
+            onScheduleEditSuccessEvent.observe(this@ScheduleEditActivity, androidx.lifecycle.Observer {
                 toastMessage(applicationContext, "일정을 수정하였습니다.")
                 finish()
+            })
+            onScheduleEditFailureEvent.observe(this@ScheduleEditActivity, androidx.lifecycle.Observer {
+                toastMessage(applicationContext, "입력하신 내용을 다시 한 번 확인하십시오.")
             })
         }
     }

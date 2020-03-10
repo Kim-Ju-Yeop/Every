@@ -38,7 +38,7 @@ class BambooPostViewModel : BaseViewModel(){
                     Log.e("postBamboo[Error]", "대나무숲 게시글 작성부분에서 서버와 통신이 되지 않습니다.")
                 }
             })
-        }else onBambooPostFailureEvent
+        }else onBambooPostFailureEvent.call()
     }
     fun addImage() = onBambooPostImageEvent.call()
 }

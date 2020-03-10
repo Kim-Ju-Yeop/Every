@@ -15,21 +15,20 @@ class SchedulePostViewModel : BaseViewModel(){
 
     /**
      * postSchedule 스케줄 일정 추가 API Response
-     * status[200] 스케줄 일정 추가 성공
+     * status[200] 스케줄 일정 추가 성공 : onSchedulePostSuccessEvent
      */
 
+    // MutableLiveData
     val title =  MutableLiveData<String>()
     val content = MutableLiveData<String>()
     val start_date = MutableLiveData<String>()
     val end_date = MutableLiveData<String>()
     val check_date = MutableLiveData<Int>()
 
+    // SingleLiveEvent
     val onSelectedEvent = SingleLiveEvent<Unit>()
-
-    fun chooseDate(check : Int){
-        check_date.value = check
-        onSelectedEvent.call()
-    }
+    val onSchedulePostSuccessEvent = SingleLiveEvent<Unit>()
+    val onSchedulePostFailureEvent = SingleLiveEvent<Unit>()
 
     fun postSchedule(){
         if(checkData()){
@@ -37,13 +36,18 @@ class SchedulePostViewModel : BaseViewModel(){
             val res : Call<Response<Data>> = netRetrofit.schedule.postSchedule(StudentData.token.value.toString(), schedulePostData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-                    if(response.code() == 200) onSuccessEvent.call()
+                    if(response.code() == 200) onSchedulePostSuccessEvent.call()
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
                     Log.e("postSchedule[Error]", "스케줄 일정 추가 작업에서 서버와 통신이 되지 않습니다.")
                 }
             })
-        }else onErrorEvent.call()
+        }else onSchedulePostFailureEvent.call()
+    }
+
+    fun chooseDate(check : Int){
+        check_date.value = check
+        onSelectedEvent.call()
     }
 
     fun checkData() : Boolean{

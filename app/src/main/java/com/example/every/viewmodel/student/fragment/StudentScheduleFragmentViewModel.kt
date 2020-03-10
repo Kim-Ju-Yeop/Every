@@ -16,18 +16,23 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
 
     /**
      * getSchedule 스케줄 조회 API Response
-     * status[200] 일정 조회 성공 : 데이터 존재
-     * status[200] 일정 조회 성공 : 데이터 없음
+     * status[200] 일정 조회 성공 (데이터 존재) : onScheduleSuccessEvent
+     * status[200] 일정 조회 성공 (데이터 없음) : onScheduleFailureEvent
      */
 
+    // Member
     val simpleDataFormat = SimpleDateFormat("yyyy-MM-dd")
-    val dates = ArrayList<CalendarDay>()
 
+    // ArrayList
+    val dates = ArrayList<CalendarDay>()
     var scheduleData = ArrayList<SchedulesList>()
     val scheduleDataList = ArrayList<SchedulesList>()
 
+    // SingleLiveEvent
+    val onDecoratorEvent = SingleLiveEvent<Unit>()
     val onScheduleSuccessEvent = SingleLiveEvent<Unit>()
-    val onScheduleFailEvent = SingleLiveEvent<Unit>()
+    val onScheduleFailureEvent = SingleLiveEvent<Unit>()
+    val onScheduleNextEvent = SingleLiveEvent<Unit>()
 
     fun getSchedule(check: Int, date : String? = null){
         val res : Call<Response<Data>> = netRetrofit.schedule.getSchedule(StudentData.token.value.toString())
@@ -38,7 +43,7 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
                         dates.clear()
                         for(A in response.body()!!.data!!.schedules!!.indices)
                             dates.add(CalendarDay.from(simpleDataFormat.parse(response.body()!!.data!!.schedules!!.get(A).start_date)))
-                        onSuccessEvent.call()
+                        onDecoratorEvent.call()
                     }
                 }else{
                     if(response.code() == 200){
@@ -46,7 +51,7 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
                         scheduleData = response!!.body()!!.data!!.schedules as ArrayList<SchedulesList>
                         for(A in scheduleData.indices) if(scheduleData.get(A).start_date.equals(date)) scheduleDataList.add(scheduleData.get(A))
                         if(!scheduleDataList.isNullOrEmpty()) onScheduleSuccessEvent.call()
-                        else onScheduleFailEvent.call()
+                        else onScheduleFailureEvent.call()
                     }
                 }
             }
@@ -54,5 +59,5 @@ class StudentScheduleFragmentViewModel : BaseViewModel(){
                 Log.e("geSchedule[Error]", "스케줄 일정 조회 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
-    } fun addSchedule() = onNextEvent.call()
+    } fun addSchedule() = onScheduleNextEvent.call()
 }

@@ -31,9 +31,6 @@ class ScheduleAdapter(val mContext : Context, val items : ArrayList<SchedulesLis
         val listener = View.OnClickListener {
             val intent = Intent(mContext, ScheduleContentActivity::class.java)
             intent.putExtra("idx", item.idx)
-            intent.putExtra("title", item.title)
-            intent.putExtra("content", item.content)
-            intent.putExtra("date", holder.itemView.date_textView.text.toString())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             mContext.startActivity(intent)
         }
@@ -51,12 +48,11 @@ class ScheduleAdapter(val mContext : Context, val items : ArrayList<SchedulesLis
         @SuppressLint("SetTextI18n")
         fun bind(listener : View.OnClickListener, item : SchedulesList){
 
-            // Title_TextView
-            itemView.title_textView.setSingleLine(true)
-            itemView.title_textView.ellipsize = TextUtils.TruncateAt.END
+            // title
             itemView.title_textView.isSelected = true
             itemView.title_textView.text = item.title
 
+            // date
             itemView.date_textView.text = "${item.start_date.substring(0, 4)}년 ${item.start_date.substring(5, 7)}월 ${item.start_date.substring(8, 10)}일 ~ " +
                                           "${item.end_date.substring(0, 4)}년 ${item.end_date.substring(5, 7)}월 ${item.end_date.subSequence(8, 10)}일"
             view.setOnClickListener(listener)

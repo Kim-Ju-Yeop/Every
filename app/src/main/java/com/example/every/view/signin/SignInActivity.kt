@@ -36,13 +36,7 @@ class SignInActivity : BaseActivity() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onSignUpEvent.observe(this@SignInActivity, Observer {
-                startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
-            })
-            onLostPwEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "아직 비밀번호 찾기 기능은 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
-            })
-            onErrorEvent.observe(this@SignInActivity, Observer {
+            onLoginErrorEvent.observe(this@SignInActivity, Observer {
                 SweetAlertDialog(this@SignInActivity, SweetAlertDialog.ERROR_TYPE)
                     .setContentText("이메일 또는 비밀번호 형식에 오류가 존재합니다.")
                     .setTitleText("Error")
@@ -51,16 +45,16 @@ class SignInActivity : BaseActivity() {
                         it.cancel()
                     }.show()
             })
-            onFailEvent.observe(this@SignInActivity, Observer {
+            onLoginFailureEvent.observe(this@SignInActivity, Observer {
                 SweetAlertDialog(this@SignInActivity, SweetAlertDialog.WARNING_TYPE)
                     .setContentText("이메일 또는 비밀번호가 올바르지 않습니다.")
-                    .setTitleText("Warning")
+                    .setTitleText("Failure")
                     .setConfirmText("확인")
                     .setConfirmClickListener {
                         it.cancel()
                     }.show()
             })
-            onSuccessEvent.observe(this@SignInActivity, Observer {
+            onLoginSuccessEvent.observe(this@SignInActivity, Observer {
                 SweetAlertDialog(this@SignInActivity, SweetAlertDialog.SUCCESS_TYPE)
                     .setContentText("로그인을 성공하였습니다.")
                     .setTitleText("Success")
@@ -101,6 +95,12 @@ class SignInActivity : BaseActivity() {
                         }
                         it.cancel()
                     }.show()
+            })
+            onSignUpEvent.observe(this@SignInActivity, Observer {
+                startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
+            })
+            onLostPwEvent.observe(this@SignInActivity, Observer {
+                toastMessage(applicationContext, "아직 비밀번호 찾기 기능은 존재하지 않습니다.")
             })
         }
     }

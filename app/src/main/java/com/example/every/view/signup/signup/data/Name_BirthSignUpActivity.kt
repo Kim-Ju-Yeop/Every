@@ -31,12 +31,12 @@ class Name_BirthSignUpActivity : BaseActivity() {
         toolbarInit(binding.toolbar)
     }
 
-    fun birthCheck(){
+    private fun birthCheck(){
         binding.birthEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(viewModel.checkType(binding.birthEditText.text.toString())){
+                if(viewModel.NameBirthCheckType(binding.birthEditText.text.toString())){
                     if(viewModel.birth_check.value == null){
                         binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
                         binding.nextButton.isEnabled = true
@@ -54,7 +54,7 @@ class Name_BirthSignUpActivity : BaseActivity() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onNextEvent.observe(this@Name_BirthSignUpActivity, Observer {
+            onNameBirthNextEvent.observe(this@Name_BirthSignUpActivity, Observer {
                 if(SignUpData.identityData == 0){
                     SignUpData.signUpDataStudent.name = binding.nameEditText.text.toString()
                     SignUpData.signUpDataStudent.birth_year = Integer.parseInt(viewModel.birth.value.toString())

@@ -41,14 +41,14 @@
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:background="@drawable/background_corners_gradient2"
-                            android:onClick="@{() -> viewModel.searchSchool()}">
+                            android:onClick="@{() -> viewModel.getSchool()}">
 
                             <ImageView
                                 android:id="@+id/imageView5"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
-                                android:onClick="@{() -> viewModel.searchSchool()}"
+                                android:onClick="@{() -> viewModel.getSchool()}"
                                 android:padding="10dp"
                                 android:tint="#FFFFFF"
                                 app:srcCompat="@drawable/search" />

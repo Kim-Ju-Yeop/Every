@@ -10,45 +10,45 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
 import com.example.every.base.BaseActivity
 import com.example.every.base.SignUpData
-import com.example.every.databinding.ActivityEmailPasswordBinding
-import com.example.every.viewmodel.signup.signup.data.Email_PasswordSignUpViewModel
+import com.example.every.databinding.ActivityEmailPwBinding
+import com.example.every.viewmodel.signup.signup.data.Email_PwSignUpViewModel
 
-class Email_PasswordSignUpActivity : BaseActivity() {
+class Email_PwSignUpActivity : BaseActivity() {
 
-    lateinit var binding : ActivityEmailPasswordBinding
-    lateinit var viewModel : Email_PasswordSignUpViewModel
+    lateinit var binding : ActivityEmailPwBinding
+    lateinit var viewModel : Email_PwSignUpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this@Email_PasswordSignUpActivity, R.layout.activity_email__password)
-        viewModel = ViewModelProviders.of(this@Email_PasswordSignUpActivity).get(Email_PasswordSignUpViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this@Email_PwSignUpActivity, R.layout.activity_email__pw)
+        viewModel = ViewModelProviders.of(this@Email_PwSignUpActivity).get(Email_PwSignUpViewModel::class.java)
 
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this@Email_PasswordSignUpActivity
+        binding.lifecycleOwner = this@Email_PwSignUpActivity
 
         pwCheck()
         emailCheck()
         toolbarInit(binding.toolbar)
     }
 
-    fun emailCheck(){
+    private fun emailCheck(){
         binding.emailEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?){}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int){}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(viewModel.checkType(binding.emailEditText.text.toString(), 0))
-                    viewModel.overlapEmail(binding.emailEditText.text.toString())
+                if(viewModel.EmailPwCheckType(binding.emailEditText.text.toString().trim(), 0))
+                    viewModel.getOverlapEmail(binding.emailEditText.text.toString().trim())
             }
         })
     }
 
-    fun pwCheck(){
+    private fun pwCheck(){
         binding.pwEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?){}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int){}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(viewModel.checkType(binding.pwEditText.text.toString(), 1)){
+                if(viewModel.EmailPwCheckType(binding.pwEditText.text.toString(), 1)){
                     if(viewModel.email_check.value == null && viewModel.pw_check.value == null){
                         binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
                         binding.nextButton.isEnabled = true
@@ -66,7 +66,7 @@ class Email_PasswordSignUpActivity : BaseActivity() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onNextEvent.observe(this@Email_PasswordSignUpActivity, Observer {
+            onEmailPwNextEvent.observe(this@Email_PwSignUpActivity, Observer {
                 if(SignUpData.identityData == 0){
                     SignUpData.signUpDataStudent.email = viewModel.email.value.toString()
                     SignUpData.signUpDataStudent.pw = viewModel.pw.value.toString()
@@ -74,7 +74,7 @@ class Email_PasswordSignUpActivity : BaseActivity() {
                     SignUpData.signUpDataWorker.email = viewModel.email.value.toString()
                     SignUpData.signUpDataWorker.pw = viewModel.pw.value.toString()
                 }
-                startActivity(Intent(this@Email_PasswordSignUpActivity, Name_BirthSignUpActivity::class.java))
+                startActivity(Intent(this@Email_PwSignUpActivity, Name_BirthSignUpActivity::class.java))
             })
         }
     }

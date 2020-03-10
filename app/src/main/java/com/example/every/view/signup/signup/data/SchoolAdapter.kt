@@ -51,12 +51,7 @@ class SchoolAdapter(val mContext : Context, val items : ArrayList<SchoolDataList
             if(item.school_location == null) itemView.schoolLocate.text = "위치 정보를 불러올 수 없습니다."
             else itemView.schoolLocate.text = item.school_location
 
-            itemView.schoolName.setSingleLine(true)
-            itemView.schoolName.ellipsize = TextUtils.TruncateAt.MARQUEE
             itemView.schoolName.isSelected = true
-
-            itemView.schoolLocate.setSingleLine(true)
-            itemView.schoolLocate.ellipsize = TextUtils.TruncateAt.MARQUEE
             itemView.schoolLocate.isSelected = true
 
             view.setOnClickListener(listener)

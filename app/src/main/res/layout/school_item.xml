@@ -84,7 +84,9 @@
                     android:fontFamily="@font/nanum_extrabold"
                     android:text="대구소프트웨어고등학교"
                     android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"/>
 
                 <TextView
                     android:id="@+id/schoolLocate"
@@ -94,7 +96,9 @@
                     android:fontFamily="@font/nanum_bold"
                     android:text="대구광역시 달성군 구지면 창리로11길 93"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"/>
             </LinearLayout>
 
         </LinearLayout>

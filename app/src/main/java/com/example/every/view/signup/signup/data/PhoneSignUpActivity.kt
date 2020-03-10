@@ -33,14 +33,14 @@ class PhoneSignUpActivity : BaseActivity(){
         toolbarInit(binding.toolbar)
     }
 
-    fun phoneCheck(){
+    private fun phoneCheck(){
         binding.phoneEditText.addTextChangedListener(PhoneNumberFormattingTextWatcher())
         binding.phoneEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(viewModel.checkType(binding.phoneEditText.text.toString()))
-                    viewModel.overlapPhone(binding.phoneEditText.text.toString())
+                    viewModel.getOverlapPhone(binding.phoneEditText.text.toString())
                 else{
                     binding.nextButton.setBackgroundResource(R.color.gray)
                     binding.nextButton.isEnabled = false
@@ -51,19 +51,19 @@ class PhoneSignUpActivity : BaseActivity(){
 
     override fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@PhoneSignUpActivity, Observer {
+            onPhoneSuccessEvent.observe(this@PhoneSignUpActivity, Observer {
                 if(viewModel.phone_check.value == null){
                     binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
                     binding.nextButton.isEnabled = true
                 }
             })
-            onFailEvent.observe(this@PhoneSignUpActivity, Observer {
+            onPhoneFailureEvent.observe(this@PhoneSignUpActivity, Observer {
                 if(viewModel.phone_check.value != null){
                     binding.nextButton.setBackgroundResource(R.color.gray)
                     binding.nextButton.isEnabled = false
                 }
             })
-            onNextEvent.observe(this@PhoneSignUpActivity, Observer {
+            onPhoneNextEvent.observe(this@PhoneSignUpActivity, Observer {
                 if(SignUpData.identityData == 0){
                     SignUpData.signUpDataStudent.phone = viewModel.phone.value.toString()
                     startActivity(Intent(this@PhoneSignUpActivity, SchoolSignUpActivity::class.java))

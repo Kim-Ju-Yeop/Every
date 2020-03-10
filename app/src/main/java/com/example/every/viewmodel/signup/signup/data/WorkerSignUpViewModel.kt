@@ -2,11 +2,16 @@ package com.example.every.viewmodel.signup.signup.data
 
 import androidx.lifecycle.MutableLiveData
 import com.example.every.base.BaseViewModel
+import com.example.every.widget.SingleLiveEvent
 
 class WorkerSignUpViewModel : BaseViewModel(){
 
+    // MutableLiveData
     val workerName = MutableLiveData<String>()
     val workerName_check = MutableLiveData<String>()
+
+    // SingleLiveEvent
+    val onWorkerNextEvent = SingleLiveEvent<Unit>()
 
     fun checkType(text : String) : Boolean{
         if(text.indexOf(" ") >= 0){
@@ -16,5 +21,5 @@ class WorkerSignUpViewModel : BaseViewModel(){
             workerName_check.value = null
             return true
         }
-    } fun next() = onNextEvent.call()
+    } fun next() = onWorkerNextEvent.call()
 }

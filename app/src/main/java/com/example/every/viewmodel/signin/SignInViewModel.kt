@@ -16,24 +16,26 @@ class SignInViewModel : BaseViewModel() {
 
     /**
      * SignIn 로그인 API Response
-     * status[200] -> 로그인 성공 : onSuccessEvent
-     * status[400] -> 검증 오류 : onErrorEvent
-     * status[401] -> 로그인 실패 : onFailEvent
+     * status[200] -> 로그인 성공 : onLoginSuccessEvent
+     * status[400] -> 검증 오류 : onLoginErrorEvent
+     * status[401] -> 로그인 실패 : onFailureEvent
      */
 
+    // MutableLiveData
     val token = MutableLiveData<String>()
     val email = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
-
     val worker_idx = MutableLiveData<Int>()
     val student_idx = MutableLiveData<Int>()
 
+    // SingleLiveEvent
+    val onLoginSuccessEvent = SingleLiveEvent<Unit>()
+    val onLoginErrorEvent = SingleLiveEvent<Unit>()
+    val onLoginFailureEvent = SingleLiveEvent<Unit>()
     val onSignUpEvent = SingleLiveEvent<Unit>()
     val onLostPwEvent = SingleLiveEvent<Unit>()
 
-    fun signUp() = onSignUpEvent.call()
-    fun lostPw() = onLostPwEvent.call()
-    fun login(){
+    fun postSignIn(){
             val signInData = SignInData(email.value.toString().trim(), pw.value.toString().trim())
             val res : Call<Response<Data>> = netRetrofit.signIn.postSignIn(signInData)
             res.enqueue(object : Callback<Response<Data>>{
@@ -45,14 +47,16 @@ class SignInViewModel : BaseViewModel() {
                             if(response.body()!!.data!!.worker_idx != null) worker_idx.value = response.body()!!.data!!.worker_idx
                             else if(response.body()!!.data!!.student_idx != null) student_idx.value = response.body()!!.data!!.student_idx
 
-                            onSuccessEvent.call()
-                        } 400 -> onErrorEvent.call()
-                          401 -> onFailEvent.call()
+                            onLoginSuccessEvent.call()
+                        } 400 -> onLoginErrorEvent.call()
+                          401 -> onLoginFailureEvent.call()
                     }
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-                    Log.e("SignInViewModel[Error]", "서버와 통신을 실패하였습니다.")
+                    Log.e("postSignIn[Error]", "로그인 과정에서 서버와 연결하지 못하였습니다.")
                 }
             })
     }
+    fun signUp() = onSignUpEvent.call()
+    fun lostPw() = onLostPwEvent.call()
 }

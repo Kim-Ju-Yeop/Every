@@ -5,25 +5,30 @@ import androidx.lifecycle.MutableLiveData
 import com.example.every.base.BaseViewModel
 import com.example.every.network.Data
 import com.example.every.network.Response
+import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import java.util.regex.Pattern
 
-class Email_PasswordSignUpViewModel : BaseViewModel(){
+class Email_PwSignUpViewModel : BaseViewModel(){
 
     /**
-     * EmailOverlap 이메일 중복확인 API Response
+     * getOverlapEmail 이메일 중복확인 API Response
      * status[200] -> 이메일 중복 없음
      * status[400] -> 이메일 검증 오류
      * status[409] -> 이메일 중복 확인
      */
 
-    val email = MutableLiveData<String>()
-    val email_check = MutableLiveData<String>()
+    // MutableLiveData
     val pw = MutableLiveData<String>()
+    val email = MutableLiveData<String>()
     val pw_check = MutableLiveData<String>()
+    val email_check = MutableLiveData<String>()
 
-    fun checkType(text : String, id : Int) : Boolean{
+    // SingleLiveEvent
+    val onEmailPwNextEvent = SingleLiveEvent<Unit>()
+
+    fun EmailPwCheckType(text : String, id : Int) : Boolean{
         if(id == 0 && !android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches()){
             email_check.value = "이메일 형식이 올바르지 않습니다."
             return false
@@ -38,7 +43,7 @@ class Email_PasswordSignUpViewModel : BaseViewModel(){
         }
     }
 
-    fun overlapEmail(text : String){
+    fun getOverlapEmail(text : String){
         val res : Call<Response<Data>> = netRetrofit.signUp.getOverlapEmail(text)
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
@@ -52,5 +57,5 @@ class Email_PasswordSignUpViewModel : BaseViewModel(){
                 Log.e("overlapEmail[Error]", "이메일 중복확인 과정에서 서버와 통신이 되지 않습니다.")
             }
         })
-    } fun next() = onNextEvent.call()
+    } fun next() = onEmailPwNextEvent.call()
 }

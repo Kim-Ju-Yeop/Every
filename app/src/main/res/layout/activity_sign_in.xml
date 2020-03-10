@@ -142,7 +142,7 @@
                     android:textSize="18sp"
                     android:fontFamily="@font/nanum_extrabold"
                     android:textColor="#FFFFFF"
-                    android:onClick="@{() -> viewModel.login()}"/>
+                    android:onClick="@{() -> viewModel.postSignIn()}"/>
 
             </androidx.cardview.widget.CardView>
 

@@ -36,7 +36,7 @@
             android:name=".view.signup.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.signup.signup.data.Email_PasswordSignUpActivity"
+            android:name=".view.signup.signup.data.Email_PwSignUpActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.signup.signup.data.Name_BirthSignUpActivity"

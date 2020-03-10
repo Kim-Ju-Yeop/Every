@@ -31,11 +31,11 @@ class SchoolListSignUpActivity : BaseActivity() {
         editTextListener()
     }
 
-    fun editTextListener(){
+    private fun editTextListener(){
         binding.schoolName.imeOptions = EditorInfo.IME_ACTION_SEARCH
         binding.schoolName.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             when(actionId){
-                EditorInfo.IME_ACTION_SEARCH -> viewModel.searchSchool()
+                EditorInfo.IME_ACTION_SEARCH -> viewModel.getSchool()
             }
             true
         })
@@ -43,12 +43,12 @@ class SchoolListSignUpActivity : BaseActivity() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@SchoolListSignUpActivity, Observer {
+            onGetSchoolSuccessEvent.observe(this@SchoolListSignUpActivity, Observer {
                 setVisible(binding.questionLayout, binding.recyclerView, 1)
                 val adapter = SchoolAdapter(this@SchoolListSignUpActivity, viewModel.schoolDataList)
                 binding.recyclerView.adapter = adapter
             })
-            onFailEvent.observe(this@SchoolListSignUpActivity, Observer {
+            onGetSchoolFailureEvent.observe(this@SchoolListSignUpActivity, Observer {
                 setVisible(binding.questionLayout, binding.recyclerView, 0)
                 binding.answerTextView.text = "입력하신 학교는 존재하지 않습니다."
             })

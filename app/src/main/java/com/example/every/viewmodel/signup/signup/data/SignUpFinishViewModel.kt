@@ -1,26 +1,34 @@
 package com.example.every.viewmodel.signup.signup.data
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.every.base.BaseViewModel
 import com.example.every.base.SignUpData
 import com.example.every.network.Data
 import com.example.every.network.Response
+import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 
 class SignUpFinishViewModel : BaseViewModel() {
 
     /**
-     * SignUp 회원가입 API Response (학생, 직장인)
-     * status[201] 회원 가입 성공
-     * status[400] 검증 오류
+     * postSignUp 회원가입 API Response (학생, 직장인)
+     * status[201] 회원 가입 성공 : onSignUpSuccessEvent
+     * status[400] 검증 오류 : onSignUpFailureEvent
      */
 
+    // MutableLiveData
     val firstText = MutableLiveData<String>()
     val secondText = MutableLiveData<String>()
 
-    fun signUp(identity : Int){
+    // SingleLiveEvent
+    val onSignUpSuccessEvent = SingleLiveEvent<Unit>()
+    val onSignUpFailureEvent = SingleLiveEvent<Unit>()
+    val onSignUpNextEvent = SingleLiveEvent<Unit>()
+
+    fun postSignUp(identity : Int){
         if(identity == 0){
             val res : Call<Response<Data>> = netRetrofit.signUp.postSignUpStudent(SignUpData.signUpDataStudent)
             res.enqueue(object : Callback<Response<Data>>{
@@ -29,17 +37,18 @@ class SignUpFinishViewModel : BaseViewModel() {
                         201 ->{
                             firstText.value = "회원가입 완료"
                             secondText.value = "정상적으로 회원가입이 완료되었습니다!"
-                            onSuccessEvent.call()
+                            onSignUpSuccessEvent.call()
                         }
                         400 ->{
                             firstText.value = "회원가입 실패"
                             secondText.value = "회원가입을 수행하지 못하였습니다!"
-                            onFailEvent.call()
+                            onSignUpFailureEvent.call()
                         }
                     }
                 }
+                @SuppressLint("LongLogTag")
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-                    Log.e("signUpStudent[Error]", "학생용 회원가입 과정에서 서버와 통신이 되지 않습니다.")
+                    Log.e("postSignUpStudent[Error]", "학생용 회원가입 과정에서 서버와 통신이 되지 않습니다.")
                 }
             })
         }else if(identity == 1){
@@ -50,19 +59,19 @@ class SignUpFinishViewModel : BaseViewModel() {
                         201 ->{
                             firstText.value = "회원가입 완료"
                             secondText.value = "정상적으로 회원가입이 완료되었습니다!"
-                            onSuccessEvent.call()
+                            onSignUpSuccessEvent.call()
                         }
                         400 ->{
                             firstText.value = "회원가입 실패"
                             secondText.value = "회원가입을 수행하지 못하였습니다!"
-                            onFailEvent.call()
+                            onSignUpFailureEvent.call()
                         }
                     }
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
-                    Log.e("signUpWorker[Error]", "직장인 회원가입 과정에서 서버와 통신이 되지 않습니다.")
+                    Log.e("postSignUpWorker[Error]", "직장인 회원가입 과정에서 서버와 통신이 되지 않습니다.")
                 }
             })
         }
-    } fun next() = onNextEvent.call()
+    } fun next() = onSignUpNextEvent.call()
 }

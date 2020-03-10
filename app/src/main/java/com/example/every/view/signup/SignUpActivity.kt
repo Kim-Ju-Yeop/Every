@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.every.R
-import com.example.every.view.signup.signup.data.Email_PasswordSignUpActivity
+import com.example.every.view.signup.signup.data.Email_PwSignUpActivity
 import com.example.every.base.BaseActivity
 import com.example.every.base.SignUpData
 import com.example.every.databinding.ActivitySignUpBinding
@@ -31,9 +31,9 @@ class SignUpActivity : BaseActivity() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onNextEvent.observe(this@SignUpActivity, Observer {
+            onCheckEvent.observe(this@SignUpActivity, Observer {
                 SignUpData.identityData = viewModel.checkInfo.value!!
-                startActivity(Intent(this@SignUpActivity, Email_PasswordSignUpActivity::class.java))
+                startActivity(Intent(this@SignUpActivity, Email_PwSignUpActivity::class.java))
             })
         }
     }

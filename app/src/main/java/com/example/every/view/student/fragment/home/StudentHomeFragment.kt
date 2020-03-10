@@ -93,7 +93,10 @@ class StudentHomeFragment : BaseFragment() {
                 viewModel.checkCount = 3
             })
             onFailEvent.observe(this@StudentHomeFragment, Observer {
-                setVisible(binding.questionLayout, binding.recyclerView, 0)
+                binding.mealsTitle.text = "아침"
+                binding.mealsImage.setImageResource(R.drawable.sunrise_breakfast)
+                binding.mealsBackground.setBackgroundResource(R.drawable.background_breakfast)
+                viewModel.checkCount = 1
             })
             onTokenEvent.observe(this@StudentHomeFragment, Observer {
                 val loginData = context!!.applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)

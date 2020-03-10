@@ -38,26 +38,20 @@ class SchoolSignUpActivity : BaseActivity() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onSearchEvent.observe(this@SchoolSignUpActivity, Observer {
+            onSchoolSearchEvent.observe(this@SchoolSignUpActivity, Observer {
                 startActivity(Intent(this@SchoolSignUpActivity, SchoolListSignUpActivity::class.java))
             })
-            onEnableTrueEVent.observe(this@SchoolSignUpActivity, Observer {
-                binding.schoolName.setSingleLine(true)
-                binding.schoolName.ellipsize = TextUtils.TruncateAt.MARQUEE
+            onSchoolEnableTrueEVent.observe(this@SchoolSignUpActivity, Observer {
                 binding.schoolName.isSelected = true
-
                 binding.nextButton.isEnabled = true
                 binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
             })
-            onEnableFalseEvent.observe(this@SchoolSignUpActivity, Observer {
-                binding.schoolName.setSingleLine(true)
-                binding.schoolName.ellipsize = TextUtils.TruncateAt.MARQUEE
+            onSchoolEnableFalseEvent.observe(this@SchoolSignUpActivity, Observer {
                 binding.schoolName.isSelected = true
-
                 binding.nextButton.isEnabled = false
                 binding.nextButton.setBackgroundResource(R.color.gray)
             })
-            onNextEvent.observe(this@SchoolSignUpActivity, Observer {
+            onSchoolNextEvent.observe(this@SchoolSignUpActivity, Observer {
                 SignUpData.signUpDataStudent.school_id = viewModel.schoolId.value.toString()
                 startActivity(Intent(applicationContext, SignUpFinishActivity::class.java))
             })

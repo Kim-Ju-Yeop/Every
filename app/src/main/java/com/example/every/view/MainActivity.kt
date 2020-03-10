@@ -21,14 +21,13 @@ class MainActivity: AppCompatActivity() {
         val checkLogin : SharedPreferences = getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
         if(checkLogin.getBoolean("loginData", false)){
             val checkIdentity : SharedPreferences = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
-
             if(checkIdentity.getString("identityData", null).equals("worker")){
                 // 직장인 페이지 이동
             }else if(checkIdentity.getString("identityData", null).equals("student")){
                 startActivity(Intent(this@MainActivity, StudentMainActivity::class.java))
                 finish()
             }
-        } else {
+        }else{
             startActivity(Intent(this@MainActivity, SignInActivity::class.java))
             finish()
         }

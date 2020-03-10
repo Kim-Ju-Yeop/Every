@@ -27,25 +27,21 @@ class SignUpFinishActivity : BaseActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this@SignUpFinishActivity
 
-        viewModel.signUp(SignUpData.identityData!!)
+        viewModel.postSignUp(SignUpData.identityData!!)
     }
 
     override fun observerViewModel(){
         with(viewModel){
-            onSuccessEvent.observe(this@SignUpFinishActivity, Observer {
+            onSignUpSuccessEvent.observe(this@SignUpFinishActivity, Observer {
                 binding.nextButton.text = "로그인 하기"
             })
-            onFailEvent.observe(this@SignUpFinishActivity, Observer {
+            onSignUpFailureEvent.observe(this@SignUpFinishActivity, Observer {
                 binding.nextButton.text = "회원가입 다시 진행하기"
             })
-            onNextEvent.observe(this@SignUpFinishActivity, Observer {
-                if(binding.nextButton.text.equals("로그인 하기")){
-                    startActivity(Intent(this@SignUpFinishActivity, SignInActivity::class.java))
-                    finish()
-                } else{
-                    startActivity(Intent(this@SignUpFinishActivity, SignUpActivity::class.java))
-                    finish()
-                }
+            onSignUpNextEvent.observe(this@SignUpFinishActivity, Observer {
+                if(binding.nextButton.text.equals("로그인 하기")) startActivity(Intent(this@SignUpFinishActivity, SignInActivity::class.java))
+                else startActivity(Intent(this@SignUpFinishActivity, SignUpActivity::class.java))
+                finish()
             })
         }
     }

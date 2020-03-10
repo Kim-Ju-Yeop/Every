@@ -33,13 +33,13 @@ class WorkerSignUpActivity : BaseActivity() {
         toolbarInit(binding.toolbar)
     }
 
-    fun setSpinner(){
+    private fun setSpinner(){
         val items = resources.getStringArray(R.array.workerData)
         val adapter = ArrayAdapter(this@WorkerSignUpActivity, android.R.layout.simple_spinner_dropdown_item, items)
         binding.spinner.adapter = adapter
     }
 
-    fun workerNameCheck(){
+    private fun workerNameCheck(){
         binding.workerNameEditText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -57,7 +57,7 @@ class WorkerSignUpActivity : BaseActivity() {
 
     override fun observerViewModel(){
         with(viewModel){
-            onNextEvent.observe(this@WorkerSignUpActivity, Observer {
+            onWorkerNextEvent.observe(this@WorkerSignUpActivity, Observer {
                 SignUpData.signUpDataWorker.work_place = viewModel.workerName.value.toString()
                 SignUpData.signUpDataWorker.work_category = binding.spinner.selectedItemPosition.plus(1)
                 startActivity(Intent(this@WorkerSignUpActivity, SignUpFinishActivity::class.java))

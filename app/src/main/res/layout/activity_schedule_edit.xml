@@ -247,7 +247,7 @@
                     android:layout_height="55dp"
                     app:cardCornerRadius="25dp"
                     android:layout_margin="30dp"
-                    android:elevation="5dp">
+                    android:elevation="10dp">
 
                     <Button
                         android:id="@+id/post_button"

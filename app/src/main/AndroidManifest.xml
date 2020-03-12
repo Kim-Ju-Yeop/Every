@@ -16,7 +16,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity"
         tools:replace="android:icon">
-        <activity android:name=".view.student.activity.schedule.ScheduleEditActivity"></activity>
+        <activity android:name=".view.student.activity.more.StudentAccountActivity"></activity>
+        <activity android:name=".view.student.activity.schedule.ScheduleEditActivity" />
         <activity android:name=".view.student.activity.schedule.ScheduleContentActivity" />
         <activity android:name=".view.student.activity.schedule.SchedulePostActivity" />
         <activity

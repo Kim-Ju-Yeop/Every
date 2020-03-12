@@ -69,7 +69,9 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:ellipsize="marquee"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:ellipsize="end"
                     android:singleLine="true"
                     android:id="@+id/title_textView"
                     android:layout_width="wrap_content"

@@ -30,12 +30,12 @@ class ScheduleEditViewModel : BaseViewModel(){
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 if(response.code() == 200){
-                    val scheduleData = response.body()!!.data!!.schedules
+                    val scheduleData = response.body()!!.data!!.schedule
 
-                    title.value = scheduleData!!.get(0).title
-                    content.value = scheduleData!!.get(0).content
-                    start_date.value = scheduleData!!.get(0).start_date
-                    end_date.value = scheduleData!!.get(0).end_date
+                    title.value = scheduleData!!.title
+                    content.value = scheduleData!!.content
+                    start_date.value = scheduleData!!.start_date
+                    end_date.value = scheduleData!!.end_date
                 }
             }
             override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
@@ -46,7 +46,7 @@ class ScheduleEditViewModel : BaseViewModel(){
 
     /**
      * editSchedule 일정 변경 API Response
-     * status[200] 일정 변경 성공
+     * status[200] 일정 변경 성공 : onSelectedEditSuccessEvent
      */
 
     // MutableLiveData

@@ -23,6 +23,7 @@ class Data {
 
     // Schedule
     var schedules : List<SchedulesList>? = null
+    var schedule : SchedulesList? = null
 
     @SerializedName("x-access-token")
     lateinit var token : String

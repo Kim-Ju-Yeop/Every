@@ -82,7 +82,7 @@
             android:name=".view.student.activity.bamboo.BambooCommentEditActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" /> <!-- 아직 미사용 -->
-        <activity android:name=".view.student.fragment.StudentMoreFragment" />
+        <activity android:name=".view.student.fragment.more.StudentMoreFragment" />
         <activity android:name=".view.student.fragment.schedule.StudentScheduleFragment" />
     </application>
 

@@ -29,13 +29,13 @@ class ScheduleContentViewModel : BaseViewModel(){
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 if(response.code() == 200){
-                    val scheduleData = response.body()!!.data!!.schedules
+                    val scheduleData = response.body()!!.data!!.schedule
 
-                    title.value = scheduleData!!.get(0).title
-                    content.value = scheduleData!!.get(0).content
-                    date.value = "${scheduleData!!.get(0).start_date.substring(0, 4)}년 ${scheduleData!!.get(0).start_date.substring(5, 7)}월 " +
-                                 "${scheduleData!!.get(0).start_date.substring(8, 10)}일 ~ ${scheduleData!!.get(0).end_date.substring(0, 4)}년 " +
-                                 "${scheduleData!!.get(0).end_date.substring(5, 7)}월 ${scheduleData!!.get(0).end_date.subSequence(8, 10)}일"
+                    title.value = scheduleData!!.title
+                    content.value = scheduleData!!.content
+                    date.value = "${scheduleData!!.start_date.substring(0, 4)}년 ${scheduleData!!.start_date.substring(5, 7)}월 " +
+                                 "${scheduleData!!.start_date.substring(8, 10)}일 ~ ${scheduleData!!.end_date.substring(0, 4)}년 " +
+                                 "${scheduleData!!.end_date.substring(5, 7)}월 ${scheduleData!!.end_date.subSequence(8, 10)}일"
                 }
             }
             override fun onFailure(call: Call<Response<Data>>, t: Throwable) {

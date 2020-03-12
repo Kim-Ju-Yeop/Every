@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -28,6 +29,11 @@ class ScheduleContentActivity : BaseActivity() {
         binding.lifecycleOwner = this@ScheduleContentActivity
 
         init()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getIdxSchedule()
     }
 
     private fun init(){

@@ -49,10 +49,7 @@ class SchedulePostActivity : BaseActivity() {
                     if(!viewModel.start_date.value.equals("날짜 선택") && !viewModel.end_date.value.equals("날짜 선택")) {
                         binding.postButton.setBackgroundResource(R.drawable.background_schedule_add_button)
                         binding.postButton.isEnabled = true
-                    } else {
-                        binding.postButton.setBackgroundColor(Color.GRAY)
-                        binding.postButton.isEnabled
-                    }
+                    } else binding.postButton.setBackgroundColor(Color.GRAY)
                 }
 
                 val today : CalendarDay = CalendarDay.today()

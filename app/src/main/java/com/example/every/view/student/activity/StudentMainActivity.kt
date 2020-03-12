@@ -8,7 +8,7 @@ import com.example.every.R
 import com.example.every.databinding.ActivityStudentMainBinding
 import com.example.every.view.student.fragment.bamboo.StudentBambooFragment
 import com.example.every.view.student.fragment.home.StudentHomeFragment
-import com.example.every.view.student.fragment.StudentMoreFragment
+import com.example.every.view.student.fragment.more.StudentMoreFragment
 import com.example.every.view.student.fragment.schedule.StudentScheduleFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -19,7 +19,8 @@ class StudentMainActivity : AppCompatActivity() {
     val studentMainFragment = StudentHomeFragment()
     val studentBambooFragment = StudentBambooFragment()
     val studentScheduleFragment = StudentScheduleFragment()
-    val studentMoreFragment = StudentMoreFragment()
+    val studentMoreFragment =
+        StudentMoreFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

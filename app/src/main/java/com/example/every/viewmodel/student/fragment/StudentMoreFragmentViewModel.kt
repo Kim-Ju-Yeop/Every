@@ -19,6 +19,7 @@ class StudentMoreFragmentViewModel : BaseViewModel(){
      */
 
     val onAccountEvent = SingleLiveEvent<Unit>()
+    val onUpdateEvent = SingleLiveEvent<Unit>()
 
     fun getStudentInfo(studentName : TextView, studentEmail : TextView){
         val res : Call<Response<Data>> = netRetrofit.bamboo.getStudentInfo(StudentData.token.value.toString(), StudentData.studentIdx.value!!)
@@ -33,5 +34,8 @@ class StudentMoreFragmentViewModel : BaseViewModel(){
                 Log.e("getStudentInfo[Error]", "학생 정보 조회 과정에서 서버와 통신이 되지 않았습니다.")
             }
         })
-    } fun onNextEvent() = onAccountEvent.call()
+    }
+
+    fun onNextEvent() = onAccountEvent.call()
+    fun onUpdateEvent() = onUpdateEvent.call()
 }

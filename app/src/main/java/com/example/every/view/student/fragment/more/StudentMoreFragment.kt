@@ -15,6 +15,7 @@ import com.example.every.R
 import com.example.every.base.BaseFragment
 import com.example.every.databinding.FragmentStudentMoreBinding
 import com.example.every.view.student.activity.more.StudentAccountActivity
+import com.example.every.view.student.activity.more.StudentUpdateActivity
 import com.example.every.view.student.fragment.more.adapter.SliderAdapter
 import com.example.every.viewmodel.student.fragment.StudentMoreFragmentViewModel
 import com.smarteist.autoimageslider.IndicatorAnimations
@@ -47,6 +48,9 @@ class StudentMoreFragment : BaseFragment() {
         with(viewModel){
             onAccountEvent.observe(this@StudentMoreFragment, Observer {
                 startActivity(Intent(binding.root.context, StudentAccountActivity::class.java))
+            })
+            onUpdateEvent.observe(this@StudentMoreFragment, Observer {
+                startActivity(Intent(binding.root.context, StudentUpdateActivity::class.java))
             })
         }
     }

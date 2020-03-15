@@ -89,7 +89,7 @@ class BambooCommentActivity : BaseActivity() {
                 finish()
             })
             replyEditText.observe(this@BambooCommentActivity, Observer {
-                if(replyEditText.value!!.length >= 250) toastMessage(applicationContext, "250글자 내외로 작성할 수 있습니다.")
+                if(replyEditText.value!!.length > 250) toastMessage(applicationContext, "250글자 내외로 작성할 수 있습니다.")
             })
         }
     }

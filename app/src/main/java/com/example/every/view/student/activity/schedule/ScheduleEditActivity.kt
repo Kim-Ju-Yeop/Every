@@ -63,6 +63,12 @@ class ScheduleEditActivity : BaseActivity() {
             onScheduleEditFailureEvent.observe(this@ScheduleEditActivity, androidx.lifecycle.Observer {
                 toastMessage(applicationContext, "입력하신 내용을 다시 한 번 확인하십시오.")
             })
+            title.observe(this@ScheduleEditActivity, androidx.lifecycle.Observer {
+                if(title.value!!.length > 15) toastMessage(applicationContext, "15글자 내외로 작성할 수 있습니다.")
+            })
+            content.observe(this@ScheduleEditActivity, androidx.lifecycle.Observer {
+                if(content.value!!.length > 150) toastMessage(applicationContext, "150글자 내오로 작성할 수 있습니다.")
+            })
         }
     }
 }

@@ -19,7 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="@drawable/background_schedule_content"
+            android:background="@drawable/image_schedule2"
             android:orientation="vertical">
 
             <LinearLayout
@@ -71,8 +71,6 @@
                 <TextView
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
                     android:id="@+id/title_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -109,11 +107,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/scheduleContent_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="일정 내용"
+                    android:text="@string/scheduleContent_textView"
                     android:textColor="#2D008A"
                     android:textSize="18sp" />
 
@@ -142,11 +140,11 @@
                     android:elevation="5dp">
 
                     <Button
-                        android:id="@+id/post_button"
-                        android:background="@drawable/background_schedule_add_button"
+                        android:background="#2D008A"
+                        android:id="@+id/scheduleEdit_textView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="일정 수정하기"
+                        android:text="@string/scheduleEdit_textView"
                         android:fontFamily="@font/nanum_extrabold"
                         android:textSize="20sp"
                         android:textColor="#FFFFFF"

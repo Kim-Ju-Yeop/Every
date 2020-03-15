@@ -47,7 +47,7 @@ class SchedulePostActivity : BaseActivity() {
                     else viewModel.end_date.value = formatDate
 
                     if(!viewModel.start_date.value.equals("날짜 선택") && !viewModel.end_date.value.equals("날짜 선택")) {
-                        binding.postButton.setBackgroundResource(R.drawable.background_schedule_add_button)
+                        binding.postButton.setBackgroundColor(Color.parseColor("#2D008A"))
                         binding.postButton.isEnabled = true
                     } else binding.postButton.setBackgroundColor(Color.GRAY)
                 }
@@ -63,6 +63,14 @@ class SchedulePostActivity : BaseActivity() {
             onSchedulePostFailureEvent.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
                 toastMessage(applicationContext, "입력하신 내용을 다시 한 번 확인하십시오.")
             })
+            title.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
+                if(title.value!!.length > 15) toastMessage(applicationContext, "15글자 내외로 작성할 수 있습니다.")
+            })
+            content.observe(this@SchedulePostActivity, androidx.lifecycle.Observer {
+                if(content.value!!.length > 150) toastMessage(applicationContext, "150글자 내오로 작성할 수 있습니다.")
+            })
         }
     }
+
+    override fun onBackPressed() = finish()
 }

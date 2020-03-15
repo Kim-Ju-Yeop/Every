@@ -64,4 +64,18 @@
 
     <!--BambooCommentEditActivity-->
     <string name="edit_textView">수정</string>
+
+    <!--StudentScheduleFragment-->
+    <string name="scheduleName_textView">스케줄</string>
+    <string name="scheduleIntroduce_textView">여러분의 소중한 일정을 관리하세요!</string>
+
+    <!--SchedulePostActivity-->
+    <string name="postSchedule_textView">일정 추가하기</string>
+    <string name="scheduleTitle_textView">일정 제목</string>
+    <string name="scheduleContent_textView">일정 내용</string>
+    <string name="scheduleStartDate_textView">일정 시작 날짜</string>
+    <string name="scheduleEndDate_textView">일정 종료 날짜</string>
+
+    <!--ScheduleContentActivity-->
+    <string name="scheduleEdit_textView">일정 수정하기</string>
 </resources>

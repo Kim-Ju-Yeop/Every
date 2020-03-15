@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.appcompat.app.AlertDialog
+import androidx.core.text.TextUtilsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -38,6 +39,8 @@ class ScheduleContentActivity : BaseActivity() {
 
     private fun init(){
         val intent = intent
+        binding.titleTextView.isSingleLine = true
+        binding.titleTextView.ellipsize = TextUtils.TruncateAt.MARQUEE
         binding.titleTextView.isSelected = true
         viewModel.idx.value = intent.extras!!.getInt("idx")
         viewModel.getIdxSchedule()
@@ -61,10 +64,13 @@ class ScheduleContentActivity : BaseActivity() {
                 val intent = Intent(this@ScheduleContentActivity, ScheduleEditActivity::class.java)
                 intent.putExtra("idx", viewModel.idx.value)
                 startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             })
             onBackEvent.observe(this@ScheduleContentActivity, Observer {
                 finish()
             })
         }
     }
+
+    override fun onBackPressed() = finish()
 }

@@ -20,9 +20,7 @@ class ScheduleAdapter(val mContext : Context, val items : ArrayList<SchedulesLis
         var inflater : LayoutInflater = LayoutInflater.from(parent.context)
         var itemView = inflater.inflate(R.layout.schedule_item, parent, false)
 
-        return ViewHolder(
-            itemView
-        )
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

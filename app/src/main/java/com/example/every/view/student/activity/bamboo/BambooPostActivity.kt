@@ -42,7 +42,7 @@ class BambooPostActivity : BaseActivity() {
                 toastMessage(applicationContext, "현재 개발중인 기능입니다.")
             })
             content_EditText.observe(this@BambooPostActivity, Observer {
-                if(content_EditText.value!!.length >= 500) toastMessage(applicationContext, "500글자 내외로 작성할 수 있습니다.")
+                if(content_EditText.value!!.length > 500) toastMessage(applicationContext, "500글자 내외로 작성할 수 있습니다.")
             })
         }
     }

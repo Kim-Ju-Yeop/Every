@@ -28,10 +28,10 @@
         <TextView
             android:textColor="#000000"
             android:layout_gravity="center"
-            android:id="@+id/textView6"
+            android:id="@+id/postSchedule_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정 추가하기"
+            android:text="@string/postSchedule_textView"
             android:fontFamily="@font/nanum_bold"
             android:textSize="15sp"/>
 
@@ -60,8 +60,9 @@
             android:textColor="#2D008A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정 제목"
+            android:text="@string/scheduleTitle_textView"
             android:layout_margin="5dp"
+            android:id="@+id/scheduleTitle_textView"
             android:fontFamily="@font/nanum_extrabold"
             android:textSize="20sp"/>
 
@@ -76,6 +77,7 @@
             android:elevation="5dp">
 
             <EditText
+                android:maxLength="15"
                 android:padding="10dp"
                 android:id="@+id/title"
                 android:layout_width="match_parent"
@@ -100,8 +102,9 @@
             android:textColor="#2D008A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정 내용"
+            android:text="@string/scheduleContent_textView"
             android:layout_margin="5dp"
+            android:id="@+id/scheduleContent_textView"
             android:fontFamily="@font/nanum_extrabold"
             android:textSize="20sp"/>
 
@@ -116,6 +119,7 @@
             android:elevation="5dp">
 
             <EditText
+                android:maxLength="150"
                 android:text="@={viewModel.content}"
                 android:padding="10dp"
                 android:id="@+id/content"
@@ -140,8 +144,9 @@
             android:textColor="#2D008A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정 시작 날짜"
+            android:text="@string/scheduleStartDate_textView"
             android:layout_margin="5dp"
+            android:id="@+id/scheduleStartDate_textView"
             android:fontFamily="@font/nanum_extrabold"
             android:textSize="20sp"/>
 
@@ -195,7 +200,8 @@
             android:textColor="#2D008A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정 종료 날짜"
+            android:text="@string/scheduleEndDate_textView"
+            android:id="@+id/scheduleEndDate_textView"
             android:layout_margin="5dp"
             android:fontFamily="@font/nanum_extrabold"
             android:textSize="20sp"/>
@@ -253,7 +259,7 @@
             android:background="@color/gray"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="일정 추가하기"
+            android:text="@string/postSchedule_textView"
             android:fontFamily="@font/nanum_extrabold"
             android:textSize="20sp"
             android:textColor="#FFFFFF"

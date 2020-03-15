@@ -114,8 +114,10 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
 
     // SingleLiveEvent
     val onBambooDataEvent = SingleLiveEvent<Unit>()
+    val onLoadingEvent = SingleLiveEvent<Unit>()
 
     fun getBambooPostOrder(){
+        onLoadingEvent.call()
         val res : Call<Response<Data>> = netRetrofit.bamboo.getBambooPostOrder(StudentData.token.value.toString(), "hit")
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {

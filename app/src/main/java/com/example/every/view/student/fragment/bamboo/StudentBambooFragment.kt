@@ -39,12 +39,10 @@ class StudentBambooFragment : BaseFragment() {
     }
 
     private fun refreshLayout(){
-        binding.swipeRefreshLayout.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
-            override fun onRefresh() {
-                viewModel.getBambooPost()
-                Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
-            }
-        })
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.getBambooPost()
+            Handler().postDelayed({ binding.swipeRefreshLayout.isRefreshing = false }, 500)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:cardBackgroundColor="#FFFFFF"
-    android:layout_marginTop="6dp"
+    android:layout_marginTop="7dp"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
-    android:layout_marginBottom="6dp"
+    android:layout_marginBottom="7dp"
     app:cardElevation="10dp">
 
     <LinearLayout
@@ -44,7 +45,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_extrabold"
                     android:text="#256번째 이야기"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="#000000"/>
 
                 <TextView
                     android:id="@+id/created_at"
@@ -53,16 +55,18 @@
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/nanum_regular"
                     android:text="2020년 02월 18일 화요일"
-                    android:textSize="9sp" />
+                    android:textSize="9sp"
+                    android:textColor="#000000"/>
 
                 <TextView
                     android:id="@+id/timer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="3dp"
                     android:fontFamily="@font/nanum_bold"
                     android:text="1시간 전"
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    android:textColor="#000000"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -79,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_regular"
                 android:text="맥북 프로 2019 13인치 샀어요ㅠㅠ 악세사리 추천좀 해주세요!"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <LinearLayout
@@ -93,7 +98,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_bold"
                 android:text="댓글 1개"
-                android:textSize="9dp" />
+                android:textSize="9dp"
+                android:textColor="#878787"/>
 
             <View
                 android:id="@+id/view"
@@ -124,7 +130,8 @@
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/nanum_bold"
                     android:text="댓글 달기"
-                    android:textSize="9sp" />
+                    android:textSize="9sp"
+                    android:textColor="#898989"/>
             </LinearLayout>
         </LinearLayout>
 

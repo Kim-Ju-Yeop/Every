@@ -115,6 +115,9 @@ class StudentHomeFragment : BaseFragment() {
                 startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
                 activity!!.finish()
             })
+            onLoadingEvent.observe(this@StudentHomeFragment, Observer {
+                toastMessage(binding.root.context, "대나무숲을 조회 중입니다.")
+            })
             onBambooDataEvent.observe(this@StudentHomeFragment, Observer {
                 val intent = Intent(binding.root.context, BambooCommentActivity::class.java)
                 intent.putExtra("idx", viewModel.bambooOrderList.get(0).idx)

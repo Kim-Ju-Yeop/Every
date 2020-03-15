@@ -77,7 +77,7 @@
                 android:elevation="10dp"
                 android:onClick="@{() -> viewModel.newPost()}"
                 android:src="@drawable/add"
-                app:backgroundTint="#7E40FF" />
+                app:backgroundTint="#4700DB" />
         </FrameLayout>
     </LinearLayout>
 </layout>

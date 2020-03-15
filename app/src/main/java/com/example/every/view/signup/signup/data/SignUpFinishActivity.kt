@@ -39,10 +39,23 @@ class SignUpFinishActivity : BaseActivity() {
                 binding.nextButton.text = "회원가입 다시 진행하기"
             })
             onSignUpNextEvent.observe(this@SignUpFinishActivity, Observer {
-                if(binding.nextButton.text.equals("로그인 하기")) startActivity(Intent(this@SignUpFinishActivity, SignInActivity::class.java))
-                else startActivity(Intent(this@SignUpFinishActivity, SignUpActivity::class.java))
+                if(binding.nextButton.text.equals("로그인 하기")) {
+                    startActivity(Intent(this@SignUpFinishActivity, SignInActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                }
+                else {
+                    startActivity(Intent(this@SignUpFinishActivity, SignUpActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                }
                 finish()
             })
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(applicationContext, SignInActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        finish()
     }
 }

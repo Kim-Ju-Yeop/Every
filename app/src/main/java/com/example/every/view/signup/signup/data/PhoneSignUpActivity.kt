@@ -53,7 +53,7 @@ class PhoneSignUpActivity : BaseActivity(){
         with(viewModel){
             onPhoneSuccessEvent.observe(this@PhoneSignUpActivity, Observer {
                 if(viewModel.phone_check.value == null){
-                    binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
+                    binding.nextButton.setBackgroundResource(R.drawable.gradient1)
                     binding.nextButton.isEnabled = true
                 }
             })
@@ -67,9 +67,11 @@ class PhoneSignUpActivity : BaseActivity(){
                 if(SignUpData.identityData == 0){
                     SignUpData.signUpDataStudent.phone = viewModel.phone.value.toString()
                     startActivity(Intent(this@PhoneSignUpActivity, SchoolSignUpActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 } else if(SignUpData.identityData == 1) {
                     SignUpData.signUpDataWorker.phone = viewModel.phone.value.toString()
                     startActivity(Intent(this@PhoneSignUpActivity, WorkerSignUpActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 }
             })
         }

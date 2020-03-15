@@ -48,7 +48,7 @@
         <activity
             android:name=".view.signup.signup.data.SchoolListSignUpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SchoolDialog" />
+            android:theme="@style/SchoolListDialog" />
         <activity
             android:name=".view.signup.signup.data.WorkerSignUpActivity"
             android:screenOrientation="portrait" />

@@ -49,10 +49,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/nanum_extrabold"
+                android:fontFamily="@font/nanum_bold"
                 android:text="@={viewModel.secondText}"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,7 +82,7 @@
                     android:id="@+id/next_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/signup_finish_background"
+                    android:background="@drawable/image_signupfinish"
                     android:fontFamily="@font/nanum_extrabold"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"

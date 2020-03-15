@@ -7,8 +7,8 @@
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
     </style>
 
-    <style name="SchoolDialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:windowBackground">@drawable/dialog_background</item>
+    <style name="SchoolListDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_schoollist</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

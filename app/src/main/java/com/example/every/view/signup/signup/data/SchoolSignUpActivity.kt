@@ -44,7 +44,7 @@ class SchoolSignUpActivity : BaseActivity() {
             onSchoolEnableTrueEVent.observe(this@SchoolSignUpActivity, Observer {
                 binding.schoolName.isSelected = true
                 binding.nextButton.isEnabled = true
-                binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
+                binding.nextButton.setBackgroundResource(R.drawable.gradient1)
             })
             onSchoolEnableFalseEvent.observe(this@SchoolSignUpActivity, Observer {
                 binding.schoolName.isSelected = true
@@ -54,6 +54,7 @@ class SchoolSignUpActivity : BaseActivity() {
             onSchoolNextEvent.observe(this@SchoolSignUpActivity, Observer {
                 SignUpData.signUpDataStudent.school_id = viewModel.schoolId.value.toString()
                 startActivity(Intent(applicationContext, SignUpFinishActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             })
         }
     }

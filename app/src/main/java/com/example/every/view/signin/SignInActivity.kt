@@ -2,9 +2,7 @@ package com.example.every.view.signin
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,11 +11,8 @@ import com.example.every.R
 import com.example.every.view.signup.SignUpActivity
 import com.example.every.view.student.activity.StudentMainActivity
 import com.example.every.base.BaseActivity
-import com.example.every.base.BaseFragment
-import com.example.every.base.StudentData
 import com.example.every.databinding.ActivitySignInBinding
 import com.example.every.viewmodel.signin.SignInViewModel
-import kotlinx.android.synthetic.main.bamboo_item.*
 
 class SignInActivity : BaseActivity() {
 
@@ -98,6 +93,7 @@ class SignInActivity : BaseActivity() {
             })
             onSignUpEvent.observe(this@SignInActivity, Observer {
                 startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             })
             onLostPwEvent.observe(this@SignInActivity, Observer {
                 toastMessage(binding.root.context, "현재 개발 진행중인 기능입니다.")

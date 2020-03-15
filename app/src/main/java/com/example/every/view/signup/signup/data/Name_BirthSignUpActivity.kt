@@ -38,7 +38,7 @@ class Name_BirthSignUpActivity : BaseActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(viewModel.NameBirthCheckType(binding.birthEditText.text.toString())){
                     if(viewModel.birth_check.value == null){
-                        binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
+                        binding.nextButton.setBackgroundResource(R.drawable.gradient1)
                         binding.nextButton.isEnabled = true
                     } else{
                         binding.nextButton.setBackgroundResource(R.color.gray)
@@ -63,6 +63,7 @@ class Name_BirthSignUpActivity : BaseActivity() {
                     SignUpData.signUpDataWorker.birth_year = Integer.parseInt(viewModel.birth.value.toString())
                 }
                 startActivity(Intent(this@Name_BirthSignUpActivity, PhoneSignUpActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             })
         }
     }

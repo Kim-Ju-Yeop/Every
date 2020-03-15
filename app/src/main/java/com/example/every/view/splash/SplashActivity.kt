@@ -9,7 +9,7 @@ import com.example.every.R
 
 class SplashActivity : AppCompatActivity() {
 
-    val SPLASH_TIME : Long = 800
+    private val SPLASH_TIME : Long = 800
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +17,7 @@ class SplashActivity : AppCompatActivity() {
         setSplash()
     }
 
-    // SplashActivity Setting
-    fun setSplash(){
+    private fun setSplash(){
         Handler().postDelayed({
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             finish()}, SPLASH_TIME)

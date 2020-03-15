@@ -47,10 +47,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/nanum_extrabold"
+                android:fontFamily="@font/nanum_bold"
                 android:text="@string/chooseIdentity_textView"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,7 +69,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/signup_background"
+                    android:background="@drawable/image_signup"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -119,7 +119,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/signup_background"
+                    android:background="@drawable/image_signup"
                     android:orientation="vertical">
 
                     <LinearLayout

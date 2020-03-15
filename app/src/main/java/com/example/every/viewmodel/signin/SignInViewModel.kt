@@ -2,10 +2,8 @@ package com.example.every.viewmodel.signin
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.every.base.BaseViewModel
 import com.example.every.network.Data
-import com.example.every.network.NetRetrofit
 import com.example.every.network.request.model.signin.SignInData
 import com.example.every.network.Response
 import com.example.every.widget.SingleLiveEvent

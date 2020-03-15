@@ -32,8 +32,11 @@ class SignUpActivity : BaseActivity() {
     override fun observerViewModel(){
         with(viewModel){
             onCheckEvent.observe(this@SignUpActivity, Observer {
-                SignUpData.identityData = viewModel.checkInfo.value!!
-                startActivity(Intent(this@SignUpActivity, Email_PwSignUpActivity::class.java))
+                if(viewModel.checkInfo.value == 0){
+                    SignUpData.identityData = viewModel.checkInfo.value!!
+                    startActivity(Intent(this@SignUpActivity, Email_PwSignUpActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                }else toastMessage(applicationContext, "현재 개발 진행중인 기능입니다.")
             })
         }
     }

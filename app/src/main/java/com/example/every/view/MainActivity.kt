@@ -2,7 +2,6 @@ package com.example.every.view
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.every.R
@@ -18,9 +17,9 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun checkLogin(){
-        val checkLogin : SharedPreferences = getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
+        val checkLogin = getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
         if(checkLogin.getBoolean("loginData", false)){
-            val checkIdentity : SharedPreferences = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
+            val checkIdentity = getSharedPreferences("checkIdentity", Context.MODE_PRIVATE)
             if(checkIdentity.getString("identityData", null).equals("worker")){
                 // 직장인 페이지 이동
             }else if(checkIdentity.getString("identityData", null).equals("student")){

@@ -4,7 +4,7 @@
         <!-- 사각형 지정 -->
         <shape android:shape="rectangle">
             <corners
-                android:radius="30dp" />
+                android:radius="20dp" />
             <solid android:color="#FFFFFF" />
         </shape>
     </item>

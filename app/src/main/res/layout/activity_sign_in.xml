@@ -14,155 +14,168 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/signin_background"
+        android:background="@drawable/image_signin"
         android:orientation="vertical"
         tools:context=".view.signin.SignInActivity" >
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/welcome_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanum_extrabold"
-                android:text="@string/welcome_textView"
-                android:textColor="#000000"
-                android:textSize="38sp" />
-
-            <TextView
-                android:id="@+id/introduce_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/introduce_textView"
-                android:textColor="#000000"
-                android:fontFamily="@font/nanum_bold"
-                android:layout_marginTop="5dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:clipToPadding="false">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginRight="20dp"
-                android:background="#f3f3f3"
-                app:cardCornerRadius="150dp"
-                app:cardElevation="10dp">
-
-                <EditText
-                    android:paddingLeft="15dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="10dp"
-                    android:id="@+id/email_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:ems="10"
-                    android:hint="이메일"
-                    android:inputType="textPersonName"
-                    android:text="@={viewModel.email}"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:background="#f3f3f3"
-                app:cardCornerRadius="150dp"
-                app:cardElevation="10dp">
-
-                <EditText
-                    android:paddingLeft="15dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="10dp"
-                    android:id="@+id/pw_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:ems="10"
-                    android:hint="비밀번호"
-                    android:inputType="textPassword"
-                    android:text="@={viewModel.pw}"/>
-
-            </androidx.cardview.widget.CardView>
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/lostPassWord_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="@string/lostPassWord_textView"
-                    android:textColor="#984DCC"
-                    android:onClick="@{() -> viewModel.lostPw()}"/>
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="20dp"
-                android:background="#f3f3f3"
-                app:cardCornerRadius="150dp"
-                app:cardElevation="10dp">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/background_gradient"
-                    android:text="로그인"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:textColor="#FFFFFF"
-                    android:onClick="@{() -> viewModel.postSignIn()}"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/signUp_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="@string/signUp_textView"
-                    android:textColor="#984DCC"
-                    android:textSize="18sp"
-                    android:onClick="@{() -> viewModel.signUp()}"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="160dp"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/welcome_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_extrabold"
+                            android:text="@string/welcome_textView"
+                            android:textColor="#000000"
+                            android:textSize="36sp" />
+
+                        <TextView
+                            android:id="@+id/introduce_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/introduce_textView"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/nanum_bold"
+                            android:layout_marginTop="5dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:clipToPadding="false">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginRight="20dp"
+                            android:background="#f3f3f3"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="10dp">
+
+                            <EditText
+                                android:paddingLeft="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="10dp"
+                                android:id="@+id/email_editText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:ems="10"
+                                android:hint="이메일"
+                                android:inputType="textPersonName"
+                                android:text="@={viewModel.email}"/>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="#f3f3f3"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="10dp">
+
+                            <EditText
+                                android:paddingLeft="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingRight="10dp"
+                                android:id="@+id/pw_editText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:ems="10"
+                                android:hint="비밀번호"
+                                android:inputType="textPassword"
+                                android:text="@={viewModel.pw}"/>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/lostPassWord_textView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/nanum_bold"
+                                android:text="@string/lostPassWord_textView"
+                                android:textColor="#984DCC"
+                                android:onClick="@{() -> viewModel.lostPw()}"/>
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginRight="20dp"
+                            android:background="#f3f3f3"
+                            app:cardCornerRadius="25dp"
+                            app:cardElevation="10dp">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/gradient1"
+                                android:text="로그인"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/nanum_extrabold"
+                                android:textColor="#FFFFFF"
+                                android:onClick="@{() -> viewModel.postSignIn()}"/>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:orientation="vertical"
+                            android:layout_marginBottom="20dp">
+
+                            <TextView
+                                android:id="@+id/signUp_textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/nanum_extrabold"
+                                android:text="@string/signUp_textView"
+                                android:textColor="#984DCC"
+                                android:textSize="18sp"
+                                android:onClick="@{() -> viewModel.signUp()}"/>
+                        </LinearLayout>
+                    </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </layout>

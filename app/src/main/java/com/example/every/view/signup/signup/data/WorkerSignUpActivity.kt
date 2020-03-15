@@ -45,7 +45,7 @@ class WorkerSignUpActivity : BaseActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(viewModel.checkType(binding.workerNameEditText.text.toString())){
-                    binding.nextButton.setBackgroundResource(R.drawable.background_corners_gradient)
+                    binding.nextButton.setBackgroundResource(R.drawable.gradient2)
                     binding.nextButton.isEnabled = true
                 }else{
                     binding.nextButton.setBackgroundResource(R.color.gray)
@@ -61,6 +61,7 @@ class WorkerSignUpActivity : BaseActivity() {
                 SignUpData.signUpDataWorker.work_place = viewModel.workerName.value.toString()
                 SignUpData.signUpDataWorker.work_category = binding.spinner.selectedItemPosition.plus(1)
                 startActivity(Intent(this@WorkerSignUpActivity, SignUpFinishActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             })
         }
     }

@@ -14,8 +14,7 @@
         android:layout_width="350dp"
         android:layout_height="550dp"
         android:orientation="vertical"
-        tools:context=".view.signup.signup.data.SchoolListSignUpActivity"
-        android:background="@android:color/transparent">
+        tools:context=".view.signup.signup.data.SchoolListSignUpActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +24,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:cardCornerRadius="30dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="10dp">
 
                 <LinearLayout
@@ -40,13 +39,13 @@
                         <FrameLayout
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
-                            android:background="@drawable/background_corners_gradient2"
+                            android:background="@drawable/gradient2"
                             android:onClick="@{() -> viewModel.getSchool()}">
 
                             <ImageView
                                 android:id="@+id/imageView5"
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
                                 android:layout_gravity="center"
                                 android:onClick="@{() -> viewModel.getSchool()}"
                                 android:padding="10dp"
@@ -84,7 +83,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -124,6 +122,5 @@
             </LinearLayout>
 
         </LinearLayout>
-
     </LinearLayout>
 </layout>

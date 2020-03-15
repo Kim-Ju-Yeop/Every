@@ -3,6 +3,8 @@ package com.example.every.view.signin
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -99,5 +101,10 @@ class SignInActivity : BaseActivity() {
                 toastMessage(binding.root.context, "현재 개발 진행중인 기능입니다.")
             })
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        ActivityCompat.finishAffinity(this@SignInActivity)
     }
 }

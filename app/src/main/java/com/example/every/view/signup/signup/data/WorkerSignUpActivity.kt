@@ -45,7 +45,7 @@ class WorkerSignUpActivity : BaseActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(viewModel.checkType(binding.workerNameEditText.text.toString())){
-                    binding.nextButton.setBackgroundResource(R.drawable.gradient2)
+                    binding.nextButton.setBackgroundResource(R.drawable.gradient1)
                     binding.nextButton.isEnabled = true
                 }else{
                     binding.nextButton.setBackgroundResource(R.color.gray)

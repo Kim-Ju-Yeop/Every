@@ -75,7 +75,7 @@
                 android:layout_marginTop="60dp"
                 android:layout_marginRight="20dp"
                 android:background="#f3f3f3"
-                app:cardCornerRadius="150dp"
+                app:cardCornerRadius="25dp"
                 app:cardElevation="10dp">
 
                 <Button

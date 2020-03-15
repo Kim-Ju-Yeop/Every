@@ -48,6 +48,9 @@ class BambooCommentEditActivity : BaseActivity() {
             comment_EditText.observe(this@BambooCommentEditActivity, Observer {
                 if(comment_EditText.value!!.length >= 250) toastMessage(applicationContext, "250글자 내외로 작성할 수 있습니다.")
             })
+            onBambooCommentEditIconEvent.observe(this@BambooCommentEditActivity, Observer {
+                toastMessage(applicationContext, "이모티콘은 입력하실 수 없습니다.")
+            })
         }
     }
 }

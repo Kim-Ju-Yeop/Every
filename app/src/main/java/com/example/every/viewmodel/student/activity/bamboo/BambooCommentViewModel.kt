@@ -72,6 +72,7 @@ class BambooCommentViewModel : BaseViewModel(){
     // SingleLiveEvent
     val onBambooCommentReplyEvent = SingleLiveEvent<Unit>()
     val onBambooCommentReplyEmptyEvent = SingleLiveEvent<Unit>()
+    val onBambooCommentIconEvent = SingleLiveEvent<Unit>()
 
     fun postBambooReply(){
         if(!replyEditText.value.isNullOrEmpty()){
@@ -79,7 +80,10 @@ class BambooCommentViewModel : BaseViewModel(){
             val res : Call<Response<Data>> = netRetrofit.bamboo.postBambooReply(StudentData.token.value.toString(), bambooReplyData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-                    if(response.code() == 200) onBambooCommentReplyEvent.call()
+                    when(response.code()){
+                        200 -> onBambooCommentReplyEvent.call()
+                        500 -> onBambooCommentIconEvent.call()
+                    }
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
                     Log.e("postBambooReply[Error]", "대나무숲 게시물 댓글 작성 과정에서 서버와 통신이 되지 않습니다.")

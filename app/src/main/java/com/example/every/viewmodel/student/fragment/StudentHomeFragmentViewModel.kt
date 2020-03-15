@@ -24,7 +24,7 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
      */
 
     // Member
-    var checkCount = 0
+    var checkCount = 1
 
     // ArrayList
     var mealsData = ArrayList<MealsList>()
@@ -54,7 +54,7 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
                                 3 -> dinnerList = mealsData.get(A).meal_name.split("<br/>") as ArrayList<String>
                             }
                         }
-                        onBreakfastEvent.call()
+                        onLunchEvent.call()
                     }
                     404 -> onMealsFailureEvent.call()
                     410 -> onTokenEvent.call()
@@ -120,7 +120,7 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
         res.enqueue(object : Callback<Response<Data>>{
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                 if(response.code() == 200) {
-                    bambooOrderList = response.body()!!.data!!.posts!! as ArrayList<BambooPostList>
+                    bambooOrderList = response.body()!!.data!!.posts as ArrayList<BambooPostList>
                     onBambooDataEvent.call()
                 }
             }

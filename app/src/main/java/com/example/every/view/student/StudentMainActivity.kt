@@ -1,4 +1,4 @@
-package com.example.every.view.student.activity
+package com.example.every.view.student
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

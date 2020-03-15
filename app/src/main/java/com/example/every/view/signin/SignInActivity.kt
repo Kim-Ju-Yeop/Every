@@ -3,7 +3,6 @@ package com.example.every.view.signin
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -11,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.every.R
 import com.example.every.view.signup.SignUpActivity
-import com.example.every.view.student.activity.StudentMainActivity
+import com.example.every.view.student.StudentMainActivity
 import com.example.every.base.BaseActivity
 import com.example.every.databinding.ActivitySignInBinding
 import com.example.every.viewmodel.signin.SignInViewModel

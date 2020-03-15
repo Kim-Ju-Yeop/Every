@@ -50,12 +50,13 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:text="@string/welcome_textView"
                             android:id="@+id/textView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nanum_regular"
-                            android:text="환영합니다!"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:textColor="#000000"/>
 
                         <TextView
                             android:id="@+id/student_name"
@@ -63,8 +64,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/nanum_extrabold"
-                            android:text="김주엽 님"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textColor="#000000"/>
                     </LinearLayout>
 
                     <ImageView
@@ -98,8 +99,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nanum_extrabold"
-                            android:text="오늘의 일정"
-                            android:textSize="15sp" />
+                            android:text="@string/todaySchedule_textView"
+                            android:textSize="15sp"
+                            android:textColor="#000000"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -119,7 +121,6 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
                                 android:fontFamily="@font/nanum_extrabold"
-                                android:text="2020년 03월 03일"
                                 android:textColor="#2D008A"
                                 android:textSize="20sp" />
                         </LinearLayout>
@@ -130,7 +131,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/nanum_regular"
-                            android:text="오늘은 일정이 없습니다!"
                             android:textColor="#2D008A"
                             android:textSize="15sp" />
                     </LinearLayout>
@@ -165,7 +165,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/nanum_extrabold"
-                                android:text="오늘의 대나무숲 인기 게시글을"
+                                android:text="@string/todayBamboo_textView"
                                 android:textColor="#FFFFFF"
                                 android:textSize="16sp" />
 
@@ -175,7 +175,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
                                 android:fontFamily="@font/nanum_extrabold"
-                                android:text="확인하세요!"
+                                android:text="@string/check_textView"
                                 android:textColor="#FFFFFF"
                                 android:textSize="18sp" />
                         </LinearLayout>
@@ -213,8 +213,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nanum_extrabold"
-                            android:text="오늘의 급식"
-                            android:textSize="15sp" />
+                            android:text="@string/todayMeals_textView"
+                            android:textSize="15sp"
+                            android:textColor="#000000"/>
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
@@ -239,7 +240,6 @@
                                         android:id="@+id/meals_image"
                                         android:layout_width="25dp"
                                         android:layout_height="25dp"
-                                        android:src="@drawable/schedule"
                                         android:tint="#FFFFFF" />
 
                                     <TextView
@@ -248,7 +248,6 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="5dp"
                                         android:fontFamily="@font/nanum_extrabold"
-                                        android:text="아침"
                                         android:textColor="#FFFFFF"
                                         android:textSize="22sp" />
                                 </LinearLayout>
@@ -277,7 +276,7 @@
                                         android:gravity="center"
                                         android:orientation="vertical"
                                         android:padding="10dp"
-                                        android:visibility="visible">
+                                        android:visibility="gone">
 
                                         <ImageView
                                             android:id="@+id/answer_imageView"

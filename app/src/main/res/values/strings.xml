@@ -39,6 +39,21 @@
     <string name="workerName_textView">근무 직장과 근무 직종</string>
     <string name="universityStudent_textView">대학생일 경우 대학교의 이름과 재학중인\n학과를 대신해 적어주세요!</string>
 
+    <!--StudentHomeFragment-->
+    <string name="todaySchedule_textView">오늘의 일정</string>
+    <string name="todayBamboo_textView">오늘의 대나무숲 인기 게시글을</string>
+    <string name="check_textView">확인하세요!</string>
+    <string name="todayMeals_textView">오늘의 급식</string>
+
+
+
+
+
+
+
+
+
+
     <!--StudentBambooFragment-->
     <string name="bambooName_textView">대나무숲</string>
     <string name="bambooIntroduce_textView">여러분의 이야기를 자유롭게 써보세요!</string>

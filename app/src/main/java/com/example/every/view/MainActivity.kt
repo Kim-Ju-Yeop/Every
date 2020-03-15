@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.every.R
 import com.example.every.view.signin.SignInActivity
-import com.example.every.view.student.activity.StudentMainActivity
+import com.example.every.view.student.StudentMainActivity
 
 class MainActivity: AppCompatActivity() {
 

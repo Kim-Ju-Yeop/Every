@@ -97,10 +97,12 @@ class StudentHomeFragment : BaseFragment() {
                 viewModel.checkCount = 3
             })
             onMealsFailureEvent.observe(this@StudentHomeFragment, Observer {
-                binding.mealsTitle.text = "아침"
-                binding.mealsImage.setImageResource(R.drawable.sunrise_breakfast)
-                binding.mealsBackground.setBackgroundResource(R.drawable.background_breakfast)
-                viewModel.checkCount = 1
+                setVisible(binding.questionLayout, binding.recyclerView, 0)
+
+                binding.mealsTitle.text = "점심"
+                binding.mealsImage.setImageResource(R.drawable.sun_lunch)
+                binding.mealsBackground.setBackgroundResource(R.drawable.background_lunch)
+                viewModel.checkCount = 2
             })
             onTokenEvent.observe(this@StudentHomeFragment, Observer {
                 val loginData = context!!.applicationContext.getSharedPreferences("checkLogin", Context.MODE_PRIVATE)
@@ -109,7 +111,7 @@ class StudentHomeFragment : BaseFragment() {
                 loginData_editor.putBoolean("loginData", false)
                 loginData_editor.commit()
 
-                toastMessage(binding.root.context, "토큰이 만료되었습니다. 로그인 화면으로 이동합니다.")
+                toastMessage(binding.root.context, "자동 로그인 시간이 만료되었습니다.")
                 startActivity(Intent(context!!.applicationContext, SignInActivity::class.java))
                 activity!!.finish()
             })

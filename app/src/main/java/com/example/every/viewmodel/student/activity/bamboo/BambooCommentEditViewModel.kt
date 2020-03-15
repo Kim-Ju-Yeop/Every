@@ -26,7 +26,6 @@ class BambooCommentEditViewModel : BaseViewModel(){
     val onBambooCommentReplySuccessEvent = SingleLiveEvent<Unit>()
     val onBambooCommentReplyEmptyEvent = SingleLiveEvent<Unit>()
     val onBambooCommentEditImageEvent = SingleLiveEvent<Unit>()
-    val onBambooCommentEditIconEvent = SingleLiveEvent<Unit>()
 
     fun editComment(){
         if(!comment_EditText.value.isNullOrEmpty()){
@@ -34,10 +33,7 @@ class BambooCommentEditViewModel : BaseViewModel(){
             val res : Call<Response<Data>> = netRetrofit.bamboo.editBambooReply(StudentData.token.value!!, bambooReplyEditData, idx.value!!)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-                    when(response.code()){
-                        200 -> onBambooCommentReplySuccessEvent.call()
-                        500 -> onBambooCommentEditIconEvent.call()
-                    }
+                    if(response.code() == 200) onBambooCommentReplySuccessEvent.call()
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
                     Log.e("editComment[Error]", "대나무숲 게시글 댓글 수정 과정에서 서버와 통신이 되지 않았습니다.")

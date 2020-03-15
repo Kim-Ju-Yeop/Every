@@ -25,7 +25,6 @@ class BambooPostViewModel : BaseViewModel(){
     val onBambooPostSuccessEvent = SingleLiveEvent<Unit>()
     val onBambooPostFailureEvent = SingleLiveEvent<Unit>()
     val onBambooPostImageEvent = SingleLiveEvent<Unit>()
-    val onBambooIconEvent = SingleLiveEvent<Unit>()
 
     fun postBamboo(){
         if(!content_EditText.value.isNullOrEmpty()){
@@ -33,10 +32,7 @@ class BambooPostViewModel : BaseViewModel(){
             val res : Call<Response<Data>> = netRetrofit.bamboo.postBamboo(StudentData.token.value.toString(), bambooPostData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
-                    when(response.code()){
-                        200 -> onBambooPostSuccessEvent.call()
-                        500 -> onBambooIconEvent.call()
-                    }
+                    if(response.code() == 200) onBambooPostSuccessEvent.call()
                 }
                 override fun onFailure(call: Call<Response<Data>>, t: Throwable) {
                     Log.e("postBamboo[Error]", "대나무숲 게시글 작성부분에서 서버와 통신이 되지 않습니다.")

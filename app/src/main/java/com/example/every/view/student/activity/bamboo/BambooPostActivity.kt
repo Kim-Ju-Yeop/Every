@@ -44,9 +44,6 @@ class BambooPostActivity : BaseActivity() {
             content_EditText.observe(this@BambooPostActivity, Observer {
                 if(content_EditText.value!!.length >= 500) toastMessage(applicationContext, "500글자 내외로 작성할 수 있습니다.")
             })
-            onBambooIconEvent.observe(this@BambooPostActivity, Observer {
-                toastMessage(applicationContext, "이모티콘은 입력하실 수 업습니다.")
-            })
         }
     }
 

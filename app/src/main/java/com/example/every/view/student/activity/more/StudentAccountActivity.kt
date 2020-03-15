@@ -57,4 +57,6 @@ class StudentAccountActivity : BaseActivity() {
            })
        }
     }
+
+    override fun onBackPressed() = finish()
 }

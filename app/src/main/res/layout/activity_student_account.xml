@@ -26,12 +26,14 @@
         android:theme="?attr/actionBarTheme">
 
         <TextView
+            android:id="@+id/profileName_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/nanum_extrabold"
-            android:text="프로필"
-            android:textSize="18sp" />
+            android:text="@string/profileName_textView"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -55,8 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/nanum_bold"
-            android:text="김주엽"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/email"
@@ -64,8 +66,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/nanum_regular"
-            android:text="kjy031104@gmail.com"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="#9F9F9F"/>
     </LinearLayout>
 
     <LinearLayout
@@ -99,8 +101,8 @@
                 android:layout_marginLeft="12dp"
                 android:fontFamily="@font/nanum_bold"
                 android:gravity="center"
-                android:text="TEL. 010-6392-7114"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <View
@@ -140,8 +142,8 @@
                 android:layout_marginLeft="12dp"
                 android:fontFamily="@font/nanum_bold"
                 android:gravity="center"
-               android:text="대구소프트웨어고등학교"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <View
@@ -181,8 +183,8 @@
                 android:layout_marginLeft="12dp"
                 android:fontFamily="@font/nanum_bold"
                 android:gravity="center"
-                android:text="2003년생"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <View
@@ -214,8 +216,8 @@
                 android:layout_gravity="center"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="로그아웃"
                 android:textColor="#2D008A"
+                android:text="@string/logout_textView"
                 android:textSize="20sp" />
 
         </androidx.cardview.widget.CardView>

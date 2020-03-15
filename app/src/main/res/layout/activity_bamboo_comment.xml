@@ -155,16 +155,16 @@
             android:background="#FFFFFF"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/comment_background">
+                app:cardCornerRadius="15dp"
+                android:backgroundTint="#ECECEC">
 
                 <EditText
                     android:id="@+id/comment_editText"
@@ -183,7 +183,7 @@
                     android:textSize="12sp"
                     android:text="@={viewModel.replyEditText}"
                     android:maxLength="250"/>
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <ImageView
                 android:id="@+id/post_textView"

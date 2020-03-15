@@ -45,6 +45,7 @@ class BambooMoreActivity : BaseActivity() {
                 intent.putExtra("content", viewModel.content.value)
 
                 startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 finish()
             })
             onBambooMoreSuccessEvent.observe(this@BambooMoreActivity, Observer {
@@ -53,4 +54,6 @@ class BambooMoreActivity : BaseActivity() {
             })
         }
     }
+
+    override fun onBackPressed() = finish()
 }

@@ -93,4 +93,6 @@ class BambooCommentActivity : BaseActivity() {
             })
         }
     }
+
+    override fun onBackPressed() = finish()
 }

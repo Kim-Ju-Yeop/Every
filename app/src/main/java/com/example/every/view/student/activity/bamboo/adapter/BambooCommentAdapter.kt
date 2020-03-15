@@ -60,6 +60,15 @@ class BambooCommentAdapter(val mContext : Context, val items : ArrayList<BambooR
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(intent)
             })
+
+            itemView.comment_layout.setOnLongClickListener {
+                val intent = Intent(context, BambooMoreActivity::class.java)
+                intent.putExtra("idx", item.idx)
+                intent.putExtra("content", item.content)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
+                true
+            }
         }
     }
 }

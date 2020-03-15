@@ -2,6 +2,7 @@ package com.example.every.view.student.activity.bamboo
 
 import android.app.Activity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -45,4 +46,6 @@ class BambooPostActivity : BaseActivity() {
             })
         }
     }
+
+    override fun onBackPressed() = finish()
 }

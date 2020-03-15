@@ -22,6 +22,7 @@
         tools:context=".view.student.activity.bamboo.BambooMoreActivity">
 
         <LinearLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
@@ -62,7 +63,7 @@
                 <View
                     android:id="@+id/view2"
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:background="#D8D8D8" />
             </LinearLayout>
 

@@ -28,7 +28,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:tint="#FFFFFF"
-                app:srcCompat="@drawable/schedule2" />
+                app:srcCompat="@drawable/icon_schedule2" />
 
             <TextView
                 android:id="@+id/title_textView"

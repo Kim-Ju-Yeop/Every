@@ -68,8 +68,8 @@ class StudentHomeFragment : BaseFragment() {
                 else setVisible(binding.questionLayout, binding.recyclerView, 1)
 
                 binding.mealsTitle.text = "아침"
-                binding.mealsImage.setImageResource(R.drawable.sunrise_breakfast)
-                binding.mealsBackground.setBackgroundResource(R.drawable.background_breakfast)
+                binding.mealsImage.setImageResource(R.drawable.icon_breakfast)
+                binding.mealsBackground.setBackgroundResource(R.drawable.image_breafkast)
                 viewModel.checkCount = 1
             })
             onLunchEvent.observe(this@StudentHomeFragment, Observer {
@@ -80,8 +80,8 @@ class StudentHomeFragment : BaseFragment() {
                 else setVisible(binding.questionLayout, binding.recyclerView, 1)
 
                 binding.mealsTitle.text = "점심"
-                binding.mealsImage.setImageResource(R.drawable.sun_lunch)
-                binding.mealsBackground.setBackgroundResource(R.drawable.background_lunch)
+                binding.mealsImage.setImageResource(R.drawable.icon_lunch)
+                binding.mealsBackground.setBackgroundResource(R.drawable.image_lunch)
                 viewModel.checkCount = 2
             })
             onDinnerEvent.observe(this@StudentHomeFragment, Observer {
@@ -92,16 +92,16 @@ class StudentHomeFragment : BaseFragment() {
                 else setVisible(binding.questionLayout, binding.recyclerView, 1)
 
                 binding.mealsTitle.text = "저녁"
-                binding.mealsImage.setImageResource(R.drawable.moon_dinner)
-                binding.mealsBackground.setBackgroundResource(R.drawable.background_dinner)
+                binding.mealsImage.setImageResource(R.drawable.icon_dinner)
+                binding.mealsBackground.setBackgroundResource(R.drawable.image_dinner)
                 viewModel.checkCount = 3
             })
             onMealsFailureEvent.observe(this@StudentHomeFragment, Observer {
                 setVisible(binding.questionLayout, binding.recyclerView, 0)
 
                 binding.mealsTitle.text = "점심"
-                binding.mealsImage.setImageResource(R.drawable.sun_lunch)
-                binding.mealsBackground.setBackgroundResource(R.drawable.background_lunch)
+                binding.mealsImage.setImageResource(R.drawable.icon_lunch)
+                binding.mealsBackground.setBackgroundResource(R.drawable.image_lunch)
                 viewModel.checkCount = 2
             })
             onTokenEvent.observe(this@StudentHomeFragment, Observer {

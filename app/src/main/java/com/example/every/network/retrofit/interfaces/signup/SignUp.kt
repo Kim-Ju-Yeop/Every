@@ -20,8 +20,8 @@ interface SignUp {
     @GET("auth/check/email")
     fun getOverlapEmail(@Query("email") email : String) : Call<Response<Data>>
 
-    @GET("auth/check/icon_phone")
-    fun getOverlapPhone(@Query("icon_phone") phone : String) : Call<Response<Data>>
+    @GET("auth/check/phone")
+    fun getOverlapPhone(@Query("phone") phone : String) : Call<Response<Data>>
 
     @GET("school")
     fun getSchool(@Query("query") schoolName : String) : Call<Response<Data>>

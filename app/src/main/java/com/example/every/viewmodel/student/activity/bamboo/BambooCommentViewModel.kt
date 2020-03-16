@@ -35,10 +35,10 @@ class BambooCommentViewModel : BaseViewModel(){
         val res: Call<Response<Data>> = netRetrofit.bamboo.getBambooComment(StudentData.token.value.toString(), StudentData.postIdx.value!!)
         res.enqueue(object : Callback<Response<Data>> {
             override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
+                bambooCommentDataList.clear()
                 when (response.code()) {
                     200 -> {
                         if (!response.body()!!.data!!.replies.isNullOrEmpty()) {
-                            bambooCommentDataList.clear()
                             bambooCommentServerData = response!!.body()!!.data!!.replies as ArrayList<BambooReplyList>
 
                             for (A in 0 until bambooCommentServerData.size) {

@@ -34,6 +34,9 @@ class BambooCommentActivity : BaseActivity() {
         binding.lifecycleOwner = this@BambooCommentActivity
 
         refreshLayout()
+
+        StudentData.postIdx.value = intent.extras!!.getInt("idx")
+        viewModel.getBambooComment()
     }
 
     override fun onResume() {
@@ -73,6 +76,9 @@ class BambooCommentActivity : BaseActivity() {
                 binding.recyclerView.adapter = adapter
             })
             onGetBambooCommentFailureEvent.observe(this@BambooCommentActivity, Observer {
+                val adapter = BambooCommentAdapter(applicationContext, viewModel.bambooCommentDataList)
+                binding.recyclerView.adapter = adapter
+
                 Log.e("BambooCommentActivity[Error]", "게시글의 댓글이 존재하지 않습니다.")
             })
             onBambooCommentReplyEvent.observe(this@BambooCommentActivity, Observer {

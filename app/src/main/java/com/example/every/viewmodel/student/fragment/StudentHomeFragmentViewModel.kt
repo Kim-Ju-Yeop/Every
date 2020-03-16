@@ -163,5 +163,8 @@ class StudentHomeFragmentViewModel : BaseViewModel(){
 
     // SingleLiveEvent
     val onHomeActivityEvent = SingleLiveEvent<Unit>()
+    val onScheduleEvent = SingleLiveEvent<Unit>()
+
     fun activity() = onHomeActivityEvent.call()
+    fun scheduleEvent() = onScheduleEvent.call()
 }

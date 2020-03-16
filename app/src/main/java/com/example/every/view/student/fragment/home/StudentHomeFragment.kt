@@ -15,10 +15,13 @@ import com.example.every.base.BaseFragment
 import com.example.every.base.StudentData
 import com.example.every.databinding.FragmentStudentHomeBinding
 import com.example.every.view.signin.SignInActivity
+import com.example.every.view.student.StudentMainActivity
 import com.example.every.view.student.activity.bamboo.BambooCommentActivity
 import com.example.every.view.student.fragment.home.adapter.MealsAdapter
+import com.example.every.view.student.fragment.schedule.StudentScheduleFragment
 import com.example.every.viewmodel.student.fragment.StudentHomeFragmentViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
+import kotlinx.android.synthetic.main.activity_student_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -131,6 +134,12 @@ class StudentHomeFragment : BaseFragment() {
             })
             onHomeActivityEvent.observe(this@StudentHomeFragment, Observer {
                 toastMessage(binding.root.context, "현재 개발 진행중인 기능입니다.")
+            })
+            onScheduleEvent.observe(this@StudentHomeFragment, Observer {
+                val fragmentTransaction = activity!!.supportFragmentManager.beginTransaction()
+                val studentScheduleFragment = StudentScheduleFragment()
+                fragmentTransaction.replace(R.id.frameLayout, studentScheduleFragment).commit()
+                activity!!.bottomNavigationView.selectedItemId = R.id.schedule
             })
         }
     }

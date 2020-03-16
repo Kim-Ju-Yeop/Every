@@ -200,11 +200,9 @@
                 android:id="@+id/sliderView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:sliderAnimationDuration="600"
                 app:sliderAutoCycleDirection="back_and_forth"
                 app:sliderIndicatorSelectedColor="#2D008A"
-                app:sliderScrollTimeInSec="2"
-                app:sliderStartAutoCycle="true" />
+                app:sliderScrollTimeInSec="3" />
 
         </androidx.cardview.widget.CardView>
          </LinearLayout>

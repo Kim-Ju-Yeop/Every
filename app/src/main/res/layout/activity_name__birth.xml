@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.signup.signup.data.Name_BirthSignUpViewModel" />
+            type="com.project.every.viewmodel.signup.signup.data.Name_BirthSignUpViewModel" />
     </data>
 
     <LinearLayout

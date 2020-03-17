@@ -9,7 +9,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.student.fragment.StudentHomeFragmentViewModel" />
+            type="com.project.every.viewmodel.student.fragment.StudentHomeFragmentViewModel" />
     </data>
     
     <LinearLayout

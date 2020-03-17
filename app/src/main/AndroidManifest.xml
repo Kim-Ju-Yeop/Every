@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.every">
+    package="com.project.every">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,7 +18,7 @@
         tools:replace="android:icon">
 
         <activity
-            android:name=".view.splash.SplashActivity"
+            android:name="com.project.every.view.splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,80 +26,80 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity" />
+        <activity android:name="com.project.every.view.MainActivity" />
         <activity
-            android:name=".view.signin.SignInActivity"
+            android:name="com.project.every.view.signin.SignInActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.signup.SignUpActivity"
+            android:name="com.project.every.view.signup.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.signup.signup.data.Email_PwSignUpActivity"
+            android:name="com.project.every.view.signup.signup.data.Email_PwSignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.signup.signup.data.Name_BirthSignUpActivity"
+            android:name="com.project.every.view.signup.signup.data.Name_BirthSignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.signup.signup.data.PhoneSignUpActivity"
+            android:name="com.project.every.view.signup.signup.data.PhoneSignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.signup.signup.data.SchoolSignUpActivity"
+            android:name="com.project.every.view.signup.signup.data.SchoolSignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.signup.signup.data.SchoolListSignUpActivity"
+            android:name="com.project.every.view.signup.signup.data.SchoolListSignUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SchoolListDialog" />
         <activity
-            android:name=".view.signup.signup.data.WorkerSignUpActivity"
+            android:name="com.project.every.view.signup.signup.data.WorkerSignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.signup.signup.data.SignUpFinishActivity"
+            android:name="com.project.every.view.signup.signup.data.SignUpFinishActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.student.StudentMainActivity"
+            android:name="com.project.every.view.student.StudentMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.student.fragment.home.StudentHomeFragment"
+            android:name="com.project.every.view.student.fragment.home.StudentHomeFragment"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.student.fragment.bamboo.StudentBambooFragment"
+            android:name="com.project.every.view.student.fragment.bamboo.StudentBambooFragment"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.student.activity.bamboo.BambooPostActivity"
+            android:name="com.project.every.view.student.activity.bamboo.BambooPostActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".view.student.activity.bamboo.BambooCommentActivity"
+            android:name="com.project.every.view.student.activity.bamboo.BambooCommentActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".view.student.activity.bamboo.BambooMoreActivity"
+            android:name="com.project.every.view.student.activity.bamboo.BambooMoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BambooMoreDialog" />
         <activity
-            android:name=".view.student.activity.bamboo.BambooCommentEditActivity"
+            android:name="com.project.every.view.student.activity.bamboo.BambooCommentEditActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
-        <activity android:name=".view.student.fragment.more.StudentMoreFragment"
+        <activity android:name="com.project.every.view.student.fragment.more.StudentMoreFragment"
                   android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.student.fragment.schedule.StudentScheduleFragment"
+        <activity android:name="com.project.every.view.student.fragment.schedule.StudentScheduleFragment"
                   android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.student.activity.more.StudentUpdateActivity"
+        <activity android:name="com.project.every.view.student.activity.more.StudentUpdateActivity"
                   android:screenOrientation="portrait"
                   android:theme="@style/UpdateDialog" />
 
-        <activity android:name=".view.student.activity.more.StudentAccountActivity"
+        <activity android:name="com.project.every.view.student.activity.more.StudentAccountActivity"
                   android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.student.activity.schedule.ScheduleEditActivity"
+        <activity android:name="com.project.every.view.student.activity.schedule.ScheduleEditActivity"
                   android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.student.activity.schedule.ScheduleContentActivity"
+        <activity android:name="com.project.every.view.student.activity.schedule.ScheduleContentActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".view.student.activity.schedule.SchedulePostActivity"
+        <activity android:name="com.project.every.view.student.activity.schedule.SchedulePostActivity"
                   android:screenOrientation="portrait"/>
 
     </application>

@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.signin.SignInViewModel" />
+            type="com.project.every.viewmodel.signin.SignInViewModel" />
     </data>
 
     <LinearLayout

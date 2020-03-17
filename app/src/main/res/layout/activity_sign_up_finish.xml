@@ -9,7 +9,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.every.viewmodel.signup.signup.data.SignUpFinishViewModel" />
+            type="com.project.every.viewmodel.signup.signup.data.SignUpFinishViewModel" />
     </data>
 
     <LinearLayout

@@ -6,6 +6,7 @@ import com.example.every.base.BaseViewModel
 import com.example.every.network.Data
 import com.example.every.network.request.model.signin.SignInData
 import com.example.every.network.Response
+import com.example.every.network.SHA512
 import com.example.every.widget.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,7 +35,7 @@ class SignInViewModel : BaseViewModel() {
     val onLostPwEvent = SingleLiveEvent<Unit>()
 
     fun postSignIn(){
-            val signInData = SignInData(email.value.toString().trim(), pw.value.toString().trim())
+            val signInData = SignInData(email.value.toString().trim(), SHA512.getSH512(pw.value.toString().trim())!!)
             val res : Call<Response<Data>> = netRetrofit.signIn.postSignIn(signInData)
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {

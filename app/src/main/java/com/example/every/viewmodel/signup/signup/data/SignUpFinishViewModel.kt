@@ -31,6 +31,7 @@ class SignUpFinishViewModel : BaseViewModel() {
     fun postSignUp(identity : Int){
         if(identity == 0){
             val res : Call<Response<Data>> = netRetrofit.signUp.postSignUpStudent(SignUpData.signUpDataStudent)
+            Log.e("test", SignUpData.signUpDataStudent.pw.toString())
             res.enqueue(object : Callback<Response<Data>>{
                 override fun onResponse(call: Call<Response<Data>>, response: retrofit2.Response<Response<Data>>) {
                     when(response.code()){

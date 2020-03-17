@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -11,6 +12,7 @@ import com.example.every.R
 import com.example.every.base.BaseActivity
 import com.example.every.base.SignUpData
 import com.example.every.databinding.ActivityEmailPwBinding
+import com.example.every.network.SHA512
 import com.example.every.viewmodel.signup.signup.data.Email_PwSignUpViewModel
 
 class Email_PwSignUpActivity : BaseActivity() {
@@ -69,7 +71,7 @@ class Email_PwSignUpActivity : BaseActivity() {
             onEmailPwNextEvent.observe(this@Email_PwSignUpActivity, Observer {
                 if(SignUpData.identityData == 0){
                     SignUpData.signUpDataStudent.email = viewModel.email.value.toString().trim()
-                    SignUpData.signUpDataStudent.pw = viewModel.pw.value.toString().trim()
+                    SignUpData.signUpDataStudent.pw = SHA512.getSH512(viewModel.pw.value.toString().trim())
                 } else if(SignUpData.identityData == 1) {
                     SignUpData.signUpDataWorker.email = viewModel.email.value.toString().trim()
                     SignUpData.signUpDataWorker.pw = viewModel.pw.value.toString().trim()

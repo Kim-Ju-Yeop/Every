@@ -3,6 +3,7 @@ package com.example.every.view.student
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import com.example.every.R
 import com.example.every.databinding.ActivityStudentMainBinding
@@ -59,4 +60,6 @@ class StudentMainActivity : AppCompatActivity() {
             }
         })
     }
+
+    override fun onBackPressed() = ActivityCompat.finishAffinity(this@StudentMainActivity)
 }

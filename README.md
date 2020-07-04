@@ -22,6 +22,17 @@
 | Develop Language | Kotlin| Spring| Vue| C#||
 | Develop Tool     | Android Studio  | Visual Studio Code | Visual Studio Code| Visual Studio|  Adobe XD|
 
+## Skill
+- <a href="https://github.com/bumptech/glide">Glide</a>
+- <a href="https://github.com/square/retrofit">Retrofit</a>
+- <a href="https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=ko">ViewModel</a>
+- <a href="https://github.com/smarteist/Android-Image-Slider">Image Slider</a>
+- <a href="https://github.com/pedant/sweet-alert-dialog">Sweet Dialog</a>
+- <a href="https://github.com/prolificinteractive/material-calendarview">Material CalendarView</a>
+
+## Design Pattern
+- MVVM 디자인 패턴을 활용하여 구현했습니다.
+
 ## UI/UX
 <div>
 <img width="162" src="https://user-images.githubusercontent.com/49600974/84257927-128aac00-ab51-11ea-89a7-842fbfaa5c01.jpeg"></img>
@@ -33,10 +44,9 @@
 
 
 ## Google Play
-- Google Play Store 2020.03.22 출시하였습니다.
 - Google Play Store <a href ="https://play.google.com/store/apps/details?id=com.project.every" target ="_blank" title ="Every 에브리 사용하기">Every 에브리 사용하기</a>
+- Google Play Store 2020년 03월 18일 1.0.0 버전을 출시하였습니다.
 
-## Naver Blog
-- Naver Blog에 Every 에브리 서비스에 대한 자세한 설명을 해두었습니다.
-- Naver Blog <a href ="https://kjy13299.blog.me/221866732618" target ="_blank" title ="Every 에브리 설명보기">Every 에브리 설명보기</a>
+## Blog
+- 네이버 블로그 <a href ="https://kjy13299.blog.me/221866732618" target ="_blank" title ="Every 에브리 설명보기">Every 에브리 설명보기</a>
 

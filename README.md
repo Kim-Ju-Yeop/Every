@@ -46,6 +46,7 @@
 ## Google Play
 - Google Play Store <a href ="https://play.google.com/store/apps/details?id=com.project.every" target ="_blank" title ="Every 에브리 사용하기">Every 에브리 사용하기</a>
 - Google Play Store 2020년 03월 18일 1.0.0 버전을 출시하였습니다.
+- Google Play Store 2020년 06월 24일 서비스를 종료하였습니다. 
 
 ## Blog
 - 네이버 블로그 <a href ="https://kjy13299.blog.me/221866732618" target ="_blank" title ="Every 에브리 설명보기">Every 에브리 설명보기</a>

@@ -26,7 +26,6 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        setSplash()
         check()
     }
 
@@ -59,6 +58,8 @@ class SplashActivity : AppCompatActivity() {
                         }
                     }
                     appUpdateManager?.registerListener(listener)
+                } else {
+                    setSplash()
                 }
             }
         }

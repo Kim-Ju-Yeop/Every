@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/49600974/104806146-9b20a780-5818-11eb-8cae-4be5043dbad1.png"></img>
+
 # Every
 👨‍🎓 학생들이 학교 생활을 이전보다 조금 더 편리하고, 더 재미있게 보낼 수 있도록 도와주는 서비스입니다.
 
